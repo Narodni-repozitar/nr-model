@@ -53,4 +53,4 @@ class SyntheticFieldsDumperExtension(SearchDumperExt):
         Reverse the changes made by the dump method.
         """
 
-        data.pop("syntheticFields")
+        data.pop("syntheticFields", None)
