@@ -10,21 +10,25 @@ class SyntheticFieldsDumperExtension(SearchDumperExt):
 
         # Person synthetic field.
         person = []
-        for item in data["contributors"]:
+        for item in data.get("contributors", []):
             person.append(item["fullName"])
 
-        for item in data["creators"]:
+        for item in data.get("creators", []):
             person.append(item["fullName"])
 
         data["syntheticFields"]["person"] = person
 
         # Institutions synthetic field.
         institutions = []
-        for item in data["creators"]:
+        for item in data.get("creators", []):
             if "affiliations" in item:
                 institutions.extend(item["affiliations"])
 
-        institutions.extend(data["thesis"]["degreeGrantors"])
+        for item in data.get("contributors", []):
+            if "affiliations" in item:
+                institutions.extend(item["affiliations"])
+
+        institutions.extend(data.get("thesis", {}).get("degreeGrantors", []))
 
         data["syntheticFields"]["institutions"] = institutions
 
@@ -34,7 +38,7 @@ class SyntheticFieldsDumperExtension(SearchDumperExt):
             data["syntheticFields"]["keywords_en"],
         ) = ([], [])
         all_subjects = [
-            item for subject in data["subjects"] for item in subject["subject"]
+            item for subject in data.get("subjects", []) for item in subject["subject"]
         ]
         for subject in all_subjects:
             if subject["lang"] == "cs":
