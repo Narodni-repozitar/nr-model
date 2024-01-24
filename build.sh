@@ -172,6 +172,7 @@ install_package() {
   fi
 }
 
+
 copy_version() {
   version=$(cat "$1")
   cat <<EOF >"$2"
