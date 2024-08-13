@@ -8,6 +8,7 @@ from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema, DictOnl
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_date,
+    validate_identifier,
 )
 from oarepo_vocabularies.services.schema import HierarchySchema
 
@@ -65,7 +66,9 @@ class NRDataMetadataSchema(NRCommonMetadataSchema):
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationSchema()))
 
     objectIdentifiers = ma_fields.List(
-        ma_fields.Nested(lambda: NRObjectIdentifierSchema())
+        ma_fields.Nested(
+            lambda: NRObjectIdentifierSchema(), validate=[validate_identifier(value)]
+        )
     )
 
     publishers = ma_fields.List(

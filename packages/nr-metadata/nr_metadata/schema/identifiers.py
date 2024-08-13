@@ -1,7 +1,5 @@
 import marshmallow as ma
-from idutils import normalize_pid
 from marshmallow import validate
-from marshmallow.exceptions import ValidationError
 
 
 class NRIdentifierSchema(ma.Schema):
@@ -10,16 +8,6 @@ class NRIdentifierSchema(ma.Schema):
     )
     identifier = ma.fields.String(required=True)
 
-    @ma.post_load
-    def normalize_identifier(self, value, *args, **kwargs):
-        try:
-            value["identifier"] = normalize_pid(
-                value["identifier"], value["scheme"].lower()
-            )
-        except:
-            raise ValidationError(f"Invalid {value['scheme']} value {value['identifier']}")
-
-        return value
 
     @ma.pre_load
     def remove_url(self, value, *args, **kwargs):

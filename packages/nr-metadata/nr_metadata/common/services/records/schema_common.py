@@ -9,6 +9,7 @@ from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema, DictOnl
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_date,
+    validate_identifier,
 )
 
 from nr_metadata.common.services.records.schema_datatypes import (
@@ -82,7 +83,9 @@ class NRCommonMetadataSchema(Schema):
     notes = ma_fields.List(ma_fields.String())
 
     objectIdentifiers = ma_fields.List(
-        ma_fields.Nested(lambda: NRObjectIdentifierSchema())
+        ma_fields.Nested(
+            lambda: NRObjectIdentifierSchema(), validate=[validate_identifier(value)]
+        )
     )
 
     originalRecord = ma_fields.String()

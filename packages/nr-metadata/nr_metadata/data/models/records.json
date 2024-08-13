@@ -184,8 +184,8 @@
             ],
             "extra-code": "",
             "extensions": [
-                "{{nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
-                "{{nr_metadata.data.records.dumpers.edtf.DataEDTFIntervalDumperExt}}()"
+                "{{nr_metadata.data.records.dumpers.edtf.DataEDTFIntervalDumperExt}}()",
+                "{{nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt}}()"
             ],
             "imports": []
         },
@@ -253,17 +253,6 @@
             "module": "nr_metadata.data.translations",
             "alias": "data"
         },
-        "multilingual-dumper": {
-            "generate": true,
-            "module": "nr_metadata.data.records.dumpers.multilingual",
-            "class": "nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
-        },
         "mapping": {
             "generate": true,
             "alias": "data",
@@ -316,6 +305,17 @@
                 "oarepo_runtime.services.results.RecordItem"
             ],
             "components": [],
+            "imports": []
+        },
+        "multilingual-dumper": {
+            "generate": true,
+            "module": "nr_metadata.data.records.dumpers.multilingual",
+            "class": "nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
+            ],
+            "extra-code": "",
+            "extensions": [],
             "imports": []
         },
         "sortable": [],
@@ -677,6 +677,13 @@
                                 "title": {
                                     "type": "i18nStr",
                                     "required": true,
+                                    "marshmallow": {
+                                        "read": false,
+                                        "write": false,
+                                        "class": null,
+                                        "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
+                                        "generate": false
+                                    },
                                     "ui": {
                                         "marshmallow": {
                                             "read": false,
@@ -685,13 +692,6 @@
                                             "field-class": "oarepo_runtime.services.schema.i18n_ui.I18nStrUIField"
                                         },
                                         "detail": "multilingual"
-                                    },
-                                    "marshmallow": {
-                                        "read": false,
-                                        "write": false,
-                                        "class": null,
-                                        "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
-                                        "generate": false
                                     },
                                     "sample": {
                                         "skip": false
@@ -3496,8 +3496,16 @@
                                 "detail": "nr_object_pid"
                             },
                             "marshmallow": {
+                                "imports": [
+                                    {
+                                        "import": "oarepo_runtime.services.schema.validation.validate_identifier"
+                                    }
+                                ],
                                 "generate": false,
-                                "class": "nr_metadata.schema.identifiers.NRObjectIdentifierSchema"
+                                "class": "nr_metadata.schema.identifiers.NRObjectIdentifierSchema",
+                                "validators": [
+                                    "validate_identifier(value)"
+                                ]
                             },
                             "properties": {
                                 "identifier": {
@@ -5844,8 +5852,16 @@
                                             "detail": "nr_object_pid"
                                         },
                                         "marshmallow": {
+                                            "imports": [
+                                                {
+                                                    "import": "oarepo_runtime.services.schema.validation.validate_identifier"
+                                                }
+                                            ],
                                             "generate": false,
-                                            "class": "nr_metadata.schema.identifiers.NRObjectIdentifierSchema"
+                                            "class": "nr_metadata.schema.identifiers.NRObjectIdentifierSchema",
+                                            "validators": [
+                                                "validate_identifier(value)"
+                                            ]
                                         },
                                         "properties": {
                                             "identifier": {

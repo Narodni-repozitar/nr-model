@@ -8,7 +8,10 @@ from marshmallow_utils.fields import TrimmedString
 from oarepo_runtime.services.schema.i18n import I18nStrField, MultilingualField
 from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
 from oarepo_runtime.services.schema.polymorphic import PolymorphicSchema
-from oarepo_runtime.services.schema.validation import CachedMultilayerEDTFValidator
+from oarepo_runtime.services.schema.validation import (
+    CachedMultilayerEDTFValidator,
+    validate_identifier,
+)
 from oarepo_vocabularies.services.schema import HierarchySchema
 
 from nr_metadata.schema.identifiers import (
@@ -34,7 +37,11 @@ class NRRelatedItemSchema(DictOnlySchema):
 
     itemIssue = ma_fields.String()
 
-    itemPIDs = ma_fields.List(ma_fields.Nested(lambda: NRObjectIdentifierSchema()))
+    itemPIDs = ma_fields.List(
+        ma_fields.Nested(
+            lambda: NRObjectIdentifierSchema(), validate=[validate_identifier(value)]
+        )
+    )
 
     itemPublisher = ma_fields.String()
 

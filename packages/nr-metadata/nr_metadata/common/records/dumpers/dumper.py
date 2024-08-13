@@ -7,4 +7,4 @@ from nr_metadata.common.records.dumpers.multilingual import MultilingualSearchDu
 class CommonDumper(SearchDumper):
     """CommonRecord opensearch dumper."""
 
-    extensions = [MultilingualSearchDumperExt(), CommonEDTFIntervalDumperExt()]
+    extensions = [CommonEDTFIntervalDumperExt(), MultilingualSearchDumperExt()]

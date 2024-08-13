@@ -280,8 +280,11 @@ NRObjectPID:
       class: nr_metadata.ui_schema.identifiers.NRObjectIdentifierUISchema
       generate: false
   marshmallow:
+    imports:
+      - import: oarepo_runtime.services.schema.validation.validate_identifier
     class: nr_metadata.schema.identifiers.NRObjectIdentifierSchema
     generate: false
+    validators: ['validate_identifier(value)']
 
 NRDateOrRange:
   $id: NRDateOrRange

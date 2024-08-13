@@ -5,7 +5,10 @@ from marshmallow import fields as ma_fields
 from marshmallow.fields import String
 from marshmallow_utils.fields import TrimmedString
 from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema, DictOnlySchema
-from oarepo_runtime.services.schema.validation import CachedMultilayerEDTFValidator
+from oarepo_runtime.services.schema.validation import (
+    CachedMultilayerEDTFValidator,
+    validate_identifier,
+)
 from oarepo_vocabularies.services.schema import HierarchySchema
 
 from nr_metadata.common.services.records.schema_common import (
@@ -59,7 +62,9 @@ class NRDocumentMetadataSchema(NRCommonMetadataSchema):
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationSchema()))
 
     objectIdentifiers = ma_fields.List(
-        ma_fields.Nested(lambda: NRObjectIdentifierSchema())
+        ma_fields.Nested(
+            lambda: NRObjectIdentifierSchema(), validate=[validate_identifier(value)]
+        )
     )
 
     publishers = ma_fields.List(ma_fields.String())
