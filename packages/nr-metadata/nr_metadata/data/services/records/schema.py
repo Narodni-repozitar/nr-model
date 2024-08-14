@@ -67,7 +67,8 @@ class NRDataMetadataSchema(NRCommonMetadataSchema):
 
     objectIdentifiers = ma_fields.List(
         ma_fields.Nested(
-            lambda: NRObjectIdentifierSchema(), validate=[validate_identifier(value)]
+            lambda: NRObjectIdentifierSchema(),
+            validate=[lambda value: validate_identifier(value)],
         )
     )
 

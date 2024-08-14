@@ -2945,7 +2945,7 @@
                                 "generate": false,
                                 "class": "nr_metadata.schema.identifiers.NRObjectIdentifierSchema",
                                 "validators": [
-                                    "validate_identifier(value)"
+                                    "lambda value: validate_identifier(value)"
                                 ]
                             },
                             "label.cs": "Identifikátor objektu",
@@ -4617,7 +4617,7 @@
                                             "generate": false,
                                             "class": "nr_metadata.schema.identifiers.NRObjectIdentifierSchema",
                                             "validators": [
-                                                "validate_identifier(value)"
+                                                "lambda value: validate_identifier(value)"
                                             ]
                                         },
                                         "label.cs": "Identifikátor objektu",
