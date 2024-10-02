@@ -6,7 +6,8 @@ import { FileUploaderTable } from "./FileUploaderTable";
 import { UploadFileButton } from "./FileUploaderButtons";
 import { useDepositApiClient, useDepositFileApiClient } from "@js/oarepo_ui";
 import { Trans } from "react-i18next";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { http } from "react-invenio-forms";
 
 export const FileUploader = ({
   fileUploaderMessage,
@@ -18,6 +19,22 @@ export const FileUploader = ({
   const { formik, isSubmitting, save, isSaving } = useDepositApiClient();
   const { read } = useDepositFileApiClient();
   const { values } = formik;
+
+  const {
+    data,
+    error,
+    isError: isFileImportError,
+    isLoading,
+    mutate: importParentFiles,
+  } = useMutation({
+    mutationFn: () =>
+      http.post(recordObject?.links?.self + "/actions/files-import", {}),
+    // onError,
+    onSuccess: (data) => {
+      console.log(data);
+      setFilesState(data.data.entries);
+    },
+  });
 
   const { isFetching, isError, refetch } = useQuery(
     ["files"],
@@ -44,7 +61,7 @@ export const FileUploader = ({
 
   return values.id && recordObject?.files?.enabled ? (
     <Dimmer.Dimmable dimmed={isFetching}>
-      <Dimmer active={isFetching} inverted>
+      <Dimmer active={isFetching || isLoading} inverted>
         <Loader indeterminate>{i18next.t("Fetching files")}...</Loader>
       </Dimmer>
       {isError ? (
@@ -55,6 +72,22 @@ export const FileUploader = ({
         </Message>
       ) : (
         <React.Fragment>
+          {filesState?.length === 0 && (
+            <Message className="flex">
+              <p className="display-inline-block">
+                <Icon name="info circle" />
+                {i18next.t("You can import files from the previous version.")}
+              </p>
+              <Button
+                type="button"
+                size="mini"
+                primary
+                onClick={() => importParentFiles()}
+                icon="sync"
+                content={i18next.t("Import parent files")}
+              />
+            </Message>
+          )}
           <FileUploaderTable
             files={filesState}
             handleFileDeletion={handleFileDeletion}

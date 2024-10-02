@@ -5,7 +5,12 @@ import { FileEditWrapper, FileUploadWrapper } from "./FileUploaderWrappers";
 import { useDepositFileApiClient } from "@js/oarepo_ui";
 import { i18next } from "@translations/nr/i18next";
 
-const LOCALE = i18next.language === "cs" ? "cs_CZ" : i18next.language === "en" ? "en_US" : i18next.language;
+const LOCALE =
+  i18next.language === "cs"
+    ? "cs_CZ"
+    : i18next.language === "en"
+    ? "en_US"
+    : i18next.language;
 
 export const EditFileButton = ({ fileName, record, allowedFileTypes }) => {
   return (
@@ -72,8 +77,9 @@ export const DeleteFileButton = ({ file, handleFileDeletion }) => {
         setIsDeleting(false);
         if (response.status === 204) handleFileDeletion(file);
       })
-      .finally(() => {
+      .catch((error) => {
         setIsDeleting(false);
+        console.error(error);
       });
   };
   return isDeleting ? (
