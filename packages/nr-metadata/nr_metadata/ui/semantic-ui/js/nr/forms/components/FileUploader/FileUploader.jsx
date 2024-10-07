@@ -73,8 +73,8 @@ export const FileUploader = ({
       ) : (
         <React.Fragment>
           {filesState?.length === 0 && (
-            <Message className="flex">
-              <p className="display-inline-block">
+            <Message className="flex justify-space-between align-items-center">
+              <p className="mb-0">
                 <Icon name="info circle" />
                 {i18next.t("You can import files from the previous version.")}
               </p>
