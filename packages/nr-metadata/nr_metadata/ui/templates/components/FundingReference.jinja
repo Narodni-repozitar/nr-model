@@ -2,16 +2,34 @@
 
 <div class='detail-subfields'>
     {% for funder in funders %}
-        <SeparatedProperty isLast={True} label={_('metadata/fundingReferences/projectID.label')}>{{funder.projectID}}</SeparatedProperty>
-        <br/>
-        <SeparatedProperty isLast={True} label={_('metadata/fundingReferences/projectName.label')}>{{funder.projectName}}</SeparatedProperty>
-        <br/>
-        <SeparatedProperty isLast={True} label={_('metadata/fundingReferences/fundingProgram.label')}>{{funder.fundingProgram}}</SeparatedProperty>
-        <br/>  
-        <SeparatedProperty isLast={True} label={_('metadata/fundingReferences/funder.label')}>
-            <VocabularyItem vocabulary={funder.funder} search_link={search_link} searchFacet="metadata_fundingReferences_funder" vocabulary_type="funders"></VocabularyItem> 
-        </SeparatedProperty>
-        <br/>
+        {% if funder.projectID %}
+            <SeparatedProperty isLast={True} label={_('metadata/fundingReferences/projectID.label')}>
+                {{ funder.projectID }}
+            </SeparatedProperty>
+            <br/>
+        {% endif %}
+
+        {% if funder.projectName %}
+            <SeparatedProperty isLast={True} label={_('metadata/fundingReferences/projectName.label')}>
+                {{ funder.projectName }}
+            </SeparatedProperty>
+            <br/>
+        {% endif %}
+
+        {% if funder.fundingProgram %}
+            <SeparatedProperty isLast={True} label={_('metadata/fundingReferences/fundingProgram.label')}>
+                {{ funder.fundingProgram }}
+            </SeparatedProperty>
+            <br/>
+        {% endif %}
+
+        {% if funder.funder %}
+            <SeparatedProperty isLast={True} label={_('metadata/fundingReferences/funder.label')}>
+                <VocabularyItem vocabulary={funder.funder} search_link={search_link} searchFacet="metadata_fundingReferences_funder" vocabulary_type="funders"></VocabularyItem> 
+            </SeparatedProperty>
+            <br/>
+        {% endif %}
+
         {% if not loop.last %}
             <div class="rel-mb-1"></div>
         {% endif %}

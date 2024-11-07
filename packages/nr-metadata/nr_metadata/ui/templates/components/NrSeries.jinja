@@ -2,14 +2,20 @@
 {% if data %}
 <div class='detail-subfields'>
     {% for series in data %}
-        <SeparatedProperty isLast={True} label={_('metadata/series/seriesTitle.label')}>
-            <span>{{ series.seriesTitle }}</span>
-        </SeparatedProperty>
-        <br/>
-        <SeparatedProperty isLast={True} label={_('metadata/series/seriesVolume.label')}>
-            <span>{{ series.seriesVolume }}</span>
-        </SeparatedProperty>
-        <br/>
+        {% if series.seriesTitle %}
+            <SeparatedProperty isLast={True} label={_('metadata/series/seriesTitle.label')}>
+                <span>{{ series.seriesTitle }}</span>
+            </SeparatedProperty>
+            <br/>
+        {% endif %}
+        
+        {% if series.seriesVolume %}
+            <SeparatedProperty isLast={True} label={_('metadata/series/seriesVolume.label')}>
+                <span>{{ series.seriesVolume }}</span>
+            </SeparatedProperty>
+            <br/>
+        {% endif %}
+        
         {% if not loop.last %}
             <div class="rel-mb-1"></div>
         {% endif %}
