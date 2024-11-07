@@ -5,41 +5,31 @@
     <div class="item">
         <div class="content">
             {% if event.eventNameOriginal %}
-                <SeparatedProperty isLast={True} label={_('metadata/events/eventNameOriginal.label')}>
-                    {{ event.eventNameOriginal }}
-                </SeparatedProperty>
+                <strong>{{ event.eventNameOriginal }}</strong>
                 <br/>
             {% endif %}
 
             {% if event.eventNameAlternate %}
-                <SeparatedProperty isLast={True} label={_('metadata/events/eventNameAlternate.label')}>
                     {% for name in event.eventNameAlternate %}
                         {{ name }}{% if not loop.last %}, {% endif %}
                     {% endfor %}
-                </SeparatedProperty>
                 <br/>
             {% endif %}
+            {% if event.eventDate %}
+            {{ event.eventDate }}
+            {% endif %}
+
             {% if event.eventLocation%}
                 {% if event.eventLocation.place %}
-                    <SeparatedProperty isLast={True} label={_('metadata/events/eventLocation/place.label')}>
-                        {{ event.eventLocation.place }}
-                    </SeparatedProperty>
-                    <br/>
+                    {{ event.eventLocation.place }}{% if event.eventLocation.country %}, {% endif %}
                 {% endif %}
 
                 {% if event.eventLocation.country and event.eventLocation.country.title %}
-                    <SeparatedProperty isLast={True} label={_('metadata/events/eventLocation/country.label')}>
-                        {{ event.eventLocation.country.title }}
-                    </SeparatedProperty>
+                    {{ event.eventLocation.country.title }}
                     <br/>
                 {% endif %}
             {% endif %}
-            {% if event.eventDate %}
-                <SeparatedProperty isLast={True} label={_('metadata/events/eventDate.label')}>
-                    {{ event.eventDate }}
-                </SeparatedProperty>
-                <br/>
-            {% endif %}
+          
         </div>
         {% if not loop.last %}
             <div class="rel-mb-1"></div>
