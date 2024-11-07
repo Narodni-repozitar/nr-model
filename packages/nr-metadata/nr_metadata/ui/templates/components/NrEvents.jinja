@@ -8,28 +8,24 @@
                 <strong>{{ event.eventNameOriginal }}</strong>
                 <br/>
             {% endif %}
-
             {% if event.eventNameAlternate %}
-                    {% for name in event.eventNameAlternate %}
-                        {{ name }}{% if not loop.last %}, {% endif %}
-                    {% endfor %}
+                {% for name in event.eventNameAlternate %}
+                    {{ name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
                 <br/>
             {% endif %}
             {% if event.eventDate %}
-            {{ event.eventDate }}
+                {{ event.eventDate }}
             {% endif %}
-
             {% if event.eventLocation%}
                 {% if event.eventLocation.place %}
                     {{ event.eventLocation.place }}{% if event.eventLocation.country %}, {% endif %}
                 {% endif %}
-
                 {% if event.eventLocation.country and event.eventLocation.country.title %}
                     {{ event.eventLocation.country.title }}
                     <br/>
                 {% endif %}
             {% endif %}
-          
         </div>
         {% if not loop.last %}
             <div class="rel-mb-1"></div>

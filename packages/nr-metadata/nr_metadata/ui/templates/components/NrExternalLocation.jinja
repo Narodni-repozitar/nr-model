@@ -1,11 +1,15 @@
 {# def data #}
 {% if data %}
- <a class="ui {{className}}" href="{{data.externalLocationURL | e}}" title="{{data.externalLocationURL}}" target="_blank">
-        <span label">
-            {{data.externalLocationURL}}
+    {% if data.externalLocationURL %}
+        <a class="ui {{className}}" href="{{data.externalLocationURL | e}}" title="{{data.externalLocationURL}}" target="_blank">
+            <span>
+                {{data.externalLocationURL}}
+            </span>
+        </a>
+    {% endif %}
+    {% if data.externalLocationNote %}
+        <span>
+            ({{data.externalLocationNote}})
         </span>
-    </a>
-    <span>
-        ({{data.externalLocationNote}})
-    </span>
+    {% endif %}
 {% endif %}

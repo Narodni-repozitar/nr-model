@@ -14,12 +14,10 @@
             {{ funder.fundingProgram }}
             <br/>
         {% endif %}
-
         {% if funder.funder %}
-                <VocabularyItem vocabulary={funder.funder} search_link={search_link} searchFacet="metadata_fundingReferences_funder" vocabulary_type="funders"></VocabularyItem> 
+            <VocabularyItem vocabulary={funder.funder} search_link={search_link} searchFacet="metadata_fundingReferences_funder" vocabulary_type="funders"></VocabularyItem> 
             <br/>
         {% endif %}
-
         {% if not loop.last %}
             <div class="rel-mb-1"></div>
         {% endif %}
