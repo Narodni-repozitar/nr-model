@@ -53,7 +53,7 @@
                 "organizations": "SyntheticSystemField(\n  MultiSelector(\n      FilteredSelector(\n          PathSelector(\"metadata.creators\", \"metadata.contributors\"),\n          filter=lambda x: x[\"nameType\"] == \"Personal\",\n          projection=\"affiliations.title.cs\",\n      ),\n      FilteredSelector(\n          PathSelector(\"metadata.creators\", \"metadata.contributors\"),\n          filter=lambda x: x[\"nameType\"] == \"Organizational\",\n          projection=\"fullName\",\n      ),\n  ),\n  key=\"syntheticFields.organizations\",\n)\n",
                 "keywords": "SyntheticSystemField(\n    selector=KeywordsFieldSelector(\"metadata.subjects.subject\"),\n    key=\"syntheticFields.keywords\",\n)\n",
                 "date": "SyntheticSystemField(\n    selector=FirstItemSelector(\"metadata.dateModified\", \"metadata.dateIssued\"),\n    key=\"syntheticFields.date\",\n)\n",
-                "year": "SyntheticSystemField(\n    selector=FirstItemSelector(\"metadata.dateModified\", \"metadata.dateIssued\"),\n    key=\"syntheticFields.year\",\n    filter=lambda x: len(x) >= 4,\n    map=lambda x: x[:4]\n)\n",
+                "year": "SyntheticSystemField(\n    selector=FirstItemSelector(\"metadata.dateIssued\", \"metadata.thesis.dateDefended\"),\n    key=\"syntheticFields.year\",\n    filter=lambda x: len(x) >= 4,\n    map=lambda x: x[:4]\n)\n",
                 "defenseYear": "SyntheticSystemField(\n    selector=PathSelector(\"metadata.thesis.dateDefended\"),\n    key=\"syntheticFields.defenseYear\",\n    filter=lambda x: len(x) >= 4,\n    map=lambda x: x[:4]\n)\n"
             },
             "generate": true,
