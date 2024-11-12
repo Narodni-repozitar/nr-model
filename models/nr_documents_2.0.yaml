@@ -208,8 +208,8 @@ DocumentModel:
             marshmallow:
               read: false
               write: false
-          label.cs: Rok poslední změny
-          label.en: Updated year
+          label.cs: Datum vydání
+          label.en: Publication date
           facets:
             facet-class: oarepo_runtime.services.facets.year_histogram.YearAutoHistogramFacet
         defenseYear:

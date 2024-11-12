@@ -177,10 +177,6 @@
             "module": "nr_metadata.documents.proxies",
             "generate": true
         },
-        "translations": {
-            "module": "nr_metadata.documents.translations",
-            "alias": "documents"
-        },
         "json-schema-settings": {
             "generate": true,
             "alias": "documents",
@@ -278,6 +274,10 @@
                 "\"object_key\"": "\"ui\"",
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
+        },
+        "translations": {
+            "module": "nr_metadata.documents.translations",
+            "alias": "documents"
         },
         "multilingual-dumper": {
             "generate": true,
@@ -3211,6 +3211,7 @@
                             "properties": {
                                 "geoLocationPlace": {
                                     "type": "keyword",
+                                    "description": "Free description of the location; ie. Atlantic Ocean",
                                     "marshmallow": {
                                         "read": false,
                                         "write": false
@@ -3220,8 +3221,7 @@
                                             "read": false,
                                             "write": false
                                         }
-                                    },
-                                    "description": "Free description of the location; ie. Atlantic Ocean"
+                                    }
                                 },
                                 "geoLocationPoint": {
                                     "type": "object",
@@ -5674,6 +5674,7 @@
                                 "itemRelationType": {
                                     "type": "vocabulary",
                                     "vocabulary-type": "item-relation-types",
+                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "ui": {
                                         "marshmallow": {
                                             "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRItemRelationTypeVocabularyUISchema",
@@ -5692,7 +5693,6 @@
                                         "unknown": "INCLUDE",
                                         "generate": true
                                     },
-                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "label.cs": "Typ vazby",
                                     "label.en": "Relation type",
                                     "hint.cs": "Vyberte typ vazby mezi popisovaným a souvisejícím zdrojem.",
@@ -7221,8 +7221,8 @@
                             "read": false,
                             "write": false
                         },
-                        "label.cs": "Rok poslední změny",
-                        "label.en": "Updated year"
+                        "label.cs": "Datum vydání",
+                        "label.en": "Publication date"
                     }
                 }
             },
