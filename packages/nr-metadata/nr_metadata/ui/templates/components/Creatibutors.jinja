@@ -4,20 +4,7 @@
 {% set all_creatibutors = creators + contributors %}
 
 {% if all_creatibutors %}
-    {% set name_types = all_creatibutors | map(attribute='nameType') | list %}
-    {% set unique_name_types = name_types | unique | list %}
-
-    {% if unique_name_types | length == 1 %}
-        {% if 'Personal' in unique_name_types %}
-            {% set title = _("Creators") %}
-        {% else %}
-            {% set title = _("Organizations") %}
-        {% endif %}
-    {% else %}
-        {% set title =  _("Creators") ~ "/" ~ _("Organizations")   %}
-    {% endif %}
-
-    <dt>{{ title }}</dt>
+    <dt>{{ _("Creators") }}</dt>
     <dd>
         <div class="ui double separated">
             <div role="list" class="ui horizontal separated creatibutors list">

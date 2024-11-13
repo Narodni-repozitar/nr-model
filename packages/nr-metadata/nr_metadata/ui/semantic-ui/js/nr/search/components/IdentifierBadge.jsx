@@ -1,5 +1,4 @@
 import React from "react";
-import { i18next } from "@translations/nr/i18next";
 import PropTypes from "prop-types";
 
 export const IconIdentifier = ({ link, badgeTitle, icon, alt }) => {
@@ -36,7 +35,6 @@ export const IdentifierBadge = ({ identifier, creatibutorName }) => {
   if (!identifier) return null;
 
   const { scheme, identifier: identifierValue, url } = identifier;
-  console.log(url);
 
   const badgeTitle = `${creatibutorName} ${scheme}: ${identifierValue}`;
 
