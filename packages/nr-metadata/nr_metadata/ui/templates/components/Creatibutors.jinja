@@ -9,12 +9,12 @@
 
     {% if unique_name_types | length == 1 %}
         {% if 'Personal' in unique_name_types %}
-            {% set title = _("People") %}
+            {% set title = _("Creators") %}
         {% else %}
             {% set title = _("Organizations") %}
         {% endif %}
     {% else %}
-        {% set title =  _("People") ~ "/" ~ _("Organizations")   %}
+        {% set title =  _("Creators") ~ "/" ~ _("Organizations")   %}
     {% endif %}
 
     <dt>{{ title }}</dt>
