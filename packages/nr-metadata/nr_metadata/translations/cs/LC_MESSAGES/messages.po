@@ -3963,11 +3963,11 @@ msgstr ""
 msgid "Add project/financing information"
 msgstr "Přidat projekt/informaci o financování"
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:11
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:140
+#: nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:11
+#: nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:140
 #: nr_metadata/translations/jinjax_messages.jinja:11
 msgid "Pages"
-msgstr ""
+msgstr "Stránky"
 
 msgid "Choose affiliation"
 msgstr "Vybrat afiliaci"
@@ -3976,10 +3976,33 @@ msgid "Choose affiliations"
 msgstr "Vybrat afiliace"
 
 msgid "Unknown item"
-msgstr ""
+msgstr "Neznámá položka"
 
 msgid "Remove field"
-msgstr ""
+msgstr "Odebrat pole"
 
 msgid "Add external location"
 msgstr "Přidat externí umístění"
+
+#: nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:564
+msgid "metadata/resourceType/resourceType.label"
+msgstr ""
+
+#: nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:569
+msgid "metadata/resourceType/resourceTypeGeneral.label"
+msgstr ""
+
+#: nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:493
+msgid "syntheticFields/organizations.label"
+msgstr "Organizace"
+
+#: nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:14
+#: nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
+msgid "Organizations"
+msgstr "Organizace"
+
+msgid "Choose"
+msgstr "Vybrat"
+
+msgid "ISNI profile"
+msgstr "ISNI profil"
