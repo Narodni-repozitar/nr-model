@@ -26,7 +26,7 @@ set -e
 base_dir=$(cd "$(dirname "$0")" && pwd)
 
 MODEL_VERSION=2.0
-PYTHON="${PYTHON:-python3}"
+PYTHON="${PYTHON:-python3.12}"
 
 MODEL_BUILDER_VENV="$base_dir/.venv-builder"
 TEST_VENV="$base_dir/.venv-tests"
