@@ -2863,7 +2863,7 @@ msgstr "Klíčová slova"
 
 #: /home/dusanst/Projects/new_nr_docs/nr-docs/documents/services/records/facets.py:499
 msgid "syntheticFields/people.label"
-msgstr "Tvůrci"
+msgstr "Lidé"
 
 msgid "Fill in the main title of the resource."
 msgstr "Vyplňte hlavní název zdroje."
@@ -3983,23 +3983,3 @@ msgstr ""
 
 msgid "Add external location"
 msgstr "Přidat externí umístění"
-
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:564
-msgid "metadata/resourceType/resourceType.label"
-msgstr ""
-
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:569
-msgid "metadata/resourceType/resourceTypeGeneral.label"
-msgstr ""
-
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:493
-msgid "syntheticFields/organizations.label"
-msgstr ""
-
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:14
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
-msgid "Organizations"
-msgstr ""
-
-msgid "ISNI profile"
-msgstr ""

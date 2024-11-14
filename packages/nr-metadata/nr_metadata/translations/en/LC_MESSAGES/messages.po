@@ -1055,7 +1055,7 @@ msgstr ""
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:491
 msgid "syntheticFields/people.label"
-msgstr "Creators"
+msgstr ""
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:2
 #: nr_metadata/translations/jinjax_messages.jinja:2
@@ -1861,24 +1861,4 @@ msgid "Remove field"
 msgstr ""
 
 msgid "Add external location"
-msgstr ""
-
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:564
-msgid "metadata/resourceType/resourceType.label"
-msgstr ""
-
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:569
-msgid "metadata/resourceType/resourceTypeGeneral.label"
-msgstr ""
-
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:493
-msgid "syntheticFields/organizations.label"
-msgstr ""
-
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:14
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
-msgid "Organizations"
-msgstr ""
-
-msgid "ISNI profile"
 msgstr ""

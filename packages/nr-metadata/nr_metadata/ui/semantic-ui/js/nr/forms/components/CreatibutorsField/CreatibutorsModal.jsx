@@ -23,6 +23,7 @@ import {
   TextField,
   RadioField,
   RemoteSelectField,
+  FieldLabel
 } from "react-invenio-forms";
 import * as Yup from "yup";
 import _get from "lodash/get";
@@ -560,11 +561,12 @@ export const CreatibutorsModal = ({
                       fieldPath={affiliationFullNameFieldPath}
                       onBlur={() => handleBlur(affiliationFullNameFieldPath)}
                       {...getFieldData({ fieldPath: fullNameFieldPath })}
+                      label={<FieldLabel
+                        htmlFor={fullNameFieldPath}
+                        label={i18next.t('Name')}
+                      />}
                       modalHeader={
-                        getFieldData({
-                          fieldPath: fullNameFieldPath,
-                          fieldRepresentation: "text",
-                        }).label
+                       i18next.t('Name')
                       }
                     />
                   </div>

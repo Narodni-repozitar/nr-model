@@ -1,4 +1,5 @@
 import React from "react";
+import { i18next } from "@translations/nr/i18next";
 import PropTypes from "prop-types";
 
 export const IconIdentifier = ({ link, badgeTitle, icon, alt }) => {
@@ -34,16 +35,14 @@ IconIdentifier.propTypes = {
 export const IdentifierBadge = ({ identifier, creatibutorName }) => {
   if (!identifier) return null;
 
-  const { scheme, identifier: identifierValue, url } = identifier;
-
-  const badgeTitle = `${creatibutorName} ${scheme}: ${identifierValue}`;
+  const { scheme, identifier: value } = identifier;
 
   switch (scheme.toLowerCase()) {
     case "orcid":
       return (
         <IconIdentifier
-          badgeTitle={badgeTitle}
-          link={url}
+          link={`https://orcid.org/${value}`}
+          badgeTitle={`${creatibutorName}: ${i18next.t("ORCID profile")}`}
           icon="/static/images/identifiers/ORCID-iD_icon-vector.svg"
           alt="ORCID logo"
         />
@@ -51,8 +50,8 @@ export const IdentifierBadge = ({ identifier, creatibutorName }) => {
     case "scopusid":
       return (
         <IconIdentifier
-          badgeTitle={badgeTitle}
-          link={url}
+          link={`https://www.scopus.com/authid/detail.uri?authorId=${value}`}
+          badgeTitle={`${creatibutorName}: ${i18next.t("Scopus ID profile")}`}
           icon="/static/images/identifiers/id.png"
           alt="ScopusID logo"
         />
@@ -60,8 +59,8 @@ export const IdentifierBadge = ({ identifier, creatibutorName }) => {
     case "ror":
       return (
         <IconIdentifier
-          badgeTitle={badgeTitle}
-          link={url}
+          link={`https://ror.org/${value}`}
+          badgeTitle={`${creatibutorName}: ${i18next.t("ROR profile")}`}
           icon="/static/images/identifiers/ror-icon-rgb.svg"
           alt="ROR logo"
         />
@@ -69,8 +68,8 @@ export const IdentifierBadge = ({ identifier, creatibutorName }) => {
     case "researcherid":
       return (
         <IconIdentifier
-          badgeTitle={badgeTitle}
-          link={url}
+          link={`https://www.webofscience.com/wos/author/record/${value}`}
+          badgeTitle={`${creatibutorName}: ${i18next.t("WOS Researcher ID")}`}
           icon="/static/images/identifiers/id.png"
           alt="WOS Researcher ID logo"
         />
@@ -78,8 +77,8 @@ export const IdentifierBadge = ({ identifier, creatibutorName }) => {
     case "isni":
       return (
         <IconIdentifier
-          badgeTitle={badgeTitle}
-          link={url}
+          link={`https://isni.org/isni/${value}`}
+          badgeTitle={`${creatibutorName}: ${i18next.t("ISNI profile")}`}
           icon="/static/images/identifiers/id.png"
           alt="ISNI logo"
         />
@@ -87,8 +86,8 @@ export const IdentifierBadge = ({ identifier, creatibutorName }) => {
     case "doi":
       return (
         <IconIdentifier
-          badgeTitle={badgeTitle}
-          link={url}
+          link={`https://doi.org/{value}`}
+          badgeTitle={`${creatibutorName}: ${i18next.t("DOI profile")}`}
           icon="/static/images/identifiers/DOI_logo.svg"
           alt="DOI logo"
         />
@@ -96,8 +95,8 @@ export const IdentifierBadge = ({ identifier, creatibutorName }) => {
     case "gnd":
       return (
         <IconIdentifier
-          badgeTitle={badgeTitle}
-          link={url}
+          link={`https://d-nb.info/gnd/${value}`}
+          badgeTitle={`${creatibutorName}: ${i18next.t("GND profile")}`}
           icon="/static/images/identifiers/id.png"
           alt="GND logo"
         />
@@ -105,8 +104,8 @@ export const IdentifierBadge = ({ identifier, creatibutorName }) => {
     case "czenasautid":
       return (
         <IconIdentifier
-          badgeTitle={badgeTitle}
-          link={url}
+          link={null}
+          badgeTitle={`${scheme} ${value}`}
           icon="/static/images/identifiers/id.png"
           alt="CZENAS logo"
         />
@@ -114,8 +113,8 @@ export const IdentifierBadge = ({ identifier, creatibutorName }) => {
     case "vedidk":
       return (
         <IconIdentifier
-          badgeTitle={badgeTitle}
-          link={url}
+          link={null}
+          badgeTitle={`${scheme} ${value}`}
           icon="/static/images/identifiers/id.png"
           alt="VEDIDK logo"
         />
@@ -123,8 +122,8 @@ export const IdentifierBadge = ({ identifier, creatibutorName }) => {
     case "institutionalid":
       return (
         <IconIdentifier
-          badgeTitle={badgeTitle}
-          link={url}
+          link={null}
+          badgeTitle={`${scheme} ${value}`}
           icon="/static/images/identifiers/id.png"
           alt="Institutional ID logo"
         />
@@ -132,8 +131,8 @@ export const IdentifierBadge = ({ identifier, creatibutorName }) => {
     case "ico":
       return (
         <IconIdentifier
-          badgeTitle={badgeTitle}
-          link={url}
+          link={null}
+          badgeTitle={`${scheme} ${value}`}
           icon="/static/images/identifiers/id.png"
           alt="ICO logo"
         />
@@ -147,7 +146,6 @@ IdentifierBadge.propTypes = {
   identifier: PropTypes.shape({
     scheme: PropTypes.string,
     identifier: PropTypes.string,
-    url: PropTypes.string,
   }),
   creatibutorName: PropTypes.string,
 };
