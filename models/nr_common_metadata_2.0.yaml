@@ -157,6 +157,7 @@ CommonMetadata:
       # Taxonomy driven list of possible access to the document - open,
       # embargoed, restirected and metadata only access. Based on COAR
       # vocabulary - http://vocabularies.coar-repositories.org/documentation/access_rights/",
+      required: true
       use: "nr-datatypes#NRAccessRights"
 
     relatedItems[]:
