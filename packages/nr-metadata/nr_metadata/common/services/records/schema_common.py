@@ -46,7 +46,9 @@ class NRCommonMetadataSchema(Schema):
 
     abstract = MultilingualField(I18nStrField())
 
-    accessRights = ma_fields.Nested(lambda: NRAccessRightsVocabularySchema())
+    accessRights = ma_fields.Nested(
+        lambda: NRAccessRightsVocabularySchema(), required=True
+    )
 
     accessibility = MultilingualField(I18nStrField())
 
