@@ -126,7 +126,7 @@ DocumentModel:
         )
       year: |
         SyntheticSystemField(
-            selector=FirstItemSelector("metadata.dateModified", "metadata.dateIssued"),
+            selector=FirstItemSelector("metadata.dateIssued", "metadata.thesis.dateDefended"),
             key="syntheticFields.year",
             filter=lambda x: len(x) >= 4,
             map=lambda x: x[:4]
@@ -208,8 +208,8 @@ DocumentModel:
             marshmallow:
               read: false
               write: false
-          label.cs: Rok poslední změny
-          label.en: Updated year
+          label.cs: Datum vydání
+          label.en: Publication date
           facets:
             facet-class: oarepo_runtime.services.facets.year_histogram.YearAutoHistogramFacet
         defenseYear:

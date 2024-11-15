@@ -1,13 +1,25 @@
 {#def funders, search_link #}
 
-<dl class='detail-subfields'>
-
+<div class='detail-subfields'>
     {% for funder in funders %}
-        <Field label={_('metadata/fundingReferences/projectID.label')}> {{funder.projectID}}</Field>
-        <Field label={_('metadata/fundingReferences/projectName.label')}>{{funder.projectName}}</Field>
-        <Field label={_('metadata/fundingReferences/fundingProgram.label')}>{{funder.fundingProgram}}</Field>
-        <Field label={_('metadata/fundingReferences/funder.label')}>
-            <VocabularyItem vocabulary={funder.funder} search_link={search_link} searchFacet="metadata_fundingReferences_funder" vocabulary_type="funders"></VocabularyItem>
-        </Field>
+        {% if funder.projectID %}
+            <strong>{{ funder.projectID }}</strong>
+            <br/>
+        {% endif %}
+        {% if funder.projectName %}
+            {{ funder.projectName }}
+            <br/>
+        {% endif %}
+        {% if funder.fundingProgram %}
+            {{ funder.fundingProgram }}
+            <br/>
+        {% endif %}
+        {% if funder.funder %}
+            <VocabularyItem vocabulary={funder.funder} search_link={search_link} searchFacet="metadata_fundingReferences_funder" vocabulary_type="funders"></VocabularyItem> 
+            <br/>
+        {% endif %}
+        {% if not loop.last %}
+            <div class="rel-mb-1"></div>
+        {% endif %}
     {% endfor %}
-</dl>
+</div>
