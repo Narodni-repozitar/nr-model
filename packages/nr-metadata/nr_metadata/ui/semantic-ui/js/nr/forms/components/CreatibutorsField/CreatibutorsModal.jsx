@@ -563,10 +563,10 @@ export const CreatibutorsModal = ({
                       {...getFieldData({ fieldPath: fullNameFieldPath })}
                       label={<FieldLabel
                         htmlFor={fullNameFieldPath}
-                        label={i18next.t('Name')}
+                        label={i18next.t('Organization name')}
                       />}
                       modalHeader={
-                       i18next.t('Name')
+                       i18next.t('Organization name')
                       }
                     />
                   </div>

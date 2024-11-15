@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-11-14 14:31+0100\n"
+"POT-Creation-Date: 2024-11-15 14:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,16 +198,12 @@ msgstr ""
 #: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:167
 #: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:180
 #: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:179
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:20
-#: nr_metadata/translations/jinjax_messages.jinja:20
 msgid "metadata/fundingReferences/funder.label"
 msgstr ""
 
 #: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:173
 #: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:186
 #: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:185
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:17
-#: nr_metadata/translations/jinjax_messages.jinja:17
 msgid "metadata/fundingReferences/projectID.label"
 msgstr ""
 
@@ -1122,16 +1118,6 @@ msgstr ""
 msgid "Pages"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:18
-#: nr_metadata/translations/jinjax_messages.jinja:18
-msgid "metadata/fundingReferences/projectName.label"
-msgstr ""
-
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:19
-#: nr_metadata/translations/jinjax_messages.jinja:19
-msgid "metadata/fundingReferences/fundingProgram.label"
-msgstr ""
-
 #: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutor.jinja:4
 #: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Person.jinja:3
 #: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Person.jinja:6
@@ -1150,10 +1136,6 @@ msgstr ""
 #: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:14
 #: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
 msgid "Organizations"
-msgstr ""
-
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/NrEvents.jinja:7
-msgid "on"
 msgstr ""
 
 #: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Subjects.jinja:20
@@ -1220,7 +1202,7 @@ msgstr ""
 msgid "Search for persons by name, identifier, or affiliation..."
 msgstr ""
 
-msgid "Name"
+msgid "Organization name"
 msgstr ""
 
 msgid "Cancel"

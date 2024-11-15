@@ -49,7 +49,9 @@ class NRCommonMetadataUISchema(Schema):
 
     abstract = MultilingualUIField(I18nStrUIField())
 
-    accessRights = ma_fields.Nested(lambda: NRAccessRightsVocabularyUISchema())
+    accessRights = ma_fields.Nested(
+        lambda: NRAccessRightsVocabularyUISchema(), required=True
+    )
 
     accessibility = MultilingualLocalizedUIField(I18nStrUIField())
 
