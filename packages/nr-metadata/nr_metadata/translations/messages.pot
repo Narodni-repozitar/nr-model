@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-17 15:24+0200\n"
+"POT-Creation-Date: 2024-11-13 07:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -370,7 +370,7 @@ msgstr ""
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:327
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:320
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:16
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:144
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:136
 #: nr_metadata/translations/jinjax_messages.jinja:16
 msgid "metadata/relatedItems/itemEndPage.label"
 msgstr ""
@@ -379,7 +379,7 @@ msgstr ""
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:332
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:325
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:14
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:134
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:126
 #: nr_metadata/translations/jinjax_messages.jinja:14
 msgid "metadata/relatedItems/itemIssue.label"
 msgstr ""
@@ -400,7 +400,7 @@ msgstr ""
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:347
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:340
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:18
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:154
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:146
 #: nr_metadata/translations/jinjax_messages.jinja:18
 msgid "metadata/relatedItems/itemPublisher.label"
 msgstr ""
@@ -409,7 +409,7 @@ msgstr ""
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:352
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:345
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:10
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:106
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:98
 #: nr_metadata/translations/jinjax_messages.jinja:10
 msgid "metadata/relatedItems/itemRelationType.label"
 msgstr ""
@@ -418,7 +418,7 @@ msgstr ""
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:358
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:351
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:11
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:115
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:107
 #: nr_metadata/translations/jinjax_messages.jinja:11
 msgid "metadata/relatedItems/itemResourceType.label"
 msgstr ""
@@ -427,7 +427,7 @@ msgstr ""
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:364
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:357
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:17
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:148
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:140
 #: nr_metadata/translations/jinjax_messages.jinja:17
 msgid "metadata/relatedItems/itemStartPage.label"
 msgstr ""
@@ -436,7 +436,7 @@ msgstr ""
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:369
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:362
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:9
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:96
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:88
 #: nr_metadata/translations/jinjax_messages.jinja:9
 msgid "metadata/relatedItems/itemURL.label"
 msgstr ""
@@ -445,7 +445,7 @@ msgstr ""
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:374
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:367
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:13
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:128
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:120
 #: nr_metadata/translations/jinjax_messages.jinja:13
 msgid "metadata/relatedItems/itemVolume.label"
 msgstr ""
@@ -454,7 +454,7 @@ msgstr ""
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:379
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:372
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:12
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:122
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:114
 #: nr_metadata/translations/jinjax_messages.jinja:12
 msgid "metadata/relatedItems/itemYear.label"
 msgstr ""
@@ -497,7 +497,7 @@ msgstr ""
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:389
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:408
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:598
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:608
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:401
 msgid "metadata/subjects/classificationCode.label"
 msgstr ""
@@ -506,7 +506,7 @@ msgstr ""
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:399
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:413
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:418
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:610
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:620
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:406
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:411
 msgid "metadata/subjects/subject.label"
@@ -520,14 +520,14 @@ msgstr ""
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:412
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:431
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:615
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:625
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:424
 msgid "metadata/subjects/subjectScheme.label"
 msgstr ""
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:416
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:435
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:619
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:629
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:428
 msgid "metadata/subjects/valueURI.label"
 msgstr ""
@@ -561,7 +561,7 @@ msgstr ""
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:446
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:465
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:642
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:643
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:476
 msgid "metadata/version.label"
 msgstr ""
@@ -1002,63 +1002,63 @@ msgstr ""
 msgid "metadata/relatedItems/volume.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:563
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:564
+msgid "metadata/resourceType/resourceType.label"
+msgstr ""
+
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:569
+msgid "metadata/resourceType/resourceTypeGeneral.label"
+msgstr ""
+
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:573
 msgid "metadata/rightsList/lang.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:567
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:577
 msgid "metadata/rightsList/rights.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:572
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:582
 msgid "metadata/rightsList/rightsIdentifier.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:577
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:587
 msgid "metadata/rightsList/rightsIdentifierScheme.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:582
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:592
 msgid "metadata/rightsList/rightsURI.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:587
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:597
 msgid "metadata/rightsList/schemeURI.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:591
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:601
 msgid "metadata/schemaVersion.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:594
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:604
 msgid "metadata/sizes.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:602
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:612
 msgid "metadata/subjects/lang.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:606
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:616
 msgid "metadata/subjects/schemeURI.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:623
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:633
 msgid "metadata/titles/lang.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:627
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:637
 msgid "metadata/titles/titleType.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:631
-msgid "metadata/types/resourceType.label"
-msgstr ""
-
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:636
-msgid "metadata/types/resourceTypeGeneral.label"
-msgstr ""
-
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:639
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:640
 msgid "metadata/url.label"
 msgstr ""
 
@@ -1094,19 +1094,19 @@ msgstr ""
 msgid "syntheticFields/defenseYear.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:489
-msgid "syntheticFields/institutions.label"
-msgstr ""
-
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:494
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:488
 msgid "syntheticFields/keywords.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:498
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:493
+msgid "syntheticFields/organizations.label"
+msgstr ""
+
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:497
 msgid "syntheticFields/people.label"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:502
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:501
 msgid "syntheticFields/year.label"
 msgstr ""
 
@@ -1135,30 +1135,43 @@ msgid "metadata/relatedItems/itemCreators.label"
 msgstr ""
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:7
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:57
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:53
 #: nr_metadata/translations/jinjax_messages.jinja:7
 msgid "metadata/relatedItems/itemContributors.label"
 msgstr ""
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:8
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:79
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:71
 #: nr_metadata/translations/jinjax_messages.jinja:8
 msgid "metadata/relatedItems/itemPIDs.label"
 msgstr ""
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:15
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:140
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:132
 #: nr_metadata/translations/jinjax_messages.jinja:15
 msgid "Pages"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/NrEvents.jinja:7
-msgid "on"
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutor.jinja:4
+msgid "Find more records by this person"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Person.jinja:3
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Person.jinja:6
-msgid "Find more records by this person"
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutor.jinja:7
+msgid "Find more records by this organization"
+msgstr ""
+
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:12
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
+msgid "Creators"
+msgstr ""
+
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:14
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
+msgid "Organizations"
+msgstr ""
+
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/NrEvents.jinja:7
+msgid "on"
 msgstr ""
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Subjects.jinja:20
@@ -1178,9 +1191,6 @@ msgid "Other"
 msgstr ""
 
 msgid "Add additional title"
-msgstr ""
-
-msgid "Creators"
 msgstr ""
 
 msgid "Add creator"
@@ -1244,6 +1254,9 @@ msgid "Choose affiliation"
 msgstr ""
 
 msgid "Add event"
+msgstr ""
+
+msgid "Add event alternate name"
 msgstr ""
 
 msgid "Remove field"
@@ -1482,13 +1495,13 @@ msgstr ""
 msgid "WOS Researcher ID"
 msgstr ""
 
+msgid "ISNI profile"
+msgstr ""
+
 msgid "DOI profile"
 msgstr ""
 
 msgid "GND profile"
-msgstr ""
-
-msgid "Find more records by this organization"
 msgstr ""
 
 msgid "Find all records"
