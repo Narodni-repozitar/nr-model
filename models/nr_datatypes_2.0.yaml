@@ -561,6 +561,7 @@ NRFundingReference:
       hint.cs: Uveďte název výzkumného programu, v rámci kterého byl projekt financován.
       hint.en: Fill in the name of the research program under which the award was funded.
     funder:
+      required: true
       use: "nr-datatypes#NRFunder"
 
 NRSubject:
