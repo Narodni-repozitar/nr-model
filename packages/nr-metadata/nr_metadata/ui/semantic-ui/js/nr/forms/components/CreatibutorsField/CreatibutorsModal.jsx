@@ -31,10 +31,7 @@ import _isEmpty from "lodash/isEmpty";
 import { CREATIBUTOR_TYPE } from "./constants";
 import { i18next } from "@translations/nr/i18next";
 import { Trans } from "react-i18next";
-import {
-  VocabularySelectField,
-  LocalVocabularySelectField,
-} from "@js/oarepo_vocabularies";
+import { LocalVocabularySelectField } from "@js/oarepo_vocabularies";
 import PropTypes from "prop-types";
 import {
   IdentifiersField,
