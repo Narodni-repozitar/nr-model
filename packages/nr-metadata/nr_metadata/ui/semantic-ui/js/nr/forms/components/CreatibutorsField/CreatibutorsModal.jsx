@@ -23,7 +23,7 @@ import {
   TextField,
   RadioField,
   RemoteSelectField,
-  FieldLabel
+  FieldLabel,
 } from "react-invenio-forms";
 import * as Yup from "yup";
 import _get from "lodash/get";
@@ -131,12 +131,15 @@ const serializeCreatibutor = (submittedCreatibutor, isCreator, isPerson) => {
       affiliationFullNameFieldPath,
       ""
     );
-    const orgFullName = getTitleFromMultilingualObject(affiliation.title) ??
-    (affiliation.id ?? typeof affiliation === "string" ? affiliation : i18next.t("Unknown item"));
+    const orgFullName =
+      getTitleFromMultilingualObject(affiliation.title) ??
+      (affiliation.id ?? typeof affiliation === "string"
+        ? affiliation
+        : i18next.t("Unknown item"));
     return {
       nameType,
       fullName: orgFullName,
-      ...(!isCreator && {contributorType} && {contributorType}),
+      ...(!isCreator && { contributorType } && { contributorType }),
     };
   }
 };
@@ -277,12 +280,16 @@ export const CreatibutorsModal = ({
     nameType: Yup.string(),
     givenName: Yup.string().when("nameType", (nameType, schema) => {
       if (nameType === CREATIBUTOR_TYPE.PERSON) {
-        return schema.required(i18next.t("Given name is a required field."));
+        return schema
+          .trim()
+          .required(i18next.t("Given name is a required field."));
       }
     }),
     familyName: Yup.string().when("nameType", (nameType, schema) => {
       if (nameType === CREATIBUTOR_TYPE.PERSON) {
-        return schema.required(i18next.t("Family name is a required field."));
+        return schema
+          .trim()
+          .required(i18next.t("Family name is a required field."));
       }
     }),
     fullName: Yup.string(),
@@ -293,7 +300,7 @@ export const CreatibutorsModal = ({
     }),
     affiliationNameFieldPath: Yup.mixed().test(
       "text",
-      i18next.t("Affiliation name is a required field."),
+      i18next.t("Organization's name is a required field."),
       (value, testContext) => {
         if (testContext.parent.nameType === CREATIBUTOR_TYPE.ORGANIZATION) {
           return value;
@@ -561,13 +568,13 @@ export const CreatibutorsModal = ({
                       fieldPath={affiliationFullNameFieldPath}
                       onBlur={() => handleBlur(affiliationFullNameFieldPath)}
                       {...getFieldData({ fieldPath: fullNameFieldPath })}
-                      label={<FieldLabel
-                        htmlFor={fullNameFieldPath}
-                        label={i18next.t('Organization name')}
-                      />}
-                      modalHeader={
-                       i18next.t('Organization name')
+                      label={
+                        <FieldLabel
+                          htmlFor={fullNameFieldPath}
+                          label={i18next.t("Organization name")}
+                        />
                       }
+                      modalHeader={i18next.t("Organization name")}
                     />
                   </div>
                 )}

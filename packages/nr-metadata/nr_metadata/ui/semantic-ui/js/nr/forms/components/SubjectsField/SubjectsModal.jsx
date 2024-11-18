@@ -14,7 +14,10 @@ const SubjectsValidationSchema = Yup.object({
   subject: Yup.array().of(
     Yup.object().shape({
       lang: Yup.string().required(requiredMessage).label(i18next.t("Language")),
-      value: Yup.string().required(requiredMessage).label(i18next.t("Keyword")),
+      value: Yup.string()
+        .trim()
+        .required(requiredMessage)
+        .label(i18next.t("Keyword")),
     })
   ),
 });
@@ -66,7 +69,7 @@ export const SubjectsModal = ({ trigger, handleSubjectAdd, helpText }) => {
       enableReinitialize
       validationSchema={SubjectsValidationSchema}
       validateOnChange={false}
-      validateOnBlur={false}
+      validateOnBlur={true}
     >
       {({ values, resetForm, handleSubmit, errors }) => (
         <Modal
