@@ -8,1137 +8,1153 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-11-15 14:57+0100\n"
+"POT-Creation-Date: 2024-11-18 09:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.14.0\n"
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:13
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:17
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:13
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:17
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:16
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:20
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:13
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:17
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:13
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:17
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:16
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:20
 msgid "metadata/abstract.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:23
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:23
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:26
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:23
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:23
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:26
 msgid "metadata/abstract/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:29
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:29
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:32
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:29
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:29
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:32
 msgid "metadata/accessRights.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:34
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:38
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:34
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:38
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:37
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:41
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:34
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:38
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:34
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:38
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:37
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:41
 msgid "metadata/accessibility.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:45
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:45
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:48
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:45
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:45
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:48
 msgid "metadata/accessibility/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:51
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:56
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:51
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:56
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:54
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:59
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:51
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:56
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:51
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:56
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:54
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:59
 msgid "metadata/additionalTitles/title.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:63
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:63
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:66
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:63
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:63
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:66
 msgid "metadata/additionalTitles/title/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:69
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:69
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:72
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:69
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:69
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:72
 msgid "metadata/additionalTitles/titleType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:74
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:74
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:77
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:74
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:74
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:77
 msgid "metadata/contributors/affiliations.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:80
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:80
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:83
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:80
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:80
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:83
 msgid "metadata/contributors/authorityIdentifiers/identifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:85
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:85
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:88
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:85
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:85
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:88
 msgid "metadata/contributors/authorityIdentifiers/scheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:90
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:90
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:51
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:93
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:90
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:90
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:51
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:93
 msgid "metadata/contributors/contributorType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:96
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:96
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:56
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:99
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:96
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:96
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:56
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:99
 msgid "metadata/contributors/familyName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:101
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:101
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:104
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:101
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:101
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:104
 msgid "metadata/contributors/fullName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:106
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:106
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:61
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:109
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:106
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:106
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:61
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:109
 msgid "metadata/contributors/givenName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:111
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:111
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:89
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:114
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:111
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:111
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:89
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:114
 msgid "metadata/contributors/nameType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:116
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:116
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:119
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:116
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:116
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:119
 msgid "metadata/creators/affiliations.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:122
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:122
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:125
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:122
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:122
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:125
 msgid "metadata/creators/authorityIdentifiers/identifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:127
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:127
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:130
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:127
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:127
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:130
 msgid "metadata/creators/authorityIdentifiers/scheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:131
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:131
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:113
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:134
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:131
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:131
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:113
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:134
 msgid "metadata/creators/familyName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:135
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:135
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:138
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:135
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:135
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:138
 msgid "metadata/creators/fullName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:139
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:139
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:117
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:142
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:139
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:139
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:117
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:142
 msgid "metadata/creators/givenName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:143
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:143
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:144
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:146
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:143
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:143
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:144
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:146
 msgid "metadata/creators/nameType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:147
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:147
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:150
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:147
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:147
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:150
 msgid "metadata/dateAvailable.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:151
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:151
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:154
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:151
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:151
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:154
 msgid "metadata/dateIssued.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:156
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:169
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:163
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:156
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:169
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:163
 msgid "metadata/events/eventLocation/country.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:162
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:175
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:169
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:162
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:175
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:169
 msgid "metadata/events/eventLocation/place.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:167
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:180
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:179
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:167
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:180
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:179
 msgid "metadata/fundingReferences/funder.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:173
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:186
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:185
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:173
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:186
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:185
 msgid "metadata/fundingReferences/projectID.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:178
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:191
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:227
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:190
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:178
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:191
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:227
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:190
 msgid "metadata/geoLocations/geoLocationPlace.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:183
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:196
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:232
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:195
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:183
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:196
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:232
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:195
 msgid "metadata/geoLocations/geoLocationPoint/pointLatitude.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:188
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:201
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:237
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:200
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:188
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:201
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:237
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:200
 msgid "metadata/geoLocations/geoLocationPoint/pointLongitude.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:193
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:206
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:205
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:193
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:206
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:205
 msgid "metadata/languages.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:198
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:202
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:211
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:215
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:210
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:214
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:198
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:202
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:211
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:215
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:210
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:214
 msgid "metadata/methods.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:208
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:221
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:220
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:208
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:221
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:220
 msgid "metadata/methods/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:214
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:227
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:226
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:214
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:227
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:226
 msgid "metadata/objectIdentifiers/identifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:219
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:232
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:231
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:219
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:232
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:231
 msgid "metadata/objectIdentifiers/scheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:223
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:236
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:235
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:223
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:236
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:235
 msgid "metadata/originalRecord.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:228
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:247
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:240
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:228
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:247
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:240
 msgid "metadata/relatedItems/itemContributors/affiliations.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:234
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:253
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:246
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:234
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:253
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:246
 msgid ""
 "metadata/relatedItems/itemContributors/authorityIdentifiers/identifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:241
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:260
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:253
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:241
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:260
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:253
 msgid ""
 "metadata/relatedItems/itemContributors/authorityIdentifiers/scheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:246
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:265
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:258
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:246
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:265
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:258
 msgid "metadata/relatedItems/itemContributors/contributorType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:252
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:271
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:264
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:252
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:271
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:264
 msgid "metadata/relatedItems/itemContributors/familyName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:257
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:276
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:269
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:257
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:276
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:269
 msgid "metadata/relatedItems/itemContributors/fullName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:262
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:281
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:274
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:262
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:281
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:274
 msgid "metadata/relatedItems/itemContributors/givenName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:267
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:286
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:279
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:267
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:286
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:279
 msgid "metadata/relatedItems/itemContributors/nameType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:272
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:291
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:284
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:272
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:291
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:284
 msgid "metadata/relatedItems/itemCreators/affiliations.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:278
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:297
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:290
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:278
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:297
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:290
 msgid ""
 "metadata/relatedItems/itemCreators/authorityIdentifiers/identifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:283
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:302
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:295
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:283
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:302
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:295
 msgid "metadata/relatedItems/itemCreators/authorityIdentifiers/scheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:288
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:307
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:300
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:288
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:307
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:300
 msgid "metadata/relatedItems/itemCreators/familyName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:293
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:312
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:305
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:293
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:312
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:305
 msgid "metadata/relatedItems/itemCreators/fullName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:298
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:317
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:310
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:298
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:317
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:310
 msgid "metadata/relatedItems/itemCreators/givenName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:303
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:322
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:315
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:303
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:322
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:315
 msgid "metadata/relatedItems/itemCreators/nameType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:308
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:327
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:320
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:12
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:308
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:327
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:320
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:12
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:136
 #: nr_metadata/translations/jinjax_messages.jinja:12
 msgid "metadata/relatedItems/itemEndPage.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:313
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:332
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:325
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:10
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:313
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:332
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:325
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:10
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:126
 #: nr_metadata/translations/jinjax_messages.jinja:10
 msgid "metadata/relatedItems/itemIssue.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:318
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:337
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:330
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:318
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:337
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:330
 msgid "metadata/relatedItems/itemPIDs/identifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:323
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:342
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:335
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:323
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:342
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:335
 msgid "metadata/relatedItems/itemPIDs/scheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:328
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:347
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:340
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:14
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:328
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:347
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:340
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:14
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:146
 #: nr_metadata/translations/jinjax_messages.jinja:14
 msgid "metadata/relatedItems/itemPublisher.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:333
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:352
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:345
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:6
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:333
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:352
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:345
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:6
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:98
 #: nr_metadata/translations/jinjax_messages.jinja:6
 msgid "metadata/relatedItems/itemRelationType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:339
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:358
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:351
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:7
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:339
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:358
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:351
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:7
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:107
 #: nr_metadata/translations/jinjax_messages.jinja:7
 msgid "metadata/relatedItems/itemResourceType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:345
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:364
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:357
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:13
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:345
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:364
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:357
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:13
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:140
 #: nr_metadata/translations/jinjax_messages.jinja:13
 msgid "metadata/relatedItems/itemStartPage.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:350
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:369
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:362
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:5
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:350
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:369
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:362
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:5
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:88
 #: nr_metadata/translations/jinjax_messages.jinja:5
 msgid "metadata/relatedItems/itemURL.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:355
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:374
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:367
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:9
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:355
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:374
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:367
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:9
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:120
 #: nr_metadata/translations/jinjax_messages.jinja:9
 msgid "metadata/relatedItems/itemVolume.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:360
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:379
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:372
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:8
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:360
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:379
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:372
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:8
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:114
 #: nr_metadata/translations/jinjax_messages.jinja:8
 msgid "metadata/relatedItems/itemYear.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:365
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:384
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:377
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:365
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:384
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:377
 msgid "metadata/resourceType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:370
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:389
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:382
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:370
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:389
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:382
 msgid "metadata/rights.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:374
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:393
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:386
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:15
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:374
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:393
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:386
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:15
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/NrSeries.jinja:6
 #: nr_metadata/translations/jinjax_messages.jinja:15
 msgid "metadata/series/seriesTitle.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:378
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:397
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:390
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:16
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:378
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:397
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:390
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:16
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/NrSeries.jinja:12
 #: nr_metadata/translations/jinjax_messages.jinja:16
 msgid "metadata/series/seriesVolume.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:383
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:402
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:395
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:383
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:402
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:395
 msgid "metadata/subjectCategories.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:389
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:408
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:608
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:401
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:389
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:408
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:608
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:401
 msgid "metadata/subjects/classificationCode.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:394
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:399
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:413
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:418
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:620
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:406
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:411
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:394
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:399
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:413
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:418
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:620
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:406
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:411
 msgid "metadata/subjects/subject.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:406
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:425
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:418
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:406
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:425
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:418
 msgid "metadata/subjects/subject/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:412
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:431
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:625
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:424
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:412
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:431
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:625
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:424
 msgid "metadata/subjects/subjectScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:416
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:435
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:629
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:428
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:416
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:435
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:629
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:428
 msgid "metadata/subjects/valueURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:421
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:440
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:433
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:421
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:440
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:433
 msgid "metadata/systemIdentifiers/identifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:426
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:445
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:438
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:426
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:445
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:438
 msgid "metadata/systemIdentifiers/scheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:430
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:434
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:449
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:453
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:442
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:446
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:430
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:434
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:449
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:453
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:442
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:446
 msgid "metadata/technicalInfo.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:441
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:460
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:453
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:441
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:460
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:453
 msgid "metadata/technicalInfo/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:446
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:465
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:643
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:476
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/common/services/records/facets.py:446
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:465
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:643
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:476
 msgid "metadata/version.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:155
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:155
 msgid "metadata/dateValidTo.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:160
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:160
 msgid "metadata/dateWithdrawn/dateInformation.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:164
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:164
 msgid "metadata/dateWithdrawn/type.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:241
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/data/services/records/facets.py:241
 msgid "metadata/publishers.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:9
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:9
 msgid "metadata/alternateIdentifiers/alternateIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:14
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:14
 msgid "metadata/alternateIdentifiers/alternateIdentifierType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:18
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:18
 msgid "metadata/container/firstPage.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:22
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:22
 msgid "metadata/container/title.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:26
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:26
 msgid "metadata/container/type.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:31
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:31
 msgid "metadata/contributors/affiliation/affiliationIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:36
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:36
 msgid "metadata/contributors/affiliation/affiliationIdentifierScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:41
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:41
 msgid "metadata/contributors/affiliation/name.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:46
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:46
 msgid "metadata/contributors/affiliation/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:65
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:65
 msgid "metadata/contributors/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:69
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:69
 msgid "metadata/contributors/name.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:74
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:74
 msgid "metadata/contributors/nameIdentifiers/nameIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:79
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:79
 msgid "metadata/contributors/nameIdentifiers/nameIdentifierScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:84
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:84
 msgid "metadata/contributors/nameIdentifiers/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:94
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:94
 msgid "metadata/creators/affiliation/affiliationIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:99
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:99
 msgid "metadata/creators/affiliation/affiliationIdentifierScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:104
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:104
 msgid "metadata/creators/affiliation/name.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:109
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:109
 msgid "metadata/creators/affiliation/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:121
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:121
 msgid "metadata/creators/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:125
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:125
 msgid "metadata/creators/name.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:130
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:130
 msgid "metadata/creators/nameIdentifiers/nameIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:135
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:135
 msgid "metadata/creators/nameIdentifiers/nameIdentifierScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:140
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:140
 msgid "metadata/creators/nameIdentifiers/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:148
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:148
 msgid "metadata/dates/date.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:153
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:153
 msgid "metadata/dates/dateInformation.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:157
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:157
 msgid "metadata/dates/dateType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:162
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:162
 msgid "metadata/descriptions/descriptionType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:166
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:166
 msgid "metadata/descriptions/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:169
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:169
 msgid "metadata/doi.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:172
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:172
 msgid "metadata/formats.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:177
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:177
 msgid "metadata/fundingReferences/awardNumber.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:182
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:182
 msgid "metadata/fundingReferences/awardTitle.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:187
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:187
 msgid "metadata/fundingReferences/awardURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:192
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:192
 msgid "metadata/fundingReferences/funderIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:197
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:197
 msgid "metadata/fundingReferences/funderIdentifierType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:202
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:202
 msgid "metadata/fundingReferences/funderName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:207
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:207
 msgid "metadata/geoLocations/geoLocationBox/eastBoundLongitude.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:212
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:212
 msgid "metadata/geoLocations/geoLocationBox/northBoundLatitude.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:217
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:217
 msgid "metadata/geoLocations/geoLocationBox/southBoundLatitude.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:222
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:222
 msgid "metadata/geoLocations/geoLocationBox/westBoundLongitude.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:242
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:242
 msgid ""
 "metadata/geoLocations/geoLocationPolygons/inPolygonPoint/pointLatitude.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:249
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:249
 msgid ""
 "metadata/geoLocations/geoLocationPolygons/inPolygonPoint/pointLongitude.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:256
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:256
 msgid ""
 "metadata/geoLocations/geoLocationPolygons/polygonPoints/pointLatitude.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:263
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:263
 msgid ""
 "metadata/geoLocations/geoLocationPolygons/polygonPoints/pointLongitude.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:269
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:269
 msgid "metadata/language.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:273
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:273
 msgid "metadata/publicationYear.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:277
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:277
 msgid "metadata/publisher/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:281
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:281
 msgid "metadata/publisher/name.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:286
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:286
 msgid "metadata/publisher/publisherIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:291
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:291
 msgid "metadata/publisher/publisherIdentifierScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:295
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:295
 msgid "metadata/publisher/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:300
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:300
 msgid "metadata/relatedIdentifiers/relatedIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:305
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:305
 msgid "metadata/relatedIdentifiers/relatedIdentifierType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:310
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:310
 msgid "metadata/relatedIdentifiers/relatedMetadataScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:315
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:315
 msgid "metadata/relatedIdentifiers/relationType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:320
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:320
 msgid "metadata/relatedIdentifiers/resourceTypeGeneral.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:325
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:325
 msgid "metadata/relatedIdentifiers/schemeType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:330
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:330
 msgid "metadata/relatedIdentifiers/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:335
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:335
 msgid ""
 "metadata/relatedItems/contributors/affiliation/affiliationIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:342
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:342
 msgid ""
 "metadata/relatedItems/contributors/affiliation/affiliationIdentifierScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:349
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:349
 msgid "metadata/relatedItems/contributors/affiliation/name.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:354
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:354
 msgid "metadata/relatedItems/contributors/affiliation/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:359
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:359
 msgid "metadata/relatedItems/contributors/contributorType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:364
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:364
 msgid "metadata/relatedItems/contributors/familyName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:369
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:369
 msgid "metadata/relatedItems/contributors/givenName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:374
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:374
 msgid "metadata/relatedItems/contributors/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:379
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:379
 msgid "metadata/relatedItems/contributors/name.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:384
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:384
 msgid ""
 "metadata/relatedItems/contributors/nameIdentifiers/nameIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:389
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:389
 msgid ""
 "metadata/relatedItems/contributors/nameIdentifiers/nameIdentifierScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:396
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:396
 msgid "metadata/relatedItems/contributors/nameIdentifiers/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:401
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:401
 msgid "metadata/relatedItems/contributors/nameType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:406
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:406
 msgid "metadata/relatedItems/creators/affiliation/affiliationIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:411
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:411
 msgid ""
 "metadata/relatedItems/creators/affiliation/affiliationIdentifierScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:418
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:418
 msgid "metadata/relatedItems/creators/affiliation/name.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:423
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:423
 msgid "metadata/relatedItems/creators/affiliation/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:428
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:428
 msgid "metadata/relatedItems/creators/familyName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:433
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:433
 msgid "metadata/relatedItems/creators/givenName.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:438
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:438
 msgid "metadata/relatedItems/creators/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:443
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:443
 msgid "metadata/relatedItems/creators/name.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:448
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:448
 msgid "metadata/relatedItems/creators/nameIdentifiers/nameIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:453
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:453
 msgid ""
 "metadata/relatedItems/creators/nameIdentifiers/nameIdentifierScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:460
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:460
 msgid "metadata/relatedItems/creators/nameIdentifiers/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:465
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:465
 msgid "metadata/relatedItems/creators/nameType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:470
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:470
 msgid "metadata/relatedItems/edition.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:475
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:475
 msgid "metadata/relatedItems/firstPage.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:479
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:479
 msgid "metadata/relatedItems/issue.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:484
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:484
 msgid "metadata/relatedItems/lastPage.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:488
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:488
 msgid "metadata/relatedItems/number.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:493
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:493
 msgid "metadata/relatedItems/numberType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:498
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:498
 msgid "metadata/relatedItems/publicationYear.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:503
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:503
 msgid "metadata/relatedItems/publisher.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:508
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:508
 msgid ""
 "metadata/relatedItems/relatedItemIdentifier/relatedItemIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:513
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:513
 msgid ""
 "metadata/relatedItems/relatedItemIdentifier/relatedItemIdentifierType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:520
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:520
 msgid "metadata/relatedItems/relatedItemType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:525
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:525
 msgid "metadata/relatedItems/relatedMetadataScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:530
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:530
 msgid "metadata/relatedItems/relationType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:535
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:535
 msgid "metadata/relatedItems/resourceTypeGeneral.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:540
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:540
 msgid "metadata/relatedItems/schemeType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:545
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:545
 msgid "metadata/relatedItems/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:550
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:550
 msgid "metadata/relatedItems/titles/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:555
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:555
 msgid "metadata/relatedItems/titles/titleType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:559
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:559
 msgid "metadata/relatedItems/volume.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:564
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:564
 msgid "metadata/resourceType/resourceType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:569
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:569
 msgid "metadata/resourceType/resourceTypeGeneral.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:573
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:573
 msgid "metadata/rightsList/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:577
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:577
 msgid "metadata/rightsList/rights.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:582
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:582
 msgid "metadata/rightsList/rightsIdentifier.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:587
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:587
 msgid "metadata/rightsList/rightsIdentifierScheme.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:592
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:592
 msgid "metadata/rightsList/rightsURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:597
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:597
 msgid "metadata/rightsList/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:601
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:601
 msgid "metadata/schemaVersion.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:604
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:604
 msgid "metadata/sizes.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:612
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:612
 msgid "metadata/subjects/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:616
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:616
 msgid "metadata/subjects/schemeURI.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:633
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:633
 msgid "metadata/titles/lang.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:637
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:637
 msgid "metadata/titles/titleType.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:640
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:640
 msgid "metadata/url.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:158
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:158
 msgid "metadata/dateModified.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:174
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:174
 msgid "metadata/externalLocation/externalLocationURL.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:458
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:458
 msgid "metadata/thesis/dateDefended.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:462
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:462
 msgid "metadata/thesis/defended.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:467
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:467
 msgid "metadata/thesis/degreeGrantors.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:472
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:472
 msgid "metadata/thesis/studyFields.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:480
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:480
 msgid "syntheticFields/date.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:484
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:484
 msgid "syntheticFields/defenseYear.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:488
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:488
 msgid "syntheticFields/keywords.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:493
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:493
 msgid "syntheticFields/organizations.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:497
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:497
 msgid "syntheticFields/people.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:501
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:501
 msgid "syntheticFields/year.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:1
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:1
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:30
 #: nr_metadata/translations/jinjax_messages.jinja:1
 msgid "metadata/relatedItems/itemTitle.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:2
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:2
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:37
 #: nr_metadata/translations/jinjax_messages.jinja:2
 msgid "metadata/relatedItems/itemCreators.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:3
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:3
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:53
 #: nr_metadata/translations/jinjax_messages.jinja:3
 msgid "metadata/relatedItems/itemContributors.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:4
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:4
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:71
 #: nr_metadata/translations/jinjax_messages.jinja:4
 msgid "metadata/relatedItems/itemPIDs.label"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:11
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:11
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/RelatedItems.jinja:132
 #: nr_metadata/translations/jinjax_messages.jinja:11
 msgid "Pages"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutor.jinja:4
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Person.jinja:3
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Person.jinja:6
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutor.jinja:4
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Person.jinja:3
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Person.jinja:6
 msgid "Find more records by this person"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutor.jinja:7
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutor.jinja:7
 msgid "Find more records by this organization"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:12
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:12
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
 msgid "People"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:14
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:14
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
 msgid "Organizations"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Subjects.jinja:20
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Subjects.jinja:20
 msgid "Find more records with this subject"
 msgstr ""
 
@@ -1187,7 +1203,7 @@ msgstr ""
 msgid "Role is a required field."
 msgstr ""
 
-msgid "Affiliation name is a required field."
+msgid "Organization's name is a required field."
 msgstr ""
 
 msgid "Added"
