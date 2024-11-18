@@ -4006,3 +4006,6 @@ msgstr "Vybrat"
 
 msgid "ISNI profile"
 msgstr "ISNI profil"
+
+msgid "Organization's name is a required field."
+msgstr "Název organizace je povinné pole."

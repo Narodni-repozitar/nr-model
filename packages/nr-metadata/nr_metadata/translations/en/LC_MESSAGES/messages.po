@@ -1890,3 +1890,6 @@ msgstr ""
 
 msgid "ISNI profile"
 msgstr ""
+
+msgid "Organization's name is a required field."
+msgstr ""
