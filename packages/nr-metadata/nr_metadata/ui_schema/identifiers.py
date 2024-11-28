@@ -11,9 +11,12 @@ class NRIdentifierUISchema(ma.Schema):
 
     @ma.post_dump
     def add_url(self, value, **kwargs):
-        url = to_url(value["identifier"], value["scheme"].lower(), url_scheme="https")
-        if url:
-            value["url"] = url
+        if "identifier" in value and "scheme" in value:
+            url = to_url(
+                value["identifier"], value["scheme"].lower(), url_scheme="https"
+            )
+            if url:
+                value["url"] = url
         return value
 
 
