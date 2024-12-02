@@ -471,6 +471,7 @@
                     },
                     "accessRights": {
                         "type": "vocabulary",
+                        "required": true,
                         "vocabulary-type": "access-rights",
                         "ui": {
                             "marshmallow": {
@@ -2997,6 +2998,7 @@
                             "properties": {
                                 "funder": {
                                     "type": "vocabulary",
+                                    "required": true,
                                     "vocabulary-type": "funders",
                                     "ui": {
                                         "marshmallow": {
