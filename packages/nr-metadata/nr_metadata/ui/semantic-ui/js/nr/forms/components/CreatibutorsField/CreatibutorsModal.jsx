@@ -553,6 +553,7 @@ export const CreatibutorsModal = ({
                         <RORAffiliationsField
                           multiple={true}
                           fieldPath={affiliationsFieldPath}
+                          allowAdditions={false}
                         />
                       </div>
                     )}
@@ -564,6 +565,7 @@ export const CreatibutorsModal = ({
                     <RORAffiliationsField
                       fieldPath={affiliationFullNameFieldPath}
                       onBlur={() => handleBlur(affiliationFullNameFieldPath)}
+                      allowAdditions={false}
                       {...getFieldData({ fieldPath: fullNameFieldPath })}
                       label={
                         <FieldLabel
