@@ -552,10 +552,10 @@ msgid "Title type"
 msgstr "Druh názvu"
 
 msgid "Creators"
-msgstr "Autoři"
+msgstr "Tvůrci"
 
 msgid "Add creator"
-msgstr "Přidat autora"
+msgstr "Přidat tvůrce"
 
 msgid "Edit creator"
 msgstr "Editovat autora"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-11-18 09:58+0100\n"
+"POT-Creation-Date: 2024-12-02 13:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1144,14 +1144,8 @@ msgstr ""
 msgid "Find more records by this organization"
 msgstr ""
 
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:12
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
-msgid "People"
-msgstr ""
-
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:14
-#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
-msgid "Organizations"
+#: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:7
+msgid "Creators"
 msgstr ""
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Subjects.jinja:20
@@ -1171,9 +1165,6 @@ msgid "Other"
 msgstr ""
 
 msgid "Add additional title"
-msgstr ""
-
-msgid "Creators"
 msgstr ""
 
 msgid "Add creator"
@@ -1464,27 +1455,6 @@ msgid "search guide"
 msgstr ""
 
 msgid " for defining advanced search queries."
-msgstr ""
-
-msgid "ORCID profile"
-msgstr ""
-
-msgid "Scopus ID profile"
-msgstr ""
-
-msgid "ROR profile"
-msgstr ""
-
-msgid "WOS Researcher ID"
-msgstr ""
-
-msgid "ISNI profile"
-msgstr ""
-
-msgid "DOI profile"
-msgstr ""
-
-msgid "GND profile"
 msgstr ""
 
 msgid "Find all records"

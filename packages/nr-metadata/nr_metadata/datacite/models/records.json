@@ -151,6 +151,10 @@
             "module": "nr_metadata.datacite.proxies",
             "generate": true
         },
+        "translations": {
+            "module": "nr_metadata.datacite.translations",
+            "alias": "datacite"
+        },
         "json-schema-settings": {
             "generate": true,
             "alias": "datacite",
@@ -248,10 +252,6 @@
                 "\"object_key\"": "\"ui\"",
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
-        },
-        "translations": {
-            "module": "nr_metadata.datacite.translations",
-            "alias": "datacite"
         },
         "multilingual-dumper": {
             "generate": true,
