@@ -1055,7 +1055,7 @@ msgstr ""
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:491
 msgid "syntheticFields/people.label"
-msgstr ""
+msgstr "Creators"
 
 #: /home/dusanst/Projects/nr-model/packages/nr-metadata/nr_metadata/translations/jinjax_messages.jinja:2
 #: nr_metadata/translations/jinjax_messages.jinja:2

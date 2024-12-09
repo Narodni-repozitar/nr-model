@@ -2863,7 +2863,7 @@ msgstr "Klíčová slova"
 
 #: /home/dusanst/Projects/new_nr_docs/nr-docs/documents/services/records/facets.py:499
 msgid "syntheticFields/people.label"
-msgstr "Lidé"
+msgstr "Tvůrci"
 
 msgid "Fill in the main title of the resource."
 msgstr "Vyplňte hlavní název zdroje."

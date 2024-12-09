@@ -13,6 +13,7 @@ class DataciteExt:
 
     def init_app(self, app):
         """Flask application initialization."""
+        self.app = app
 
         self.init_config(app)
         if not self.is_inherited():
@@ -51,8 +52,15 @@ class DataciteExt:
 
     @cached_property
     def service_records(self):
+        service_config = config.DATACITE_RECORD_SERVICE_CONFIG
+        service_kwargs = {}
+        if hasattr(service_config, "build"):
+            config_class = service_config.build(self.app)
+        else:
+            config_class = service_config()
+        service_kwargs["config"] = config_class
         return config.DATACITE_RECORD_SERVICE_CLASS(
-            config=config.DATACITE_RECORD_SERVICE_CONFIG(),
+            **service_kwargs,
         )
 
     @cached_property
