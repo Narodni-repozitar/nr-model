@@ -1,10 +1,15 @@
-from invenio_records_resources.services import RecordLink
+from invenio_records_resources.services import LinksTemplate, RecordLink
 from invenio_records_resources.services import (
     RecordServiceConfig as InvenioRecordServiceConfig,
 )
 from invenio_records_resources.services import pagination_links
-from oarepo_runtime.services.components import CustomFieldsComponent
+from oarepo_runtime.services.components import (
+    CustomFieldsComponent,
+    process_service_configs,
+)
+from oarepo_runtime.services.config import has_permission
 from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
+from oarepo_runtime.services.records import pagination_links_html
 
 from nr_metadata.data.records.api import DataRecord
 from nr_metadata.data.services.records.permissions import DataPermissionPolicy
@@ -34,23 +39,43 @@ class DataServiceConfig(PermissionsPresetsConfigMixin, InvenioRecordServiceConfi
 
     service_id = "data"
 
-    components = [
-        *PermissionsPresetsConfigMixin.components,
-        *InvenioRecordServiceConfig.components,
-        CustomFieldsComponent,
-    ]
+    search_item_links_template = LinksTemplate
+
+    @property
+    def components(self):
+        components_list = []
+        components_list.extend(process_service_configs(type(self).mro()[2:]))
+        additional_components = [CustomFieldsComponent]
+        components_list.extend(additional_components)
+        return components_list
 
     model = "nr_metadata.data"
 
     @property
     def links_item(self):
         return {
-            "self": RecordLink("{+api}/nr-metadata-data/{id}"),
-            "self_html": RecordLink("{+ui}/nr-metadata-data/{id}"),
+            "self": RecordLink(
+                "{+api}/nr-metadata-data/{id}", when=has_permission("read")
+            ),
+            "self_html": RecordLink(
+                "{+ui}/nr-metadata-data/{id}", when=has_permission("read")
+            ),
+        }
+
+    @property
+    def links_search_item(self):
+        return {
+            "self": RecordLink(
+                "{+api}/nr-metadata-data/{id}", when=has_permission("read")
+            ),
+            "self_html": RecordLink(
+                "{+ui}/nr-metadata-data/{id}", when=has_permission("read")
+            ),
         }
 
     @property
     def links_search(self):
         return {
             **pagination_links("{+api}/nr-metadata-data/{?args*}"),
+            **pagination_links_html("{+ui}/nr-metadata-data/{?args*}"),
         }

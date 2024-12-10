@@ -140,6 +140,7 @@ create_metadata_test_venv() {
     create_virtual_environment "$TEST_VENV"
   fi
   "$TEST_VENV"/bin/pip install "oarepo>=$OAREPO_VERSION,<$OAREPO_VERSION_MAX"
+  "$TEST_VENV"/bin/pip install "pytest-invenio==2.*"
   "$TEST_VENV"/bin/pip install -e '.[tests]'
 }
 
@@ -165,6 +166,7 @@ create_builder_test_venv() {
   else
     create_virtual_environment "$MODEL_BUILDER_TEST_VENV"
   fi
+  "$MODEL_BUILDER_TEST_VENV"/bin/pip install "pytest-invenio==2.*"
   "$MODEL_BUILDER_TEST_VENV"/bin/pip install "oarepo>=$OAREPO_VERSION,<$OAREPO_VERSION_MAX"
   "$MODEL_BUILDER_TEST_VENV"/bin/pip install ../nr-metadata/dist/*.tar.gz
   "$MODEL_BUILDER_TEST_VENV"/bin/pip install -e "tests/model[tests]"

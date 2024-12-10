@@ -88,6 +88,7 @@
             "file": "data/sample_data.yaml"
         },
         "ext-resource": {
+            "service-kwargs": {},
             "generate": true,
             "skip": false
         },
@@ -248,7 +249,8 @@
             "components": [
                 "{{oarepo_runtime.services.components.CustomFieldsComponent}}"
             ],
-            "additional-args": []
+            "additional-args": [],
+            "search-item-links-template-cls": "invenio_records_resources.services.LinksTemplate"
         },
         "service": {
             "generate": true,
@@ -7205,8 +7207,8 @@
                             "read": false,
                             "write": false
                         },
-                        "label.cs": "Lidé",
-                        "label.en": "People"
+                        "label.cs": "Tvůrci",
+                        "label.en": "Creators"
                     },
                     "year": {
                         "type": "edtf",
