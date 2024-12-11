@@ -147,8 +147,8 @@ DocumentModel:
           marshmallow:
             read: false
             write: false
-          label.cs: Lidé
-          label.en: People
+          label.cs: Tvůrci
+          label.en: Creators
         organizations:
           type: keyword
           label.cs: Instituce

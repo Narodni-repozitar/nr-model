@@ -51,6 +51,7 @@
             "file": "data/sample_data.yaml"
         },
         "ext-resource": {
+            "service-kwargs": {},
             "generate": true,
             "skip": false
         },
@@ -151,10 +152,6 @@
             "module": "nr_metadata.datacite.proxies",
             "generate": true
         },
-        "translations": {
-            "module": "nr_metadata.datacite.translations",
-            "alias": "datacite"
-        },
         "json-schema-settings": {
             "generate": true,
             "alias": "datacite",
@@ -222,7 +219,8 @@
             "components": [
                 "{{oarepo_runtime.services.components.CustomFieldsComponent}}"
             ],
-            "additional-args": []
+            "additional-args": [],
+            "search-item-links-template-cls": "invenio_records_resources.services.LinksTemplate"
         },
         "service": {
             "generate": true,
@@ -252,6 +250,10 @@
                 "\"object_key\"": "\"ui\"",
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
+        },
+        "translations": {
+            "module": "nr_metadata.datacite.translations",
+            "alias": "datacite"
         },
         "multilingual-dumper": {
             "generate": true,
