@@ -53,12 +53,12 @@ class DocumentsExt:
     @cached_property
     def service_records(self):
         service_config = config.DOCUMENTS_RECORD_SERVICE_CONFIG
-        service_kwargs = {}
         if hasattr(service_config, "build"):
             config_class = service_config.build(self.app)
         else:
             config_class = service_config()
-        service_kwargs["config"] = config_class
+
+        service_kwargs = {"config": config_class}
         return config.DOCUMENTS_RECORD_SERVICE_CLASS(
             **service_kwargs,
         )
