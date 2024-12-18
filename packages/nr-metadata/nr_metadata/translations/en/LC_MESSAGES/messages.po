@@ -1220,7 +1220,7 @@ msgid "Couldn't find your person? You can <2>create a new entry</2>."
 msgstr ""
 
 msgid "Add event"
-msgstr ""
+msgstr "Add related event"
 
 msgid "Events"
 msgstr ""
