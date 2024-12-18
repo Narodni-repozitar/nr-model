@@ -666,7 +666,7 @@ msgstr ""
 "Pokud koncept smažete, práce, kterou jste na něm vykonali, bude ztracena."
 
 msgid "Add event"
-msgstr "Přidat událost"
+msgstr "Přidat související akci"
 
 msgid "Events"
 msgstr "Události"
