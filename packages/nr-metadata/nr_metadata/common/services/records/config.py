@@ -50,7 +50,14 @@ class CommonServiceConfig(PermissionsPresetsConfigMixin, InvenioRecordServiceCon
         components_list.extend(process_service_configs(type(self).mro()[2:]))
         additional_components = [CustomFieldsComponent]
         components_list.extend(additional_components)
-        return components_list
+        seen = set()
+        unique_components = []
+        for component in components_list:
+            if component not in seen:
+                unique_components.append(component)
+                seen.add(component)
+
+        return unique_components
 
     model = "nr_metadata.common"
 

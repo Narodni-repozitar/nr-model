@@ -9,4 +9,4 @@ from nr_metadata.documents.records.dumpers.multilingual import (
 class DocumentsDumper(SearchDumper):
     """DocumentsRecord opensearch dumper."""
 
-    extensions = [MultilingualSearchDumperExt(), DocumentsEDTFIntervalDumperExt()]
+    extensions = [DocumentsEDTFIntervalDumperExt(), MultilingualSearchDumperExt()]

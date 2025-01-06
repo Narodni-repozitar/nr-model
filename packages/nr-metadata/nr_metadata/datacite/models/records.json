@@ -152,10 +152,6 @@
             "module": "nr_metadata.datacite.proxies",
             "generate": true
         },
-        "translations": {
-            "module": "nr_metadata.datacite.translations",
-            "alias": "datacite"
-        },
         "json-schema-settings": {
             "generate": true,
             "alias": "datacite",
@@ -189,8 +185,8 @@
             ],
             "extra-code": "",
             "extensions": [
-                "{{nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
-                "{{nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt}}()"
+                "{{nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt}}()",
+                "{{nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt}}()"
             ],
             "imports": []
         },
@@ -255,16 +251,9 @@
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
         },
-        "multilingual-dumper": {
-            "generate": true,
-            "module": "nr_metadata.datacite.records.dumpers.multilingual",
-            "class": "nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
+        "translations": {
+            "module": "nr_metadata.datacite.translations",
+            "alias": "datacite"
         },
         "mapping": {
             "generate": true,
@@ -318,6 +307,17 @@
                 "oarepo_runtime.services.results.RecordItem"
             ],
             "components": [],
+            "imports": []
+        },
+        "multilingual-dumper": {
+            "generate": true,
+            "module": "nr_metadata.datacite.records.dumpers.multilingual",
+            "class": "nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
+            ],
+            "extra-code": "",
+            "extensions": [],
             "imports": []
         },
         "sortable": [],

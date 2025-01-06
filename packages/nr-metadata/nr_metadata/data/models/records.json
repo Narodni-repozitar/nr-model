@@ -152,10 +152,6 @@
             "module": "nr_metadata.data.proxies",
             "generate": true
         },
-        "translations": {
-            "module": "nr_metadata.data.translations",
-            "alias": "data"
-        },
         "json-schema-settings": {
             "generate": true,
             "alias": "data",
@@ -189,8 +185,8 @@
             ],
             "extra-code": "",
             "extensions": [
-                "{{nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
-                "{{nr_metadata.data.records.dumpers.edtf.DataEDTFIntervalDumperExt}}()"
+                "{{nr_metadata.data.records.dumpers.edtf.DataEDTFIntervalDumperExt}}()",
+                "{{nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt}}()"
             ],
             "imports": []
         },
@@ -255,16 +251,9 @@
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
         },
-        "multilingual-dumper": {
-            "generate": true,
-            "module": "nr_metadata.data.records.dumpers.multilingual",
-            "class": "nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
+        "translations": {
+            "module": "nr_metadata.data.translations",
+            "alias": "data"
         },
         "mapping": {
             "generate": true,
@@ -318,6 +307,17 @@
                 "oarepo_runtime.services.results.RecordItem"
             ],
             "components": [],
+            "imports": []
+        },
+        "multilingual-dumper": {
+            "generate": true,
+            "module": "nr_metadata.data.records.dumpers.multilingual",
+            "class": "nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
+            ],
+            "extra-code": "",
+            "extensions": [],
             "imports": []
         },
         "sortable": [],
@@ -680,6 +680,13 @@
                                 "title": {
                                     "type": "i18nStr",
                                     "required": true,
+                                    "marshmallow": {
+                                        "read": false,
+                                        "write": false,
+                                        "class": null,
+                                        "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
+                                        "generate": false
+                                    },
                                     "ui": {
                                         "marshmallow": {
                                             "read": false,
@@ -688,13 +695,6 @@
                                             "field-class": "oarepo_runtime.services.schema.i18n_ui.I18nStrUIField"
                                         },
                                         "detail": "multilingual"
-                                    },
-                                    "marshmallow": {
-                                        "read": false,
-                                        "write": false,
-                                        "class": null,
-                                        "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
-                                        "generate": false
                                     },
                                     "sample": {
                                         "skip": false
@@ -3190,6 +3190,7 @@
                             "properties": {
                                 "geoLocationPlace": {
                                     "type": "keyword",
+                                    "description": "Free description of the location; ie. Atlantic Ocean",
                                     "marshmallow": {
                                         "read": false,
                                         "write": false
@@ -3199,8 +3200,7 @@
                                             "read": false,
                                             "write": false
                                         }
-                                    },
-                                    "description": "Free description of the location; ie. Atlantic Ocean"
+                                    }
                                 },
                                 "geoLocationPoint": {
                                     "type": "object",
@@ -5906,6 +5906,7 @@
                                 "itemRelationType": {
                                     "type": "vocabulary",
                                     "vocabulary-type": "item-relation-types",
+                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "ui": {
                                         "marshmallow": {
                                             "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRItemRelationTypeVocabularyUISchema",
@@ -5924,7 +5925,6 @@
                                         "unknown": "INCLUDE",
                                         "generate": true
                                     },
-                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "label.cs": "Typ vazby",
                                     "label.en": "Relation type",
                                     "hint.cs": "Vyberte typ vazby mezi popisovaným a souvisejícím zdrojem.",

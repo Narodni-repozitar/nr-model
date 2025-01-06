@@ -69,7 +69,7 @@ export const SubjectsModal = ({ trigger, handleSubjectAdd, helpText }) => {
       enableReinitialize
       validationSchema={SubjectsValidationSchema}
       validateOnChange={false}
-      validateOnBlur={true}
+      validateOnBlur={false}
     >
       {({ values, resetForm, handleSubmit, errors }) => (
         <Modal
