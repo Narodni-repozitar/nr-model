@@ -27,9 +27,7 @@ export const RORAffiliationsField = ({
         }).label
       }
       closeOnDimmerClick={true}
-      triggerButton={
-        <VocabularyModalTrigger label={multiple? i18next.t('Choose') : i18next.t('Choose')} />
-      }
+      triggerLabel={i18next.t('Choose')}
       {...getFieldData({
         fieldPath: fieldPath,
       })}
