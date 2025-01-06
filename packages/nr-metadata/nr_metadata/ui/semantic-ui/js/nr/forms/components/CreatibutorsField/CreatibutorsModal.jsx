@@ -604,12 +604,22 @@ export const CreatibutorsModal = ({
                 <Button
                   name="submit"
                   type="submit"
-                  onClick={() => {
+                  onMouseDown={() => {
                     setAction("saveAndContinue");
                     setShowPersonForm(
                       autocompleteNames !== NamesAutocompleteOptions.SEARCH_ONLY
                     );
                     handleSubmit();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      setAction("saveAndContinue");
+                      setShowPersonForm(
+                        autocompleteNames !==
+                          NamesAutocompleteOptions.SEARCH_ONLY
+                      );
+                      handleSubmit();
+                    }
                   }}
                   primary
                   icon="checkmark"
@@ -619,12 +629,21 @@ export const CreatibutorsModal = ({
               <Button
                 name="submit"
                 type="submit"
-                onClick={() => {
+                onMouseDown={() => {
                   setAction("saveAndClose");
                   setShowPersonForm(
                     autocompleteNames !== NamesAutocompleteOptions.SEARCH_ONLY
                   );
                   handleSubmit();
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    setAction("saveAndClose");
+                    setShowPersonForm(
+                      autocompleteNames !== NamesAutocompleteOptions.SEARCH_ONLY
+                    );
+                    handleSubmit();
+                  }
                 }}
                 primary
                 icon="checkmark"

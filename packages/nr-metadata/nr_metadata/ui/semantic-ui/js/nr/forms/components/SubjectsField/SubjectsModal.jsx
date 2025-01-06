@@ -132,9 +132,15 @@ export const SubjectsModal = ({ trigger, handleSubjectAdd, helpText }) => {
             <Button
               name="submit"
               type="submit"
-              onClick={() => {
+              onMouseDown={() => {
                 setAction("saveAndContinue");
                 handleSubmit();
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  setAction("saveAndContinue");
+                  handleSubmit();
+                }
               }}
               primary
               icon="checkmark"
@@ -143,9 +149,15 @@ export const SubjectsModal = ({ trigger, handleSubjectAdd, helpText }) => {
             <Button
               name="submit"
               type="submit"
-              onClick={() => {
+              onMouseDown={() => {
                 setAction("saveAndClose");
                 handleSubmit();
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  setAction("saveAndClose");
+                  handleSubmit();
+                }
               }}
               primary
               icon="checkmark"

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { ArrayField, SelectField, TextField } from "react-invenio-forms";
 import { i18next } from "@translations/nr/i18next";
 import { ArrayFieldItem, useFieldData, useValidateOnBlur } from "@js/oarepo_ui";
-import { useFormikContext, getIn } from "formik";
+import { useFormikContext } from "formik";
 import * as Yup from "yup";
 
 export const objectIdentifiersSchema = [
@@ -68,9 +68,8 @@ export const IdentifiersField = ({
   validateOnBlur,
   ...uiProps
 }) => {
-  const { setFieldTouched, values } = useFormikContext();
+  const { setFieldTouched } = useFormikContext();
   const { getFieldData } = useFieldData();
-  const identifiers = getIn(values, fieldPath, []);
   const handleValidateAndBlur = useValidateOnBlur();
 
   return (
@@ -100,11 +99,7 @@ export const IdentifiersField = ({
               clearable
               width={5}
               fieldPath={schemeFieldPath}
-              options={options.filter(
-                (o) =>
-                  !identifiers.map((i) => i.scheme).includes(o.value) ||
-                  o.value === getIn(values, schemeFieldPath)
-              )}
+              options={options}
               onBlur={
                 validateOnBlur
                   ? () => handleValidateAndBlur(schemeFieldPath)
