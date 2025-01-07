@@ -420,6 +420,13 @@ export const CreatibutorsModal = ({
           validateField,
           setFieldTouched
         );
+        const handleAction = (action) => {
+          setAction(action);
+          setShowPersonForm(
+            autocompleteNames !== NamesAutocompleteOptions.SEARCH_ONLY
+          );
+          handleSubmit();
+        };
         return (
           <Modal
             centered={false}
@@ -604,12 +611,13 @@ export const CreatibutorsModal = ({
                 <Button
                   name="submit"
                   type="submit"
-                  onClick={() => {
-                    setAction("saveAndContinue");
-                    setShowPersonForm(
-                      autocompleteNames !== NamesAutocompleteOptions.SEARCH_ONLY
-                    );
-                    handleSubmit();
+                  onMouseDown={() => {
+                    handleAction("saveAndContinue");
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleAction("saveAndContinue");
+                    }
                   }}
                   primary
                   icon="checkmark"
@@ -619,12 +627,13 @@ export const CreatibutorsModal = ({
               <Button
                 name="submit"
                 type="submit"
-                onClick={() => {
-                  setAction("saveAndClose");
-                  setShowPersonForm(
-                    autocompleteNames !== NamesAutocompleteOptions.SEARCH_ONLY
-                  );
-                  handleSubmit();
+                onMouseDown={() => {
+                  handleAction("saveAndClose");
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleAction("saveAndClose");
+                  }
                 }}
                 primary
                 icon="checkmark"
