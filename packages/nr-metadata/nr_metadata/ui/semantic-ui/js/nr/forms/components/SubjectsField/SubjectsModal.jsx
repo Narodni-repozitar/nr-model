@@ -71,101 +71,103 @@ export const SubjectsModal = ({ trigger, handleSubjectAdd, helpText }) => {
       validateOnChange={false}
       validateOnBlur={false}
     >
-      {({ values, resetForm, handleSubmit, errors }) => (
-        <Modal
-          className="form-modal"
-          size="large"
-          centered={false}
-          onOpen={() => openModal()}
-          open={open}
-          trigger={trigger}
-          onClose={() => {
-            closeModal();
-            resetForm();
-          }}
-          closeIcon
-          closeOnDimmerClick={false}
-        >
-          <Modal.Header as="h6">
-            <Grid>
-              <Grid.Column floated="left" width={8}>
-                <span>{i18next.t("Add keywords")}</span>
-                <Popup
-                  content={helpText}
-                  trigger={
-                    <Icon
-                      className="rel-ml-1"
-                      name="question circle outline"
-                      style={{ fontSize: "1rem", paddingLeft: "0.5rem" }}
-                    ></Icon>
-                  }
-                />
-              </Grid.Column>
-            </Grid>
-          </Modal.Header>
-          <Modal.Content>
-            <Form className="subjects-modal-fields">
-              <Form.Field width={16}>
-                <FieldDataProvider fieldPathPrefix="metadata.subjects.0">
-                  <MultilingualTextInput
-                    fieldPath="subject"
-                    lngFieldWidth={3}
-                    showEmptyValue
-                    displayFirstInputRemoveButton={false}
+      {({ values, resetForm, handleSubmit, errors }) => {
+        const handleAction = (action) => {
+          setAction(action);
+          handleSubmit();
+        };
+        return (
+          <Modal
+            className="form-modal"
+            size="large"
+            centered={false}
+            onOpen={() => openModal()}
+            open={open}
+            trigger={trigger}
+            onClose={() => {
+              closeModal();
+              resetForm();
+            }}
+            closeIcon
+            closeOnDimmerClick={false}
+          >
+            <Modal.Header as="h6">
+              <Grid>
+                <Grid.Column floated="left" width={8}>
+                  <span>{i18next.t("Add keywords")}</span>
+                  <Popup
+                    content={helpText}
+                    trigger={
+                      <Icon
+                        className="rel-ml-1"
+                        name="question circle outline"
+                        style={{ fontSize: "1rem", paddingLeft: "0.5rem" }}
+                      ></Icon>
+                    }
                   />
-                </FieldDataProvider>
-              </Form.Field>
-            </Form>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button
-              name="cancel"
-              onClick={() => {
-                resetForm();
-                closeModal();
-              }}
-              icon="remove"
-              content={i18next.t("Cancel")}
-              floated="left"
-            />
+                </Grid.Column>
+              </Grid>
+            </Modal.Header>
+            <Modal.Content>
+              <Form className="subjects-modal-fields">
+                <Form.Field width={16}>
+                  <FieldDataProvider fieldPathPrefix="metadata.subjects.0">
+                    <MultilingualTextInput
+                      fieldPath="subject"
+                      lngFieldWidth={3}
+                      showEmptyValue
+                      displayFirstInputRemoveButton={false}
+                    />
+                  </FieldDataProvider>
+                </Form.Field>
+              </Form>
+            </Modal.Content>
+            <Modal.Actions>
+              <Button
+                name="cancel"
+                onClick={() => {
+                  resetForm();
+                  closeModal();
+                }}
+                icon="remove"
+                content={i18next.t("Cancel")}
+                floated="left"
+              />
 
-            <Button
-              name="submit"
-              type="submit"
-              onMouseDown={() => {
-                setAction("saveAndContinue");
-                handleSubmit();
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  setAction("saveAndContinue");
-                  handleSubmit();
-                }
-              }}
-              primary
-              icon="checkmark"
-              content={saveAndContinueLabel}
-            />
-            <Button
-              name="submit"
-              type="submit"
-              onMouseDown={() => {
-                setAction("saveAndClose");
-                handleSubmit();
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  setAction("saveAndClose");
-                  handleSubmit();
-                }
-              }}
-              primary
-              icon="checkmark"
-              content={i18next.t("Save")}
-            />
-          </Modal.Actions>
-        </Modal>
-      )}
+              <Button
+                name="submit"
+                type="submit"
+                onMouseDown={() => {
+                  handleAction("saveAndContinue");
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleAction("saveAndContinue");
+                  }
+                }}
+                primary
+                icon="checkmark"
+                content={saveAndContinueLabel}
+              />
+              <Button
+                name="submit"
+                type="submit"
+                onMouseDown={() => {
+                  handleAction("saveAndClose");
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleAction("saveAndClose");
+                  }
+                }}
+                primary
+                icon="checkmark"
+                content={i18next.t("Save")}
+              />
+            </Modal.Actions>
+          </Modal>
+        );
+      }}
     </Formik>
   );
 };

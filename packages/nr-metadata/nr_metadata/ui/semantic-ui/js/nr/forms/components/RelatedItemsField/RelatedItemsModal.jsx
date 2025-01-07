@@ -145,6 +145,12 @@ export const RelatedItemsModal = ({
           validateField,
           setFieldTouched
         );
+
+        const handleAction = (action) => {
+          setAction(action);
+          handleSubmit();
+        };
+
         return (
           <Modal
             className="form-modal"
@@ -301,13 +307,11 @@ export const RelatedItemsModal = ({
                   name="submit"
                   type="submit"
                   onMouseDown={() => {
-                    setAction("saveAndContinue");
-                    handleSubmit();
+                    handleAction("saveAndContinue");
                   }}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
-                      setAction("saveAndContinue");
-                      handleSubmit();
+                      handleAction("saveAndContinue");
                     }
                   }}
                   primary
@@ -319,13 +323,11 @@ export const RelatedItemsModal = ({
                 name="submit"
                 type="submit"
                 onMouseDown={() => {
-                  setAction("saveAndClose");
-                  handleSubmit();
+                  handleAction("saveAndClose");
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    setAction("saveAndClose");
-                    handleSubmit();
+                    handleAction("saveAndClose");
                   }
                 }}
                 primary

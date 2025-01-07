@@ -420,6 +420,13 @@ export const CreatibutorsModal = ({
           validateField,
           setFieldTouched
         );
+        const handleAction = (action) => {
+          setAction(action);
+          setShowPersonForm(
+            autocompleteNames !== NamesAutocompleteOptions.SEARCH_ONLY
+          );
+          handleSubmit();
+        };
         return (
           <Modal
             centered={false}
@@ -605,20 +612,11 @@ export const CreatibutorsModal = ({
                   name="submit"
                   type="submit"
                   onMouseDown={() => {
-                    setAction("saveAndContinue");
-                    setShowPersonForm(
-                      autocompleteNames !== NamesAutocompleteOptions.SEARCH_ONLY
-                    );
-                    handleSubmit();
+                    handleAction("saveAndContinue");
                   }}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
-                      setAction("saveAndContinue");
-                      setShowPersonForm(
-                        autocompleteNames !==
-                          NamesAutocompleteOptions.SEARCH_ONLY
-                      );
-                      handleSubmit();
+                      handleAction("saveAndContinue");
                     }
                   }}
                   primary
@@ -630,19 +628,11 @@ export const CreatibutorsModal = ({
                 name="submit"
                 type="submit"
                 onMouseDown={() => {
-                  setAction("saveAndClose");
-                  setShowPersonForm(
-                    autocompleteNames !== NamesAutocompleteOptions.SEARCH_ONLY
-                  );
-                  handleSubmit();
+                  handleAction("saveAndClose");
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    setAction("saveAndClose");
-                    setShowPersonForm(
-                      autocompleteNames !== NamesAutocompleteOptions.SEARCH_ONLY
-                    );
-                    handleSubmit();
+                    handleAction("saveAndClose");
                   }
                 }}
                 primary
