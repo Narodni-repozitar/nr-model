@@ -1,6 +1,8 @@
 import re
 from functools import cached_property
 
+from invenio_rdm_records.services.pids import PIDManager, PIDsService
+
 from nr_metadata.data import config
 
 
@@ -58,9 +60,14 @@ class DataExt:
         else:
             config_class = service_config()
 
-        service_kwargs = {"config": config_class}
+        service_kwargs = {
+            "pids_service": PIDsService(config_class, PIDManager),
+            "config": config_class,
+        }
         return config.DATA_RECORD_SERVICE_CLASS(
             **service_kwargs,
+            files_service=self.service_files,
+            draft_files_service=self.service_draft_files
         )
 
     @cached_property
@@ -68,4 +75,19 @@ class DataExt:
         return config.DATA_RECORD_RESOURCE_CLASS(
             service=self.service_records,
             config=config.DATA_RECORD_RESOURCE_CONFIG(),
+        )
+
+    @cached_property
+    def published_service_records(self):
+        from nr_metadata.data.services.records.published.config import (
+            DataPublishedServiceConfig,
+        )
+        from nr_metadata.data.services.records.published.service import (
+            DataPublishedService,
+        )
+
+        return DataPublishedService(
+            config=DataPublishedServiceConfig(
+                proxied_drafts_config=self.service_records.config
+            ),
         )

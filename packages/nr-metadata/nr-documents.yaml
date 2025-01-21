@@ -27,6 +27,7 @@ plugins:
     - invenio_tests_resource
     - invenio_tests_service
     - test_utils
+    - invenio_drafts_record_extra_fields
 
 settings:
   i18n-languages: ['cs', 'en']

@@ -26,7 +26,7 @@ set -e
 base_dir=$(cd "$(dirname "$0")" && pwd)
 
 MODEL_VERSION=2.0
-PYTHON="${PYTHON:-python3}"
+PYTHON="${PYTHON:-python3.12}"
 
 MODEL_BUILDER_VENV="$base_dir/.venv-builder"
 TEST_VENV="$base_dir/.venv-tests"
@@ -39,6 +39,8 @@ NO_CLEAR="$1"
 OAREPO_VERSION=${OAREPO_VERSION:-12}
 OAREPO_VERSION_MAX=$((OAREPO_VERSION+1))
 
+export PIP_EXTRA_INDEX_URL=https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple
+export UV_EXTRA_INDEX_URL=https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple
 # region commands
 
 compile_nr_metadata() {
@@ -130,6 +132,7 @@ create_builder_venv() {
     install_package "$MODEL_BUILDER_VENV" oarepo-model-builder-multilingual
     install_package "$MODEL_BUILDER_VENV" oarepo-model-builder-polymorphic
     install_package "$MODEL_BUILDER_VENV" oarepo-model-builder-relations
+    install_package "$MODEL_BUILDER_VENV" oarepo-model-builder-rdm
   fi
 }
 
@@ -139,7 +142,7 @@ create_metadata_test_venv() {
   else
     create_virtual_environment "$TEST_VENV"
   fi
-  "$TEST_VENV"/bin/pip install "oarepo>=$OAREPO_VERSION,<$OAREPO_VERSION_MAX"
+  "$TEST_VENV"/bin/pip install "oarepo[rdm]>=$OAREPO_VERSION,<$OAREPO_VERSION_MAX"
   "$TEST_VENV"/bin/pip install "pytest-invenio==2.*"
   "$TEST_VENV"/bin/pip install -e '.[tests]'
 }
@@ -154,6 +157,7 @@ create_builder_test_builder_venv() {
     install_package "$MODEL_BUILDER_TEST_BUILDER_VENV" oarepo-model-builder-vocabularies
     install_package "$MODEL_BUILDER_TEST_BUILDER_VENV" oarepo-model-builder-ui
     install_package "$MODEL_BUILDER_TEST_BUILDER_VENV" oarepo-model-builder-multilingual
+    install_package "$MODEL_BUILDER_TEST_BUILDER_VENV" oarepo-model-builder-rdm
     install_package "$MODEL_BUILDER_TEST_BUILDER_VENV" oarepo-model-builder-polymorphic
     install_package "$MODEL_BUILDER_TEST_BUILDER_VENV" oarepo-model-builder-relations
   fi
@@ -167,7 +171,7 @@ create_builder_test_venv() {
     create_virtual_environment "$MODEL_BUILDER_TEST_VENV"
   fi
   "$MODEL_BUILDER_TEST_VENV"/bin/pip install "pytest-invenio==2.*"
-  "$MODEL_BUILDER_TEST_VENV"/bin/pip install "oarepo>=$OAREPO_VERSION,<$OAREPO_VERSION_MAX"
+  "$MODEL_BUILDER_TEST_VENV"/bin/pip install "oarepo[rdm]>=$OAREPO_VERSION,<$OAREPO_VERSION_MAX"
   "$MODEL_BUILDER_TEST_VENV"/bin/pip install ../nr-metadata/dist/*.tar.gz
   "$MODEL_BUILDER_TEST_VENV"/bin/pip install -e "tests/model[tests]"
 }

@@ -1,20 +1,27 @@
-from invenio_pidstore.providers.recordid_v2 import RecordIdProviderV2
+from invenio_drafts_resources.records.api import DraftRecordIdProviderV2
+from invenio_drafts_resources.services.records.components.media_files import (
+    MediaFilesAttrConfig,
+)
+from invenio_rdm_records.records.api import RDMMediaFileRecord, RDMParent, RDMRecord
 from invenio_records.systemfields import ConstantField
-from invenio_records_resources.records.api import Record as InvenioRecord
-from invenio_records_resources.records.systemfields import IndexField
+from invenio_records_resources.records.systemfields import FilesField, IndexField
 from invenio_records_resources.records.systemfields.pid import PIDField, PIDFieldContext
 from oarepo_runtime.records.relations import PIDRelation, RelationsField
 from oarepo_vocabularies.records.api import Vocabulary
 
 from nr_metadata.common.records.dumpers.dumper import CommonDumper
-from nr_metadata.common.records.models import CommonMetadata
+from nr_metadata.common.records.models import CommonMetadata, CommonParentMetadata
 
 
-class CommonIdProvider(RecordIdProviderV2):
+class CommonParentRecord(RDMParent):
+    model_cls = CommonParentMetadata
+
+
+class CommonIdProvider(DraftRecordIdProviderV2):
     pid_type = "common"
 
 
-class CommonRecord(InvenioRecord):
+class CommonRecord(RDMRecord):
 
     model_cls = CommonMetadata
 
@@ -27,6 +34,17 @@ class CommonRecord(InvenioRecord):
     pid = PIDField(provider=CommonIdProvider, context_cls=PIDFieldContext, create=True)
 
     dumper = CommonDumper()
+
+    media_files = FilesField(
+        key=MediaFilesAttrConfig["_files_attr_key"],
+        bucket_id_attr=MediaFilesAttrConfig["_files_bucket_id_attr_key"],
+        bucket_attr=MediaFilesAttrConfig["_files_bucket_attr_key"],
+        store=False,
+        dump=False,
+        file_cls=RDMMediaFileRecord,
+        create=False,
+        delete=False,
+    )
 
     relations = RelationsField(
         accessRights=PIDRelation(
@@ -115,3 +133,23 @@ class CommonRecord(InvenioRecord):
             pid_field=Vocabulary.pid.with_type_ctx("subject-categories"),
         ),
     )
+
+
+class RDMRecordMediaFiles(CommonRecord):
+    """RDM Media file record API."""
+
+    files = FilesField(
+        key=MediaFilesAttrConfig["_files_attr_key"],
+        bucket_id_attr=MediaFilesAttrConfig["_files_bucket_id_attr_key"],
+        bucket_attr=MediaFilesAttrConfig["_files_bucket_attr_key"],
+        store=False,
+        dump=False,
+        file_cls=RDMMediaFileRecord,
+        # Don't create
+        create=False,
+        # Don't delete, we'll manage in the service
+        delete=False,
+    )
+
+
+RDMMediaFileRecord.record_cls = RDMRecordMediaFiles

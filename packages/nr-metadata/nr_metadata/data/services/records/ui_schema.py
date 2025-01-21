@@ -35,7 +35,15 @@ class NRDataRecordUISchema(InvenioUISchema):
     class Meta:
         unknown = ma.RAISE
 
+    deletion_status = ma_fields.String()
+
+    is_deleted = ma_fields.Boolean()
+
+    is_published = ma_fields.Boolean()
+
     metadata = ma_fields.Nested(lambda: NRDataMetadataUISchema())
+
+    version_id = ma_fields.Integer()
 
 
 class NRDataMetadataUISchema(NRCommonMetadataUISchema):

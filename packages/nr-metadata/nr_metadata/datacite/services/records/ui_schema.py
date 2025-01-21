@@ -26,7 +26,15 @@ class DataCiteRecordUISchema(InvenioUISchema):
     class Meta:
         unknown = ma.RAISE
 
+    deletion_status = ma_fields.String()
+
+    is_deleted = ma_fields.Boolean()
+
+    is_published = ma_fields.Boolean()
+
     metadata = ma_fields.Nested(lambda: NRDataCiteMetadataUISchema())
+
+    version_id = ma_fields.Integer()
 
 
 class NRDataCiteMetadataUISchema(Schema):

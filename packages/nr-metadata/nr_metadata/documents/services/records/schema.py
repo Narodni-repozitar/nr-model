@@ -1,10 +1,14 @@
 import marshmallow as ma
 from edtf import Date as EDTFDate
+from invenio_drafts_resources.services.records.schema import (
+    ParentSchema as InvenioParentSchema,
+)
 from invenio_vocabularies.services.schema import i18n_strings
 from marshmallow import fields as ma_fields
 from marshmallow.fields import String
 from marshmallow_utils.fields import TrimmedString
 from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema, DictOnlySchema
+from oarepo_runtime.services.schema.rdm import RDMRecordMixin
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_identifier,
@@ -30,13 +34,20 @@ from nr_metadata.schema.identifiers import (
 )
 
 
-class NRDocumentRecordSchema(BaseRecordSchema):
+class GeneratedParentSchema(InvenioParentSchema):
+    """"""
+
+    owners = ma.fields.List(ma.fields.Dict(), load_only=True)
+
+
+class NRDocumentRecordSchema(BaseRecordSchema, RDMRecordMixin):
     class Meta:
         unknown = ma.RAISE
 
     metadata = ma_fields.Nested(lambda: NRDocumentMetadataSchema())
 
     syntheticFields = ma_fields.Nested(lambda: NRDocumentSyntheticFieldsSchema())
+    parent = ma.fields.Nested(GeneratedParentSchema)
 
 
 class NRDocumentMetadataSchema(NRCommonMetadataSchema):

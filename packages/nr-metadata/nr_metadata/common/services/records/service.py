@@ -1,5 +1,5 @@
-from invenio_records_resources.services import RecordService as InvenioRecordService
+from invenio_rdm_records.services.services import RDMRecordService
 
 
-class CommonService(InvenioRecordService):
+class CommonService(RDMRecordService):
     """CommonRecord service."""
