@@ -1,5 +1,5 @@
 import marshmallow as ma
-from idutils import normalize_pid
+from idutils import is_isbn, normalize_pid
 from marshmallow import validate
 from marshmallow.exceptions import ValidationError
 
@@ -34,7 +34,7 @@ class NRObjectIdentifierSchema(NRIdentifierSchema):
         value = super().remove_url(value, *args, **kwargs)
         if value.get("scheme") == "ISBN":
             # Only validate ISBN, no normalization
-            if not idutils.is_isbn(value.get("identifier")):
+            if not is_isbn(value.get("identifier")):
                 raise ValidationError("Invalid ISBN")
         return value
 
