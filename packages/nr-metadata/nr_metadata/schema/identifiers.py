@@ -26,8 +26,17 @@ class NRObjectIdentifierSchema(NRIdentifierSchema):
         required=True,
         validate=[
             validate.OneOf(["DOI", "Handle", "ISBN", "ISSN", "RIV"])
-        ],  # RIV is not normalized, others are
+        ],  # RIV & ISBN are not normalized, others are
     )
+
+    @ma.pre_load
+    def validate_only(self, value, *args, **kwargs):
+        value = super().remove_url(value, *args, **kwargs)
+        if value.get("scheme") == "ISBN":
+            # Only validate ISBN, no normalization
+            if not idutils.is_isbn(value.get("identifier")):
+                raise ValidationError("Invalid ISBN")
+        return value
 
 
 class NRAuthorityIdentifierSchema(NRIdentifierSchema):
