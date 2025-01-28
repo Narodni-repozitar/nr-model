@@ -76,18 +76,3 @@ class DocumentsExt:
             service=self.service_records,
             config=config.DOCUMENTS_RECORD_RESOURCE_CONFIG(),
         )
-
-    @cached_property
-    def published_service_records(self):
-        from nr_metadata.documents.services.records.published.config import (
-            DocumentsPublishedServiceConfig,
-        )
-        from nr_metadata.documents.services.records.published.service import (
-            DocumentsPublishedService,
-        )
-
-        return DocumentsPublishedService(
-            config=DocumentsPublishedServiceConfig(
-                proxied_drafts_config=self.service_records.config
-            ),
-        )

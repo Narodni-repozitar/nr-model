@@ -76,18 +76,3 @@ class CommonExt:
             service=self.service_records,
             config=config.COMMON_RECORD_RESOURCE_CONFIG(),
         )
-
-    @cached_property
-    def published_service_records(self):
-        from nr_metadata.common.services.records.published.config import (
-            CommonPublishedServiceConfig,
-        )
-        from nr_metadata.common.services.records.published.service import (
-            CommonPublishedService,
-        )
-
-        return CommonPublishedService(
-            config=CommonPublishedServiceConfig(
-                proxied_drafts_config=self.service_records.config
-            ),
-        )

@@ -76,18 +76,3 @@ class DataciteExt:
             service=self.service_records,
             config=config.DATACITE_RECORD_RESOURCE_CONFIG(),
         )
-
-    @cached_property
-    def published_service_records(self):
-        from nr_metadata.datacite.services.records.published.config import (
-            DatacitePublishedServiceConfig,
-        )
-        from nr_metadata.datacite.services.records.published.service import (
-            DatacitePublishedService,
-        )
-
-        return DatacitePublishedService(
-            config=DatacitePublishedServiceConfig(
-                proxied_drafts_config=self.service_records.config
-            ),
-        )

@@ -76,18 +76,3 @@ class DataExt:
             service=self.service_records,
             config=config.DATA_RECORD_RESOURCE_CONFIG(),
         )
-
-    @cached_property
-    def published_service_records(self):
-        from nr_metadata.data.services.records.published.config import (
-            DataPublishedServiceConfig,
-        )
-        from nr_metadata.data.services.records.published.service import (
-            DataPublishedService,
-        )
-
-        return DataPublishedService(
-            config=DataPublishedServiceConfig(
-                proxied_drafts_config=self.service_records.config
-            ),
-        )

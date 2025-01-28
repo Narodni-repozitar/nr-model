@@ -37,16 +37,3 @@ def init_create_api_blueprint(state):
             ext.service_records.indexer,
             indexer_id=ext.service_records.config.service_id,
         )
-
-
-def init_addons_common_published_service(state):
-    """Init app."""
-    app = state.app
-    ext = app.extensions["nr_metadata.common"]
-
-    # register service
-    sregistry = app.extensions["invenio-records-resources"].registry
-    sregistry.register(
-        ext.published_service_records,
-        service_id=ext.published_service_records.config.service_id,
-    )

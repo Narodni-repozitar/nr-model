@@ -27,9 +27,7 @@ class CommonRecord(RDMRecord):
 
     schema = ConstantField("$schema", "local://common-1.0.0.json")
 
-    index = IndexField(
-        "common-common-1.0.0",
-    )
+    index = IndexField("common-common-1.0.0", search_alias="common")
 
     pid = PIDField(provider=CommonIdProvider, context_cls=PIDFieldContext, create=True)
 

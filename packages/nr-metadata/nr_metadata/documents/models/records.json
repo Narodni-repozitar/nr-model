@@ -182,6 +182,10 @@
             "module": "nr_metadata.documents.proxies",
             "generate": true
         },
+        "translations": {
+            "module": "nr_metadata.documents.translations",
+            "alias": "documents"
+        },
         "files-field": {
             "generate": true,
             "field-class": "invenio_records_resources.records.systemfields.FilesField",
@@ -190,10 +194,6 @@
                 "store=False"
             ],
             "imports": []
-        },
-        "translations": {
-            "module": "nr_metadata.documents.translations",
-            "alias": "documents"
         },
         "record-metadata": {
             "generate": true,
@@ -360,36 +360,10 @@
             "alias": "documents",
             "module": "nr_metadata.documents.records.mappings",
             "index": "documents-documents-1.0.0",
-            "file": "nr_metadata/documents/records/mappings/os-v2/documents/documents-1.0.0.json",
-            "index-field-args": []
-        },
-        "published-service-config": {
-            "config-key": "DOCUMENTS_RECORD_PUBLISHED_SERVICE_CONFIG",
-            "module": "nr_metadata.documents.services.records.published.config",
-            "class": "nr_metadata.documents.services.records.published.config.DocumentsPublishedServiceConfig",
-            "extra-code": "",
-            "service-id": "published_documents",
-            "base-classes": [
-                "oarepo_published_service.services.config.PublishedServiceConfig",
-                "oarepo_runtime.services.config.service.PermissionsPresetsConfigMixin"
+            "index-field-args": [
+                "search_alias=\"documents\""
             ],
-            "components": [
-                "{{oarepo_runtime.services.files.FilesComponent}}",
-                "{{oarepo_published_service.services.records.components.bucket.CreatePublishedBucketComponent}}"
-            ],
-            "generate": true
-        },
-        "published-service": {
-            "generate": true,
-            "config-key": "DOCUMENTS_RECORD_PUBLISHED_SERVICE_CLASS",
-            "proxy": "current_published_service",
-            "module": "nr_metadata.documents.services.records.published.service",
-            "class": "nr_metadata.documents.services.records.published.service.DocumentsPublishedService",
-            "extra-code": "",
-            "base-classes": [
-                "oarepo_published_service.services.service.PublishedService"
-            ],
-            "imports": []
+            "file": "nr_metadata/documents/records/mappings/os-v2/documents/documents-1.0.0.json"
         },
         "permissions": {
             "generate": true,

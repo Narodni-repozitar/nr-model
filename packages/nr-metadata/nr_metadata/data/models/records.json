@@ -157,6 +157,10 @@
             "module": "nr_metadata.data.proxies",
             "generate": true
         },
+        "translations": {
+            "module": "nr_metadata.data.translations",
+            "alias": "data"
+        },
         "files-field": {
             "generate": true,
             "field-class": "invenio_records_resources.records.systemfields.FilesField",
@@ -165,10 +169,6 @@
                 "store=False"
             ],
             "imports": []
-        },
-        "translations": {
-            "module": "nr_metadata.data.translations",
-            "alias": "data"
         },
         "record-metadata": {
             "generate": true,
@@ -335,36 +335,10 @@
             "alias": "data",
             "module": "nr_metadata.data.records.mappings",
             "index": "data-data-1.0.0",
-            "file": "nr_metadata/data/records/mappings/os-v2/data/data-1.0.0.json",
-            "index-field-args": []
-        },
-        "published-service-config": {
-            "config-key": "DATA_RECORD_PUBLISHED_SERVICE_CONFIG",
-            "module": "nr_metadata.data.services.records.published.config",
-            "class": "nr_metadata.data.services.records.published.config.DataPublishedServiceConfig",
-            "extra-code": "",
-            "service-id": "published_data",
-            "base-classes": [
-                "oarepo_published_service.services.config.PublishedServiceConfig",
-                "oarepo_runtime.services.config.service.PermissionsPresetsConfigMixin"
+            "index-field-args": [
+                "search_alias=\"data\""
             ],
-            "components": [
-                "{{oarepo_runtime.services.files.FilesComponent}}",
-                "{{oarepo_published_service.services.records.components.bucket.CreatePublishedBucketComponent}}"
-            ],
-            "generate": true
-        },
-        "published-service": {
-            "generate": true,
-            "config-key": "DATA_RECORD_PUBLISHED_SERVICE_CLASS",
-            "proxy": "current_published_service",
-            "module": "nr_metadata.data.services.records.published.service",
-            "class": "nr_metadata.data.services.records.published.service.DataPublishedService",
-            "extra-code": "",
-            "base-classes": [
-                "oarepo_published_service.services.service.PublishedService"
-            ],
-            "imports": []
+            "file": "nr_metadata/data/records/mappings/os-v2/data/data-1.0.0.json"
         },
         "permissions": {
             "generate": true,

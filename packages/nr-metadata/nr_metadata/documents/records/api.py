@@ -38,9 +38,7 @@ class DocumentsRecord(RDMRecord):
 
     schema = ConstantField("$schema", "local://documents-1.0.0.json")
 
-    index = IndexField(
-        "documents-documents-1.0.0",
-    )
+    index = IndexField("documents-documents-1.0.0", search_alias="documents")
 
     pid = PIDField(
         provider=DocumentsIdProvider, context_cls=PIDFieldContext, create=True
