@@ -1,4 +1,5 @@
 from oarepo_runtime.records.dumpers import SearchDumper
+from oarepo_runtime.records.systemfields.mapping import SystemFieldDumperExt
 
 from nr_metadata.common.records.dumpers.edtf import CommonEDTFIntervalDumperExt
 from nr_metadata.common.records.dumpers.multilingual import MultilingualSearchDumperExt
@@ -7,4 +8,8 @@ from nr_metadata.common.records.dumpers.multilingual import MultilingualSearchDu
 class CommonDumper(SearchDumper):
     """CommonRecord opensearch dumper."""
 
-    extensions = [CommonEDTFIntervalDumperExt(), MultilingualSearchDumperExt()]
+    extensions = [
+        SystemFieldDumperExt(),
+        MultilingualSearchDumperExt(),
+        CommonEDTFIntervalDumperExt(),
+    ]

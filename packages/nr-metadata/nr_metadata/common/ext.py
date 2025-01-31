@@ -1,6 +1,8 @@
 import re
 from functools import cached_property
 
+from invenio_rdm_records.services.pids import PIDManager, PIDsService
+
 from nr_metadata.common import config
 
 
@@ -58,9 +60,14 @@ class CommonExt:
         else:
             config_class = service_config()
 
-        service_kwargs = {"config": config_class}
+        service_kwargs = {
+            "pids_service": PIDsService(config_class, PIDManager),
+            "config": config_class,
+        }
         return config.COMMON_RECORD_SERVICE_CLASS(
             **service_kwargs,
+            files_service=self.service_files,
+            draft_files_service=self.service_draft_files
         )
 
     @cached_property

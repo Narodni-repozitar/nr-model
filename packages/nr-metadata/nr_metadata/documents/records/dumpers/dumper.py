@@ -1,4 +1,5 @@
 from oarepo_runtime.records.dumpers import SearchDumper
+from oarepo_runtime.records.systemfields.mapping import SystemFieldDumperExt
 
 from nr_metadata.documents.records.dumpers.edtf import DocumentsEDTFIntervalDumperExt
 from nr_metadata.documents.records.dumpers.multilingual import (
@@ -9,4 +10,8 @@ from nr_metadata.documents.records.dumpers.multilingual import (
 class DocumentsDumper(SearchDumper):
     """DocumentsRecord opensearch dumper."""
 
-    extensions = [DocumentsEDTFIntervalDumperExt(), MultilingualSearchDumperExt()]
+    extensions = [
+        SystemFieldDumperExt(),
+        MultilingualSearchDumperExt(),
+        DocumentsEDTFIntervalDumperExt(),
+    ]
