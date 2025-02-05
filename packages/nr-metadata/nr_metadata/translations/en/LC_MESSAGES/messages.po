@@ -1893,3 +1893,22 @@ msgstr ""
 
 msgid "Organization's name is a required field."
 msgstr ""
+
+msgid "You can import files from the previous version."
+msgstr ""
+
+msgid "Import files"
+msgstr ""
+
+msgid "Failed to import files from previous version. Please try again."
+msgstr ""
+
+msgid ""
+"<0>If you wish to upload files, you must </0><1>save</1><2> your draft "
+"first.</2>"
+msgstr ""
+
+msgid ""
+"You must create a new version to add, modify or delete files. It can be done"
+" on record's <2>detail</2> page."
+msgstr ""

@@ -93,7 +93,6 @@ export const DeleteFileButton = ({
       })
       .catch((error) => {
         setIsDeleting(false);
-        console.error(error);
       });
   };
   return isDeleting ? (

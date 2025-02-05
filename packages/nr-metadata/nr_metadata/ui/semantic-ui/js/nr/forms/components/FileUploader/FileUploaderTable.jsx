@@ -55,6 +55,7 @@ DeleteFileButtonCmp.propTypes = {
   file: PropTypes.object,
   handleFileDeletion: PropTypes.func,
   className: PropTypes.string,
+  lockFileUploader: PropTypes.bool.isRequired,
 };
 
 const EditFileButtonCmp = ({
@@ -65,6 +66,7 @@ const EditFileButtonCmp = ({
 }) => {
   return (
     <Popup
+      // quirky issue where while in UPPY UI the popup goes over it
       style={{ zIndex: 1 }}
       position="top center"
       content={i18next.t("Edit file metadata")}

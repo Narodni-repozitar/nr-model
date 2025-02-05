@@ -34,7 +34,9 @@ FileUploadWrapper.propTypes = {
   uploadWrapperClassName: PropTypes.string,
   uploadButtonClassName: PropTypes.string,
   props: PropTypes.object,
+  lockFileUploader: PropTypes.bool.isRequired,
 };
+
 FileUploadWrapper.defaultProps = {
   uploadWrapperClassName: "ui container centered",
   uploadButtonClassName: "ui button icon left labeled files-upload-button",
@@ -47,7 +49,6 @@ export const FileEditWrapper = ({
   props,
 }) => {
   const TriggerComponent = ({ onClick, ...props }) => {
-    console.log(props);
     return (
       <button
         className={editButtonClassName}
@@ -77,6 +78,7 @@ FileEditWrapper.propTypes = {
   editWrapperClassName: PropTypes.string,
   editButtonClassName: PropTypes.string,
   props: PropTypes.object,
+  lockFileUploader: PropTypes.bool.isRequired,
 };
 
 FileEditWrapper.defaultProps = {

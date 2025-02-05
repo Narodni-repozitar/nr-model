@@ -8,10 +8,10 @@ import {
   useDepositApiClient,
   useDepositFileApiClient,
   useFormConfig,
+  httpApplicationJson,
 } from "@js/oarepo_ui";
 import { Trans } from "react-i18next";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { http } from "react-invenio-forms";
 
 export const FileUploader = ({
   fileUploaderMessage,
@@ -47,7 +47,10 @@ export const FileUploader = ({
     reset: resetImportParentFiles,
   } = useMutation({
     mutationFn: () =>
-      http.post(recordObject?.links?.self + "/actions/files-importa", {}),
+      httpApplicationJson.post(
+        recordObject?.links?.self + "/actions/files-import",
+        {}
+      ),
     onSuccess: (data) => {
       setFilesState(data.data.entries);
       resetImportParentFiles();
@@ -80,7 +83,7 @@ export const FileUploader = ({
     return (
       <Message>
         <Icon name="info circle" className="text size large" />
-        <Trans>
+        <Trans i18next={i18next}>
           <span>If you wish to upload files, you must </span>
           <Button
             className="ml-5 mr-5"
@@ -148,7 +151,7 @@ export const FileUploader = ({
               <Message className="flex justify-space-between align-items-center">
                 <p className="mb-0">
                   <Icon name="info circle" />
-                  <Trans i18next={i18next} i18nKey="createNewVersionMessage">
+                  <Trans i18next={i18next}>
                     You must create a new version to add, modify or delete
                     files. It can be done on record's{" "}
                     <a
@@ -171,6 +174,7 @@ export const FileUploader = ({
                 record={recordObject}
                 handleFilesUpload={handleFilesUpload}
                 allowedFileTypes={allowedFileTypes}
+                lockFileUploader={lockFileUploader}
               />
             )}
           </React.Fragment>
@@ -189,6 +193,8 @@ export const FileUploader = ({
       </Dimmer.Dimmable>
     );
   }
+
+  return null;
 };
 
 FileUploader.propTypes = {
