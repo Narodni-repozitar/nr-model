@@ -6,6 +6,7 @@ import FileManagementDialog from "@oarepo/file-manager";
 export const FileUploadWrapper = ({
   uploadWrapperClassName,
   uploadButtonClassName,
+  lockFileUploader,
   props,
 }) => {
   const TriggerComponent = ({ onClick, ...props }) => (
@@ -14,6 +15,7 @@ export const FileUploadWrapper = ({
       onClick={onClick}
       type="button"
       aria-label={i18next.t("Upload files")}
+      disabled={lockFileUploader}
       {...props}
     >
       {i18next.t("Upload files")}
@@ -23,10 +25,7 @@ export const FileUploadWrapper = ({
 
   return (
     <div className={uploadWrapperClassName}>
-      <FileManagementDialog 
-        TriggerComponent={TriggerComponent}
-        {...props}
-      />
+      <FileManagementDialog TriggerComponent={TriggerComponent} {...props} />
     </div>
   );
 };
@@ -44,26 +43,32 @@ FileUploadWrapper.defaultProps = {
 export const FileEditWrapper = ({
   editWrapperClassName,
   editButtonClassName,
+  lockFileUploader,
   props,
 }) => {
-  const TriggerComponent = ({ onClick, ...props }) => (
-    <button
-      className={editButtonClassName}
-      onClick={onClick}
-      {...props}
-      aria-label={i18next.t("Edit file")}
-      type="button"
-    >
-      <i aria-hidden="true" className="pencil icon" style={{ margin: "0", opacity: "1" }} />
-    </button>
-  );
+  const TriggerComponent = ({ onClick, ...props }) => {
+    console.log(props);
+    return (
+      <button
+        className={editButtonClassName}
+        onClick={onClick}
+        {...props}
+        aria-label={i18next.t("Edit file")}
+        type="button"
+        disabled={lockFileUploader}
+      >
+        <i
+          aria-hidden="true"
+          className="pencil icon"
+          style={{ margin: "0", opacity: "1" }}
+        />
+      </button>
+    );
+  };
 
   return (
     <div className={editWrapperClassName}>
-      <FileManagementDialog
-        TriggerComponent={TriggerComponent}
-        {...props}
-      />
+      <FileManagementDialog TriggerComponent={TriggerComponent} {...props} />
     </div>
   );
 };

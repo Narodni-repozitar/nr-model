@@ -12,9 +12,15 @@ const LOCALE =
     ? "en_US"
     : i18next.language;
 
-export const EditFileButton = ({ fileName, record, allowedFileTypes }) => {
+export const EditFileButton = ({
+  fileName,
+  record,
+  allowedFileTypes,
+  lockFileUploader,
+}) => {
   return (
     <FileEditWrapper
+      lockFileUploader={lockFileUploader}
       props={{
         config: { record: record },
         autoExtractImagesFromPDFs: false,
@@ -31,12 +37,14 @@ EditFileButton.propTypes = {
   fileName: PropTypes.string.isRequired,
   record: PropTypes.object.isRequired,
   allowedFileTypes: PropTypes.array,
+  lockFileUploader: PropTypes.bool,
 };
 
 export const UploadFileButton = ({
   record,
   handleFilesUpload,
   allowedFileTypes,
+  lockFileUploader,
 }) => {
   return (
     <FileUploadWrapper
@@ -57,6 +65,7 @@ export const UploadFileButton = ({
           },
         ],
       }}
+      lockFileUploader={lockFileUploader}
     />
   );
 };
@@ -65,9 +74,14 @@ UploadFileButton.propTypes = {
   record: PropTypes.object.isRequired,
   handleFilesUpload: PropTypes.func.isRequired,
   allowedFileTypes: PropTypes.array,
+  lockFileUploader: PropTypes.bool.isRequired,
 };
 
-export const DeleteFileButton = ({ file, handleFileDeletion }) => {
+export const DeleteFileButton = ({
+  file,
+  handleFileDeletion,
+  lockFileUploader,
+}) => {
   const { _delete } = useDepositFileApiClient();
   const [isDeleting, setIsDeleting] = useState(false);
   const handleDelete = async () => {
@@ -86,7 +100,7 @@ export const DeleteFileButton = ({ file, handleFileDeletion }) => {
     <Icon loading name="spinner" />
   ) : (
     <Button
-      disabled={isDeleting}
+      disabled={isDeleting || lockFileUploader}
       className="transparent"
       type="button"
       onClick={handleDelete}
@@ -100,4 +114,5 @@ export const DeleteFileButton = ({ file, handleFileDeletion }) => {
 DeleteFileButton.propTypes = {
   file: PropTypes.object.isRequired,
   handleFileDeletion: PropTypes.func.isRequired,
+  lockFileUploader: PropTypes.bool.isRequired,
 };

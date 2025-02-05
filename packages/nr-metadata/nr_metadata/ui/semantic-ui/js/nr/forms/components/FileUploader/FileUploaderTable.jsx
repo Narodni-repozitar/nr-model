@@ -28,7 +28,12 @@ StatusIcon.propTypes = {
   status: PropTypes.string,
 };
 
-const DeleteFileButtonCmp = ({ file, handleFileDeletion, className }) => {
+const DeleteFileButtonCmp = ({
+  file,
+  handleFileDeletion,
+  className,
+  lockFileUploader,
+}) => {
   return (
     <Popup
       position="top center"
@@ -38,6 +43,7 @@ const DeleteFileButtonCmp = ({ file, handleFileDeletion, className }) => {
           <DeleteFileButton
             file={file}
             handleFileDeletion={handleFileDeletion}
+            lockFileUploader={lockFileUploader}
           />
         </div>
       }
@@ -51,14 +57,24 @@ DeleteFileButtonCmp.propTypes = {
   className: PropTypes.string,
 };
 
-const EditFileButtonCmp = ({ fileName, record, className }) => {
+const EditFileButtonCmp = ({
+  fileName,
+  record,
+  className,
+  lockFileUploader,
+}) => {
   return (
     <Popup
+      style={{ zIndex: 1 }}
       position="top center"
       content={i18next.t("Edit file metadata")}
       trigger={
         <div className={className}>
-          <EditFileButton fileName={fileName} record={record} />
+          <EditFileButton
+            fileName={fileName}
+            record={record}
+            lockFileUploader={lockFileUploader}
+          />
         </div>
       }
     />
@@ -69,9 +85,15 @@ EditFileButtonCmp.propTypes = {
   fileName: PropTypes.string,
   record: PropTypes.object,
   className: PropTypes.string,
+  lockFileUploader: PropTypes.bool.isRequired,
 };
 
-export const FileUploaderTable = ({ files, record, handleFileDeletion }) => {
+export const FileUploaderTable = ({
+  files,
+  record,
+  handleFileDeletion,
+  lockFileUploader,
+}) => {
   return (
     files?.length > 0 && (
       <React.Fragment>
@@ -115,13 +137,18 @@ export const FileUploaderTable = ({ files, record, handleFileDeletion }) => {
                   </Table.Cell>
                   <Table.Cell width={1} textAlign="center">
                     {status === "completed" && (
-                      <EditFileButtonCmp fileName={fileName} record={record} />
+                      <EditFileButtonCmp
+                        fileName={fileName}
+                        record={record}
+                        lockFileUploader={lockFileUploader}
+                      />
                     )}
                   </Table.Cell>
                   <Table.Cell width={1} textAlign="center">
                     <DeleteFileButtonCmp
                       file={file}
                       handleFileDeletion={handleFileDeletion}
+                      lockFileUploader={lockFileUploader}
                     />
                   </Table.Cell>
                 </Table.Row>
@@ -179,6 +206,7 @@ export const FileUploaderTable = ({ files, record, handleFileDeletion }) => {
                       <DeleteFileButtonCmp
                         file={file}
                         handleFileDeletion={handleFileDeletion}
+                        lockFileUploader={lockFileUploader}
                       />
                     </Table.Cell>
                   </Table.Row>
@@ -194,6 +222,7 @@ export const FileUploaderTable = ({ files, record, handleFileDeletion }) => {
                         <EditFileButtonCmp
                           fileName={fileName}
                           record={record}
+                          lockFileUploader={lockFileUploader}
                         />
                       </Table.Cell>
                     </Table.Row>
@@ -212,4 +241,5 @@ FileUploaderTable.propTypes = {
   files: PropTypes.array,
   record: PropTypes.object,
   handleFileDeletion: PropTypes.func,
+  lockFileUploader: PropTypes.bool.isRequired,
 };
