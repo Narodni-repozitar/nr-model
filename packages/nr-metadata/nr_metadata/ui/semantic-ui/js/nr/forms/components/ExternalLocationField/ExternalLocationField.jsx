@@ -37,7 +37,7 @@ RemoveButton.propTypes = {
 
 export const ExternalLocationField = ({ fieldPath }) => {
   const { getFieldData } = useFieldData();
-  const { values } = useFormikContext();
+  const { values, setFieldValue } = useFormikContext();
   const fieldValue = getIn(values, fieldPath, {});
 
   const hasValue = Object.values(fieldValue).some((v) => v);
@@ -56,7 +56,13 @@ export const ExternalLocationField = ({ fieldPath }) => {
             className: "close-btn",
             type: "button",
             removeButtonId: `${fieldPath}.remove-button`,
-            handleClick: () => setShowInput(false),
+            handleClick: () => {
+              setFieldValue(fieldPath, {
+                externalLocationURL: "",
+                externalLocationNote: "",
+              });
+              setShowInput(false);
+            },
           }}
           fieldPathPrefix={`${fieldPath}`}
         >

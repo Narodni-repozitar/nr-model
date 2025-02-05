@@ -6,6 +6,7 @@ plugins:
   builder:
     disable:
     - script_sample_data
+    - invenio_drafts_record_extra_fields
 runtime-dependencies:
   nr-metadata: 2.0.0
   nr-vocabularies: 1.0.0

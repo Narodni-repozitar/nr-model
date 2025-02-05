@@ -63,6 +63,7 @@ export const EventsField = ({ fieldPath }) => {
                 fieldPath: `${fieldPathPrefix}.eventNameAlternate`,
                 fieldRepresentation: "compact",
               })}
+              addButtonLabel={i18next.t("Add event alternate name")}
             />
             <EDTFDaterangePicker
               fieldPath={`${fieldPathPrefix}.eventDate`}

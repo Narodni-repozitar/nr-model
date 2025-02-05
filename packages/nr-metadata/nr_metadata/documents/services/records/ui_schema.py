@@ -32,9 +32,17 @@ class NRDocumentRecordUISchema(InvenioUISchema):
     class Meta:
         unknown = ma.RAISE
 
+    deletion_status = ma_fields.String()
+
+    is_deleted = ma_fields.Boolean()
+
+    is_published = ma_fields.Boolean()
+
     metadata = ma_fields.Nested(lambda: NRDocumentMetadataUISchema())
 
     syntheticFields = ma_fields.Nested(lambda: NRDocumentSyntheticFieldsUISchema())
+
+    version_id = ma_fields.Integer()
 
 
 class NRDocumentMetadataUISchema(NRCommonMetadataUISchema):
@@ -76,17 +84,6 @@ class NRDocumentMetadataUISchema(NRCommonMetadataUISchema):
     thesis = ma_fields.Nested(lambda: NRThesisUISchema())
 
 
-class NRDocumentSyntheticFieldsUISchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    date = LocalizedEDTF()
-
-    institutions = ma_fields.Nested(lambda: InstitutionsUISchema())
-
-    people = ma_fields.String()
-
-
 class NRThesisUISchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
@@ -98,19 +95,6 @@ class NRThesisUISchema(DictOnlySchema):
     degreeGrantors = ma_fields.List(ma_fields.Nested(lambda: NRDegreeGrantorUISchema()))
 
     studyFields = ma_fields.List(ma_fields.String())
-
-
-class InstitutionsUISchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.INCLUDE
-
-    _id = String(data_key="id", attribute="id")
-
-    _version = String(data_key="@v", attribute="@v")
-
-    hierarchy = ma_fields.Nested(lambda: HierarchyUISchema())
-
-    title = VocabularyI18nStrUIField()
 
 
 class KeywordsUISchema(DictOnlySchema):
@@ -129,3 +113,14 @@ class NRDegreeGrantorUISchema(DictOnlySchema):
     hierarchy = ma_fields.Nested(lambda: HierarchyUISchema())
 
     title = VocabularyI18nStrUIField()
+
+
+class NRDocumentSyntheticFieldsUISchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    date = LocalizedEDTF()
+
+    organizations = ma_fields.String()
+
+    people = ma_fields.String()

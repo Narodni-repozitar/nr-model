@@ -5,7 +5,8 @@
             "imports": [],
             "class": "nr_metadata.data.services.records.schema.NRDataRecordSchema",
             "base-classes": [
-                "oarepo_runtime.services.schema.marshmallow.BaseRecordSchema"
+                "oarepo_runtime.services.schema.marshmallow.BaseRecordSchema",
+                "oarepo_runtime.services.schema.rdm.RDMRecordMixin"
             ],
             "generate": true,
             "module": "nr_metadata.data.services.records.schema",
@@ -51,15 +52,58 @@
             "file": "data/sample_data.yaml"
         },
         "ext-resource": {
+            "service-kwargs": {
+                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(config_class, {{invenio_rdm_records.services.pids.PIDManager}})"
+            },
             "generate": true,
             "skip": false
         },
         "model-name": "Data",
-        "search-options": {
+        "record": {
+            "base-classes": [
+                "invenio_rdm_records.records.api.RDMRecord"
+            ],
             "generate": true,
-            "module": "nr_metadata.data.services.records.search",
+            "module": "nr_metadata.data.records.api",
+            "class": "nr_metadata.data.records.api.DataRecord",
+            "imports": [],
             "extra-code": "",
+            "fields": {
+                "media_files": "FilesField(key=MediaFilesAttrConfig[\"_files_attr_key\"],bucket_id_attr=MediaFilesAttrConfig[\"_files_bucket_id_attr_key\"],bucket_attr=MediaFilesAttrConfig[\"_files_bucket_attr_key\"],store=False,dump=False,file_cls={{invenio_rdm_records.records.api.RDMMediaFileRecord}},create=False,delete=False,)"
+            }
+        },
+        "resource": {
+            "base-classes": [
+                "invenio_drafts_resources.resources.RecordResource"
+            ],
+            "generate": true,
+            "config-key": "DATA_RECORD_RESOURCE_CLASS",
+            "module": "nr_metadata.data.resources.records.resource",
+            "class": "nr_metadata.data.resources.records.resource.DataResource",
+            "proxy": "current_resource",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "resource-config": {
+            "base-classes": [
+                "invenio_drafts_resources.resources.RecordResourceConfig"
+            ],
+            "generate": true,
+            "base-url": "/nr-metadata-data/",
+            "base-html-url": "/nr-metadata-data/",
+            "config-key": "DATA_RECORD_RESOURCE_CONFIG",
+            "module": "nr_metadata.data.resources.records.config",
+            "class": "nr_metadata.data.resources.records.config.DataResourceConfig",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "search-options": {
+            "module": "nr_metadata.data.services.records.search",
             "class": "nr_metadata.data.services.records.search.DataSearchOptions",
+            "generate": true,
+            "extra-code": "",
             "base-classes": [
                 "invenio_records_resources.services.SearchOptions{InvenioSearchOptions}"
             ],
@@ -104,44 +148,6 @@
             "extra-code": "",
             "groups": true
         },
-        "record": {
-            "generate": true,
-            "module": "nr_metadata.data.records.api",
-            "class": "nr_metadata.data.records.api.DataRecord",
-            "base-classes": [
-                "invenio_records_resources.records.api.Record{InvenioRecord}"
-            ],
-            "imports": [],
-            "extra-code": "",
-            "fields": {}
-        },
-        "resource": {
-            "generate": true,
-            "config-key": "DATA_RECORD_RESOURCE_CLASS",
-            "module": "nr_metadata.data.resources.records.resource",
-            "class": "nr_metadata.data.resources.records.resource.DataResource",
-            "proxy": "current_resource",
-            "extra-code": "",
-            "base-classes": [
-                "invenio_records_resources.resources.RecordResource"
-            ],
-            "imports": [],
-            "additional-args": []
-        },
-        "resource-config": {
-            "generate": true,
-            "base-url": "/nr-metadata-data/",
-            "base-html-url": "/nr-metadata-data/",
-            "config-key": "DATA_RECORD_RESOURCE_CONFIG",
-            "module": "nr_metadata.data.resources.records.config",
-            "class": "nr_metadata.data.resources.records.config.DataResourceConfig",
-            "extra-code": "",
-            "base-classes": [
-                "invenio_records_resources.resources.RecordResourceConfig"
-            ],
-            "imports": [],
-            "additional-args": []
-        },
         "saved-model": {
             "file": "nr_metadata/data/models/records.json",
             "module": "nr_metadata.data.models",
@@ -151,29 +157,91 @@
             "module": "nr_metadata.data.proxies",
             "generate": true
         },
-        "json-schema-settings": {
+        "translations": {
+            "module": "nr_metadata.data.translations",
+            "alias": "data"
+        },
+        "files-field": {
             "generate": true,
+            "field-class": "invenio_records_resources.records.systemfields.FilesField",
+            "file-class": "nr_metadata.data.records.api.DataRecord",
+            "field-args": [
+                "store=False"
+            ],
+            "imports": []
+        },
+        "record-metadata": {
+            "generate": true,
+            "module": "nr_metadata.data.records.models",
+            "class": "nr_metadata.data.records.models.DataMetadata",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase",
+                "invenio_drafts_resources.records.ParentRecordMixin"
+            ],
+            "extra-code": "",
+            "imports": [],
+            "table": "data_metadata",
             "alias": "data",
-            "version": "1.0.0",
-            "module": "nr_metadata.data.records.jsonschemas",
-            "name": "data-1.0.0.json",
-            "file": "nr_metadata/data/records/jsonschemas/data-1.0.0.json"
+            "use-versioning": true,
+            "alembic": "nr_metadata.data.alembic"
         },
         "pid": {
+            "provider-base-classes": [
+                "invenio_drafts_resources.records.api.DraftRecordIdProviderV2"
+            ],
+            "imports": [
+                {
+                    "import": "invenio_records_resources.records.systemfields.pid.PIDField"
+                },
+                {
+                    "import": "invenio_records_resources.records.systemfields.pid.PIDFieldContext"
+                }
+            ],
             "generate": true,
             "type": "data",
             "module": "nr_metadata.data.records.api",
             "provider-class": "nr_metadata.data.records.api.DataIdProvider",
-            "provider-base-classes": [
-                "invenio_pidstore.providers.recordid_v2.RecordIdProviderV2"
-            ],
             "field-class": "invenio_records_resources.records.systemfields.pid.PIDField",
             "context-class": "invenio_records_resources.records.systemfields.pid.PIDFieldContext",
             "field-args": [
                 "create=True"
             ],
-            "imports": [],
             "extra-code": ""
+        },
+        "service": {
+            "imports": [],
+            "base-classes": [
+                "invenio_rdm_records.services.services.RDMRecordService"
+            ],
+            "generate": true,
+            "config-key": "DATA_RECORD_SERVICE_CLASS",
+            "proxy": "current_service",
+            "module": "nr_metadata.data.services.records.service",
+            "class": "nr_metadata.data.services.records.service.DataService",
+            "extra-code": "",
+            "additional-args": [
+                "files_service=self.service_files",
+                "draft_files_service=self.service_draft_files"
+            ]
+        },
+        "service-config": {
+            "base-classes": [
+                "oarepo_runtime.services.config.service.PermissionsPresetsConfigMixin",
+                "invenio_rdm_records.services.config.RDMRecordServiceConfig"
+            ],
+            "generate": true,
+            "config-key": "DATA_RECORD_SERVICE_CONFIG",
+            "module": "nr_metadata.data.services.records.config",
+            "class": "nr_metadata.data.services.records.config.DataServiceConfig",
+            "extra-code": "",
+            "service-id": "data",
+            "components": [
+                "{{oarepo_runtime.services.components.OwnersComponent}}",
+                "{{oarepo_runtime.services.components.CustomFieldsComponent}}"
+            ],
+            "additional-args": [],
+            "search-item-links-template-cls": "invenio_records_resources.services.LinksTemplate"
         },
         "record-dumper": {
             "generate": true,
@@ -184,54 +252,19 @@
             ],
             "extra-code": "",
             "extensions": [
-                "{{nr_metadata.data.records.dumpers.edtf.DataEDTFIntervalDumperExt}}()",
-                "{{nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt}}()"
+                "{{oarepo_runtime.records.systemfields.mapping.SystemFieldDumperExt}}()",
+                "{{nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
+                "{{nr_metadata.data.records.dumpers.edtf.DataEDTFIntervalDumperExt}}()"
             ],
             "imports": []
         },
-        "record-metadata": {
+        "json-schema-settings": {
             "generate": true,
-            "module": "nr_metadata.data.records.models",
-            "class": "nr_metadata.data.records.models.DataMetadata",
-            "base-classes": [
-                "invenio_db.db{db.Model}",
-                "invenio_records.models.RecordMetadataBase"
-            ],
-            "extra-code": "",
-            "imports": [],
-            "table": "data_metadata",
             "alias": "data",
-            "use-versioning": true,
-            "alembic": "nr_metadata.data.alembic"
-        },
-        "service-config": {
-            "generate": true,
-            "config-key": "DATA_RECORD_SERVICE_CONFIG",
-            "module": "nr_metadata.data.services.records.config",
-            "class": "nr_metadata.data.services.records.config.DataServiceConfig",
-            "extra-code": "",
-            "service-id": "data",
-            "base-classes": [
-                "oarepo_runtime.services.config.service.PermissionsPresetsConfigMixin",
-                "invenio_records_resources.services.RecordServiceConfig{InvenioRecordServiceConfig}"
-            ],
-            "components": [
-                "{{oarepo_runtime.services.components.CustomFieldsComponent}}"
-            ],
-            "additional-args": []
-        },
-        "service": {
-            "generate": true,
-            "config-key": "DATA_RECORD_SERVICE_CLASS",
-            "proxy": "current_service",
-            "module": "nr_metadata.data.services.records.service",
-            "class": "nr_metadata.data.services.records.service.DataService",
-            "extra-code": "",
-            "base-classes": [
-                "invenio_records_resources.services.RecordService{InvenioRecordService}"
-            ],
-            "imports": [],
-            "additional-args": []
+            "version": "1.0.0",
+            "module": "nr_metadata.data.records.jsonschemas",
+            "name": "data-1.0.0.json",
+            "file": "nr_metadata/data/records/jsonschemas/data-1.0.0.json"
         },
         "json-serializer": {
             "module": "nr_metadata.data.resources.records.ui",
@@ -249,17 +282,63 @@
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
         },
-        "translations": {
-            "module": "nr_metadata.data.translations",
-            "alias": "data"
+        "multilingual-dumper": {
+            "generate": true,
+            "module": "nr_metadata.data.records.dumpers.multilingual",
+            "class": "nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
+        },
+        "draft-parent-record": {
+            "class": "nr_metadata.data.records.api.DataParentRecord",
+            "base-classes": [
+                "invenio_rdm_records.records.api.RDMParent"
+            ],
+            "imports": [],
+            "fields": {},
+            "module": "nr_metadata.data.records.api",
+            "generate": true
+        },
+        "draft-parent-record-state": {
+            "class": "nr_metadata.data.records.models.DataParentState",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_drafts_resources.records.ParentRecordStateMixin"
+            ],
+            "imports": [],
+            "module": "nr_metadata.data.records.models",
+            "generate": true,
+            "table": "nr_metadata.data_parent_state_metadata"
+        },
+        "draft-parent-record-metadata": {
+            "class": "nr_metadata.data.records.models.DataParentMetadata",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase"
+            ],
+            "imports": [],
+            "table": "nr_metadata.data_parent_record_metadata",
+            "module": "nr_metadata.data.records.models",
+            "generate": true
+        },
+        "draft-parent-record-schema": {
+            "name": "parent-v1.0.0.json",
+            "file": "nr_metadata/data/records/jsonschemas/parent-v1.0.0.json",
+            "generate": true
         },
         "mapping": {
             "generate": true,
             "alias": "data",
             "module": "nr_metadata.data.records.mappings",
             "index": "data-data-1.0.0",
-            "file": "nr_metadata/data/records/mappings/os-v2/data/data-1.0.0.json",
-            "index-field-args": []
+            "index-field-args": [
+                "search_alias=\"data\""
+            ],
+            "file": "nr_metadata/data/records/mappings/os-v2/data/data-1.0.0.json"
         },
         "permissions": {
             "generate": true,
@@ -307,16 +386,13 @@
             "components": [],
             "imports": []
         },
-        "multilingual-dumper": {
+        "parent-record-marshmallow": {
+            "module": "nr_metadata.data.services.records.schema",
+            "class": "nr_metadata.data.services.records.schema.GeneratedParentSchema",
             "generate": true,
-            "module": "nr_metadata.data.records.dumpers.multilingual",
-            "class": "nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt",
             "base-classes": [
-                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
+                "invenio_drafts_resources.services.records.schema.ParentSchema{InvenioParentSchema}"
+            ]
         },
         "sortable": [],
         "properties": {
@@ -360,6 +436,20 @@
                     "skip": true
                 }
             },
+            "deletion_status": {
+                "type": "keyword",
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
             "id": {
                 "type": "keyword",
                 "marshmallow": {
@@ -375,6 +465,34 @@
                         "read": false,
                         "write": false
                     }
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "is_deleted": {
+                "type": "boolean",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "is_published": {
+                "type": "boolean",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "marshmallow": {
+                    "read": false,
+                    "write": false
                 },
                 "sample": {
                     "skip": true
@@ -471,6 +589,7 @@
                     },
                     "accessRights": {
                         "type": "vocabulary",
+                        "required": true,
                         "vocabulary-type": "access-rights",
                         "ui": {
                             "marshmallow": {
@@ -677,13 +796,6 @@
                                 "title": {
                                     "type": "i18nStr",
                                     "required": true,
-                                    "marshmallow": {
-                                        "read": false,
-                                        "write": false,
-                                        "class": null,
-                                        "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
-                                        "generate": false
-                                    },
                                     "ui": {
                                         "marshmallow": {
                                             "read": false,
@@ -692,6 +804,13 @@
                                             "field-class": "oarepo_runtime.services.schema.i18n_ui.I18nStrUIField"
                                         },
                                         "detail": "multilingual"
+                                    },
+                                    "marshmallow": {
+                                        "read": false,
+                                        "write": false,
+                                        "class": null,
+                                        "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
+                                        "generate": false
                                     },
                                     "sample": {
                                         "skip": false
@@ -2997,6 +3116,7 @@
                             "properties": {
                                 "funder": {
                                     "type": "vocabulary",
+                                    "required": true,
                                     "vocabulary-type": "funders",
                                     "ui": {
                                         "marshmallow": {
@@ -3186,7 +3306,6 @@
                             "properties": {
                                 "geoLocationPlace": {
                                     "type": "keyword",
-                                    "description": "Free description of the location; ie. Atlantic Ocean",
                                     "marshmallow": {
                                         "read": false,
                                         "write": false
@@ -3196,7 +3315,8 @@
                                             "read": false,
                                             "write": false
                                         }
-                                    }
+                                    },
+                                    "description": "Free description of the location; ie. Atlantic Ocean"
                                 },
                                 "geoLocationPoint": {
                                     "type": "object",
@@ -5902,7 +6022,6 @@
                                 "itemRelationType": {
                                     "type": "vocabulary",
                                     "vocabulary-type": "item-relation-types",
-                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "ui": {
                                         "marshmallow": {
                                             "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRItemRelationTypeVocabularyUISchema",
@@ -5921,6 +6040,7 @@
                                         "unknown": "INCLUDE",
                                         "generate": true
                                     },
+                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "label.cs": "Typ vazby",
                                     "label.en": "Relation type",
                                     "hint.cs": "Vyberte typ vazby mezi popisovaným a souvisejícím zdrojem.",
@@ -7044,6 +7164,132 @@
                 },
                 "sample": {
                     "skip": true
+                }
+            },
+            "version_id": {
+                "type": "integer",
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "versions": {
+                "type": "object",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "generate": false,
+                        "class": "nr_metadata.data.services.records.ui_schema.FakeVersionsUISchema",
+                        "skip": true,
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "marshmallow": {
+                    "generate": false,
+                    "class": "nr_metadata.data.services.records.schema.FakeVersionsSchema",
+                    "skip": true,
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                },
+                "properties": {
+                    "index": {
+                        "type": "integer",
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "is_latest": {
+                        "type": "boolean",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "is_latest_draft": {
+                        "type": "boolean",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "latest_id": {
+                        "type": "keyword",
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "latest_index": {
+                        "type": "integer",
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "next_draft_id": {
+                        "type": "keyword",
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    }
                 }
             }
         }

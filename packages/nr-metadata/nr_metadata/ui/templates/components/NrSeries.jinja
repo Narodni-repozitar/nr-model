@@ -1,9 +1,22 @@
 {#def data #}
 {% if data %}
-<dl class='detail-subfields'>
-    {% for series in data %}
-    <Field label={_('metadata/series/seriesTitle.label')}>{{series.seriesTitle}}</Field>
-    <Field label={_('metadata/series/seriesVolume.label')}>{{series.seriesVolume}}</Field>
-    {% endfor %}
-</dl>
+    <div class='detail-subfields'>
+        {% for series in data %}
+            {% if series.seriesTitle %}
+                <SeparatedProperty isLast={True} label={_('metadata/series/seriesTitle.label')}>
+                    <span>{{ series.seriesTitle }}</span>
+                </SeparatedProperty>
+                <br/>
+            {% endif %}
+            {% if series.seriesVolume %}
+                <SeparatedProperty isLast={True} label={_('metadata/series/seriesVolume.label')}>
+                    <span>{{ series.seriesVolume }}</span>
+                </SeparatedProperty>
+                <br/>
+            {% endif %}
+            {% if not loop.last %}
+                <div class="rel-mb-1"></div>
+            {% endif %}
+        {% endfor %}
+    </div>
 {% endif %}

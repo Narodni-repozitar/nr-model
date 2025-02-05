@@ -6,6 +6,7 @@ from marshmallow.validate import OneOf
 from marshmallow_utils.fields import TrimmedString
 from oarepo_runtime.services.schema.i18n import I18nStrField, MultilingualField
 from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema, DictOnlySchema
+from oarepo_runtime.services.schema.rdm import RDMRecordMixin
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_date,
@@ -33,7 +34,7 @@ from nr_metadata.schema.identifiers import (
 )
 
 
-class NRCommonRecordSchema(BaseRecordSchema):
+class NRCommonRecordSchema(BaseRecordSchema, RDMRecordMixin):
     class Meta:
         unknown = ma.RAISE
 
@@ -46,7 +47,9 @@ class NRCommonMetadataSchema(Schema):
 
     abstract = MultilingualField(I18nStrField())
 
-    accessRights = ma_fields.Nested(lambda: NRAccessRightsVocabularySchema())
+    accessRights = ma_fields.Nested(
+        lambda: NRAccessRightsVocabularySchema(), required=True
+    )
 
     accessibility = MultilingualField(I18nStrField())
 

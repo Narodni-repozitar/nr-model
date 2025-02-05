@@ -1,0 +1,24 @@
+{#def creatibutor, search_link, role = None #}
+{% set creatibutor_dict = creatibutor | to_dict %}
+{% if creatibutor_dict.nameType == "Personal" %}
+  {% set title = _("Find more records by this person") %}
+  {% set searchFacet = "syntheticFields_people" %}
+{% else %}
+  {% set title = _("Find more records by this organization") %}
+  {% set searchFacet = "syntheticFields_organizations" %}
+{% endif %}
+{% set data = {
+    "value": creatibutor_dict.fullName,
+    "title": title,
+    "label": creatibutor_dict.fullName,
+    "aria": creatibutor_dict.fullName ~ ": " ~ title,
+} %}
+<div role="listitem" class="item creatibutor-wrap separated">
+  <div class="content">
+      <SearchLink data={data}  searchFacet={searchFacet} search_link={search_link}></SearchLink>
+              <CreatibutorIdentifier identifiers={creatibutor_dict.authorityIdentifiers} creatibutorName={creatibutor_dict.fullName} />
+      {%- if role -%}
+          ({{role}})
+      {%- endif -%}
+  </div>
+</div>

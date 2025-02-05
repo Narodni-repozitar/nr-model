@@ -168,7 +168,7 @@ class NRFundingReferenceSchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
-    funder = ma_fields.Nested(lambda: NRFunderVocabularySchema())
+    funder = ma_fields.Nested(lambda: NRFunderVocabularySchema(), required=True)
 
     fundingProgram = ma_fields.String()
 

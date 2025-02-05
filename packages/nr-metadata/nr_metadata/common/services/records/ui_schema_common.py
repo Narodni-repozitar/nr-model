@@ -40,7 +40,15 @@ class NRCommonRecordUISchema(InvenioUISchema):
     class Meta:
         unknown = ma.RAISE
 
+    deletion_status = ma_fields.String()
+
+    is_deleted = ma_fields.Boolean()
+
+    is_published = ma_fields.Boolean()
+
     metadata = ma_fields.Nested(lambda: NRCommonMetadataUISchema())
+
+    version_id = ma_fields.Integer()
 
 
 class NRCommonMetadataUISchema(Schema):
@@ -49,7 +57,9 @@ class NRCommonMetadataUISchema(Schema):
 
     abstract = MultilingualUIField(I18nStrUIField())
 
-    accessRights = ma_fields.Nested(lambda: NRAccessRightsVocabularyUISchema())
+    accessRights = ma_fields.Nested(
+        lambda: NRAccessRightsVocabularyUISchema(), required=True
+    )
 
     accessibility = MultilingualLocalizedUIField(I18nStrUIField())
 

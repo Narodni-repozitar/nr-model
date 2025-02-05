@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { RORInstitutionResult } from "../RORInstitutionResult";
-import { VocabularyRemoteSelectField, VocabularyRemoteSelectModalTrigger } from "@js/oarepo_vocabularies";
+import { VocabularyRemoteSelectField, VocabularyModalTrigger } from "@js/oarepo_vocabularies";
 import { useFieldData } from "@js/oarepo_ui";
 import { i18next } from "@translations/nr/i18next";
 
@@ -27,9 +27,7 @@ export const RORAffiliationsField = ({
         }).label
       }
       closeOnDimmerClick={true}
-      triggerButton={
-        <VocabularyRemoteSelectModalTrigger label={multiple? i18next.t( 'Choose affiliations') : i18next.t('Choose affiliation')} />
-      }
+      triggerLabel={i18next.t('Choose')}
       {...getFieldData({
         fieldPath: fieldPath,
       })}

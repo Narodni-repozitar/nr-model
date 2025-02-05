@@ -26,7 +26,15 @@ class DataCiteRecordUISchema(InvenioUISchema):
     class Meta:
         unknown = ma.RAISE
 
+    deletion_status = ma_fields.String()
+
+    is_deleted = ma_fields.Boolean()
+
+    is_published = ma_fields.Boolean()
+
     metadata = ma_fields.Nested(lambda: NRDataCiteMetadataUISchema())
+
+    version_id = ma_fields.Integer()
 
 
 class NRDataCiteMetadataUISchema(Schema):
@@ -69,6 +77,8 @@ class NRDataCiteMetadataUISchema(Schema):
 
     relatedItems = ma_fields.List(ma_fields.Nested(lambda: RelatedItemUISchema()))
 
+    resourceType = ma_fields.Nested(lambda: ResourceTypeUISchema())
+
     rightsList = ma_fields.List(ma_fields.Nested(lambda: RightsUISchema()))
 
     schemaVersion = ma_fields.String()
@@ -78,8 +88,6 @@ class NRDataCiteMetadataUISchema(Schema):
     subjects = ma_fields.List(ma_fields.Nested(lambda: SubjectUISchema()))
 
     titles = ma_fields.List(ma_fields.Nested(lambda: TitleUISchema()))
-
-    types = ma_fields.List(ma_fields.Nested(lambda: ResourceTypeUISchema()))
 
     url = ma_fields.String()
 

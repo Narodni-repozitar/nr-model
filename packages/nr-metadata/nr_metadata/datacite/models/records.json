@@ -5,7 +5,8 @@
             "imports": [],
             "class": "nr_metadata.datacite.services.records.schema.DataCiteRecordSchema",
             "base-classes": [
-                "oarepo_runtime.services.schema.marshmallow.BaseRecordSchema"
+                "oarepo_runtime.services.schema.marshmallow.BaseRecordSchema",
+                "oarepo_runtime.services.schema.rdm.RDMRecordMixin"
             ],
             "generate": true,
             "module": "nr_metadata.datacite.services.records.schema",
@@ -51,15 +52,58 @@
             "file": "data/sample_data.yaml"
         },
         "ext-resource": {
+            "service-kwargs": {
+                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(config_class, {{invenio_rdm_records.services.pids.PIDManager}})"
+            },
             "generate": true,
             "skip": false
         },
         "model-name": "Datacite",
-        "search-options": {
+        "record": {
+            "base-classes": [
+                "invenio_rdm_records.records.api.RDMRecord"
+            ],
             "generate": true,
-            "module": "nr_metadata.datacite.services.records.search",
+            "module": "nr_metadata.datacite.records.api",
+            "class": "nr_metadata.datacite.records.api.DataciteRecord",
+            "imports": [],
             "extra-code": "",
+            "fields": {
+                "media_files": "FilesField(key=MediaFilesAttrConfig[\"_files_attr_key\"],bucket_id_attr=MediaFilesAttrConfig[\"_files_bucket_id_attr_key\"],bucket_attr=MediaFilesAttrConfig[\"_files_bucket_attr_key\"],store=False,dump=False,file_cls={{invenio_rdm_records.records.api.RDMMediaFileRecord}},create=False,delete=False,)"
+            }
+        },
+        "resource": {
+            "base-classes": [
+                "invenio_drafts_resources.resources.RecordResource"
+            ],
+            "generate": true,
+            "config-key": "DATACITE_RECORD_RESOURCE_CLASS",
+            "module": "nr_metadata.datacite.resources.records.resource",
+            "class": "nr_metadata.datacite.resources.records.resource.DataciteResource",
+            "proxy": "current_resource",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "resource-config": {
+            "base-classes": [
+                "invenio_drafts_resources.resources.RecordResourceConfig"
+            ],
+            "generate": true,
+            "base-url": "/nr-metadata-datacite/",
+            "base-html-url": "/nr-metadata-datacite/",
+            "config-key": "DATACITE_RECORD_RESOURCE_CONFIG",
+            "module": "nr_metadata.datacite.resources.records.config",
+            "class": "nr_metadata.datacite.resources.records.config.DataciteResourceConfig",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "search-options": {
+            "module": "nr_metadata.datacite.services.records.search",
             "class": "nr_metadata.datacite.services.records.search.DataciteSearchOptions",
+            "generate": true,
+            "extra-code": "",
             "base-classes": [
                 "invenio_records_resources.services.SearchOptions{InvenioSearchOptions}"
             ],
@@ -104,44 +148,6 @@
             "extra-code": "",
             "groups": true
         },
-        "record": {
-            "generate": true,
-            "module": "nr_metadata.datacite.records.api",
-            "class": "nr_metadata.datacite.records.api.DataciteRecord",
-            "base-classes": [
-                "invenio_records_resources.records.api.Record{InvenioRecord}"
-            ],
-            "imports": [],
-            "extra-code": "",
-            "fields": {}
-        },
-        "resource": {
-            "generate": true,
-            "config-key": "DATACITE_RECORD_RESOURCE_CLASS",
-            "module": "nr_metadata.datacite.resources.records.resource",
-            "class": "nr_metadata.datacite.resources.records.resource.DataciteResource",
-            "proxy": "current_resource",
-            "extra-code": "",
-            "base-classes": [
-                "invenio_records_resources.resources.RecordResource"
-            ],
-            "imports": [],
-            "additional-args": []
-        },
-        "resource-config": {
-            "generate": true,
-            "base-url": "/nr-metadata-datacite/",
-            "base-html-url": "/nr-metadata-datacite/",
-            "config-key": "DATACITE_RECORD_RESOURCE_CONFIG",
-            "module": "nr_metadata.datacite.resources.records.config",
-            "class": "nr_metadata.datacite.resources.records.config.DataciteResourceConfig",
-            "extra-code": "",
-            "base-classes": [
-                "invenio_records_resources.resources.RecordResourceConfig"
-            ],
-            "imports": [],
-            "additional-args": []
-        },
         "saved-model": {
             "file": "nr_metadata/datacite/models/records.json",
             "module": "nr_metadata.datacite.models",
@@ -151,29 +157,91 @@
             "module": "nr_metadata.datacite.proxies",
             "generate": true
         },
-        "json-schema-settings": {
+        "translations": {
+            "module": "nr_metadata.datacite.translations",
+            "alias": "datacite"
+        },
+        "files-field": {
             "generate": true,
+            "field-class": "invenio_records_resources.records.systemfields.FilesField",
+            "file-class": "nr_metadata.datacite.records.api.DataciteRecord",
+            "field-args": [
+                "store=False"
+            ],
+            "imports": []
+        },
+        "record-metadata": {
+            "generate": true,
+            "module": "nr_metadata.datacite.records.models",
+            "class": "nr_metadata.datacite.records.models.DataciteMetadata",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase",
+                "invenio_drafts_resources.records.ParentRecordMixin"
+            ],
+            "extra-code": "",
+            "imports": [],
+            "table": "datacite_metadata",
             "alias": "datacite",
-            "version": "1.0.0",
-            "module": "nr_metadata.datacite.records.jsonschemas",
-            "name": "datacite-1.0.0.json",
-            "file": "nr_metadata/datacite/records/jsonschemas/datacite-1.0.0.json"
+            "use-versioning": true,
+            "alembic": "nr_metadata.datacite.alembic"
         },
         "pid": {
+            "provider-base-classes": [
+                "invenio_drafts_resources.records.api.DraftRecordIdProviderV2"
+            ],
+            "imports": [
+                {
+                    "import": "invenio_records_resources.records.systemfields.pid.PIDField"
+                },
+                {
+                    "import": "invenio_records_resources.records.systemfields.pid.PIDFieldContext"
+                }
+            ],
             "generate": true,
             "type": "dtct",
             "module": "nr_metadata.datacite.records.api",
             "provider-class": "nr_metadata.datacite.records.api.DataciteIdProvider",
-            "provider-base-classes": [
-                "invenio_pidstore.providers.recordid_v2.RecordIdProviderV2"
-            ],
             "field-class": "invenio_records_resources.records.systemfields.pid.PIDField",
             "context-class": "invenio_records_resources.records.systemfields.pid.PIDFieldContext",
             "field-args": [
                 "create=True"
             ],
-            "imports": [],
             "extra-code": ""
+        },
+        "service": {
+            "imports": [],
+            "base-classes": [
+                "invenio_rdm_records.services.services.RDMRecordService"
+            ],
+            "generate": true,
+            "config-key": "DATACITE_RECORD_SERVICE_CLASS",
+            "proxy": "current_service",
+            "module": "nr_metadata.datacite.services.records.service",
+            "class": "nr_metadata.datacite.services.records.service.DataciteService",
+            "extra-code": "",
+            "additional-args": [
+                "files_service=self.service_files",
+                "draft_files_service=self.service_draft_files"
+            ]
+        },
+        "service-config": {
+            "base-classes": [
+                "oarepo_runtime.services.config.service.PermissionsPresetsConfigMixin",
+                "invenio_rdm_records.services.config.RDMRecordServiceConfig"
+            ],
+            "generate": true,
+            "config-key": "DATACITE_RECORD_SERVICE_CONFIG",
+            "module": "nr_metadata.datacite.services.records.config",
+            "class": "nr_metadata.datacite.services.records.config.DataciteServiceConfig",
+            "extra-code": "",
+            "service-id": "datacite",
+            "components": [
+                "{{oarepo_runtime.services.components.OwnersComponent}}",
+                "{{oarepo_runtime.services.components.CustomFieldsComponent}}"
+            ],
+            "additional-args": [],
+            "search-item-links-template-cls": "invenio_records_resources.services.LinksTemplate"
         },
         "record-dumper": {
             "generate": true,
@@ -184,54 +252,19 @@
             ],
             "extra-code": "",
             "extensions": [
-                "{{nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt}}()",
-                "{{nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt}}()"
+                "{{oarepo_runtime.records.systemfields.mapping.SystemFieldDumperExt}}()",
+                "{{nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
+                "{{nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt}}()"
             ],
             "imports": []
         },
-        "record-metadata": {
+        "json-schema-settings": {
             "generate": true,
-            "module": "nr_metadata.datacite.records.models",
-            "class": "nr_metadata.datacite.records.models.DataciteMetadata",
-            "base-classes": [
-                "invenio_db.db{db.Model}",
-                "invenio_records.models.RecordMetadataBase"
-            ],
-            "extra-code": "",
-            "imports": [],
-            "table": "datacite_metadata",
             "alias": "datacite",
-            "use-versioning": true,
-            "alembic": "nr_metadata.datacite.alembic"
-        },
-        "service-config": {
-            "generate": true,
-            "config-key": "DATACITE_RECORD_SERVICE_CONFIG",
-            "module": "nr_metadata.datacite.services.records.config",
-            "class": "nr_metadata.datacite.services.records.config.DataciteServiceConfig",
-            "extra-code": "",
-            "service-id": "datacite",
-            "base-classes": [
-                "oarepo_runtime.services.config.service.PermissionsPresetsConfigMixin",
-                "invenio_records_resources.services.RecordServiceConfig{InvenioRecordServiceConfig}"
-            ],
-            "components": [
-                "{{oarepo_runtime.services.components.CustomFieldsComponent}}"
-            ],
-            "additional-args": []
-        },
-        "service": {
-            "generate": true,
-            "config-key": "DATACITE_RECORD_SERVICE_CLASS",
-            "proxy": "current_service",
-            "module": "nr_metadata.datacite.services.records.service",
-            "class": "nr_metadata.datacite.services.records.service.DataciteService",
-            "extra-code": "",
-            "base-classes": [
-                "invenio_records_resources.services.RecordService{InvenioRecordService}"
-            ],
-            "imports": [],
-            "additional-args": []
+            "version": "1.0.0",
+            "module": "nr_metadata.datacite.records.jsonschemas",
+            "name": "datacite-1.0.0.json",
+            "file": "nr_metadata/datacite/records/jsonschemas/datacite-1.0.0.json"
         },
         "json-serializer": {
             "module": "nr_metadata.datacite.resources.records.ui",
@@ -249,17 +282,63 @@
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
         },
-        "translations": {
-            "module": "nr_metadata.datacite.translations",
-            "alias": "datacite"
+        "multilingual-dumper": {
+            "generate": true,
+            "module": "nr_metadata.datacite.records.dumpers.multilingual",
+            "class": "nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
+        },
+        "draft-parent-record": {
+            "class": "nr_metadata.datacite.records.api.DataciteParentRecord",
+            "base-classes": [
+                "invenio_rdm_records.records.api.RDMParent"
+            ],
+            "imports": [],
+            "fields": {},
+            "module": "nr_metadata.datacite.records.api",
+            "generate": true
+        },
+        "draft-parent-record-state": {
+            "class": "nr_metadata.datacite.records.models.DataciteParentState",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_drafts_resources.records.ParentRecordStateMixin"
+            ],
+            "imports": [],
+            "module": "nr_metadata.datacite.records.models",
+            "generate": true,
+            "table": "nr_metadata.datacite_parent_state_metadata"
+        },
+        "draft-parent-record-metadata": {
+            "class": "nr_metadata.datacite.records.models.DataciteParentMetadata",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase"
+            ],
+            "imports": [],
+            "table": "nr_metadata.datacite_parent_record_metadata",
+            "module": "nr_metadata.datacite.records.models",
+            "generate": true
+        },
+        "draft-parent-record-schema": {
+            "name": "parent-v1.0.0.json",
+            "file": "nr_metadata/datacite/records/jsonschemas/parent-v1.0.0.json",
+            "generate": true
         },
         "mapping": {
             "generate": true,
             "alias": "datacite",
             "module": "nr_metadata.datacite.records.mappings",
             "index": "datacite-datacite-1.0.0",
-            "file": "nr_metadata/datacite/records/mappings/os-v2/datacite/datacite-1.0.0.json",
-            "index-field-args": []
+            "index-field-args": [
+                "search_alias=\"datacite\""
+            ],
+            "file": "nr_metadata/datacite/records/mappings/os-v2/datacite/datacite-1.0.0.json"
         },
         "permissions": {
             "generate": true,
@@ -307,16 +386,13 @@
             "components": [],
             "imports": []
         },
-        "multilingual-dumper": {
+        "parent-record-marshmallow": {
+            "module": "nr_metadata.datacite.services.records.schema",
+            "class": "nr_metadata.datacite.services.records.schema.GeneratedParentSchema",
             "generate": true,
-            "module": "nr_metadata.datacite.records.dumpers.multilingual",
-            "class": "nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt",
             "base-classes": [
-                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
+                "invenio_drafts_resources.services.records.schema.ParentSchema{InvenioParentSchema}"
+            ]
         },
         "sortable": [],
         "properties": {
@@ -360,6 +436,20 @@
                     "skip": true
                 }
             },
+            "deletion_status": {
+                "type": "keyword",
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
             "id": {
                 "type": "keyword",
                 "marshmallow": {
@@ -375,6 +465,34 @@
                         "read": false,
                         "write": false
                     }
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "is_deleted": {
+                "type": "boolean",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "is_published": {
+                "type": "boolean",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "marshmallow": {
+                    "read": false,
+                    "write": false
                 },
                 "sample": {
                     "skip": true
@@ -1969,6 +2087,66 @@
                             }
                         }
                     },
+                    "resourceType": {
+                        "type": "object",
+                        "ui": {
+                            "marshmallow": {
+                                "class": "nr_metadata.datacite.services.records.ui_schema_datatypes.ResourceTypeUISchema",
+                                "generate": true
+                            }
+                        },
+                        "marshmallow": {
+                            "class": "nr_metadata.datacite.services.records.schema_datatypes.ResourceTypeSchema",
+                            "generate": true
+                        },
+                        "label.cs": "Typ zdroje",
+                        "label.en": "Resource type",
+                        "properties": {
+                            "resourceType": {
+                                "type": "keyword",
+                                "label.cs": "Typ zdroje",
+                                "label.en": "Resource type"
+                            },
+                            "resourceTypeGeneral": {
+                                "type": "keyword",
+                                "required": true,
+                                "enum": [
+                                    "Audiovisual",
+                                    "Book",
+                                    "BookChapter",
+                                    "Collection",
+                                    "ComputationalNotebook",
+                                    "ConferencePaper",
+                                    "ConferenceProceeding",
+                                    "DataPaper",
+                                    "Dataset",
+                                    "Dissertation",
+                                    "Event",
+                                    "Image",
+                                    "Instrument",
+                                    "InteractiveResource",
+                                    "Journal",
+                                    "JournalArticle",
+                                    "Model",
+                                    "OutputManagementPlan",
+                                    "PeerReview",
+                                    "PhysicalObject",
+                                    "Preprint",
+                                    "Report",
+                                    "Service",
+                                    "Software",
+                                    "Sound",
+                                    "Standard",
+                                    "StudyRegistration",
+                                    "Text",
+                                    "Workflow",
+                                    "Other"
+                                ],
+                                "label.cs": "Obecný typ zdroje",
+                                "label.en": "General resource type"
+                            }
+                        }
+                    },
                     "rightsList": {
                         "type": "array",
                         "label.cs": "Práva",
@@ -2131,71 +2309,6 @@
                             }
                         }
                     },
-                    "types": {
-                        "type": "array",
-                        "label.cs": "Typy zdroje",
-                        "label.en": "Resource types",
-                        "items": {
-                            "type": "object",
-                            "ui": {
-                                "marshmallow": {
-                                    "class": "nr_metadata.datacite.services.records.ui_schema_datatypes.ResourceTypeUISchema",
-                                    "generate": true
-                                }
-                            },
-                            "marshmallow": {
-                                "class": "nr_metadata.datacite.services.records.schema_datatypes.ResourceTypeSchema",
-                                "generate": true
-                            },
-                            "label.cs": "Typ zdroje",
-                            "label.en": "Resource type",
-                            "properties": {
-                                "resourceType": {
-                                    "type": "keyword",
-                                    "label.cs": "Typ zdroje",
-                                    "label.en": "Resource type"
-                                },
-                                "resourceTypeGeneral": {
-                                    "type": "keyword",
-                                    "required": true,
-                                    "enum": [
-                                        "Audiovisual",
-                                        "Book",
-                                        "BookChapter",
-                                        "Collection",
-                                        "ComputationalNotebook",
-                                        "ConferencePaper",
-                                        "ConferenceProceeding",
-                                        "DataPaper",
-                                        "Dataset",
-                                        "Dissertation",
-                                        "Event",
-                                        "Image",
-                                        "Instrument",
-                                        "InteractiveResource",
-                                        "Journal",
-                                        "JournalArticle",
-                                        "Model",
-                                        "OutputManagementPlan",
-                                        "PeerReview",
-                                        "PhysicalObject",
-                                        "Preprint",
-                                        "Report",
-                                        "Service",
-                                        "Software",
-                                        "Sound",
-                                        "Standard",
-                                        "StudyRegistration",
-                                        "Text",
-                                        "Workflow",
-                                        "Other"
-                                    ],
-                                    "label.cs": "Obecný typ zdroje",
-                                    "label.en": "General resource type"
-                                }
-                            }
-                        }
-                    },
                     "url": {
                         "type": "url",
                         "label.cs": "URL",
@@ -2282,6 +2395,132 @@
                 },
                 "sample": {
                     "skip": true
+                }
+            },
+            "version_id": {
+                "type": "integer",
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "versions": {
+                "type": "object",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "generate": false,
+                        "class": "nr_metadata.datacite.services.records.ui_schema.FakeVersionsUISchema",
+                        "skip": true,
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "marshmallow": {
+                    "generate": false,
+                    "class": "nr_metadata.datacite.services.records.schema.FakeVersionsSchema",
+                    "skip": true,
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                },
+                "properties": {
+                    "index": {
+                        "type": "integer",
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "is_latest": {
+                        "type": "boolean",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "is_latest_draft": {
+                        "type": "boolean",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "latest_id": {
+                        "type": "keyword",
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "latest_index": {
+                        "type": "integer",
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "next_draft_id": {
+                        "type": "keyword",
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    }
                 }
             }
         }

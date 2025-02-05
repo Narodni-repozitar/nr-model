@@ -14,7 +14,11 @@ const CreatibutorSearchLink = ({
 }) => (
   <SearchFacetLink
     searchUrl={searchUrl}
-    searchFacet="syntheticFields_people"
+    searchFacet={
+      nameType === "Personal"
+        ? "syntheticFields_people"
+        : "syntheticFields_organizations"
+    }
     value={personName}
     className={`${searchField}-link`}
     title={

@@ -85,6 +85,8 @@ DocumentModel:
     imports:
       - import: oarepo_runtime.records.systemfields.SyntheticSystemField
       - import: oarepo_runtime.records.systemfields.PathSelector
+      - import: oarepo_runtime.records.systemfields.FilteredSelector
+      - import: oarepo_runtime.records.systemfields.MultiSelector
       - import: oarepo_runtime.records.systemfields.FirstItemSelector
       - import: nr_metadata.records.synthetic_fields.KeywordsFieldSelector
     fields:
@@ -95,13 +97,22 @@ DocumentModel:
             map=lambda x: x.get("fullName"),
             key="syntheticFields.people",
         )
-      institutions: |
+
+      organizations: |
         SyntheticSystemField(
-            PathSelector(
-                  "metadata.creators.affiliations", 
-                  "metadata.contributors.affiliations", 
-                  "metadata.thesis.degreeGrantors"),
-            key="syntheticFields.institutions",
+          MultiSelector(
+              FilteredSelector(
+                  PathSelector("metadata.creators", "metadata.contributors"),
+                  filter=lambda x: x["nameType"] == "Personal",
+                  projection="affiliations.title.cs",
+              ),
+              FilteredSelector(
+                  PathSelector("metadata.creators", "metadata.contributors"),
+                  filter=lambda x: x["nameType"] == "Organizational",
+                  projection="fullName",
+              ),
+          ),
+          key="syntheticFields.organizations",
         )
       keywords: |
         SyntheticSystemField(
@@ -115,7 +126,7 @@ DocumentModel:
         )
       year: |
         SyntheticSystemField(
-            selector=FirstItemSelector("metadata.dateModified", "metadata.dateIssued"),
+            selector=FirstItemSelector("metadata.dateIssued", "metadata.thesis.dateDefended"),
             key="syntheticFields.year",
             filter=lambda x: len(x) >= 4,
             map=lambda x: x[:4]
@@ -136,14 +147,10 @@ DocumentModel:
           marshmallow:
             read: false
             write: false
-          label.cs: Lidé
-          label.en: People
-        institutions:
-          type: taxonomy
-          vocabulary-type: institutions
-          marshmallow:
-            read: false
-            write: false
+          label.cs: Tvůrci
+          label.en: Creators
+        organizations:
+          type: keyword
           label.cs: Instituce
           label.en: Institutions
         keywords:
@@ -201,8 +208,8 @@ DocumentModel:
             marshmallow:
               read: false
               write: false
-          label.cs: Rok poslední změny
-          label.en: Updated year
+          label.cs: Datum vydání
+          label.en: Publication date
           facets:
             facet-class: oarepo_runtime.services.facets.year_histogram.YearAutoHistogramFacet
         defenseYear:

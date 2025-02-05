@@ -1,6 +1,8 @@
 import re
 from functools import cached_property
 
+from invenio_rdm_records.services.pids import PIDManager, PIDsService
+
 from nr_metadata.datacite import config
 
 
@@ -13,6 +15,7 @@ class DataciteExt:
 
     def init_app(self, app):
         """Flask application initialization."""
+        self.app = app
 
         self.init_config(app)
         if not self.is_inherited():
@@ -51,8 +54,20 @@ class DataciteExt:
 
     @cached_property
     def service_records(self):
+        service_config = config.DATACITE_RECORD_SERVICE_CONFIG
+        if hasattr(service_config, "build"):
+            config_class = service_config.build(self.app)
+        else:
+            config_class = service_config()
+
+        service_kwargs = {
+            "pids_service": PIDsService(config_class, PIDManager),
+            "config": config_class,
+        }
         return config.DATACITE_RECORD_SERVICE_CLASS(
-            config=config.DATACITE_RECORD_SERVICE_CONFIG(),
+            **service_kwargs,
+            files_service=self.service_files,
+            draft_files_service=self.service_draft_files
         )
 
     @cached_property

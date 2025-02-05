@@ -26,7 +26,7 @@ export const RORInstitutionResult = ({ result, handleSelect = () => {}, selected
       );
     });
 
-  const propValues = _join(Object.values(props).filter(prop => prop && prop !== ""), ", ");
+  const propValues = props ? _join(Object.values(props).filter(prop => prop && prop !== ""), ", "): null;
 
   const onSelect = (result) => {
     // TODO: here you can convert the result to internal format

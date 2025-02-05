@@ -1220,7 +1220,7 @@ msgid "Couldn't find your person? You can <2>create a new entry</2>."
 msgstr ""
 
 msgid "Add event"
-msgstr ""
+msgstr "Add related event"
 
 msgid "Events"
 msgstr ""
@@ -1861,4 +1861,35 @@ msgid "Remove field"
 msgstr ""
 
 msgid "Add external location"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:564
+msgid "metadata/resourceType/resourceType.label"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/datacite/services/records/facets.py:569
+msgid "metadata/resourceType/resourceTypeGeneral.label"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/documents/services/records/facets.py:493
+msgid "syntheticFields/organizations.label"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:12
+#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
+msgid "People"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:14
+#: /Users/miroslavbauer/Code/github.com/Narodni-repozitar/nr-model/packages/nr-metadata/nr_metadata/ui/templates/components/Creatibutors.jinja:17
+msgid "Organizations"
+msgstr ""
+
+msgid "Choose"
+msgstr ""
+
+msgid "ISNI profile"
+msgstr ""
+
+msgid "Organization's name is a required field."
 msgstr ""

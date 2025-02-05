@@ -1,34 +1,44 @@
-from invenio_pidstore.providers.recordid_v2 import RecordIdProviderV2
+from invenio_drafts_resources.records.api import DraftRecordIdProviderV2
+from invenio_drafts_resources.services.records.components.media_files import (
+    MediaFilesAttrConfig,
+)
+from invenio_rdm_records.records.api import RDMMediaFileRecord, RDMParent, RDMRecord
 from invenio_records.systemfields import ConstantField
-from invenio_records_resources.records.api import Record as InvenioRecord
-from invenio_records_resources.records.systemfields import IndexField
+from invenio_records_resources.records.systemfields import FilesField, IndexField
 from invenio_records_resources.records.systemfields.pid import PIDField, PIDFieldContext
 from oarepo_runtime.records.relations import PIDRelation, RelationsField
 from oarepo_runtime.records.systemfields import (
+    FilteredSelector,
     FirstItemSelector,
+    MultiSelector,
     PathSelector,
     SyntheticSystemField,
 )
 from oarepo_vocabularies.records.api import Vocabulary
 
 from nr_metadata.documents.records.dumpers.dumper import DocumentsDumper
-from nr_metadata.documents.records.models import DocumentsMetadata
+from nr_metadata.documents.records.models import (
+    DocumentsMetadata,
+    DocumentsParentMetadata,
+)
 from nr_metadata.records.synthetic_fields import KeywordsFieldSelector
 
 
-class DocumentsIdProvider(RecordIdProviderV2):
+class DocumentsParentRecord(RDMParent):
+    model_cls = DocumentsParentMetadata
+
+
+class DocumentsIdProvider(DraftRecordIdProviderV2):
     pid_type = "dcmnts"
 
 
-class DocumentsRecord(InvenioRecord):
+class DocumentsRecord(RDMRecord):
 
     model_cls = DocumentsMetadata
 
     schema = ConstantField("$schema", "local://documents-1.0.0.json")
 
-    index = IndexField(
-        "documents-documents-1.0.0",
-    )
+    index = IndexField("documents-documents-1.0.0", search_alias="documents")
 
     pid = PIDField(
         provider=DocumentsIdProvider, context_cls=PIDFieldContext, create=True
@@ -43,13 +53,20 @@ class DocumentsRecord(InvenioRecord):
         key="syntheticFields.people",
     )
 
-    institutions = SyntheticSystemField(
-        PathSelector(
-            "metadata.creators.affiliations",
-            "metadata.contributors.affiliations",
-            "metadata.thesis.degreeGrantors",
+    organizations = SyntheticSystemField(
+        MultiSelector(
+            FilteredSelector(
+                PathSelector("metadata.creators", "metadata.contributors"),
+                filter=lambda x: x["nameType"] == "Personal",
+                projection="affiliations.title.cs",
+            ),
+            FilteredSelector(
+                PathSelector("metadata.creators", "metadata.contributors"),
+                filter=lambda x: x["nameType"] == "Organizational",
+                projection="fullName",
+            ),
         ),
-        key="syntheticFields.institutions",
+        key="syntheticFields.organizations",
     )
 
     keywords = SyntheticSystemField(
@@ -63,7 +80,9 @@ class DocumentsRecord(InvenioRecord):
     )
 
     year = SyntheticSystemField(
-        selector=FirstItemSelector("metadata.dateModified", "metadata.dateIssued"),
+        selector=FirstItemSelector(
+            "metadata.dateIssued", "metadata.thesis.dateDefended"
+        ),
         key="syntheticFields.year",
         filter=lambda x: len(x) >= 4,
         map=lambda x: x[:4],
@@ -74,6 +93,17 @@ class DocumentsRecord(InvenioRecord):
         key="syntheticFields.defenseYear",
         filter=lambda x: len(x) >= 4,
         map=lambda x: x[:4],
+    )
+
+    media_files = FilesField(
+        key=MediaFilesAttrConfig["_files_attr_key"],
+        bucket_id_attr=MediaFilesAttrConfig["_files_bucket_id_attr_key"],
+        bucket_attr=MediaFilesAttrConfig["_files_bucket_attr_key"],
+        store=False,
+        dump=False,
+        file_cls=RDMMediaFileRecord,
+        create=False,
+        delete=False,
     )
 
     relations = RelationsField(
@@ -167,9 +197,24 @@ class DocumentsRecord(InvenioRecord):
             keys=["id", "title", "hierarchy"],
             pid_field=Vocabulary.pid.with_type_ctx("institutions"),
         ),
-        institutions=PIDRelation(
-            "syntheticFields.institutions",
-            keys=["id", "title", "hierarchy"],
-            pid_field=Vocabulary.pid.with_type_ctx("institutions"),
-        ),
     )
+
+
+class RDMRecordMediaFiles(DocumentsRecord):
+    """RDM Media file record API."""
+
+    files = FilesField(
+        key=MediaFilesAttrConfig["_files_attr_key"],
+        bucket_id_attr=MediaFilesAttrConfig["_files_bucket_id_attr_key"],
+        bucket_attr=MediaFilesAttrConfig["_files_bucket_attr_key"],
+        store=False,
+        dump=False,
+        file_cls=RDMMediaFileRecord,
+        # Don't create
+        create=False,
+        # Don't delete, we'll manage in the service
+        delete=False,
+    )
+
+
+RDMMediaFileRecord.record_cls = RDMRecordMediaFiles

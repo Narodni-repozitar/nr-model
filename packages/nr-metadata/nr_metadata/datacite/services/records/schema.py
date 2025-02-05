@@ -1,7 +1,11 @@
 import marshmallow as ma
+from invenio_drafts_resources.services.records.schema import (
+    ParentSchema as InvenioParentSchema,
+)
 from marshmallow import Schema
 from marshmallow import fields as ma_fields
 from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema
+from oarepo_runtime.services.schema.rdm import RDMRecordMixin
 
 from nr_metadata.datacite.services.records.schema_datatypes import (
     AlternateIdentifierSchema,
@@ -22,11 +26,18 @@ from nr_metadata.datacite.services.records.schema_datatypes import (
 )
 
 
-class DataCiteRecordSchema(BaseRecordSchema):
+class GeneratedParentSchema(InvenioParentSchema):
+    """"""
+
+    owners = ma.fields.List(ma.fields.Dict(), load_only=True)
+
+
+class DataCiteRecordSchema(BaseRecordSchema, RDMRecordMixin):
     class Meta:
         unknown = ma.RAISE
 
     metadata = ma_fields.Nested(lambda: NRDataCiteMetadataSchema())
+    parent = ma.fields.Nested(GeneratedParentSchema)
 
 
 class NRDataCiteMetadataSchema(Schema):
@@ -69,6 +80,8 @@ class NRDataCiteMetadataSchema(Schema):
 
     relatedItems = ma_fields.List(ma_fields.Nested(lambda: RelatedItemSchema()))
 
+    resourceType = ma_fields.Nested(lambda: ResourceTypeSchema())
+
     rightsList = ma_fields.List(ma_fields.Nested(lambda: RightsSchema()))
 
     schemaVersion = ma_fields.String()
@@ -78,8 +91,6 @@ class NRDataCiteMetadataSchema(Schema):
     subjects = ma_fields.List(ma_fields.Nested(lambda: SubjectSchema()))
 
     titles = ma_fields.List(ma_fields.Nested(lambda: TitleSchema()))
-
-    types = ma_fields.List(ma_fields.Nested(lambda: ResourceTypeSchema()))
 
     url = ma_fields.String()
 

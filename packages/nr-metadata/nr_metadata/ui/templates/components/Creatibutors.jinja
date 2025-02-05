@@ -1,0 +1,30 @@
+{#def metadata, search_link #}
+{% set creators = metadata.creators if metadata.creators  else [] %}
+{% set contributors = metadata.contributors if metadata.contributors  else [] %}
+{% set all_creatibutors = creators + contributors %}
+
+{% if all_creatibutors %}
+    <dt>{{ _("Creators") }}</dt>
+    <dd>
+        <div class="ui double separated">
+            <div role="list" class="ui horizontal separated creatibutors list">
+                {% for creatibutor in creators %}
+                    <Creatibutor creatibutor={creatibutor} search_link={search_link}></Creatibutor>
+                {% endfor %}
+            </div>
+            {% if contributors %}
+                {% if creators %}
+                    <div class="double separator"></div>
+                {% endif %}
+                <div role="list" class="ui horizontal separated creatibutors list">
+                    {% for contributor in contributors%}
+                        {% if contributor.contributorType.title %}
+                            {% set role = contributor.contributorType.title %}
+                        {% endif %}
+                        <Creatibutor creatibutor={contributor} search_link={search_link} role={role}></Creatibutor>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </dd>
+{% endif %}
