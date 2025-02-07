@@ -16,6 +16,8 @@ export const ResultsItemAccessStatus = ({ status }) => {
     iconFile && (
       <Image
         as="a"
+        target="_blank"
+        rel="noopener noreferrer"
         href={`/vocabularies/access-rights/${id}`}
         centered
         fluid
