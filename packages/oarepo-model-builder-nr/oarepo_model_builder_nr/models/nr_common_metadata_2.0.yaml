@@ -251,7 +251,7 @@ CommonModel:
   ui:
     marshmallow:
       class: nr_metadata.common.services.records.ui_schema_common.NRCommonRecordUISchema
-  use: [invenio]
+  use:  [invenio, rdm]
 
   properties:
     metadata:

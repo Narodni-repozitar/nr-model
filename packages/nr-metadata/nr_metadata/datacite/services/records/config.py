@@ -54,8 +54,7 @@ class DataciteServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfi
 
     @property
     def components(self):
-
-        return process_service_configs(self) + [OwnersComponent, CustomFieldsComponent]
+        return process_service_configs(self, OwnersComponent, CustomFieldsComponent)
 
     model = "nr_metadata.datacite"
 

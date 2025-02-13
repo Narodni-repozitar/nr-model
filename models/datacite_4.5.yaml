@@ -129,7 +129,7 @@ DataCiteModel:
   ui:
     marshmallow:
       class: nr_metadata.datacite.services.records.ui_schema.DataCiteRecordUISchema
-  use: [invenio]
+  use: [invenio, rdm]
 
   properties:
     metadata:

@@ -51,7 +51,7 @@ DataModel:
   ui:
     marshmallow:
       class: nr_metadata.data.services.records.ui_schema.NRDataRecordUISchema
-  use: [invenio]
+  use:  [invenio, rdm]
   properties:
     metadata:
       use: ['nr-data#DataMetadata']

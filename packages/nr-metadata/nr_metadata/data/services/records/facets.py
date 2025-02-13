@@ -9,6 +9,20 @@ from oarepo_vocabularies.services.facets import (
     VocabularyFacet,
 )
 
+access_embargo_active = TermsFacet(
+    field="access.embargo.active", label=_("access/embargo/active.label")
+)
+
+access_embargo_until = DateTimeFacet(
+    field="access.embargo.until", label=_("access/embargo/until.label")
+)
+
+access_files = TermsFacet(field="access.files", label=_("access/files.label"))
+
+access_record = TermsFacet(field="access.record", label=_("access/record.label"))
+
+access_status = TermsFacet(field="access.status", label=_("access/status.label"))
+
 metadata_abstract_cs = TermsFacet(
     field="metadata.abstract.cs.keyword", label=_("metadata/abstract.label")
 )
@@ -464,3 +478,8 @@ metadata_technicalInfo_lang = NestedLabeledFacet(
 metadata_version = TermsFacet(
     field="metadata.version", label=_("metadata/version.label")
 )
+
+
+record_status = TermsFacet(field="record_status", label=_("record_status"))
+
+has_draft = TermsFacet(field="has_draft", label=_("has_draft"))

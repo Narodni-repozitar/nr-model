@@ -3,10 +3,14 @@ from edtf import Date as EDTFDate
 from invenio_drafts_resources.services.records.schema import (
     ParentSchema as InvenioParentSchema,
 )
+from invenio_rdm_records.services.schemas.access import AccessSchema
+from invenio_rdm_records.services.schemas.pids import PIDSchema
+from invenio_rdm_records.services.schemas.record import validate_scheme
 from invenio_vocabularies.services.schema import i18n_strings
 from marshmallow import fields as ma_fields
-from marshmallow.fields import String
-from marshmallow_utils.fields import TrimmedString
+from marshmallow.fields import Dict, Nested, String
+from marshmallow_utils.fields import SanitizedUnicode, TrimmedString
+from marshmallow_utils.fields.nestedattr import NestedAttribute
 from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema, DictOnlySchema
 from oarepo_runtime.services.schema.rdm import RDMRecordMixin
 from oarepo_runtime.services.schema.validation import (
@@ -44,7 +48,14 @@ class NRDocumentRecordSchema(BaseRecordSchema, RDMRecordMixin):
     class Meta:
         unknown = ma.RAISE
 
+    access = NestedAttribute(lambda: AccessSchema())
+
     metadata = ma_fields.Nested(lambda: NRDocumentMetadataSchema())
+
+    pids = Dict(
+        keys=SanitizedUnicode(validate=validate_scheme),
+        values=Nested(PIDSchema),
+    )
 
     syntheticFields = ma_fields.Nested(lambda: NRDocumentSyntheticFieldsSchema())
     parent = ma.fields.Nested(GeneratedParentSchema)

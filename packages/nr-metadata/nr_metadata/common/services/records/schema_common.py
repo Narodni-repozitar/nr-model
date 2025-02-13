@@ -1,9 +1,14 @@
 import marshmallow as ma
 from edtf import Date as EDTFDate
+from invenio_rdm_records.services.schemas.access import AccessSchema
+from invenio_rdm_records.services.schemas.pids import PIDSchema
+from invenio_rdm_records.services.schemas.record import validate_scheme
 from marshmallow import Schema
 from marshmallow import fields as ma_fields
+from marshmallow.fields import Dict, Nested
 from marshmallow.validate import OneOf
-from marshmallow_utils.fields import TrimmedString
+from marshmallow_utils.fields import SanitizedUnicode, TrimmedString
+from marshmallow_utils.fields.nestedattr import NestedAttribute
 from oarepo_runtime.services.schema.i18n import I18nStrField, MultilingualField
 from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema, DictOnlySchema
 from oarepo_runtime.services.schema.rdm import RDMRecordMixin
@@ -38,7 +43,14 @@ class NRCommonRecordSchema(BaseRecordSchema, RDMRecordMixin):
     class Meta:
         unknown = ma.RAISE
 
+    access = NestedAttribute(lambda: AccessSchema())
+
     metadata = ma_fields.Nested(lambda: NRCommonMetadataSchema())
+
+    pids = Dict(
+        keys=SanitizedUnicode(validate=validate_scheme),
+        values=Nested(PIDSchema),
+    )
 
 
 class NRCommonMetadataSchema(Schema):

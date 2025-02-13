@@ -4,6 +4,44 @@
         "$schema": {
             "type": "string"
         },
+        "access": {
+            "type": "object",
+            "properties": {
+                "embargo": {
+                    "type": "object",
+                    "properties": {
+                        "active": {
+                            "type": [
+                                "boolean",
+                                "null"
+                            ]
+                        },
+                        "reason": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "until": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "format": "date"
+                        }
+                    }
+                },
+                "files": {
+                    "type": "string"
+                },
+                "record": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
         "created": {
             "type": "string",
             "format": "date-time"
@@ -686,6 +724,28 @@
                 },
                 "status": {
                     "type": "string"
+                }
+            }
+        },
+        "pids": {
+            "uniqueItems": true,
+            "propertyNames": {
+                "pattern": "^[a-z_-][a-z0-9_-]*$"
+            },
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "identifier": {
+                        "type": "string"
+                    },
+                    "provider": {
+                        "type": "string"
+                    },
+                    "client": {
+                        "type": "string"
+                    }
                 }
             }
         },

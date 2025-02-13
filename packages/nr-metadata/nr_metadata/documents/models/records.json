@@ -1,6 +1,74 @@
 {
     "model": {
         "type": "model",
+        "mapping": {
+            "template": {
+                "mappings": {
+                    "dynamic_templates": [
+                        {
+                            "pids": {
+                                "path_match": "pids.*",
+                                "match_mapping_type": "object",
+                                "mapping": {
+                                    "type": "object",
+                                    "properties": {
+                                        "identifier": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword",
+                                                    "ignore_above": 256
+                                                }
+                                            }
+                                        },
+                                        "provider": {
+                                            "type": "keyword"
+                                        },
+                                        "client": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "parent_pids": {
+                                "path_match": "parent.pids.*",
+                                "match_mapping_type": "object",
+                                "mapping": {
+                                    "type": "object",
+                                    "properties": {
+                                        "identifier": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword",
+                                                    "ignore_above": 256
+                                                }
+                                            }
+                                        },
+                                        "provider": {
+                                            "type": "keyword"
+                                        },
+                                        "client": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "generate": true,
+            "alias": "documents",
+            "module": "nr_metadata.documents.records.mappings",
+            "index": "documents-documents-1.0.0",
+            "index-field-args": [
+                "search_alias=\"documents\""
+            ],
+            "file": "nr_metadata/documents/records/mappings/os-v2/documents/documents-1.0.0.json"
+        },
         "marshmallow": {
             "imports": [],
             "class": "nr_metadata.documents.services.records.schema.NRDocumentRecordSchema",
@@ -130,11 +198,17 @@
             "generate": true,
             "extra-code": "",
             "base-classes": [
-                "invenio_records_resources.services.SearchOptions{InvenioSearchOptions}"
+                "oarepo_runtime.services.search.I18nRDMSearchOptions"
             ],
             "imports": [],
             "fields": {},
-            "sort-options-field": "sort_options"
+            "sort-options-field": "sort_options",
+            "versions": {
+                "class": "nr_metadata.documents.DocumentsVersionsSearchOptions",
+                "base-classes": [
+                    "invenio_rdm_records.services.config.RDMSearchVersionsOptions"
+                ]
+            }
         },
         "config": {
             "generate": true,
@@ -181,19 +255,6 @@
         "proxy": {
             "module": "nr_metadata.documents.proxies",
             "generate": true
-        },
-        "translations": {
-            "module": "nr_metadata.documents.translations",
-            "alias": "documents"
-        },
-        "files-field": {
-            "generate": true,
-            "field-class": "invenio_records_resources.records.systemfields.FilesField",
-            "file-class": "nr_metadata.documents.records.api.DocumentsRecord",
-            "field-args": [
-                "store=False"
-            ],
-            "imports": []
         },
         "record-metadata": {
             "generate": true,
@@ -283,6 +344,19 @@
             ],
             "imports": []
         },
+        "translations": {
+            "module": "nr_metadata.documents.translations",
+            "alias": "documents"
+        },
+        "files-field": {
+            "generate": true,
+            "field-class": "invenio_records_resources.records.systemfields.FilesField",
+            "file-class": "nr_metadata.documents.records.api.DocumentsRecord",
+            "field-args": [
+                "store=False"
+            ],
+            "imports": []
+        },
         "json-schema-settings": {
             "generate": true,
             "alias": "documents",
@@ -354,16 +428,6 @@
             "name": "parent-v1.0.0.json",
             "file": "nr_metadata/documents/records/jsonschemas/parent-v1.0.0.json",
             "generate": true
-        },
-        "mapping": {
-            "generate": true,
-            "alias": "documents",
-            "module": "nr_metadata.documents.records.mappings",
-            "index": "documents-documents-1.0.0",
-            "index-field-args": [
-                "search_alias=\"documents\""
-            ],
-            "file": "nr_metadata/documents/records/mappings/os-v2/documents/documents-1.0.0.json"
         },
         "permissions": {
             "generate": true,
@@ -439,6 +503,96 @@
                 },
                 "sample": {
                     "skip": true
+                }
+            },
+            "access": {
+                "type": "object",
+                "ui": {
+                    "marshmallow": {
+                        "generate": true,
+                        "read": false,
+                        "write": false,
+                        "class": "nr_metadata.documents.services.records.ui_schema.AccessUISchema"
+                    }
+                },
+                "marshmallow": {
+                    "generate": false,
+                    "class": "invenio_rdm_records.services.schemas.access.AccessSchema",
+                    "field-class": "marshmallow_utils.fields.nestedattr.NestedAttribute"
+                },
+                "sample": {
+                    "skip": true
+                },
+                "properties": {
+                    "embargo": {
+                        "type": "object",
+                        "marshmallow": {
+                            "generate": true,
+                            "class": "nr_metadata.documents.services.records.schema.EmbargoSchema"
+                        },
+                        "ui": {
+                            "marshmallow": {
+                                "generate": true,
+                                "class": "nr_metadata.documents.services.records.ui_schema.EmbargoUISchema"
+                            }
+                        },
+                        "properties": {
+                            "active": {
+                                "type": "boolean",
+                                "json-schema": {
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ]
+                                },
+                                "sample": {
+                                    "skip": true
+                                }
+                            },
+                            "reason": {
+                                "type": "fulltext",
+                                "json-schema": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "sample": {
+                                    "skip": true
+                                }
+                            },
+                            "until": {
+                                "type": "date",
+                                "json-schema": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "sample": {
+                                    "skip": true
+                                }
+                            }
+                        }
+                    },
+                    "files": {
+                        "type": "keyword",
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "record": {
+                        "type": "keyword",
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "status": {
+                        "type": "keyword",
+                        "sample": {
+                            "skip": true
+                        }
+                    }
                 }
             },
             "created": {
@@ -7206,6 +7360,43 @@
                             "facet": false
                         }
                     }
+                }
+            },
+            "pids": {
+                "type": "object",
+                "json-schema": {
+                    "type": "object",
+                    "uniqueItems": true,
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "identifier": {
+                                "type": "string"
+                            },
+                            "provider": {
+                                "type": "string"
+                            },
+                            "client": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "ui": {
+                    "marshmallow": {
+                        "generate": true,
+                        "read": false,
+                        "write": false,
+                        "class": "nr_metadata.documents.services.records.ui_schema.PidsUISchema"
+                    }
+                },
+                "marshmallow": {
+                    "generate": false,
+                    "field": "{{marshmallow.fields.Dict}}( keys={{marshmallow_utils.fields.SanitizedUnicode}}(validate={{invenio_rdm_records.services.schemas.record.validate_scheme}}),values={{marshmallow.fields.Nested}}({{invenio_rdm_records.services.schemas.pids.PIDSchema}}),)"
                 }
             },
             "syntheticFields": {

@@ -51,8 +51,7 @@ class DataServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig):
 
     @property
     def components(self):
-
-        return process_service_configs(self) + [OwnersComponent, CustomFieldsComponent]
+        return process_service_configs(self, OwnersComponent, CustomFieldsComponent)
 
     model = "nr_metadata.data"
 

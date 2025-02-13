@@ -79,7 +79,7 @@ DocumentModel:
   ui:
     marshmallow:
       class: nr_metadata.documents.services.records.ui_schema.NRDocumentRecordUISchema
-  use: [invenio]
+  use:  [invenio, rdm]
 
   record:
     imports:
