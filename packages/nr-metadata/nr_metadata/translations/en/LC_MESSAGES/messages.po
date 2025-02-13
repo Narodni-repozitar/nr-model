@@ -1275,11 +1275,6 @@ msgid ""
 "website or database or specify another external source for the resource. "
 msgstr ""
 
-msgid ""
-"File addition, removal or modification are not allowed after you have "
-"published your draft."
-msgstr ""
-
 msgid "If you wish to upload files, you must<1>save</1>your draft first."
 msgstr ""
 
@@ -1911,4 +1906,9 @@ msgstr ""
 msgid ""
 "You must create a new version to add, modify or delete files. It can be done"
 " on record's <2>detail</2> page."
+msgstr ""
+
+msgid ""
+"After publishing the draft, it is not possible to add, modify or delete "
+"files. It will be necessary to create a new version of the record."
 msgstr ""

@@ -6,7 +6,6 @@ import FileManagementDialog from "@oarepo/file-manager";
 export const FileUploadWrapper = ({
   uploadWrapperClassName,
   uploadButtonClassName,
-  lockFileUploader,
   props,
 }) => {
   const TriggerComponent = ({ onClick, ...props }) => (
@@ -15,7 +14,6 @@ export const FileUploadWrapper = ({
       onClick={onClick}
       type="button"
       aria-label={i18next.t("Upload files")}
-      disabled={lockFileUploader}
       {...props}
     >
       {i18next.t("Upload files")}
@@ -34,7 +32,6 @@ FileUploadWrapper.propTypes = {
   uploadWrapperClassName: PropTypes.string,
   uploadButtonClassName: PropTypes.string,
   props: PropTypes.object,
-  lockFileUploader: PropTypes.bool.isRequired,
 };
 
 FileUploadWrapper.defaultProps = {
@@ -45,7 +42,6 @@ FileUploadWrapper.defaultProps = {
 export const FileEditWrapper = ({
   editWrapperClassName,
   editButtonClassName,
-  lockFileUploader,
   props,
 }) => {
   const TriggerComponent = ({ onClick, ...props }) => {
@@ -56,7 +52,6 @@ export const FileEditWrapper = ({
         {...props}
         aria-label={i18next.t("Edit file")}
         type="button"
-        disabled={lockFileUploader}
       >
         <i
           aria-hidden="true"
@@ -78,7 +73,6 @@ FileEditWrapper.propTypes = {
   editWrapperClassName: PropTypes.string,
   editButtonClassName: PropTypes.string,
   props: PropTypes.object,
-  lockFileUploader: PropTypes.bool.isRequired,
 };
 
 FileEditWrapper.defaultProps = {

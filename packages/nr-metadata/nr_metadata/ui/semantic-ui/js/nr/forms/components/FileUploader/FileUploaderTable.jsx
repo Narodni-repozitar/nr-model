@@ -28,12 +28,7 @@ StatusIcon.propTypes = {
   status: PropTypes.string,
 };
 
-const DeleteFileButtonCmp = ({
-  file,
-  handleFileDeletion,
-  className,
-  lockFileUploader,
-}) => {
+const DeleteFileButtonCmp = ({ file, handleFileDeletion, className }) => {
   return (
     <Popup
       position="top center"
@@ -43,7 +38,6 @@ const DeleteFileButtonCmp = ({
           <DeleteFileButton
             file={file}
             handleFileDeletion={handleFileDeletion}
-            lockFileUploader={lockFileUploader}
           />
         </div>
       }
@@ -55,15 +49,9 @@ DeleteFileButtonCmp.propTypes = {
   file: PropTypes.object,
   handleFileDeletion: PropTypes.func,
   className: PropTypes.string,
-  lockFileUploader: PropTypes.bool.isRequired,
 };
 
-const EditFileButtonCmp = ({
-  fileName,
-  record,
-  className,
-  lockFileUploader,
-}) => {
+const EditFileButtonCmp = ({ fileName, record, className }) => {
   return (
     <Popup
       // quirky issue where while in UPPY UI the popup goes over it
@@ -72,11 +60,7 @@ const EditFileButtonCmp = ({
       content={i18next.t("Edit file metadata")}
       trigger={
         <div className={className}>
-          <EditFileButton
-            fileName={fileName}
-            record={record}
-            lockFileUploader={lockFileUploader}
-          />
+          <EditFileButton fileName={fileName} record={record} />
         </div>
       }
     />
@@ -87,7 +71,6 @@ EditFileButtonCmp.propTypes = {
   fileName: PropTypes.string,
   record: PropTypes.object,
   className: PropTypes.string,
-  lockFileUploader: PropTypes.bool.isRequired,
 };
 
 export const FileUploaderTable = ({
@@ -137,22 +120,25 @@ export const FileUploaderTable = ({
                   <Table.Cell textAlign="center">
                     <StatusIcon status={status} />
                   </Table.Cell>
-                  <Table.Cell width={1} textAlign="center">
-                    {status === "completed" && (
-                      <EditFileButtonCmp
-                        fileName={fileName}
-                        record={record}
+                  {!lockFileUploader && (
+                    <Table.Cell width={1} textAlign="center">
+                      {status === "completed" && (
+                        <EditFileButtonCmp
+                          fileName={fileName}
+                          record={record}
+                        />
+                      )}
+                    </Table.Cell>
+                  )}
+                  {!lockFileUploader && (
+                    <Table.Cell width={1} textAlign="center">
+                      <DeleteFileButtonCmp
+                        file={file}
+                        handleFileDeletion={handleFileDeletion}
                         lockFileUploader={lockFileUploader}
                       />
-                    )}
-                  </Table.Cell>
-                  <Table.Cell width={1} textAlign="center">
-                    <DeleteFileButtonCmp
-                      file={file}
-                      handleFileDeletion={handleFileDeletion}
-                      lockFileUploader={lockFileUploader}
-                    />
-                  </Table.Cell>
+                    </Table.Cell>
+                  )}
                 </Table.Row>
               );
             })}
@@ -197,22 +183,23 @@ export const FileUploaderTable = ({
                       <StatusIcon status={status} />
                     </Table.Cell>
                   </Table.Row>
-                  <Table.Row verticalAlign="middle">
-                    <Table.Cell width={6}>
-                      <strong>{i18next.t("Delete")}</strong>
-                    </Table.Cell>
-                    <Table.Cell
-                      textAlign="center"
-                      className="flex justify-center"
-                    >
-                      <DeleteFileButtonCmp
-                        file={file}
-                        handleFileDeletion={handleFileDeletion}
-                        lockFileUploader={lockFileUploader}
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                  {status === "completed" && (
+                  {!lockFileUploader && (
+                    <Table.Row verticalAlign="middle">
+                      <Table.Cell width={6}>
+                        <strong>{i18next.t("Delete")}</strong>
+                      </Table.Cell>
+                      <Table.Cell
+                        textAlign="center"
+                        className="flex justify-center"
+                      >
+                        <DeleteFileButtonCmp
+                          file={file}
+                          handleFileDeletion={handleFileDeletion}
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                  )}
+                  {status === "completed" && !lockFileUploader && (
                     <Table.Row>
                       <Table.Cell width={6}>
                         <strong>{i18next.t("Edit")}</strong>
@@ -224,7 +211,6 @@ export const FileUploaderTable = ({
                         <EditFileButtonCmp
                           fileName={fileName}
                           record={record}
-                          lockFileUploader={lockFileUploader}
                         />
                       </Table.Cell>
                     </Table.Row>

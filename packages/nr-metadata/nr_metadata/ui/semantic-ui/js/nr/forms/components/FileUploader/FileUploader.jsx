@@ -206,7 +206,7 @@ FileUploader.propTypes = {
 
 FileUploader.defaultProps = {
   fileUploaderMessage: i18next.t(
-    "File addition, removal or modification are not allowed after you have published your draft."
+    "After publishing the draft, it is not possible to add, modify or delete files. It will be necessary to create a new version of the record."
   ),
   allowedFileTypes: ["*/*"],
 };
