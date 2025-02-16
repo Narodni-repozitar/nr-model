@@ -75,20 +75,6 @@
                         }
                     }
                 },
-                "accessRights": {
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "string"
-                        },
-                        "title": {
-                            "type": "object"
-                        },
-                        "@v": {
-                            "type": "string"
-                        }
-                    }
-                },
                 "accessibility": {
                     "type": "array",
                     "items": {
@@ -937,6 +923,8 @@
             "propertyNames": {
                 "pattern": "^[a-z_-][a-z0-9_-]*$"
             },
+            "uniqueItems": true,
+            "type": "object",
             "additionalProperties": {
                 "type": "object",
                 "additionalProperties": false,
@@ -951,9 +939,7 @@
                         "type": "string"
                     }
                 }
-            },
-            "type": "object",
-            "uniqueItems": true
+            }
         },
         "updated": {
             "type": "string",

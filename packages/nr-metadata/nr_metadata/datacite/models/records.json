@@ -73,8 +73,7 @@
             "imports": [],
             "class": "nr_metadata.datacite.services.records.schema.DataCiteRecordSchema",
             "base-classes": [
-                "oarepo_runtime.services.schema.marshmallow.BaseRecordSchema",
-                "oarepo_runtime.services.schema.rdm.RDMRecordMixin"
+                "oarepo_runtime.services.schema.marshmallow.RDMBaseRecordSchema"
             ],
             "generate": true,
             "module": "nr_metadata.datacite.services.records.schema",
@@ -2534,11 +2533,10 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "uniqueItems": true,
+                    "type": "object",
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
-                    "type": "object",
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -2553,7 +2551,8 @@
                                 "type": "string"
                             }
                         }
-                    }
+                    },
+                    "uniqueItems": true
                 },
                 "ui": {
                     "marshmallow": {

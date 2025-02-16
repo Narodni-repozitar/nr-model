@@ -15,7 +15,6 @@ from oarepo_runtime.services.schema.ui import (
 )
 
 from nr_metadata.common.services.records.ui_schema_datatypes import (
-    NRAccessRightsVocabularyUISchema,
     NRContributorUISchema,
     NRCreatorUISchema,
     NREventUISchema,
@@ -56,10 +55,6 @@ class NRCommonMetadataUISchema(Schema):
         unknown = ma.RAISE
 
     abstract = MultilingualUIField(I18nStrUIField())
-
-    accessRights = ma_fields.Nested(
-        lambda: NRAccessRightsVocabularyUISchema(), required=True
-    )
 
     accessibility = MultilingualLocalizedUIField(I18nStrUIField())
 
