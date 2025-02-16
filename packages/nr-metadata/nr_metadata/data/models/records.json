@@ -7179,11 +7179,11 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
+                    "type": "object",
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
                     "uniqueItems": true,
-                    "type": "object",
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
