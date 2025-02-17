@@ -7,7 +7,6 @@ from invenio_records_resources.services import (
 )
 from oarepo_runtime.services.components import (
     CustomFieldsComponent,
-    OwnersComponent,
     process_service_configs,
 )
 from oarepo_runtime.services.config import (
@@ -54,7 +53,7 @@ class CommonServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig)
 
     @property
     def components(self):
-        return process_service_configs(self, OwnersComponent, CustomFieldsComponent)
+        return process_service_configs(self, CustomFieldsComponent)
 
     model = "nr_metadata.common"
 
