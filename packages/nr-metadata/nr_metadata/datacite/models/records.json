@@ -297,7 +297,6 @@
             "extra-code": "",
             "service-id": "datacite",
             "components": [
-                "{{oarepo_runtime.services.components.OwnersComponent}}",
                 "{{oarepo_runtime.services.components.CustomFieldsComponent}}"
             ],
             "additional-args": [],
@@ -2534,9 +2533,6 @@
                 "type": "object",
                 "json-schema": {
                     "type": "object",
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
                     "uniqueItems": true,
                     "additionalProperties": {
                         "type": "object",
@@ -2552,6 +2548,9 @@
                                 "type": "string"
                             }
                         }
+                    },
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
                     }
                 },
                 "ui": {

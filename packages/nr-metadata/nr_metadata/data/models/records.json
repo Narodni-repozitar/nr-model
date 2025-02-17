@@ -297,7 +297,6 @@
             "extra-code": "",
             "service-id": "data",
             "components": [
-                "{{oarepo_runtime.services.components.OwnersComponent}}",
                 "{{oarepo_runtime.services.components.CustomFieldsComponent}}"
             ],
             "additional-args": [],
@@ -7182,8 +7181,8 @@
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
-                    "type": "object",
                     "uniqueItems": true,
+                    "type": "object",
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
