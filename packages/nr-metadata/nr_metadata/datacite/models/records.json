@@ -85,7 +85,7 @@
                 "imports": [],
                 "class": "nr_metadata.datacite.services.records.ui_schema.DataCiteRecordUISchema",
                 "base-classes": [
-                    "oarepo_runtime.services.schema.ui.InvenioUISchema"
+                    "oarepo_runtime.services.schema.ui.InvenioRDMUISchema"
                 ],
                 "generate": true,
                 "module": "nr_metadata.datacite.services.records.ui_schema",
@@ -2533,11 +2533,11 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "type": "object",
                     "uniqueItems": true,
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
+                    "type": "object",
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,

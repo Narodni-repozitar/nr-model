@@ -85,7 +85,7 @@
                 "imports": [],
                 "class": "nr_metadata.documents.services.records.ui_schema.NRDocumentRecordUISchema",
                 "base-classes": [
-                    "oarepo_runtime.services.schema.ui.InvenioUISchema"
+                    "oarepo_runtime.services.schema.ui.InvenioRDMUISchema"
                 ],
                 "generate": true,
                 "module": "nr_metadata.documents.services.records.ui_schema",
@@ -7241,10 +7241,7 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "type": "object",
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
+                    "uniqueItems": true,
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -7260,7 +7257,10 @@
                             }
                         }
                     },
-                    "uniqueItems": true
+                    "type": "object",
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    }
                 },
                 "ui": {
                     "marshmallow": {

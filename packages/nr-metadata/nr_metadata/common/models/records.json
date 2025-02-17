@@ -85,7 +85,7 @@
                 "imports": [],
                 "class": "nr_metadata.common.services.records.ui_schema_common.NRCommonRecordUISchema",
                 "base-classes": [
-                    "oarepo_runtime.services.schema.ui.InvenioUISchema"
+                    "oarepo_runtime.services.schema.ui.InvenioRDMUISchema"
                 ],
                 "generate": true,
                 "module": "nr_metadata.common.services.records.ui_schema",
@@ -5745,10 +5745,6 @@
                 "type": "object",
                 "json-schema": {
                     "uniqueItems": true,
-                    "type": "object",
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -5763,7 +5759,11 @@
                                 "type": "string"
                             }
                         }
-                    }
+                    },
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
+                    "type": "object"
                 },
                 "ui": {
                     "marshmallow": {

@@ -932,10 +932,7 @@
             }
         },
         "pids": {
-            "type": "object",
-            "propertyNames": {
-                "pattern": "^[a-z_-][a-z0-9_-]*$"
-            },
+            "uniqueItems": true,
             "additionalProperties": {
                 "type": "object",
                 "additionalProperties": false,
@@ -951,7 +948,10 @@
                     }
                 }
             },
-            "uniqueItems": true
+            "type": "object",
+            "propertyNames": {
+                "pattern": "^[a-z_-][a-z0-9_-]*$"
+            }
         },
         "syntheticFields": {
             "type": "object",

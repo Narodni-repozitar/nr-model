@@ -9,7 +9,7 @@ from oarepo_runtime.services.schema.i18n_ui import (
 )
 from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
 from oarepo_runtime.services.schema.ui import (
-    InvenioUISchema,
+    InvenioRDMUISchema,
     LocalizedDate,
     LocalizedEDTF,
 )
@@ -35,7 +35,7 @@ from nr_metadata.ui_schema.identifiers import (
 from nr_metadata.ui_schema.subjects import NRSubjectListField
 
 
-class NRCommonRecordUISchema(InvenioUISchema):
+class NRCommonRecordUISchema(InvenioRDMUISchema):
     class Meta:
         unknown = ma.RAISE
 
