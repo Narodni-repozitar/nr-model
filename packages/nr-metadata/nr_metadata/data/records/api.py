@@ -45,11 +45,6 @@ class DataRecord(RDMRecord):
     )
 
     relations = RelationsField(
-        accessRights=PIDRelation(
-            "metadata.accessRights",
-            keys=["id", "title"],
-            pid_field=Vocabulary.pid.with_type_ctx("access-rights"),
-        ),
         affiliations=PIDRelation(
             "metadata.contributors.affiliations",
             keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],

@@ -293,17 +293,6 @@ class NRRelatedItemCreatorUISchema(DictOnlySchema):
     nameType = ma_fields.String(validate=[OneOf(["Organizational"])])
 
 
-class NRAccessRightsVocabularyUISchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.INCLUDE
-
-    _id = String(data_key="id", attribute="id")
-
-    _version = String(data_key="@v", attribute="@v")
-
-    title = VocabularyI18nStrUIField()
-
-
 class NRAffiliationVocabularyUISchema(DictOnlySchema):
     class Meta:
         unknown = ma.INCLUDE

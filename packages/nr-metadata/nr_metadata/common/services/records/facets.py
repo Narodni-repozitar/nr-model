@@ -38,12 +38,6 @@ metadata_abstract_lang = NestedLabeledFacet(
     ),
 )
 
-metadata_accessRights = VocabularyFacet(
-    field="metadata.accessRights",
-    label=_("metadata/accessRights.label"),
-    vocabulary="access-rights",
-)
-
 metadata_accessibility_cs = TermsFacet(
     field="metadata.accessibility.cs.keyword", label=_("metadata/accessibility.label")
 )

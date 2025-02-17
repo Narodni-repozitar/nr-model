@@ -73,8 +73,7 @@
             "imports": [],
             "class": "nr_metadata.documents.services.records.schema.NRDocumentRecordSchema",
             "base-classes": [
-                "oarepo_runtime.services.schema.marshmallow.BaseRecordSchema",
-                "oarepo_runtime.services.schema.rdm.RDMRecordMixin"
+                "oarepo_runtime.services.schema.marshmallow.RDMBaseRecordSchema"
             ],
             "generate": true,
             "module": "nr_metadata.documents.services.records.schema",
@@ -86,7 +85,7 @@
                 "imports": [],
                 "class": "nr_metadata.documents.services.records.ui_schema.NRDocumentRecordUISchema",
                 "base-classes": [
-                    "oarepo_runtime.services.schema.ui.InvenioUISchema"
+                    "oarepo_runtime.services.schema.ui.InvenioRDMUISchema"
                 ],
                 "generate": true,
                 "module": "nr_metadata.documents.services.records.ui_schema",
@@ -761,129 +760,6 @@
                                     "required": true,
                                     "label.cs": "Text",
                                     "label.en": "Text"
-                                }
-                            }
-                        }
-                    },
-                    "accessRights": {
-                        "type": "vocabulary",
-                        "required": true,
-                        "vocabulary-type": "access-rights",
-                        "ui": {
-                            "marshmallow": {
-                                "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRAccessRightsVocabularyUISchema",
-                                "read": false,
-                                "write": false,
-                                "unknown": "INCLUDE",
-                                "generate": true
-                            },
-                            "detail": "vocabulary_item",
-                            "edit": "vocabulary_item"
-                        },
-                        "marshmallow": {
-                            "class": "nr_metadata.common.services.records.schema_datatypes.NRAccessRightsVocabularySchema",
-                            "read": false,
-                            "write": false,
-                            "unknown": "INCLUDE",
-                            "generate": true
-                        },
-                        "sample": [
-                            "open",
-                            "embargoed",
-                            "restricted",
-                            "metadata only"
-                        ],
-                        "label.cs": "Přístupová práva",
-                        "label.en": "Access rights",
-                        "hint.cs": "Vyberte typ přístupu, zda bude zdroj dostupný otevřeně nebo s omezením.",
-                        "hint.en": "Choose access type - if the resource is open or has some restrictions.",
-                        "imports": [
-                            {
-                                "import": "oarepo_vocabularies.records.api.Vocabulary"
-                            }
-                        ],
-                        "model": "vocabularies",
-                        "keys": [
-                            "id",
-                            "title"
-                        ],
-                        "pid-field": "Vocabulary.pid.with_type_ctx(\"access-rights\")",
-                        "facets": {
-                            "args": [
-                                "vocabulary='access-rights'"
-                            ]
-                        },
-                        "properties": {
-                            "id": {
-                                "marshmallow": {
-                                    "field-class": "marshmallow.fields.String",
-                                    "validators": [],
-                                    "imports": []
-                                },
-                                "ui": {
-                                    "marshmallow": {
-                                        "field-class": "marshmallow.fields.String",
-                                        "validators": [],
-                                        "imports": []
-                                    }
-                                },
-                                "type": "keyword",
-                                "mapping": {
-                                    "fields": {
-                                        "text": {
-                                            "type": "search_as_you_type"
-                                        }
-                                    }
-                                },
-                                "sample": {
-                                    "skip": true
-                                }
-                            },
-                            "title": {
-                                "marshmallow": {
-                                    "generate": false,
-                                    "field": "{{invenio_vocabularies.services.schema.i18n_strings}}",
-                                    "field-class": "marshmallow.fields.Nested",
-                                    "validators": [],
-                                    "class": "invenio_vocabularies.services.records.schema.TitleSchema"
-                                },
-                                "ui": {
-                                    "marshmallow": {
-                                        "field": "{{oarepo_vocabularies.services.ui_schema.VocabularyI18nStrUIField}}()",
-                                        "generate": false
-                                    }
-                                },
-                                "mapping": {
-                                    "dynamic": true,
-                                    "properties": {
-                                        "en": {
-                                            "type": "search_as_you_type",
-                                            "copy_to": "title_sort"
-                                        }
-                                    }
-                                },
-                                "type": "object",
-                                "propertyNames": {
-                                    "pattern": "^[a-z]{2}$"
-                                },
-                                "additionalProperties": {
-                                    "type": "string"
-                                }
-                            },
-                            "@v": {
-                                "type": "keyword",
-                                "marshmallow": {
-                                    "field-name": "_version",
-                                    "field-class": "marshmallow.fields.String"
-                                },
-                                "ui": {
-                                    "marshmallow": {
-                                        "field-name": "_version",
-                                        "field-class": "marshmallow.fields.String"
-                                    }
-                                },
-                                "facets": {
-                                    "facet": false
                                 }
                             }
                         }
@@ -7365,8 +7241,6 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "type": "object",
-                    "uniqueItems": true,
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
@@ -7384,7 +7258,9 @@
                                 "type": "string"
                             }
                         }
-                    }
+                    },
+                    "type": "object",
+                    "uniqueItems": true
                 },
                 "ui": {
                     "marshmallow": {

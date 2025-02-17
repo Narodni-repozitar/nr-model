@@ -11,8 +11,10 @@ from marshmallow import fields as ma_fields
 from marshmallow.fields import Dict, Nested, String
 from marshmallow_utils.fields import SanitizedUnicode, TrimmedString
 from marshmallow_utils.fields.nestedattr import NestedAttribute
-from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema, DictOnlySchema
-from oarepo_runtime.services.schema.rdm import RDMRecordMixin
+from oarepo_runtime.services.schema.marshmallow import (
+    DictOnlySchema,
+    RDMBaseRecordSchema,
+)
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_identifier,
@@ -44,7 +46,7 @@ class GeneratedParentSchema(InvenioParentSchema):
     owners = ma.fields.List(ma.fields.Dict(), load_only=True)
 
 
-class NRDocumentRecordSchema(BaseRecordSchema, RDMRecordMixin):
+class NRDocumentRecordSchema(RDMBaseRecordSchema):
     class Meta:
         unknown = ma.RAISE
 

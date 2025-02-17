@@ -9,13 +9,12 @@ from oarepo_runtime.services.schema.i18n_ui import (
 )
 from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
 from oarepo_runtime.services.schema.ui import (
-    InvenioUISchema,
+    InvenioRDMUISchema,
     LocalizedDate,
     LocalizedEDTF,
 )
 
 from nr_metadata.common.services.records.ui_schema_datatypes import (
-    NRAccessRightsVocabularyUISchema,
     NRContributorUISchema,
     NRCreatorUISchema,
     NREventUISchema,
@@ -36,7 +35,7 @@ from nr_metadata.ui_schema.identifiers import (
 from nr_metadata.ui_schema.subjects import NRSubjectListField
 
 
-class NRCommonRecordUISchema(InvenioUISchema):
+class NRCommonRecordUISchema(InvenioRDMUISchema):
     class Meta:
         unknown = ma.RAISE
 
@@ -56,10 +55,6 @@ class NRCommonMetadataUISchema(Schema):
         unknown = ma.RAISE
 
     abstract = MultilingualUIField(I18nStrUIField())
-
-    accessRights = ma_fields.Nested(
-        lambda: NRAccessRightsVocabularyUISchema(), required=True
-    )
 
     accessibility = MultilingualLocalizedUIField(I18nStrUIField())
 

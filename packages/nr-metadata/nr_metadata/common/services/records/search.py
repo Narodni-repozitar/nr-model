@@ -17,7 +17,6 @@ class CommonSearchOptions(I18nRDMSearchOptions):
         "metadata_abstract_cs": facets.metadata_abstract_cs,
         "metadata_abstract_en": facets.metadata_abstract_en,
         "metadata_abstract_lang": facets.metadata_abstract_lang,
-        "metadata_accessRights": facets.metadata_accessRights,
         "metadata_accessibility_cs": facets.metadata_accessibility_cs,
         "metadata_accessibility_en": facets.metadata_accessibility_en,
         "metadata_accessibility_lang": facets.metadata_accessibility_lang,
