@@ -55,13 +55,16 @@ compile_nr_metadata() {
   decho "Compiling common metadata"
   "$MODEL_BUILDER_VENV"/bin/oarepo-compile-model nr-metadata.yaml -vvv \
       --include nr-common-metadata="$base_dir/models/nr_common_metadata_${MODEL_VERSION}.yaml" \
-      --include nr-datatypes="$base_dir/models/nr_datatypes_${MODEL_VERSION}.yaml"
+      --include nr-datatypes="$base_dir/models/nr_datatypes_${MODEL_VERSION}.yaml" \
+      --include rdm-index-settings-6.0="$base_dir/models/rdm_index_settings_6.0.yaml"
 
   decho "Compiling nr-documents"
   "$MODEL_BUILDER_VENV"/bin/oarepo-compile-model nr-documents.yaml -vvv \
       --include nr-common-metadata="$base_dir/models/nr_common_metadata_${MODEL_VERSION}.yaml" \
       --include nr-datatypes="$base_dir/models/nr_datatypes_${MODEL_VERSION}.yaml" \
-      --include nr-documents="$base_dir/models/nr_documents_${MODEL_VERSION}.yaml"
+      --include nr-documents="$base_dir/models/nr_documents_${MODEL_VERSION}.yaml" \
+      --include rdm-index-settings-6.0="$base_dir/models/rdm_index_settings_6.0.yaml"
+
   copy_version ../../version nr_metadata/version.py
   cp ../../README.md .
 
@@ -69,14 +72,16 @@ compile_nr_metadata() {
   "$MODEL_BUILDER_VENV"/bin/oarepo-compile-model nr-data.yaml -vvv \
       --include nr-common-metadata="$base_dir/models/nr_common_metadata_${MODEL_VERSION}.yaml" \
       --include nr-datatypes="$base_dir/models/nr_datatypes_${MODEL_VERSION}.yaml" \
-      --include nr-data="$base_dir/models/nr_data_${MODEL_VERSION}.yaml"
+      --include nr-data="$base_dir/models/nr_data_${MODEL_VERSION}.yaml" \
+      --include rdm-index-settings-6.0="$base_dir/models/rdm_index_settings_6.0.yaml"
   copy_version ../../version nr_metadata/version.py
   cp ../../README.md .
 
   decho "Compiling datacite metadata"
   "$MODEL_BUILDER_VENV"/bin/oarepo-compile-model nr-datacite.yaml -vvv \
       --include datacite="$base_dir/models/datacite_4.5.yaml" \
-      --include datacite-datatypes="$base_dir/models/datacite_datatypes_4.5.yaml"
+      --include datacite-datatypes="$base_dir/models/datacite_datatypes_4.5.yaml" \
+      --include rdm-index-settings-6.0="$base_dir/models/rdm_index_settings_6.0.yaml"
 }
 
 test_nr_metadata() {
