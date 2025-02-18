@@ -3759,13 +3759,6 @@ msgstr ""
 "Vložte URL odkaz dalšího umístění zdroje (př. Jiný repozitář, databáze, "
 "webová stránka)."
 
-msgid ""
-"File addition, removal or modification are not allowed after you have "
-"published your draft."
-msgstr ""
-"Přidávání, odstraňování nebo úpravy souborů nejsou povoleny poté, co jste "
-"publikoval váš koncept."
-
 msgid "If you wish to upload files, you must<1>save</1>your draft first."
 msgstr "Chcete-li nahrát soubory, musíte nejprve <1>uložit</1> svůj koncept."
 
@@ -4009,3 +4002,34 @@ msgstr "ISNI profil"
 
 msgid "Organization's name is a required field."
 msgstr "Název organizace je povinné pole."
+
+msgid "You can import files from the previous version."
+msgstr "Soubory můžete importovat z předchozí verze."
+
+msgid "Import files"
+msgstr "Importovat soubory"
+
+msgid "Failed to import files from previous version. Please try again."
+msgstr ""
+"Nepodařilo se importovat soubory z předchozí verze. Zkuste to prosím znovu."
+
+msgid ""
+"<0>If you wish to upload files, you must </0><1>save</1><2> your draft "
+"first.</2>"
+msgstr ""
+"<0>Pokud chcete nahrát soubory, musíte nejprve </0><1>uložit</1><2> svůj "
+"koncept.</2>"
+
+msgid ""
+"You must create a new version to add, modify or delete files. It can be done"
+" on record's <2>detail</2> page."
+msgstr ""
+"Pro přidání, úpravu nebo smazání souborů musíte vytvořit novou verzi. To lze"
+" provést na stránce <2>detailu</2> záznamu."
+
+msgid ""
+"After publishing the draft, it is not possible to add, modify or delete "
+"files. It will be necessary to create a new version of the record."
+msgstr ""
+"Po zveřejnění konceptu není možné přidávat, upravovat ani odstraňovat "
+"soubory. Bude nutné vytvořit novou verzi záznamu."

@@ -5,6 +5,38 @@
                 "type": "keyword",
                 "ignore_above": 1024
             },
+            "access": {
+                "type": "object",
+                "properties": {
+                    "embargo": {
+                        "type": "object",
+                        "properties": {
+                            "active": {
+                                "type": "boolean"
+                            },
+                            "reason": {
+                                "type": "text"
+                            },
+                            "until": {
+                                "type": "date",
+                                "format": "basic_date||strict_date"
+                            }
+                        }
+                    },
+                    "files": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    },
+                    "record": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    },
+                    "status": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    }
+                }
+            },
             "created": {
                 "type": "date",
                 "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
@@ -117,34 +149,6 @@
                                         "ignore_above": 256
                                     }
                                 }
-                            }
-                        }
-                    },
-                    "accessRights": {
-                        "type": "object",
-                        "properties": {
-                            "id": {
-                                "fields": {
-                                    "text": {
-                                        "type": "search_as_you_type"
-                                    }
-                                },
-                                "type": "keyword",
-                                "ignore_above": 1024
-                            },
-                            "title": {
-                                "dynamic": true,
-                                "properties": {
-                                    "en": {
-                                        "type": "search_as_you_type",
-                                        "copy_to": "title_sort"
-                                    }
-                                },
-                                "type": "object"
-                            },
-                            "@v": {
-                                "type": "keyword",
-                                "ignore_above": 1024
                             }
                         }
                     },
@@ -1226,6 +1230,9 @@
                     }
                 }
             },
+            "pids": {
+                "type": "object"
+            },
             "syntheticFields": {
                 "type": "object",
                 "properties": {
@@ -1296,6 +1303,60 @@
                     }
                 }
             }
-        }
+        },
+        "dynamic_templates": [
+            {
+                "pids": {
+                    "path_match": "pids.*",
+                    "match_mapping_type": "object",
+                    "mapping": {
+                        "type": "object",
+                        "properties": {
+                            "identifier": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 256
+                                    }
+                                }
+                            },
+                            "provider": {
+                                "type": "keyword"
+                            },
+                            "client": {
+                                "type": "keyword"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "parent_pids": {
+                    "path_match": "parent.pids.*",
+                    "match_mapping_type": "object",
+                    "mapping": {
+                        "type": "object",
+                        "properties": {
+                            "identifier": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 256
+                                    }
+                                }
+                            },
+                            "provider": {
+                                "type": "keyword"
+                            },
+                            "client": {
+                                "type": "keyword"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
     }
 }

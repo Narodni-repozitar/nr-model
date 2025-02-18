@@ -23,10 +23,7 @@ export const FileUploadWrapper = ({
 
   return (
     <div className={uploadWrapperClassName}>
-      <FileManagementDialog 
-        TriggerComponent={TriggerComponent}
-        {...props}
-      />
+      <FileManagementDialog TriggerComponent={TriggerComponent} {...props} />
     </div>
   );
 };
@@ -36,6 +33,7 @@ FileUploadWrapper.propTypes = {
   uploadButtonClassName: PropTypes.string,
   props: PropTypes.object,
 };
+
 FileUploadWrapper.defaultProps = {
   uploadWrapperClassName: "ui container centered",
   uploadButtonClassName: "ui button icon left labeled files-upload-button",
@@ -46,24 +44,27 @@ export const FileEditWrapper = ({
   editButtonClassName,
   props,
 }) => {
-  const TriggerComponent = ({ onClick, ...props }) => (
-    <button
-      className={editButtonClassName}
-      onClick={onClick}
-      {...props}
-      aria-label={i18next.t("Edit file")}
-      type="button"
-    >
-      <i aria-hidden="true" className="pencil icon" style={{ margin: "0", opacity: "1" }} />
-    </button>
-  );
+  const TriggerComponent = ({ onClick, ...props }) => {
+    return (
+      <button
+        className={editButtonClassName}
+        onClick={onClick}
+        {...props}
+        aria-label={i18next.t("Edit file")}
+        type="button"
+      >
+        <i
+          aria-hidden="true"
+          className="pencil icon"
+          style={{ margin: "0", opacity: "1" }}
+        />
+      </button>
+    );
+  };
 
   return (
     <div className={editWrapperClassName}>
-      <FileManagementDialog
-        TriggerComponent={TriggerComponent}
-        {...props}
-      />
+      <FileManagementDialog TriggerComponent={TriggerComponent} {...props} />
     </div>
   );
 };

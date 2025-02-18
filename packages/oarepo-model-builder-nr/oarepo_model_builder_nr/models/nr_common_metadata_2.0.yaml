@@ -147,18 +147,18 @@ CommonMetadata:
       help.cs: Vyberte jazyk a zapište nebo vložte text. Technické informace můžete poskytnout ve více jazycích.
       help.en: Choose language and write down the text. Technical information can be provided in multiple languages.
 
-
     rights:
       # Any license or copyright information for this resource. Taxonomy field.
       use: "nr-datatypes#NRRights"
       #^uniqueItems: true
 
-    accessRights:
-      # Taxonomy driven list of possible access to the document - open,
-      # embargoed, restirected and metadata only access. Based on COAR
-      # vocabulary - http://vocabularies.coar-repositories.org/documentation/access_rights/",
-      required: true
-      use: "nr-datatypes#NRAccessRights"
+    # accessRights:
+    #   # Taxonomy driven list of possible access to the document - open,
+    #   # embargoed, restirected and metadata only access. Based on COAR
+    #   # vocabulary - http://vocabularies.coar-repositories.org/documentation/access_rights/",
+    #   required: true
+    #   use: "nr-datatypes#NRAccessRights"
+    # not present here in metadata as access is handled by invenio-rdm-records
 
     relatedItems[]:
       use: "nr-datatypes#NRRelatedItem"
@@ -251,7 +251,7 @@ CommonModel:
   ui:
     marshmallow:
       class: nr_metadata.common.services.records.ui_schema_common.NRCommonRecordUISchema
-  use: [invenio]
+  use: [invenio, rdm]
 
   properties:
     metadata:

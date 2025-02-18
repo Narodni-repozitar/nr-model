@@ -1,12 +1,19 @@
 import marshmallow as ma
 from edtf import Date as EDTFDate
+from invenio_rdm_records.services.schemas.access import AccessSchema
+from invenio_rdm_records.services.schemas.pids import PIDSchema
+from invenio_rdm_records.services.schemas.record import validate_scheme
 from marshmallow import Schema
 from marshmallow import fields as ma_fields
+from marshmallow.fields import Dict, Nested
 from marshmallow.validate import OneOf
-from marshmallow_utils.fields import TrimmedString
+from marshmallow_utils.fields import SanitizedUnicode, TrimmedString
+from marshmallow_utils.fields.nestedattr import NestedAttribute
 from oarepo_runtime.services.schema.i18n import I18nStrField, MultilingualField
-from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema, DictOnlySchema
-from oarepo_runtime.services.schema.rdm import RDMRecordMixin
+from oarepo_runtime.services.schema.marshmallow import (
+    DictOnlySchema,
+    RDMBaseRecordSchema,
+)
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_date,
@@ -14,7 +21,6 @@ from oarepo_runtime.services.schema.validation import (
 )
 
 from nr_metadata.common.services.records.schema_datatypes import (
-    NRAccessRightsVocabularySchema,
     NRContributorSchema,
     NRCreatorSchema,
     NREventSchema,
@@ -34,11 +40,18 @@ from nr_metadata.schema.identifiers import (
 )
 
 
-class NRCommonRecordSchema(BaseRecordSchema, RDMRecordMixin):
+class NRCommonRecordSchema(RDMBaseRecordSchema):
     class Meta:
         unknown = ma.RAISE
 
+    access = NestedAttribute(lambda: AccessSchema())
+
     metadata = ma_fields.Nested(lambda: NRCommonMetadataSchema())
+
+    pids = Dict(
+        keys=SanitizedUnicode(validate=validate_scheme),
+        values=Nested(PIDSchema),
+    )
 
 
 class NRCommonMetadataSchema(Schema):
@@ -46,10 +59,6 @@ class NRCommonMetadataSchema(Schema):
         unknown = ma.RAISE
 
     abstract = MultilingualField(I18nStrField())
-
-    accessRights = ma_fields.Nested(
-        lambda: NRAccessRightsVocabularySchema(), required=True
-    )
 
     accessibility = MultilingualField(I18nStrField())
 

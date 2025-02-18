@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { FieldLabel, TextField } from "react-invenio-forms";
 import { i18next } from "@translations/nr/i18next";
 import { useFormikContext, getIn, FieldArray } from "formik";
-import { Icon, Form } from "semantic-ui-react";
+import { Icon, Form, Label } from "semantic-ui-react";
 import {
   ArrayFieldItem,
   useShowEmptyValue,
@@ -22,10 +22,10 @@ export const StringArrayField = ({
   addButtonClassName,
   ...uiProps
 }) => {
-  const { values, setFieldValue, setFieldTouched } = useFormikContext();
+  const { values, setFieldValue, setFieldTouched, errors } = useFormikContext();
   useShowEmptyValue(fieldPath, defaultNewValue, showEmptyValue);
   const { sanitizeInput } = useSanitizeInput();
-
+  const fieldError = getIn(errors, fieldPath, null);
   return (
     <Form.Field>
       <FieldLabel label={label} />
@@ -35,6 +35,9 @@ export const StringArrayField = ({
           <React.Fragment>
             {getIn(values, fieldPath, []).map((item, index) => {
               const indexPath = `${fieldPath}.${index}`;
+              const textInputError = Array.isArray(fieldError)
+                ? fieldError[index]
+                : fieldError;
               return (
                 <ArrayFieldItem
                   key={index}
@@ -56,6 +59,7 @@ export const StringArrayField = ({
                       setFieldTouched(indexPath, true);
                     }}
                     {...uiProps}
+                    error={textInputError}
                   />
                 </ArrayFieldItem>
               );
@@ -76,6 +80,11 @@ export const StringArrayField = ({
           </React.Fragment>
         )}
       />
+      {fieldError && typeof fieldError == "string" && (
+        <Label pointing="left" prompt>
+          {fieldError}
+        </Label>
+      )}
     </Form.Field>
   );
 };
@@ -96,5 +105,5 @@ StringArrayField.defaultProps = {
   addButtonLabel: i18next.t("Add note"),
   defaultNewValue: "",
   showEmptyValue: false,
-  addButtonClassName: "array-field-add-button",
+  addButtonClassName: "array-field-add-button inline",
 };

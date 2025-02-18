@@ -2,10 +2,15 @@ import marshmallow as ma
 from invenio_drafts_resources.services.records.schema import (
     ParentSchema as InvenioParentSchema,
 )
+from invenio_rdm_records.services.schemas.access import AccessSchema
+from invenio_rdm_records.services.schemas.pids import PIDSchema
+from invenio_rdm_records.services.schemas.record import validate_scheme
 from marshmallow import Schema
 from marshmallow import fields as ma_fields
-from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema
-from oarepo_runtime.services.schema.rdm import RDMRecordMixin
+from marshmallow.fields import Dict, Nested
+from marshmallow_utils.fields import SanitizedUnicode
+from marshmallow_utils.fields.nestedattr import NestedAttribute
+from oarepo_runtime.services.schema.marshmallow import RDMBaseRecordSchema
 
 from nr_metadata.datacite.services.records.schema_datatypes import (
     AlternateIdentifierSchema,
@@ -32,11 +37,18 @@ class GeneratedParentSchema(InvenioParentSchema):
     owners = ma.fields.List(ma.fields.Dict(), load_only=True)
 
 
-class DataCiteRecordSchema(BaseRecordSchema, RDMRecordMixin):
+class DataCiteRecordSchema(RDMBaseRecordSchema):
     class Meta:
         unknown = ma.RAISE
 
+    access = NestedAttribute(lambda: AccessSchema())
+
     metadata = ma_fields.Nested(lambda: NRDataCiteMetadataSchema())
+
+    pids = Dict(
+        keys=SanitizedUnicode(validate=validate_scheme),
+        values=Nested(PIDSchema),
+    )
     parent = ma.fields.Nested(GeneratedParentSchema)
 
 

@@ -3,7 +3,7 @@ from marshmallow import fields as ma_fields
 from marshmallow.fields import String
 from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
 from oarepo_runtime.services.schema.ui import (
-    InvenioUISchema,
+    InvenioRDMUISchema,
     LocalizedDate,
     LocalizedEDTFInterval,
 )
@@ -31,7 +31,7 @@ from nr_metadata.ui_schema.identifiers import (
 from nr_metadata.ui_schema.subjects import NRSubjectListField
 
 
-class NRDataRecordUISchema(InvenioUISchema):
+class NRDataRecordUISchema(InvenioRDMUISchema):
     class Meta:
         unknown = ma.RAISE
 

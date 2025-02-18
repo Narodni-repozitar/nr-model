@@ -54,6 +54,8 @@ DeleteFileButtonCmp.propTypes = {
 const EditFileButtonCmp = ({ fileName, record, className }) => {
   return (
     <Popup
+      // quirky issue where while in UPPY UI the popup goes over it
+      style={{ zIndex: 1 }}
       position="top center"
       content={i18next.t("Edit file metadata")}
       trigger={
@@ -71,7 +73,12 @@ EditFileButtonCmp.propTypes = {
   className: PropTypes.string,
 };
 
-export const FileUploaderTable = ({ files, record, handleFileDeletion }) => {
+export const FileUploaderTable = ({
+  files,
+  record,
+  handleFileDeletion,
+  lockFileUploader,
+}) => {
   return (
     files?.length > 0 && (
       <React.Fragment>
@@ -113,17 +120,25 @@ export const FileUploaderTable = ({ files, record, handleFileDeletion }) => {
                   <Table.Cell textAlign="center">
                     <StatusIcon status={status} />
                   </Table.Cell>
-                  <Table.Cell width={1} textAlign="center">
-                    {status === "completed" && (
-                      <EditFileButtonCmp fileName={fileName} record={record} />
-                    )}
-                  </Table.Cell>
-                  <Table.Cell width={1} textAlign="center">
-                    <DeleteFileButtonCmp
-                      file={file}
-                      handleFileDeletion={handleFileDeletion}
-                    />
-                  </Table.Cell>
+                  {!lockFileUploader && (
+                    <Table.Cell width={1} textAlign="center">
+                      {status === "completed" && (
+                        <EditFileButtonCmp
+                          fileName={fileName}
+                          record={record}
+                        />
+                      )}
+                    </Table.Cell>
+                  )}
+                  {!lockFileUploader && (
+                    <Table.Cell width={1} textAlign="center">
+                      <DeleteFileButtonCmp
+                        file={file}
+                        handleFileDeletion={handleFileDeletion}
+                        lockFileUploader={lockFileUploader}
+                      />
+                    </Table.Cell>
+                  )}
                 </Table.Row>
               );
             })}
@@ -168,21 +183,23 @@ export const FileUploaderTable = ({ files, record, handleFileDeletion }) => {
                       <StatusIcon status={status} />
                     </Table.Cell>
                   </Table.Row>
-                  <Table.Row verticalAlign="middle">
-                    <Table.Cell width={6}>
-                      <strong>{i18next.t("Delete")}</strong>
-                    </Table.Cell>
-                    <Table.Cell
-                      textAlign="center"
-                      className="flex justify-center"
-                    >
-                      <DeleteFileButtonCmp
-                        file={file}
-                        handleFileDeletion={handleFileDeletion}
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                  {status === "completed" && (
+                  {!lockFileUploader && (
+                    <Table.Row verticalAlign="middle">
+                      <Table.Cell width={6}>
+                        <strong>{i18next.t("Delete")}</strong>
+                      </Table.Cell>
+                      <Table.Cell
+                        textAlign="center"
+                        className="flex justify-center"
+                      >
+                        <DeleteFileButtonCmp
+                          file={file}
+                          handleFileDeletion={handleFileDeletion}
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                  )}
+                  {status === "completed" && !lockFileUploader && (
                     <Table.Row>
                       <Table.Cell width={6}>
                         <strong>{i18next.t("Edit")}</strong>
@@ -212,4 +229,5 @@ FileUploaderTable.propTypes = {
   files: PropTypes.array,
   record: PropTypes.object,
   handleFileDeletion: PropTypes.func,
+  lockFileUploader: PropTypes.bool.isRequired,
 };

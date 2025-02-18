@@ -2,7 +2,7 @@ import marshmallow as ma
 from marshmallow import fields as ma_fields
 from marshmallow.fields import String
 from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
-from oarepo_runtime.services.schema.ui import InvenioUISchema, LocalizedEDTF
+from oarepo_runtime.services.schema.ui import InvenioRDMUISchema, LocalizedEDTF
 from oarepo_vocabularies.services.ui_schema import (
     HierarchyUISchema,
     VocabularyI18nStrUIField,
@@ -28,7 +28,7 @@ from nr_metadata.ui_schema.identifiers import (
 from nr_metadata.ui_schema.subjects import NRSubjectListField
 
 
-class NRDocumentRecordUISchema(InvenioUISchema):
+class NRDocumentRecordUISchema(InvenioRDMUISchema):
     class Meta:
         unknown = ma.RAISE
 

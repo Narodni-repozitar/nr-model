@@ -258,17 +258,6 @@ class NRRelatedItemContributorPersonSchema(DictOnlySchema):
     nameType = ma_fields.String(validate=[OneOf(["Personal"])])
 
 
-class NRAccessRightsVocabularySchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.INCLUDE
-
-    _id = String(data_key="id", attribute="id")
-
-    _version = String(data_key="@v", attribute="@v")
-
-    title = i18n_strings
-
-
 class NRAffiliationVocabularySchema(DictOnlySchema):
     class Meta:
         unknown = ma.INCLUDE

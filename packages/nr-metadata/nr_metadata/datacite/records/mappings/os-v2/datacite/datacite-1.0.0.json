@@ -5,6 +5,38 @@
                 "type": "keyword",
                 "ignore_above": 1024
             },
+            "access": {
+                "type": "object",
+                "properties": {
+                    "embargo": {
+                        "type": "object",
+                        "properties": {
+                            "active": {
+                                "type": "boolean"
+                            },
+                            "reason": {
+                                "type": "text"
+                            },
+                            "until": {
+                                "type": "date",
+                                "format": "basic_date||strict_date"
+                            }
+                        }
+                    },
+                    "files": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    },
+                    "record": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    },
+                    "status": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    }
+                }
+            },
             "created": {
                 "type": "date",
                 "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
@@ -735,6 +767,9 @@
                     }
                 }
             },
+            "pids": {
+                "type": "object"
+            },
             "updated": {
                 "type": "date",
                 "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
@@ -767,6 +802,60 @@
                     }
                 }
             }
-        }
+        },
+        "dynamic_templates": [
+            {
+                "pids": {
+                    "path_match": "pids.*",
+                    "match_mapping_type": "object",
+                    "mapping": {
+                        "type": "object",
+                        "properties": {
+                            "identifier": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 256
+                                    }
+                                }
+                            },
+                            "provider": {
+                                "type": "keyword"
+                            },
+                            "client": {
+                                "type": "keyword"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "parent_pids": {
+                    "path_match": "parent.pids.*",
+                    "match_mapping_type": "object",
+                    "mapping": {
+                        "type": "object",
+                        "properties": {
+                            "identifier": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 256
+                                    }
+                                }
+                            },
+                            "provider": {
+                                "type": "keyword"
+                            },
+                            "client": {
+                                "type": "keyword"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
     }
 }
