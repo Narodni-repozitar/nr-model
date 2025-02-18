@@ -300,7 +300,7 @@ export const CreatibutorsModal = ({
       i18next.t("Organization's name is a required field."),
       (value, testContext) => {
         if (testContext.parent.nameType === CREATIBUTOR_TYPE.ORGANIZATION) {
-          return value;
+          return !_isEmpty(value);
         } else {
           return true;
         }
