@@ -290,11 +290,17 @@ export const CreatibutorsModal = ({
       }
     }),
     fullName: Yup.string(),
-    contributorType: Yup.object().when("_", (_, schema) => {
-      if (!isCreator) {
-        return schema.required(i18next.t("Role is a required field."));
+    contributorType: Yup.mixed().test(
+      "text",
+      i18next.t("Organization's name is a required field."),
+      (value, testContext) => {
+        if (!isCreator) {
+          return !_isEmpty(value);
+        } else {
+          return true;
+        }
       }
-    }),
+    ),
     affiliationNameFieldPath: Yup.mixed().test(
       "text",
       i18next.t("Organization's name is a required field."),
