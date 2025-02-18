@@ -728,8 +728,8 @@
             }
         },
         "pids": {
-            "type": "object",
             "uniqueItems": true,
+            "type": "object",
             "additionalProperties": {
                 "type": "object",
                 "additionalProperties": false,
