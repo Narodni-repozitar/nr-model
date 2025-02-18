@@ -7178,11 +7178,10 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
+                    "uniqueItems": true,
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
-                    "uniqueItems": true,
-                    "type": "object",
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -7197,7 +7196,8 @@
                                 "type": "string"
                             }
                         }
-                    }
+                    },
+                    "type": "object"
                 },
                 "ui": {
                     "marshmallow": {
