@@ -38,6 +38,33 @@ class DataciteExt:
                 else:
                     app.config.setdefault(identifier, getattr(config, identifier))
 
+        rdm_model_config = {
+            "model_service": (
+                "nr_metadata.datacite.services.records.service.DataciteService"
+            ),
+            "service_config": (
+                "nr_metadata.datacite.services.records.config.DataciteServiceConfig"
+            ),
+            "ui_resource_config": "ui.nr_metadata.datacite.DataciteUIResourceConfig",
+            "api_resource_config": (
+                "nr_metadata.datacite.resources.records.config.DataciteResourceConfig"
+            ),
+        }
+
+        app.config.setdefault("GLOBAL_SEARCH_MODELS", [])
+        for cfg in app.config["GLOBAL_SEARCH_MODELS"]:
+            if cfg["model_service"] == rdm_model_config["model_service"]:
+                break
+        else:
+            app.config["GLOBAL_SEARCH_MODELS"].append(rdm_model_config)
+
+        app.config.setdefault("RDM_MODELS", [])
+        for cfg in app.config["RDM_MODELS"]:
+            if cfg["model_service"] == rdm_model_config["model_service"]:
+                break
+        else:
+            app.config["RDM_MODELS"].append(rdm_model_config)
+
     def is_inherited(self):
         from importlib_metadata import entry_points
 

@@ -354,17 +354,6 @@
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
         },
-        "multilingual-dumper": {
-            "generate": true,
-            "module": "nr_metadata.datacite.records.dumpers.multilingual",
-            "class": "nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
-        },
         "draft-parent-record": {
             "class": "nr_metadata.datacite.records.api.DataciteParentRecord",
             "base-classes": [
@@ -401,6 +390,17 @@
             "name": "parent-v1.0.0.json",
             "file": "nr_metadata/datacite/records/jsonschemas/parent-v1.0.0.json",
             "generate": true
+        },
+        "multilingual-dumper": {
+            "generate": true,
+            "module": "nr_metadata.datacite.records.dumpers.multilingual",
+            "class": "nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
         },
         "permissions": {
             "generate": true,
@@ -2532,8 +2532,9 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "uniqueItems": true,
-                    "type": "object",
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -2549,9 +2550,8 @@
                             }
                         }
                     },
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    }
+                    "type": "object",
+                    "uniqueItems": true
                 },
                 "ui": {
                     "marshmallow": {
