@@ -920,10 +920,11 @@
             }
         },
         "pids": {
-            "uniqueItems": true,
             "propertyNames": {
                 "pattern": "^[a-z_-][a-z0-9_-]*$"
             },
+            "type": "object",
+            "uniqueItems": true,
             "additionalProperties": {
                 "type": "object",
                 "additionalProperties": false,
@@ -938,8 +939,7 @@
                         "type": "string"
                     }
                 }
-            },
-            "type": "object"
+            }
         },
         "updated": {
             "type": "string",
