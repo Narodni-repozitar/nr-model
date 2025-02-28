@@ -48,7 +48,7 @@ NRPerson:
 
     affiliations[]:
       type: taxonomy
-      vocabulary-type: institutions
+      vocabulary-type: affiliations
       keys: [id, title, props.ror]
       ui:
         marshmallow:
@@ -540,29 +540,8 @@ NRFundingReference:
       class: nr_metadata.common.services.records.ui_schema_datatypes.NRFundingReferenceUISchema
   marshmallow:
     class: nr_metadata.common.services.records.schema_datatypes.NRFundingReferenceSchema
-  properties:
-    projectID:
-      type: keyword
-      required: true
-      label.cs: Číslo projektu
-      label.en: Award number
-      hint.cs: Uveďte kód/číslo projektu.
-      hint.en: Fill in the award number.
-    projectName:
-      type: fulltext
-      label.cs: Název projektu
-      label.en: Award Title
-      hint.cs: Uveďte název projektu.
-      hint.en: Fill in the award title.
-    fundingProgram:
-      type: fulltext
-      label.cs: Výzkumný program
-      label.en: Funding program
-      hint.cs: Uveďte název výzkumného programu, v rámci kterého byl projekt financován.
-      hint.en: Fill in the name of the research program under which the award was funded.
-    funder:
-      required: true
-      use: "nr-datatypes#NRFunder"
+  type: vocabulary
+  vocabulary-type: awards
 
 NRSubject:
   $id: NRSubject

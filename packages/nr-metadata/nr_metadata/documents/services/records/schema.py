@@ -28,7 +28,6 @@ from nr_metadata.common.services.records.schema_common import (
 from nr_metadata.common.services.records.schema_datatypes import (
     NREventSchema,
     NRExternalLocationSchema,
-    NRFundingReferenceSchema,
     NRGeoLocationSchema,
     NRRelatedItemSchema,
     NRSeriesSchema,
@@ -78,10 +77,6 @@ class NRDocumentMetadataSchema(NRCommonMetadataSchema):
     events = ma_fields.List(ma_fields.Nested(lambda: NREventSchema()))
 
     externalLocation = ma_fields.Nested(lambda: NRExternalLocationSchema())
-
-    fundingReferences = ma_fields.List(
-        ma_fields.Nested(lambda: NRFundingReferenceSchema())
-    )
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationSchema()))
 

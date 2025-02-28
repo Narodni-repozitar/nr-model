@@ -61,10 +61,7 @@ class CommonSearchOptions(I18nRDMSearchOptions):
         "metadata_events_eventLocation_place": (
             facets.metadata_events_eventLocation_place
         ),
-        "metadata_fundingReferences_funder": facets.metadata_fundingReferences_funder,
-        "metadata_fundingReferences_projectID": (
-            facets.metadata_fundingReferences_projectID
-        ),
+        "metadata_fundingReferences": facets.metadata_fundingReferences,
         "metadata_geoLocations_geoLocationPlace": (
             facets.metadata_geoLocations_geoLocationPlace
         ),
