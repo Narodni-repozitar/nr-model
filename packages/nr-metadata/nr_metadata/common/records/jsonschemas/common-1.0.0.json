@@ -347,27 +347,13 @@
                     "items": {
                         "type": "object",
                         "properties": {
-                            "funder": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "string"
-                                    },
-                                    "title": {
-                                        "type": "object"
-                                    },
-                                    "@v": {
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "fundingProgram": {
+                            "id": {
                                 "type": "string"
                             },
-                            "projectID": {
-                                "type": "string"
+                            "title": {
+                                "type": "object"
                             },
-                            "projectName": {
+                            "@v": {
                                 "type": "string"
                             }
                         }
@@ -847,10 +833,10 @@
             }
         },
         "pids": {
-            "type": "object",
             "propertyNames": {
                 "pattern": "^[a-z_-][a-z0-9_-]*$"
             },
+            "type": "object",
             "uniqueItems": true,
             "additionalProperties": {
                 "type": "object",

@@ -346,15 +346,6 @@
             "module": "nr_metadata.documents.translations",
             "alias": "documents"
         },
-        "files-field": {
-            "generate": true,
-            "field-class": "invenio_records_resources.records.systemfields.FilesField",
-            "file-class": "nr_metadata.documents.records.api.DocumentsRecord",
-            "field-args": [
-                "store=False"
-            ],
-            "imports": []
-        },
         "json-schema-settings": {
             "generate": true,
             "alias": "documents",
@@ -378,6 +369,26 @@
                 "\"object_key\"": "\"ui\"",
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
+        },
+        "files-field": {
+            "generate": true,
+            "field-class": "invenio_records_resources.records.systemfields.FilesField",
+            "file-class": "nr_metadata.documents.records.api.DocumentsRecord",
+            "field-args": [
+                "store=False"
+            ],
+            "imports": []
+        },
+        "multilingual-dumper": {
+            "generate": true,
+            "module": "nr_metadata.documents.records.dumpers.multilingual",
+            "class": "nr_metadata.documents.records.dumpers.multilingual.MultilingualSearchDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
         },
         "draft-parent-record": {
             "class": "nr_metadata.documents.records.api.DocumentsParentRecord",
@@ -415,17 +426,6 @@
             "name": "parent-v1.0.0.json",
             "file": "nr_metadata/documents/records/jsonschemas/parent-v1.0.0.json",
             "generate": true
-        },
-        "multilingual-dumper": {
-            "generate": true,
-            "module": "nr_metadata.documents.records.dumpers.multilingual",
-            "class": "nr_metadata.documents.records.dumpers.multilingual.MultilingualSearchDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
         },
         "permissions": {
             "generate": true,
@@ -1199,7 +1199,7 @@
                                                         "target": "hierarchy"
                                                     }
                                                 ],
-                                                "vocabulary-type": "institutions",
+                                                "vocabulary-type": "affiliations",
                                                 "ui": {
                                                     "marshmallow": {
                                                         "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRAffiliationVocabularyUISchema",
@@ -1231,10 +1231,10 @@
                                                     }
                                                 ],
                                                 "model": "vocabularies",
-                                                "pid-field": "Vocabulary.pid.with_type_ctx(\"institutions\")",
+                                                "pid-field": "Vocabulary.pid.with_type_ctx(\"affiliations\")",
                                                 "facets": {
                                                     "args": [
-                                                        "vocabulary='institutions'"
+                                                        "vocabulary='affiliations'"
                                                     ]
                                                 }
                                             }
@@ -1535,7 +1535,7 @@
                                                 "target": "hierarchy"
                                             }
                                         ],
-                                        "vocabulary-type": "institutions",
+                                        "vocabulary-type": "affiliations",
                                         "ui": {
                                             "marshmallow": {
                                                 "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRAffiliationVocabularyUISchema",
@@ -1567,10 +1567,10 @@
                                             }
                                         ],
                                         "model": "vocabularies",
-                                        "pid-field": "Vocabulary.pid.with_type_ctx(\"institutions\")",
+                                        "pid-field": "Vocabulary.pid.with_type_ctx(\"affiliations\")",
                                         "facets": {
                                             "args": [
-                                                "vocabulary='institutions'"
+                                                "vocabulary='affiliations'"
                                             ]
                                         },
                                         "properties": {
@@ -2231,7 +2231,7 @@
                                                         "target": "hierarchy"
                                                     }
                                                 ],
-                                                "vocabulary-type": "institutions",
+                                                "vocabulary-type": "affiliations",
                                                 "ui": {
                                                     "marshmallow": {
                                                         "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRAffiliationVocabularyUISchema",
@@ -2263,10 +2263,10 @@
                                                     }
                                                 ],
                                                 "model": "vocabularies",
-                                                "pid-field": "Vocabulary.pid.with_type_ctx(\"institutions\")",
+                                                "pid-field": "Vocabulary.pid.with_type_ctx(\"affiliations\")",
                                                 "facets": {
                                                     "args": [
-                                                        "vocabulary='institutions'"
+                                                        "vocabulary='affiliations'"
                                                     ]
                                                 }
                                             }
@@ -2511,7 +2511,7 @@
                                                 "target": "hierarchy"
                                             }
                                         ],
-                                        "vocabulary-type": "institutions",
+                                        "vocabulary-type": "affiliations",
                                         "ui": {
                                             "marshmallow": {
                                                 "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRAffiliationVocabularyUISchema",
@@ -2543,10 +2543,10 @@
                                             }
                                         ],
                                         "model": "vocabularies",
-                                        "pid-field": "Vocabulary.pid.with_type_ctx(\"institutions\")",
+                                        "pid-field": "Vocabulary.pid.with_type_ctx(\"affiliations\")",
                                         "facets": {
                                             "args": [
-                                                "vocabulary='institutions'"
+                                                "vocabulary='affiliations'"
                                             ]
                                         },
                                         "properties": {
@@ -3154,187 +3154,116 @@
                         "label.cs": "Granty a financování",
                         "label.en": "Funding References",
                         "items": {
-                            "type": "object",
+                            "type": "vocabulary",
+                            "vocabulary-type": "awards",
                             "ui": {
                                 "marshmallow": {
-                                    "generate": false,
-                                    "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRFundingReferenceUISchema"
+                                    "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRFundingReferenceUISchema",
+                                    "read": false,
+                                    "write": false,
+                                    "unknown": "INCLUDE",
+                                    "generate": true
                                 },
-                                "detail": "funding_reference"
+                                "detail": "funding_reference",
+                                "edit": "vocabulary_item"
                             },
                             "marshmallow": {
-                                "generate": false,
-                                "class": "nr_metadata.common.services.records.schema_datatypes.NRFundingReferenceSchema"
+                                "class": "nr_metadata.common.services.records.schema_datatypes.NRFundingReferenceSchema",
+                                "read": false,
+                                "write": false,
+                                "unknown": "INCLUDE",
+                                "generate": true
+                            },
+                            "label.cs": "Grant a financování",
+                            "label.en": "Funding Reference",
+                            "imports": [
+                                {
+                                    "import": "oarepo_vocabularies.records.api.Vocabulary"
+                                }
+                            ],
+                            "model": "vocabularies",
+                            "keys": [
+                                "id",
+                                "title"
+                            ],
+                            "pid-field": "Vocabulary.pid.with_type_ctx(\"awards\")",
+                            "facets": {
+                                "args": [
+                                    "vocabulary='awards'"
+                                ]
                             },
                             "properties": {
-                                "funder": {
-                                    "type": "vocabulary",
-                                    "required": true,
-                                    "vocabulary-type": "funders",
+                                "id": {
+                                    "marshmallow": {
+                                        "field-class": "marshmallow.fields.String",
+                                        "validators": [],
+                                        "imports": []
+                                    },
                                     "ui": {
                                         "marshmallow": {
-                                            "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRFunderVocabularyUISchema",
-                                            "read": false,
-                                            "write": false,
-                                            "unknown": "INCLUDE",
-                                            "generate": true
-                                        },
-                                        "detail": "vocabulary_item",
-                                        "edit": "vocabulary_item"
-                                    },
-                                    "marshmallow": {
-                                        "class": "nr_metadata.common.services.records.schema_datatypes.NRFunderVocabularySchema",
-                                        "read": false,
-                                        "write": false,
-                                        "unknown": "INCLUDE",
-                                        "generate": true
-                                    },
-                                    "label.cs": "Poskytovatel financí",
-                                    "label.en": "Funder",
-                                    "hint.cs": "Začněte zapisovat název poskytovatele, následně vyberte z nabídky našeptavače.",
-                                    "hint.en": "Start typing the name of the funder, then select the funder from the menu.",
-                                    "imports": [
-                                        {
-                                            "import": "oarepo_vocabularies.records.api.Vocabulary"
+                                            "field-class": "marshmallow.fields.String",
+                                            "validators": [],
+                                            "imports": []
                                         }
-                                    ],
-                                    "model": "vocabularies",
-                                    "keys": [
-                                        "id",
-                                        "title"
-                                    ],
-                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"funders\")",
-                                    "facets": {
-                                        "args": [
-                                            "vocabulary='funders'"
-                                        ]
                                     },
-                                    "properties": {
-                                        "id": {
-                                            "marshmallow": {
-                                                "field-class": "marshmallow.fields.String",
-                                                "validators": [],
-                                                "imports": []
-                                            },
-                                            "ui": {
-                                                "marshmallow": {
-                                                    "field-class": "marshmallow.fields.String",
-                                                    "validators": [],
-                                                    "imports": []
-                                                }
-                                            },
-                                            "type": "keyword",
-                                            "mapping": {
-                                                "fields": {
-                                                    "text": {
-                                                        "type": "search_as_you_type"
-                                                    }
-                                                }
-                                            },
-                                            "sample": {
-                                                "skip": true
-                                            }
-                                        },
-                                        "title": {
-                                            "marshmallow": {
-                                                "generate": false,
-                                                "field": "{{invenio_vocabularies.services.schema.i18n_strings}}",
-                                                "field-class": "marshmallow.fields.Nested",
-                                                "validators": [],
-                                                "class": "invenio_vocabularies.services.records.schema.TitleSchema"
-                                            },
-                                            "ui": {
-                                                "marshmallow": {
-                                                    "field": "{{oarepo_vocabularies.services.ui_schema.VocabularyI18nStrUIField}}()",
-                                                    "generate": false
-                                                }
-                                            },
-                                            "mapping": {
-                                                "dynamic": true,
-                                                "properties": {
-                                                    "en": {
-                                                        "type": "search_as_you_type",
-                                                        "copy_to": "title_sort"
-                                                    }
-                                                }
-                                            },
-                                            "type": "object",
-                                            "propertyNames": {
-                                                "pattern": "^[a-z]{2}$"
-                                            },
-                                            "additionalProperties": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        "@v": {
-                                            "type": "keyword",
-                                            "marshmallow": {
-                                                "field-name": "_version",
-                                                "field-class": "marshmallow.fields.String"
-                                            },
-                                            "ui": {
-                                                "marshmallow": {
-                                                    "field-name": "_version",
-                                                    "field-class": "marshmallow.fields.String"
-                                                }
-                                            },
-                                            "facets": {
-                                                "facet": false
+                                    "type": "keyword",
+                                    "mapping": {
+                                        "fields": {
+                                            "text": {
+                                                "type": "search_as_you_type"
                                             }
                                         }
+                                    },
+                                    "sample": {
+                                        "skip": true
                                     }
                                 },
-                                "fundingProgram": {
-                                    "type": "fulltext",
+                                "title": {
                                     "marshmallow": {
-                                        "read": false,
-                                        "write": false
+                                        "generate": false,
+                                        "field": "{{invenio_vocabularies.services.schema.i18n_strings}}",
+                                        "field-class": "marshmallow.fields.Nested",
+                                        "validators": [],
+                                        "class": "invenio_vocabularies.services.records.schema.TitleSchema"
                                     },
                                     "ui": {
                                         "marshmallow": {
-                                            "read": false,
-                                            "write": false
+                                            "field": "{{oarepo_vocabularies.services.ui_schema.VocabularyI18nStrUIField}}()",
+                                            "generate": false
                                         }
                                     },
-                                    "label.cs": "Výzkumný program",
-                                    "label.en": "Funding program",
-                                    "hint.cs": "Uveďte název výzkumného programu, v rámci kterého byl projekt financován.",
-                                    "hint.en": "Fill in the name of the research program under which the award was funded."
+                                    "mapping": {
+                                        "dynamic": true,
+                                        "properties": {
+                                            "en": {
+                                                "type": "search_as_you_type",
+                                                "copy_to": "title_sort"
+                                            }
+                                        }
+                                    },
+                                    "type": "object",
+                                    "propertyNames": {
+                                        "pattern": "^[a-z]{2}$"
+                                    },
+                                    "additionalProperties": {
+                                        "type": "string"
+                                    }
                                 },
-                                "projectID": {
+                                "@v": {
                                     "type": "keyword",
-                                    "required": true,
                                     "marshmallow": {
-                                        "read": false,
-                                        "write": false
+                                        "field-name": "_version",
+                                        "field-class": "marshmallow.fields.String"
                                     },
                                     "ui": {
                                         "marshmallow": {
-                                            "read": false,
-                                            "write": false
+                                            "field-name": "_version",
+                                            "field-class": "marshmallow.fields.String"
                                         }
                                     },
-                                    "label.cs": "Číslo projektu",
-                                    "label.en": "Award number",
-                                    "hint.cs": "Uveďte kód/číslo projektu.",
-                                    "hint.en": "Fill in the award number."
-                                },
-                                "projectName": {
-                                    "type": "fulltext",
-                                    "marshmallow": {
-                                        "read": false,
-                                        "write": false
-                                    },
-                                    "ui": {
-                                        "marshmallow": {
-                                            "read": false,
-                                            "write": false
-                                        }
-                                    },
-                                    "label.cs": "Název projektu",
-                                    "label.en": "Award Title",
-                                    "hint.cs": "Uveďte název projektu.",
-                                    "hint.en": "Fill in the award title."
+                                    "facets": {
+                                        "facet": false
+                                    }
                                 }
                             }
                         }
@@ -4069,7 +3998,7 @@
                                                                     "target": "hierarchy"
                                                                 }
                                                             ],
-                                                            "vocabulary-type": "institutions",
+                                                            "vocabulary-type": "affiliations",
                                                             "ui": {
                                                                 "marshmallow": {
                                                                     "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRAffiliationVocabularyUISchema",
@@ -4101,10 +4030,10 @@
                                                                 }
                                                             ],
                                                             "model": "vocabularies",
-                                                            "pid-field": "Vocabulary.pid.with_type_ctx(\"institutions\")",
+                                                            "pid-field": "Vocabulary.pid.with_type_ctx(\"affiliations\")",
                                                             "facets": {
                                                                 "args": [
-                                                                    "vocabulary='institutions'"
+                                                                    "vocabulary='affiliations'"
                                                                 ]
                                                             }
                                                         }
@@ -4405,7 +4334,7 @@
                                                             "target": "hierarchy"
                                                         }
                                                     ],
-                                                    "vocabulary-type": "institutions",
+                                                    "vocabulary-type": "affiliations",
                                                     "ui": {
                                                         "marshmallow": {
                                                             "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRAffiliationVocabularyUISchema",
@@ -4437,10 +4366,10 @@
                                                         }
                                                     ],
                                                     "model": "vocabularies",
-                                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"institutions\")",
+                                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"affiliations\")",
                                                     "facets": {
                                                         "args": [
-                                                            "vocabulary='institutions'"
+                                                            "vocabulary='affiliations'"
                                                         ]
                                                     },
                                                     "properties": {
@@ -5094,7 +5023,7 @@
                                                                     "target": "hierarchy"
                                                                 }
                                                             ],
-                                                            "vocabulary-type": "institutions",
+                                                            "vocabulary-type": "affiliations",
                                                             "ui": {
                                                                 "marshmallow": {
                                                                     "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRAffiliationVocabularyUISchema",
@@ -5126,10 +5055,10 @@
                                                                 }
                                                             ],
                                                             "model": "vocabularies",
-                                                            "pid-field": "Vocabulary.pid.with_type_ctx(\"institutions\")",
+                                                            "pid-field": "Vocabulary.pid.with_type_ctx(\"affiliations\")",
                                                             "facets": {
                                                                 "args": [
-                                                                    "vocabulary='institutions'"
+                                                                    "vocabulary='affiliations'"
                                                                 ]
                                                             }
                                                         }
@@ -5374,7 +5303,7 @@
                                                             "target": "hierarchy"
                                                         }
                                                     ],
-                                                    "vocabulary-type": "institutions",
+                                                    "vocabulary-type": "affiliations",
                                                     "ui": {
                                                         "marshmallow": {
                                                             "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRAffiliationVocabularyUISchema",
@@ -5406,10 +5335,10 @@
                                                         }
                                                     ],
                                                     "model": "vocabularies",
-                                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"institutions\")",
+                                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"affiliations\")",
                                                     "facets": {
                                                         "args": [
-                                                            "vocabulary='institutions'"
+                                                            "vocabulary='affiliations'"
                                                         ]
                                                     },
                                                     "properties": {
@@ -7240,6 +7169,10 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
+                    "type": "object",
                     "uniqueItems": true,
                     "additionalProperties": {
                         "type": "object",
@@ -7255,10 +7188,6 @@
                                 "type": "string"
                             }
                         }
-                    },
-                    "type": "object",
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
                     }
                 },
                 "ui": {

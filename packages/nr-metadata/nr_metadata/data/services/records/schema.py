@@ -28,7 +28,6 @@ from nr_metadata.common.services.records.schema_common import (
 )
 from nr_metadata.common.services.records.schema_datatypes import (
     NREventSchema,
-    NRFundingReferenceSchema,
     NRGeoLocationSchema,
     NRRelatedItemSchema,
     NRSeriesSchema,
@@ -82,10 +81,6 @@ class NRDataMetadataSchema(NRCommonMetadataSchema):
     dateWithdrawn = ma_fields.Nested(lambda: DateWithdrawnSchema())
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventSchema()))
-
-    fundingReferences = ma_fields.List(
-        ma_fields.Nested(lambda: NRFundingReferenceSchema())
-    )
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationSchema()))
 

@@ -153,19 +153,6 @@ class NRCreatorUISchema(DictOnlySchema):
     nameType = ma_fields.String(validate=[OneOf(["Organizational"])])
 
 
-class NRFundingReferenceUISchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    funder = ma_fields.Nested(lambda: NRFunderVocabularyUISchema(), required=True)
-
-    fundingProgram = ma_fields.String()
-
-    projectID = ma_fields.String(required=True)
-
-    projectName = ma_fields.String()
-
-
 class NRGeoLocationUISchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
@@ -330,7 +317,7 @@ class NRCountryVocabularyUISchema(DictOnlySchema):
     title = VocabularyI18nStrUIField()
 
 
-class NRFunderVocabularyUISchema(DictOnlySchema):
+class NRFundingReferenceUISchema(DictOnlySchema):
     class Meta:
         unknown = ma.INCLUDE
 

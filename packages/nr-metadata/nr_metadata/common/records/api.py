@@ -48,7 +48,7 @@ class CommonRecord(RDMRecord):
         affiliations=PIDRelation(
             "metadata.contributors.affiliations",
             keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
-            pid_field=Vocabulary.pid.with_type_ctx("institutions"),
+            pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
         ),
         contributorType=PIDRelation(
             "metadata.contributors.contributorType",
@@ -63,17 +63,17 @@ class CommonRecord(RDMRecord):
         Personal_affiliations=PIDRelation(
             "metadata.creators.affiliations",
             keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
-            pid_field=Vocabulary.pid.with_type_ctx("institutions"),
+            pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
         ),
         country=PIDRelation(
             "metadata.events.eventLocation.country",
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("countries"),
         ),
-        funder=PIDRelation(
-            "metadata.fundingReferences.funder",
+        fundingReferences=PIDRelation(
+            "metadata.fundingReferences",
             keys=["id", "title"],
-            pid_field=Vocabulary.pid.with_type_ctx("funders"),
+            pid_field=Vocabulary.pid.with_type_ctx("awards"),
         ),
         languages=PIDRelation(
             "metadata.languages",
@@ -83,7 +83,7 @@ class CommonRecord(RDMRecord):
         itemContributors_Personal_affiliations=PIDRelation(
             "metadata.relatedItems.itemContributors.affiliations",
             keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
-            pid_field=Vocabulary.pid.with_type_ctx("institutions"),
+            pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
         ),
         Personal_contributorType=PIDRelation(
             "metadata.relatedItems.itemContributors.contributorType",
@@ -98,7 +98,7 @@ class CommonRecord(RDMRecord):
         itemCreators_Personal_affiliations=PIDRelation(
             "metadata.relatedItems.itemCreators.affiliations",
             keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
-            pid_field=Vocabulary.pid.with_type_ctx("institutions"),
+            pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
         ),
         itemRelationType=PIDRelation(
             "metadata.relatedItems.itemRelationType",
