@@ -80,7 +80,7 @@ metadata_additionalTitles_titleType = TermsFacet(
 metadata_contributors_affiliations = HierarchyVocabularyFacet(
     field="metadata.contributors.affiliations",
     label=_("metadata/contributors/affiliations.label"),
-    vocabulary="affiliations",
+    vocabulary="institutions",
 )
 
 metadata_contributors_authorityIdentifiers_identifier = TermsFacet(
@@ -122,7 +122,7 @@ metadata_contributors_nameType = TermsFacet(
 metadata_creators_affiliations = HierarchyVocabularyFacet(
     field="metadata.creators.affiliations",
     label=_("metadata/creators/affiliations.label"),
-    vocabulary="affiliations",
+    vocabulary="institutions",
 )
 
 metadata_creators_authorityIdentifiers_identifier = TermsFacet(
@@ -183,10 +183,15 @@ metadata_events_eventLocation_place = TermsFacet(
     label=_("metadata/events/eventLocation/place.label"),
 )
 
-metadata_fundingReferences = VocabularyFacet(
-    field="metadata.fundingReferences",
-    label=_("metadata/fundingReferences.label"),
-    vocabulary="awards",
+metadata_fundingReferences_funder = VocabularyFacet(
+    field="metadata.fundingReferences.funder",
+    label=_("metadata/fundingReferences/funder.label"),
+    vocabulary="funders",
+)
+
+metadata_fundingReferences_projectID = TermsFacet(
+    field="metadata.fundingReferences.projectID",
+    label=_("metadata/fundingReferences/projectID.label"),
 )
 
 metadata_geoLocations_geoLocationPlace = TermsFacet(
@@ -248,7 +253,7 @@ metadata_publishers = HierarchyVocabularyFacet(
 metadata_relatedItems_itemContributors_affiliations = HierarchyVocabularyFacet(
     field="metadata.relatedItems.itemContributors.affiliations",
     label=_("metadata/relatedItems/itemContributors/affiliations.label"),
-    vocabulary="affiliations",
+    vocabulary="institutions",
 )
 
 metadata_relatedItems_itemContributors_authorityIdentifiers_identifier = TermsFacet(
@@ -292,7 +297,7 @@ metadata_relatedItems_itemContributors_nameType = TermsFacet(
 metadata_relatedItems_itemCreators_affiliations = HierarchyVocabularyFacet(
     field="metadata.relatedItems.itemCreators.affiliations",
     label=_("metadata/relatedItems/itemCreators/affiliations.label"),
-    vocabulary="affiliations",
+    vocabulary="institutions",
 )
 
 metadata_relatedItems_itemCreators_authorityIdentifiers_identifier = TermsFacet(

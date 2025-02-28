@@ -18,6 +18,7 @@ from nr_metadata.common.services.records.ui_schema_common import (
 )
 from nr_metadata.common.services.records.ui_schema_datatypes import (
     NREventUISchema,
+    NRFundingReferenceUISchema,
     NRGeoLocationUISchema,
     NRRelatedItemUISchema,
     NRSeriesUISchema,
@@ -62,6 +63,10 @@ class NRDataMetadataUISchema(NRCommonMetadataUISchema):
     dateWithdrawn = ma_fields.Nested(lambda: DateWithdrawnUISchema())
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventUISchema()))
+
+    fundingReferences = ma_fields.List(
+        ma_fields.Nested(lambda: NRFundingReferenceUISchema())
+    )
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationUISchema()))
 
