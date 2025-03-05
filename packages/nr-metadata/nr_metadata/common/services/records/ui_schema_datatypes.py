@@ -10,6 +10,7 @@ from oarepo_vocabularies.services.ui_schema import (
     VocabularyI18nStrUIField,
 )
 
+from nr_metadata.common.services.records.ui_schema import AwardUISchema, FunderUISchema
 from nr_metadata.ui_schema.identifiers import (
     NRObjectIdentifierUISchema,
     NROrganizationIdentifierUISchema,
@@ -319,13 +320,11 @@ class NRCountryVocabularyUISchema(DictOnlySchema):
 
 class NRFundingReferenceUISchema(DictOnlySchema):
     class Meta:
-        unknown = ma.INCLUDE
+        unknown = ma.RAISE
 
-    _id = String(data_key="id", attribute="id")
+    award = ma_fields.Nested(lambda: AwardUISchema())
 
-    _version = String(data_key="@v", attribute="@v")
-
-    title = VocabularyI18nStrUIField()
+    funder = ma_fields.Nested(lambda: FunderUISchema())
 
 
 class NRGeoLocationPointUISchema(DictOnlySchema):

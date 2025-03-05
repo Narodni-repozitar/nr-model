@@ -21,6 +21,10 @@ class DataExt:
         if not self.is_inherited():
             self.register_flask_extension(app)
 
+        for method in dir(self):
+            if method.startswith("init_app_callback_"):
+                getattr(self, method)(app)
+
     def register_flask_extension(self, app):
 
         app.extensions["nr_metadata.data"] = self
@@ -37,31 +41,6 @@ class DataExt:
                             app.config[identifier][k] = v
                 else:
                     app.config.setdefault(identifier, getattr(config, identifier))
-
-        rdm_model_config = {
-            "model_service": "nr_metadata.data.services.records.service.DataService",
-            "service_config": (
-                "nr_metadata.data.services.records.config.DataServiceConfig"
-            ),
-            "ui_resource_config": "ui.nr_metadata.data.DataUIResourceConfig",
-            "api_resource_config": (
-                "nr_metadata.data.resources.records.config.DataResourceConfig"
-            ),
-        }
-
-        app.config.setdefault("GLOBAL_SEARCH_MODELS", [])
-        for cfg in app.config["GLOBAL_SEARCH_MODELS"]:
-            if cfg["model_service"] == rdm_model_config["model_service"]:
-                break
-        else:
-            app.config["GLOBAL_SEARCH_MODELS"].append(rdm_model_config)
-
-        app.config.setdefault("RDM_MODELS", [])
-        for cfg in app.config["RDM_MODELS"]:
-            if cfg["model_service"] == rdm_model_config["model_service"]:
-                break
-        else:
-            app.config["RDM_MODELS"].append(rdm_model_config)
 
     def is_inherited(self):
         from importlib_metadata import entry_points
@@ -101,3 +80,29 @@ class DataExt:
             service=self.service_records,
             config=config.DATA_RECORD_RESOURCE_CONFIG(),
         )
+
+    def init_app_callback_rdm_models(self, app):
+        rdm_model_config = {
+            "model_service": "nr_metadata.data.services.records.service.DataService",
+            "service_config": (
+                "nr_metadata.data.services.records.config.DataServiceConfig"
+            ),
+            "ui_resource_config": "ui.nr_metadata.data.DataUIResourceConfig",
+            "api_resource_config": (
+                "nr_metadata.data.resources.records.config.DataResourceConfig"
+            ),
+        }
+
+        app.config.setdefault("GLOBAL_SEARCH_MODELS", [])
+        for cfg in app.config["GLOBAL_SEARCH_MODELS"]:
+            if cfg["model_service"] == rdm_model_config["model_service"]:
+                break
+        else:
+            app.config["GLOBAL_SEARCH_MODELS"].append(rdm_model_config)
+
+        app.config.setdefault("RDM_MODELS", [])
+        for cfg in app.config["RDM_MODELS"]:
+            if cfg["model_service"] == rdm_model_config["model_service"]:
+                break
+        else:
+            app.config["RDM_MODELS"].append(rdm_model_config)

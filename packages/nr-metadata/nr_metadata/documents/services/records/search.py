@@ -65,7 +65,8 @@ class DocumentsSearchOptions(I18nRDMSearchOptions):
         "metadata_externalLocation_externalLocationURL": (
             facets.metadata_externalLocation_externalLocationURL
         ),
-        "metadata_fundingReferences": facets.metadata_fundingReferences,
+        "metadata_funders_award": facets.metadata_funders_award,
+        "metadata_funders_funder": facets.metadata_funders_funder,
         "metadata_geoLocations_geoLocationPlace": (
             facets.metadata_geoLocations_geoLocationPlace
         ),

@@ -64,11 +64,10 @@
             "alias": "documents",
             "module": "nr_metadata.documents.records.mappings",
             "index": "documents-documents-1.0.0",
-            "index-field-args": [
-                "search_alias=\"documents\""
-            ],
-            "file": "nr_metadata/documents/records/mappings/os-v2/documents/documents-1.0.0.json"
+            "file": "nr_metadata/documents/records/mappings/os-v2/documents/documents-1.0.0.json",
+            "index-field-args": []
         },
+        "searchable": true,
         "marshmallow": {
             "imports": [],
             "class": "nr_metadata.documents.services.records.schema.NRDocumentRecordSchema",
@@ -79,7 +78,6 @@
             "module": "nr_metadata.documents.services.records.schema",
             "extra-code": ""
         },
-        "searchable": true,
         "ui": {
             "marshmallow": {
                 "imports": [],
@@ -164,51 +162,6 @@
             "skip": false
         },
         "model-name": "Documents",
-        "resource": {
-            "base-classes": [
-                "invenio_drafts_resources.resources.RecordResource"
-            ],
-            "generate": true,
-            "config-key": "DOCUMENTS_RECORD_RESOURCE_CLASS",
-            "module": "nr_metadata.documents.resources.records.resource",
-            "class": "nr_metadata.documents.resources.records.resource.DocumentsResource",
-            "proxy": "current_resource",
-            "extra-code": "",
-            "imports": [],
-            "additional-args": []
-        },
-        "resource-config": {
-            "base-classes": [
-                "invenio_drafts_resources.resources.RecordResourceConfig"
-            ],
-            "generate": true,
-            "base-url": "/nr-metadata-documents/",
-            "base-html-url": "/nr-metadata-documents/",
-            "config-key": "DOCUMENTS_RECORD_RESOURCE_CONFIG",
-            "module": "nr_metadata.documents.resources.records.config",
-            "class": "nr_metadata.documents.resources.records.config.DocumentsResourceConfig",
-            "extra-code": "",
-            "imports": [],
-            "additional-args": []
-        },
-        "search-options": {
-            "module": "nr_metadata.documents.services.records.search",
-            "class": "nr_metadata.documents.services.records.search.DocumentsSearchOptions",
-            "generate": true,
-            "extra-code": "",
-            "base-classes": [
-                "oarepo_runtime.services.search.I18nRDMSearchOptions"
-            ],
-            "imports": [],
-            "fields": {},
-            "sort-options-field": "sort_options",
-            "versions": {
-                "class": "nr_metadata.documents.DocumentsVersionsSearchOptions",
-                "base-classes": [
-                    "invenio_rdm_records.services.config.RDMSearchVersionsOptions"
-                ]
-            }
-        },
         "config": {
             "generate": true,
             "module": "nr_metadata.documents.config",
@@ -254,6 +207,88 @@
         "proxy": {
             "module": "nr_metadata.documents.proxies",
             "generate": true
+        },
+        "resource": {
+            "base-classes": [
+                "invenio_drafts_resources.resources.RecordResource"
+            ],
+            "generate": true,
+            "config-key": "DOCUMENTS_RECORD_RESOURCE_CLASS",
+            "module": "nr_metadata.documents.resources.records.resource",
+            "class": "nr_metadata.documents.resources.records.resource.DocumentsResource",
+            "proxy": "current_resource",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "resource-config": {
+            "base-classes": [
+                "invenio_drafts_resources.resources.RecordResourceConfig"
+            ],
+            "generate": true,
+            "base-url": "/nr-metadata-documents/",
+            "base-html-url": "/nr-metadata-documents/",
+            "config-key": "DOCUMENTS_RECORD_RESOURCE_CONFIG",
+            "module": "nr_metadata.documents.resources.records.config",
+            "class": "nr_metadata.documents.resources.records.config.DocumentsResourceConfig",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "search-options": {
+            "module": "nr_metadata.documents.services.records.search",
+            "class": "nr_metadata.documents.services.records.search.DocumentsSearchOptions",
+            "generate": true,
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.search.I18nRDMSearchOptions"
+            ],
+            "imports": [],
+            "fields": {},
+            "sort-options-field": "sort_options",
+            "versions": {
+                "class": "nr_metadata.documents.DocumentsVersionsSearchOptions",
+                "base-classes": [
+                    "invenio_rdm_records.services.config.RDMSearchVersionsOptions"
+                ]
+            }
+        },
+        "json-schema-settings": {
+            "generate": true,
+            "alias": "documents",
+            "version": "1.0.0",
+            "module": "nr_metadata.documents.records.jsonschemas",
+            "name": "documents-1.0.0.json",
+            "file": "nr_metadata/documents/records/jsonschemas/documents-1.0.0.json"
+        },
+        "json-serializer": {
+            "module": "nr_metadata.documents.resources.records.ui",
+            "class": "nr_metadata.documents.resources.records.ui.DocumentsUIJSONSerializer",
+            "base-classes": [
+                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
+            ],
+            "imports": [],
+            "extra-code": "",
+            "generate": true,
+            "list_schema_cls": "flask_resources.BaseListSchema",
+            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
+            "schema-context-args": {
+                "\"object_key\"": "\"ui\"",
+                "\"identity\"": "{{ flask.g{g.identity} }}"
+            }
+        },
+        "translations": {
+            "module": "nr_metadata.documents.translations",
+            "alias": "documents"
+        },
+        "files-field": {
+            "generate": true,
+            "field-class": "invenio_records_resources.records.systemfields.FilesField",
+            "file-class": "nr_metadata.documents.records.api.DocumentsRecord",
+            "field-args": [
+                "store=False"
+            ],
+            "imports": []
         },
         "record-metadata": {
             "generate": true,
@@ -342,43 +377,6 @@
             ],
             "imports": []
         },
-        "translations": {
-            "module": "nr_metadata.documents.translations",
-            "alias": "documents"
-        },
-        "json-schema-settings": {
-            "generate": true,
-            "alias": "documents",
-            "version": "1.0.0",
-            "module": "nr_metadata.documents.records.jsonschemas",
-            "name": "documents-1.0.0.json",
-            "file": "nr_metadata/documents/records/jsonschemas/documents-1.0.0.json"
-        },
-        "json-serializer": {
-            "module": "nr_metadata.documents.resources.records.ui",
-            "class": "nr_metadata.documents.resources.records.ui.DocumentsUIJSONSerializer",
-            "base-classes": [
-                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
-            ],
-            "imports": [],
-            "extra-code": "",
-            "generate": true,
-            "list_schema_cls": "flask_resources.BaseListSchema",
-            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
-            "schema-context-args": {
-                "\"object_key\"": "\"ui\"",
-                "\"identity\"": "{{ flask.g{g.identity} }}"
-            }
-        },
-        "files-field": {
-            "generate": true,
-            "field-class": "invenio_records_resources.records.systemfields.FilesField",
-            "file-class": "nr_metadata.documents.records.api.DocumentsRecord",
-            "field-args": [
-                "store=False"
-            ],
-            "imports": []
-        },
         "multilingual-dumper": {
             "generate": true,
             "module": "nr_metadata.documents.records.dumpers.multilingual",
@@ -389,43 +387,6 @@
             "extra-code": "",
             "extensions": [],
             "imports": []
-        },
-        "draft-parent-record": {
-            "class": "nr_metadata.documents.records.api.DocumentsParentRecord",
-            "base-classes": [
-                "invenio_rdm_records.records.api.RDMParent"
-            ],
-            "imports": [],
-            "fields": {},
-            "module": "nr_metadata.documents.records.api",
-            "generate": true
-        },
-        "draft-parent-record-state": {
-            "class": "nr_metadata.documents.records.models.DocumentsParentState",
-            "base-classes": [
-                "invenio_db.db{db.Model}",
-                "invenio_drafts_resources.records.ParentRecordStateMixin"
-            ],
-            "imports": [],
-            "module": "nr_metadata.documents.records.models",
-            "generate": true,
-            "table": "nr_metadata.documents_parent_state_metadata"
-        },
-        "draft-parent-record-metadata": {
-            "class": "nr_metadata.documents.records.models.DocumentsParentMetadata",
-            "base-classes": [
-                "invenio_db.db{db.Model}",
-                "invenio_records.models.RecordMetadataBase"
-            ],
-            "imports": [],
-            "table": "nr_metadata.documents_parent_record_metadata",
-            "module": "nr_metadata.documents.records.models",
-            "generate": true
-        },
-        "draft-parent-record-schema": {
-            "name": "parent-v1.0.0.json",
-            "file": "nr_metadata/documents/records/jsonschemas/parent-v1.0.0.json",
-            "generate": true
         },
         "permissions": {
             "generate": true,
@@ -472,6 +433,43 @@
             ],
             "components": [],
             "imports": []
+        },
+        "draft-parent-record": {
+            "class": "nr_metadata.documents.records.api.DocumentsParentRecord",
+            "base-classes": [
+                "invenio_rdm_records.records.api.RDMParent"
+            ],
+            "imports": [],
+            "fields": {},
+            "module": "nr_metadata.documents.records.api",
+            "generate": true
+        },
+        "draft-parent-record-state": {
+            "class": "nr_metadata.documents.records.models.DocumentsParentState",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_drafts_resources.records.ParentRecordStateMixin"
+            ],
+            "imports": [],
+            "module": "nr_metadata.documents.records.models",
+            "generate": true,
+            "table": "nr_metadata.documents_parent_state_metadata"
+        },
+        "draft-parent-record-metadata": {
+            "class": "nr_metadata.documents.records.models.DocumentsParentMetadata",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase"
+            ],
+            "imports": [],
+            "table": "nr_metadata.documents_parent_record_metadata",
+            "module": "nr_metadata.documents.records.models",
+            "generate": true
+        },
+        "draft-parent-record-schema": {
+            "name": "parent-v1.0.0.json",
+            "file": "nr_metadata/documents/records/jsonschemas/parent-v1.0.0.json",
+            "generate": true
         },
         "parent-record-marshmallow": {
             "module": "nr_metadata.documents.services.records.schema",
@@ -3149,120 +3147,402 @@
                             }
                         }
                     },
-                    "fundingReferences": {
+                    "funders": {
                         "type": "array",
                         "label.cs": "Granty a financování",
                         "label.en": "Funding References",
                         "items": {
-                            "type": "vocabulary",
-                            "vocabulary-type": "awards",
+                            "type": "object",
                             "ui": {
                                 "marshmallow": {
-                                    "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRFundingReferenceUISchema",
-                                    "read": false,
-                                    "write": false,
-                                    "unknown": "INCLUDE",
-                                    "generate": true
+                                    "generate": false,
+                                    "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRFundingReferenceUISchema"
                                 },
-                                "detail": "funding_reference",
-                                "edit": "vocabulary_item"
+                                "detail": "funding_reference"
                             },
                             "marshmallow": {
-                                "class": "nr_metadata.common.services.records.schema_datatypes.NRFundingReferenceSchema",
-                                "read": false,
-                                "write": false,
-                                "unknown": "INCLUDE",
-                                "generate": true
-                            },
-                            "label.cs": "Grant a financování",
-                            "label.en": "Funding Reference",
-                            "imports": [
-                                {
-                                    "import": "oarepo_vocabularies.records.api.Vocabulary"
-                                }
-                            ],
-                            "model": "vocabularies",
-                            "keys": [
-                                "id",
-                                "title"
-                            ],
-                            "pid-field": "Vocabulary.pid.with_type_ctx(\"awards\")",
-                            "facets": {
-                                "args": [
-                                    "vocabulary='awards'"
-                                ]
+                                "generate": false,
+                                "class": "nr_metadata.common.services.records.schema_datatypes.NRFundingReferenceSchema"
                             },
                             "properties": {
-                                "id": {
-                                    "marshmallow": {
-                                        "field-class": "marshmallow.fields.String",
-                                        "validators": [],
-                                        "imports": []
-                                    },
+                                "award": {
+                                    "type": "vocabulary",
+                                    "keys": [
+                                        "title",
+                                        {
+                                            "key": "number",
+                                            "model": {
+                                                "type": "keyword"
+                                            },
+                                            "target": "number"
+                                        },
+                                        {
+                                            "key": "identifiers",
+                                            "model": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "identifier": {
+                                                            "type": "keyword"
+                                                        }
+                                                    },
+                                                    "marshmallow": {
+                                                        "generate": true,
+                                                        "class": "nr_metadata.documents.services.records.schema.IdentifiersItemSchema"
+                                                    },
+                                                    "ui": {
+                                                        "marshmallow": {
+                                                            "generate": true,
+                                                            "class": "nr_metadata.documents.services.records.ui_schema.IdentifiersItemUISchema"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "target": "identifiers"
+                                        },
+                                        {
+                                            "key": "acronym",
+                                            "model": {
+                                                "type": "keyword"
+                                            },
+                                            "target": "acronym"
+                                        },
+                                        {
+                                            "key": "program",
+                                            "model": {
+                                                "type": "keyword"
+                                            },
+                                            "target": "program"
+                                        },
+                                        {
+                                            "key": "subjects",
+                                            "model": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "keyword"
+                                                        },
+                                                        "subject": {
+                                                            "type": "keyword"
+                                                        }
+                                                    },
+                                                    "marshmallow": {
+                                                        "generate": true,
+                                                        "class": "nr_metadata.documents.services.records.schema.SubjectsItemSchema"
+                                                    },
+                                                    "ui": {
+                                                        "marshmallow": {
+                                                            "generate": true,
+                                                            "class": "nr_metadata.documents.services.records.ui_schema.SubjectsItemUISchema"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "target": "subjects"
+                                        },
+                                        {
+                                            "key": "organizations",
+                                            "model": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "scheme": {
+                                                            "type": "keyword"
+                                                        },
+                                                        "id": {
+                                                            "type": "keyword"
+                                                        },
+                                                        "organization": {
+                                                            "type": "keyword"
+                                                        }
+                                                    },
+                                                    "marshmallow": {
+                                                        "generate": true,
+                                                        "class": "nr_metadata.documents.services.records.schema.OrganizationsItemSchema"
+                                                    },
+                                                    "ui": {
+                                                        "marshmallow": {
+                                                            "generate": true,
+                                                            "class": "nr_metadata.documents.services.records.ui_schema.OrganizationsItemUISchema"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "target": "organizations"
+                                        }
+                                    ],
+                                    "vocabulary-type": "awards",
                                     "ui": {
                                         "marshmallow": {
-                                            "field-class": "marshmallow.fields.String",
-                                            "validators": [],
-                                            "imports": []
-                                        }
+                                            "read": false,
+                                            "write": false,
+                                            "unknown": "INCLUDE",
+                                            "generate": true,
+                                            "class": "nr_metadata.documents.services.records.ui_schema.AwardUISchema"
+                                        },
+                                        "detail": "vocabulary_item",
+                                        "edit": "vocabulary_item"
                                     },
-                                    "type": "keyword",
-                                    "mapping": {
-                                        "fields": {
-                                            "text": {
-                                                "type": "search_as_you_type"
-                                            }
-                                        }
-                                    },
-                                    "sample": {
-                                        "skip": true
-                                    }
-                                },
-                                "title": {
                                     "marshmallow": {
-                                        "generate": false,
-                                        "field": "{{invenio_vocabularies.services.schema.i18n_strings}}",
-                                        "field-class": "marshmallow.fields.Nested",
-                                        "validators": [],
-                                        "class": "invenio_vocabularies.services.records.schema.TitleSchema"
+                                        "read": false,
+                                        "write": false,
+                                        "unknown": "INCLUDE",
+                                        "generate": true,
+                                        "class": "nr_metadata.documents.services.records.schema.AwardSchema"
                                     },
-                                    "ui": {
-                                        "marshmallow": {
-                                            "field": "{{oarepo_vocabularies.services.ui_schema.VocabularyI18nStrUIField}}()",
-                                            "generate": false
+                                    "imports": [
+                                        {
+                                            "import": "oarepo_vocabularies.records.api.Vocabulary"
                                         }
-                                    },
-                                    "mapping": {
-                                        "dynamic": true,
-                                        "properties": {
-                                            "en": {
-                                                "type": "search_as_you_type",
-                                                "copy_to": "title_sort"
-                                            }
-                                        }
-                                    },
-                                    "type": "object",
-                                    "propertyNames": {
-                                        "pattern": "^[a-z]{2}$"
-                                    },
-                                    "additionalProperties": {
-                                        "type": "string"
-                                    }
-                                },
-                                "@v": {
-                                    "type": "keyword",
-                                    "marshmallow": {
-                                        "field-name": "_version",
-                                        "field-class": "marshmallow.fields.String"
-                                    },
-                                    "ui": {
-                                        "marshmallow": {
-                                            "field-name": "_version",
-                                            "field-class": "marshmallow.fields.String"
-                                        }
-                                    },
+                                    ],
+                                    "model": "vocabularies",
+                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"awards\")",
                                     "facets": {
-                                        "facet": false
+                                        "args": [
+                                            "vocabulary='awards'"
+                                        ]
+                                    },
+                                    "properties": {
+                                        "title": {
+                                            "marshmallow": {
+                                                "generate": false,
+                                                "field": "{{invenio_vocabularies.services.schema.i18n_strings}}",
+                                                "field-class": "marshmallow.fields.Nested",
+                                                "validators": [],
+                                                "class": "invenio_vocabularies.services.records.schema.TitleSchema"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "field": "{{oarepo_vocabularies.services.ui_schema.VocabularyI18nStrUIField}}()",
+                                                    "generate": false
+                                                }
+                                            },
+                                            "mapping": {
+                                                "dynamic": true,
+                                                "properties": {
+                                                    "en": {
+                                                        "type": "search_as_you_type",
+                                                        "copy_to": "title_sort"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object",
+                                            "propertyNames": {
+                                                "pattern": "^[a-z]{2}$"
+                                            },
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "number": {
+                                            "type": "keyword"
+                                        },
+                                        "identifiers": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "marshmallow": {
+                                                    "generate": true,
+                                                    "class": "nr_metadata.documents.services.records.schema.IdentifiersItemSchema"
+                                                },
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "generate": true,
+                                                        "class": "nr_metadata.documents.services.records.ui_schema.IdentifiersItemUISchema"
+                                                    }
+                                                },
+                                                "properties": {
+                                                    "identifier": {
+                                                        "type": "keyword"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "acronym": {
+                                            "type": "keyword"
+                                        },
+                                        "program": {
+                                            "type": "keyword"
+                                        },
+                                        "subjects": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "marshmallow": {
+                                                    "generate": true,
+                                                    "class": "nr_metadata.documents.services.records.schema.SubjectsItemSchema"
+                                                },
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "generate": true,
+                                                        "class": "nr_metadata.documents.services.records.ui_schema.SubjectsItemUISchema"
+                                                    }
+                                                },
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "subject": {
+                                                        "type": "keyword"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "organizations": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "marshmallow": {
+                                                    "generate": true,
+                                                    "class": "nr_metadata.documents.services.records.schema.OrganizationsItemSchema"
+                                                },
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "generate": true,
+                                                        "class": "nr_metadata.documents.services.records.ui_schema.OrganizationsItemUISchema"
+                                                    }
+                                                },
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "organization": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "scheme": {
+                                                        "type": "keyword"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "@v": {
+                                            "type": "keyword",
+                                            "marshmallow": {
+                                                "field-name": "_version",
+                                                "field-class": "marshmallow.fields.String"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "field-name": "_version",
+                                                    "field-class": "marshmallow.fields.String"
+                                                }
+                                            },
+                                            "facets": {
+                                                "facet": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "funder": {
+                                    "type": "vocabulary",
+                                    "keys": [
+                                        {
+                                            "key": "identifiers",
+                                            "model": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "identifier": {
+                                                        "type": "keyword"
+                                                    }
+                                                },
+                                                "marshmallow": {
+                                                    "generate": false,
+                                                    "class": "nr_metadata.documents.services.records.schema.IdentifiersItemSchema"
+                                                },
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "generate": false,
+                                                        "class": "nr_metadata.documents.services.records.ui_schema.IdentifiersItemUISchema"
+                                                    }
+                                                }
+                                            },
+                                            "target": "identifiers"
+                                        },
+                                        {
+                                            "key": "name",
+                                            "model": {
+                                                "type": "keyword"
+                                            },
+                                            "target": "name"
+                                        }
+                                    ],
+                                    "vocabulary-type": "funders",
+                                    "ui": {
+                                        "marshmallow": {
+                                            "read": false,
+                                            "write": false,
+                                            "unknown": "INCLUDE",
+                                            "generate": true,
+                                            "class": "nr_metadata.documents.services.records.ui_schema.FunderUISchema"
+                                        },
+                                        "detail": "vocabulary_item",
+                                        "edit": "vocabulary_item"
+                                    },
+                                    "marshmallow": {
+                                        "read": false,
+                                        "write": false,
+                                        "unknown": "INCLUDE",
+                                        "generate": true,
+                                        "class": "nr_metadata.documents.services.records.schema.FunderSchema"
+                                    },
+                                    "label.cs": "Poskytovatel financí",
+                                    "label.en": "Funder",
+                                    "hint.cs": "Začněte zapisovat název poskytovatele, následně vyberte z nabídky našeptavače.",
+                                    "hint.en": "Start typing the name of the funder, then select the funder from the menu.",
+                                    "imports": [
+                                        {
+                                            "import": "oarepo_vocabularies.records.api.Vocabulary"
+                                        }
+                                    ],
+                                    "model": "vocabularies",
+                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"funders\")",
+                                    "facets": {
+                                        "args": [
+                                            "vocabulary='funders'"
+                                        ]
+                                    },
+                                    "properties": {
+                                        "identifiers": {
+                                            "type": "object",
+                                            "marshmallow": {
+                                                "generate": false,
+                                                "class": "nr_metadata.documents.services.records.schema.IdentifiersItemSchema"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "generate": false,
+                                                    "class": "nr_metadata.documents.services.records.ui_schema.IdentifiersItemUISchema"
+                                                }
+                                            },
+                                            "properties": {
+                                                "identifier": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "name": {
+                                            "type": "keyword"
+                                        },
+                                        "@v": {
+                                            "type": "keyword",
+                                            "marshmallow": {
+                                                "field-name": "_version",
+                                                "field-class": "marshmallow.fields.String"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "field-name": "_version",
+                                                    "field-class": "marshmallow.fields.String"
+                                                }
+                                            },
+                                            "facets": {
+                                                "facet": false
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -3288,6 +3568,7 @@
                             "properties": {
                                 "geoLocationPlace": {
                                     "type": "keyword",
+                                    "description": "Free description of the location; ie. Atlantic Ocean",
                                     "marshmallow": {
                                         "read": false,
                                         "write": false
@@ -3297,8 +3578,7 @@
                                             "read": false,
                                             "write": false
                                         }
-                                    },
-                                    "description": "Free description of the location; ie. Atlantic Ocean"
+                                    }
                                 },
                                 "geoLocationPoint": {
                                     "type": "object",
@@ -5751,6 +6031,7 @@
                                 "itemRelationType": {
                                     "type": "vocabulary",
                                     "vocabulary-type": "item-relation-types",
+                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "ui": {
                                         "marshmallow": {
                                             "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRItemRelationTypeVocabularyUISchema",
@@ -5769,7 +6050,6 @@
                                         "unknown": "INCLUDE",
                                         "generate": true
                                     },
-                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "label.cs": "Typ vazby",
                                     "label.en": "Relation type",
                                     "hint.cs": "Vyberte typ vazby mezi popisovaným a souvisejícím zdrojem.",
@@ -7169,6 +7449,9 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -7183,9 +7466,6 @@
                                 "type": "string"
                             }
                         }
-                    },
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
                     "uniqueItems": true,
                     "type": "object"

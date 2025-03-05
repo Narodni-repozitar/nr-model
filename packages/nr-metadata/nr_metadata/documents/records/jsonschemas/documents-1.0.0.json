@@ -357,19 +357,91 @@
                         }
                     }
                 },
-                "fundingReferences": {
+                "funders": {
                     "type": "array",
                     "items": {
                         "type": "object",
                         "properties": {
-                            "id": {
-                                "type": "string"
+                            "award": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "object"
+                                    },
+                                    "number": {
+                                        "type": "string"
+                                    },
+                                    "identifiers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "identifier": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "acronym": {
+                                        "type": "string"
+                                    },
+                                    "program": {
+                                        "type": "string"
+                                    },
+                                    "subjects": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "subject": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "organizations": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "organization": {
+                                                    "type": "string"
+                                                },
+                                                "scheme": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "@v": {
+                                        "type": "string"
+                                    }
+                                }
                             },
-                            "title": {
-                                "type": "object"
-                            },
-                            "@v": {
-                                "type": "string"
+                            "funder": {
+                                "type": "object",
+                                "properties": {
+                                    "identifiers": {
+                                        "type": "object",
+                                        "properties": {
+                                            "identifier": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "@v": {
+                                        "type": "string"
+                                    }
+                                }
                             }
                         }
                     }
@@ -918,6 +990,9 @@
             }
         },
         "pids": {
+            "propertyNames": {
+                "pattern": "^[a-z_-][a-z0-9_-]*$"
+            },
             "additionalProperties": {
                 "type": "object",
                 "additionalProperties": false,
@@ -932,9 +1007,6 @@
                         "type": "string"
                     }
                 }
-            },
-            "propertyNames": {
-                "pattern": "^[a-z_-][a-z0-9_-]*$"
             },
             "uniqueItems": true,
             "type": "object"

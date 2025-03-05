@@ -14,6 +14,7 @@ from oarepo_runtime.services.schema.validation import (
 )
 from oarepo_vocabularies.services.schema import HierarchySchema
 
+from nr_metadata.common.services.records.schema import AwardSchema, FunderSchema
 from nr_metadata.schema.identifiers import (
     NRObjectIdentifierSchema,
     NROrganizationIdentifierSchema,
@@ -284,13 +285,11 @@ class NRCountryVocabularySchema(DictOnlySchema):
 
 class NRFundingReferenceSchema(DictOnlySchema):
     class Meta:
-        unknown = ma.INCLUDE
+        unknown = ma.RAISE
 
-    _id = String(data_key="id", attribute="id")
+    award = ma_fields.Nested(lambda: AwardSchema())
 
-    _version = String(data_key="@v", attribute="@v")
-
-    title = i18n_strings
+    funder = ma_fields.Nested(lambda: FunderSchema())
 
 
 class NRGeoLocationPointSchema(DictOnlySchema):

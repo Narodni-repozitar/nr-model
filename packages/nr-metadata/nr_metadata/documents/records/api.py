@@ -38,7 +38,9 @@ class DocumentsRecord(RDMRecord):
 
     schema = ConstantField("$schema", "local://documents-1.0.0.json")
 
-    index = IndexField("documents-documents-1.0.0", search_alias="documents")
+    index = IndexField(
+        "documents-documents-1.0.0",
+    )
 
     pid = PIDField(
         provider=DocumentsIdProvider, context_cls=PIDFieldContext, create=True
@@ -132,10 +134,23 @@ class DocumentsRecord(RDMRecord):
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("countries"),
         ),
-        fundingReferences=PIDRelation(
-            "metadata.fundingReferences",
-            keys=["id", "title"],
+        award=PIDRelation(
+            "metadata.funders.award",
+            keys=[
+                "title",
+                "number",
+                "identifiers",
+                "acronym",
+                "program",
+                "subjects",
+                "organizations",
+            ],
             pid_field=Vocabulary.pid.with_type_ctx("awards"),
+        ),
+        funder=PIDRelation(
+            "metadata.funders.funder",
+            keys=["identifiers", "name"],
+            pid_field=Vocabulary.pid.with_type_ctx("funders"),
         ),
         languages=PIDRelation(
             "metadata.languages",

@@ -64,11 +64,10 @@
             "alias": "datacite",
             "module": "nr_metadata.datacite.records.mappings",
             "index": "datacite-datacite-1.0.0",
-            "index-field-args": [
-                "search_alias=\"datacite\""
-            ],
-            "file": "nr_metadata/datacite/records/mappings/os-v2/datacite/datacite-1.0.0.json"
+            "file": "nr_metadata/datacite/records/mappings/os-v2/datacite/datacite-1.0.0.json",
+            "index-field-args": []
         },
+        "searchable": true,
         "marshmallow": {
             "imports": [],
             "class": "nr_metadata.datacite.services.records.schema.DataCiteRecordSchema",
@@ -79,7 +78,6 @@
             "module": "nr_metadata.datacite.services.records.schema",
             "extra-code": ""
         },
-        "searchable": true,
         "ui": {
             "marshmallow": {
                 "imports": [],
@@ -126,6 +124,52 @@
             "skip": false
         },
         "model-name": "Datacite",
+        "config": {
+            "generate": true,
+            "module": "nr_metadata.datacite.config",
+            "extra_code": "",
+            "imports": []
+        },
+        "ext": {
+            "generate": true,
+            "module": "nr_metadata.datacite.ext",
+            "class": "nr_metadata.datacite.ext.DataciteExt",
+            "base-classes": [],
+            "extra_code": "",
+            "alias": "nr_metadata.datacite",
+            "imports": []
+        },
+        "api-blueprint": {
+            "generate": true,
+            "alias": "datacite",
+            "extra_code": "",
+            "module": "nr_metadata.datacite.views.records.api",
+            "function": "nr_metadata.datacite.views.records.api.create_api_blueprint",
+            "imports": []
+        },
+        "app-blueprint": {
+            "generate": true,
+            "alias": "datacite",
+            "extra_code": "",
+            "module": "nr_metadata.datacite.views.records.app",
+            "function": "nr_metadata.datacite.views.records.app.create_app_blueprint",
+            "imports": []
+        },
+        "facets": {
+            "generate": true,
+            "module": "nr_metadata.datacite.services.records.facets",
+            "extra-code": "",
+            "groups": true
+        },
+        "saved-model": {
+            "file": "nr_metadata/datacite/models/records.json",
+            "module": "nr_metadata.datacite.models",
+            "alias": "datacite"
+        },
+        "proxy": {
+            "module": "nr_metadata.datacite.proxies",
+            "generate": true
+        },
         "record": {
             "base-classes": [
                 "invenio_rdm_records.records.api.RDMRecord"
@@ -184,51 +228,42 @@
                 ]
             }
         },
-        "config": {
-            "generate": true,
-            "module": "nr_metadata.datacite.config",
-            "extra_code": "",
-            "imports": []
-        },
-        "ext": {
-            "generate": true,
-            "module": "nr_metadata.datacite.ext",
-            "class": "nr_metadata.datacite.ext.DataciteExt",
-            "base-classes": [],
-            "extra_code": "",
-            "alias": "nr_metadata.datacite",
-            "imports": []
-        },
-        "api-blueprint": {
+        "json-schema-settings": {
             "generate": true,
             "alias": "datacite",
-            "extra_code": "",
-            "module": "nr_metadata.datacite.views.records.api",
-            "function": "nr_metadata.datacite.views.records.api.create_api_blueprint",
-            "imports": []
+            "version": "1.0.0",
+            "module": "nr_metadata.datacite.records.jsonschemas",
+            "name": "datacite-1.0.0.json",
+            "file": "nr_metadata/datacite/records/jsonschemas/datacite-1.0.0.json"
         },
-        "app-blueprint": {
-            "generate": true,
-            "alias": "datacite",
-            "extra_code": "",
-            "module": "nr_metadata.datacite.views.records.app",
-            "function": "nr_metadata.datacite.views.records.app.create_app_blueprint",
-            "imports": []
-        },
-        "facets": {
-            "generate": true,
-            "module": "nr_metadata.datacite.services.records.facets",
+        "json-serializer": {
+            "module": "nr_metadata.datacite.resources.records.ui",
+            "class": "nr_metadata.datacite.resources.records.ui.DataciteUIJSONSerializer",
+            "base-classes": [
+                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
+            ],
+            "imports": [],
             "extra-code": "",
-            "groups": true
+            "generate": true,
+            "list_schema_cls": "flask_resources.BaseListSchema",
+            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
+            "schema-context-args": {
+                "\"object_key\"": "\"ui\"",
+                "\"identity\"": "{{ flask.g{g.identity} }}"
+            }
         },
-        "saved-model": {
-            "file": "nr_metadata/datacite/models/records.json",
-            "module": "nr_metadata.datacite.models",
+        "translations": {
+            "module": "nr_metadata.datacite.translations",
             "alias": "datacite"
         },
-        "proxy": {
-            "module": "nr_metadata.datacite.proxies",
-            "generate": true
+        "files-field": {
+            "generate": true,
+            "field-class": "invenio_records_resources.records.systemfields.FilesField",
+            "file-class": "nr_metadata.datacite.records.api.DataciteRecord",
+            "field-args": [
+                "store=False"
+            ],
+            "imports": []
         },
         "record-metadata": {
             "generate": true,
@@ -317,43 +352,6 @@
             ],
             "imports": []
         },
-        "translations": {
-            "module": "nr_metadata.datacite.translations",
-            "alias": "datacite"
-        },
-        "json-schema-settings": {
-            "generate": true,
-            "alias": "datacite",
-            "version": "1.0.0",
-            "module": "nr_metadata.datacite.records.jsonschemas",
-            "name": "datacite-1.0.0.json",
-            "file": "nr_metadata/datacite/records/jsonschemas/datacite-1.0.0.json"
-        },
-        "json-serializer": {
-            "module": "nr_metadata.datacite.resources.records.ui",
-            "class": "nr_metadata.datacite.resources.records.ui.DataciteUIJSONSerializer",
-            "base-classes": [
-                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
-            ],
-            "imports": [],
-            "extra-code": "",
-            "generate": true,
-            "list_schema_cls": "flask_resources.BaseListSchema",
-            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
-            "schema-context-args": {
-                "\"object_key\"": "\"ui\"",
-                "\"identity\"": "{{ flask.g{g.identity} }}"
-            }
-        },
-        "files-field": {
-            "generate": true,
-            "field-class": "invenio_records_resources.records.systemfields.FilesField",
-            "file-class": "nr_metadata.datacite.records.api.DataciteRecord",
-            "field-args": [
-                "store=False"
-            ],
-            "imports": []
-        },
         "multilingual-dumper": {
             "generate": true,
             "module": "nr_metadata.datacite.records.dumpers.multilingual",
@@ -364,43 +362,6 @@
             "extra-code": "",
             "extensions": [],
             "imports": []
-        },
-        "draft-parent-record": {
-            "class": "nr_metadata.datacite.records.api.DataciteParentRecord",
-            "base-classes": [
-                "invenio_rdm_records.records.api.RDMParent"
-            ],
-            "imports": [],
-            "fields": {},
-            "module": "nr_metadata.datacite.records.api",
-            "generate": true
-        },
-        "draft-parent-record-state": {
-            "class": "nr_metadata.datacite.records.models.DataciteParentState",
-            "base-classes": [
-                "invenio_db.db{db.Model}",
-                "invenio_drafts_resources.records.ParentRecordStateMixin"
-            ],
-            "imports": [],
-            "module": "nr_metadata.datacite.records.models",
-            "generate": true,
-            "table": "nr_metadata.datacite_parent_state_metadata"
-        },
-        "draft-parent-record-metadata": {
-            "class": "nr_metadata.datacite.records.models.DataciteParentMetadata",
-            "base-classes": [
-                "invenio_db.db{db.Model}",
-                "invenio_records.models.RecordMetadataBase"
-            ],
-            "imports": [],
-            "table": "nr_metadata.datacite_parent_record_metadata",
-            "module": "nr_metadata.datacite.records.models",
-            "generate": true
-        },
-        "draft-parent-record-schema": {
-            "name": "parent-v1.0.0.json",
-            "file": "nr_metadata/datacite/records/jsonschemas/parent-v1.0.0.json",
-            "generate": true
         },
         "permissions": {
             "generate": true,
@@ -447,6 +408,43 @@
             ],
             "components": [],
             "imports": []
+        },
+        "draft-parent-record": {
+            "class": "nr_metadata.datacite.records.api.DataciteParentRecord",
+            "base-classes": [
+                "invenio_rdm_records.records.api.RDMParent"
+            ],
+            "imports": [],
+            "fields": {},
+            "module": "nr_metadata.datacite.records.api",
+            "generate": true
+        },
+        "draft-parent-record-state": {
+            "class": "nr_metadata.datacite.records.models.DataciteParentState",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_drafts_resources.records.ParentRecordStateMixin"
+            ],
+            "imports": [],
+            "module": "nr_metadata.datacite.records.models",
+            "generate": true,
+            "table": "nr_metadata.datacite_parent_state_metadata"
+        },
+        "draft-parent-record-metadata": {
+            "class": "nr_metadata.datacite.records.models.DataciteParentMetadata",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase"
+            ],
+            "imports": [],
+            "table": "nr_metadata.datacite_parent_record_metadata",
+            "module": "nr_metadata.datacite.records.models",
+            "generate": true
+        },
+        "draft-parent-record-schema": {
+            "name": "parent-v1.0.0.json",
+            "file": "nr_metadata/datacite/records/jsonschemas/parent-v1.0.0.json",
+            "generate": true
         },
         "parent-record-marshmallow": {
             "module": "nr_metadata.datacite.services.records.schema",

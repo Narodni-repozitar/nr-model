@@ -25,7 +25,9 @@ class DataciteRecord(RDMRecord):
 
     schema = ConstantField("$schema", "local://datacite-1.0.0.json")
 
-    index = IndexField("datacite-datacite-1.0.0", search_alias="datacite")
+    index = IndexField(
+        "datacite-datacite-1.0.0",
+    )
 
     pid = PIDField(
         provider=DataciteIdProvider, context_cls=PIDFieldContext, create=True

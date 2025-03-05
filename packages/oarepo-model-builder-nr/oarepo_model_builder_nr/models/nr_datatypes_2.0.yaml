@@ -529,19 +529,24 @@ NRFundingReference:
   $id: NRFundingReference
   label.cs: "Grant a financování"
   label.en: "Funding Reference"
-  # informace o přidruženém projektu
-  #
-  # MIGRACE NUŠL - protože v datech NUŠL hrozný stav v polích pro poskytovatele.
-  # u českých projektů na základě prvních dvou znaků v řetězci s identifikátorem
-  # projektu lze přiřadit poskytovatele.
-  ui:
-    detail: funding_reference
-    marshmallow:
-      class: nr_metadata.common.services.records.ui_schema_datatypes.NRFundingReferenceUISchema
-  marshmallow:
-    class: nr_metadata.common.services.records.schema_datatypes.NRFundingReferenceSchema
-  type: vocabulary
-  vocabulary-type: awards
+  properties:
+    funder:
+      type: vocabulary
+      vocabulary-type: funders
+      keys: [ name, identifiers ]
+      label.cs: Poskytovatel financí
+      label.en: Funder
+      hint.cs: Začněte zapisovat název poskytovatele, následně vyberte z nabídky našeptavače.
+      hint.en: Start typing the name of the funder, then select the funder from the menu.
+    award:
+      keys:
+        - title
+        - identifiers
+        - key: number
+          model:
+            type: keyword
+      type: vocabulary
+      vocabulary-type: awards
 
 NRSubject:
   $id: NRSubject

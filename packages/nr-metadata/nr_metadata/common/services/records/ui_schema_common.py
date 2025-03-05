@@ -74,9 +74,7 @@ class NRCommonMetadataUISchema(Schema):
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventUISchema()))
 
-    fundingReferences = ma_fields.List(
-        ma_fields.Nested(lambda: NRFundingReferenceUISchema())
-    )
+    funders = ma_fields.List(ma_fields.Nested(lambda: NRFundingReferenceUISchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationUISchema()))
 

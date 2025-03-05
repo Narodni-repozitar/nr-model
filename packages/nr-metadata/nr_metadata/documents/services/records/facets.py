@@ -182,10 +182,16 @@ metadata_externalLocation_externalLocationURL = TermsFacet(
     label=_("metadata/externalLocation/externalLocationURL.label"),
 )
 
-metadata_fundingReferences = VocabularyFacet(
-    field="metadata.fundingReferences",
-    label=_("metadata/fundingReferences.label"),
+metadata_funders_award = VocabularyFacet(
+    field="metadata.funders.award",
+    label=_("metadata/funders/award.label"),
     vocabulary="awards",
+)
+
+metadata_funders_funder = VocabularyFacet(
+    field="metadata.funders.funder",
+    label=_("metadata/funders/funder.label"),
+    vocabulary="funders",
 )
 
 metadata_geoLocations_geoLocationPlace = TermsFacet(

@@ -82,9 +82,7 @@ class NRCommonMetadataSchema(Schema):
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventSchema()))
 
-    fundingReferences = ma_fields.List(
-        ma_fields.Nested(lambda: NRFundingReferenceSchema())
-    )
+    funders = ma_fields.List(ma_fields.Nested(lambda: NRFundingReferenceSchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationSchema()))
 

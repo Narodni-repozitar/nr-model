@@ -168,7 +168,7 @@ CommonMetadata:
       ^help.cs: Zapište informace o zdroji, který souvisí se zdrojem, který zde popisujete (např. pokud popisujete článek, sem můžete identifikovat časopis, ve kterém článek vyšel).
       ^help.en: Write down information about the resource related to the one you are describing here (e.g. if you are describing an article, you can identify the journal in which the article was published).
 
-    fundingReferences[]:
+    funders[]:
       use: "nr-datatypes#NRFundingReference"
       #^uniqueItems: true
       ^label.cs: "Granty a financování"
