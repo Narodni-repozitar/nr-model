@@ -1,6 +1,7 @@
 import marshmallow as ma
 from edtf import Date as EDTFDate
 from invenio_rdm_records.services.schemas.access import AccessSchema
+from invenio_rdm_records.services.schemas.metadata import CreatorSchema
 from invenio_rdm_records.services.schemas.pids import PIDSchema
 from invenio_rdm_records.services.schemas.record import validate_scheme
 from marshmallow import Schema
@@ -11,6 +12,7 @@ from marshmallow_utils.fields import SanitizedUnicode, TrimmedString
 from marshmallow_utils.fields.nestedattr import NestedAttribute
 from oarepo_runtime.services.schema.i18n import I18nStrField, MultilingualField
 from oarepo_runtime.services.schema.marshmallow import (
+    BaseRecordSchema,
     DictOnlySchema,
     RDMBaseRecordSchema,
 )
@@ -22,9 +24,7 @@ from oarepo_runtime.services.schema.validation import (
 
 from nr_metadata.common.services.records.schema_datatypes import (
     NRContributorSchema,
-    NRCreatorSchema,
     NREventSchema,
-    NRFundingReferenceSchema,
     NRGeoLocationSchema,
     NRLanguageVocabularySchema,
     NRRelatedItemSchema,
@@ -69,7 +69,7 @@ class NRCommonMetadataSchema(Schema):
     contributors = ma_fields.List(ma_fields.Nested(lambda: NRContributorSchema()))
 
     creators = ma_fields.List(
-        ma_fields.Nested(lambda: NRCreatorSchema()),
+        ma_fields.Nested(lambda: CreatorSchema()),
         required=True,
         validate=[ma.validate.Length(min=1)],
     )
@@ -82,7 +82,7 @@ class NRCommonMetadataSchema(Schema):
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventSchema()))
 
-    funders = ma_fields.List(ma_fields.Nested(lambda: NRFundingReferenceSchema()))
+    funders = ma_fields.List(ma_fields.Nested(lambda: BaseRecordSchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationSchema()))
 

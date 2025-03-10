@@ -119,36 +119,44 @@ metadata_contributors_nameType = TermsFacet(
     label=_("metadata/contributors/nameType.label"),
 )
 
-metadata_creators_affiliations = HierarchyVocabularyFacet(
+metadata_creators_affiliations = VocabularyFacet(
     field="metadata.creators.affiliations",
     label=_("metadata/creators/affiliations.label"),
     vocabulary="affiliations",
 )
 
-metadata_creators_authorityIdentifiers_identifier = TermsFacet(
-    field="metadata.creators.authorityIdentifiers.identifier",
-    label=_("metadata/creators/authorityIdentifiers/identifier.label"),
+metadata_creators_person_or_org_family_name = TermsFacet(
+    field="metadata.creators.person_or_org.family_name",
+    label=_("metadata/creators/person_or_org/family_name.label"),
 )
 
-metadata_creators_authorityIdentifiers_scheme = TermsFacet(
-    field="metadata.creators.authorityIdentifiers.scheme",
-    label=_("metadata/creators/authorityIdentifiers/scheme.label"),
+metadata_creators_person_or_org_given_name = TermsFacet(
+    field="metadata.creators.person_or_org.given_name",
+    label=_("metadata/creators/person_or_org/given_name.label"),
 )
 
-metadata_creators_familyName = TermsFacet(
-    field="metadata.creators.familyName", label=_("metadata/creators/familyName.label")
+metadata_creators_person_or_org_identifiers_identifier = TermsFacet(
+    field="metadata.creators.person_or_org.identifiers.identifier",
+    label=_("metadata/creators/person_or_org/identifiers/identifier.label"),
 )
 
-metadata_creators_fullName = TermsFacet(
-    field="metadata.creators.fullName", label=_("metadata/creators/fullName.label")
+metadata_creators_person_or_org_identifiers_scheme = TermsFacet(
+    field="metadata.creators.person_or_org.identifiers.scheme",
+    label=_("metadata/creators/person_or_org/identifiers/scheme.label"),
 )
 
-metadata_creators_givenName = TermsFacet(
-    field="metadata.creators.givenName", label=_("metadata/creators/givenName.label")
+metadata_creators_person_or_org_name = TermsFacet(
+    field="metadata.creators.person_or_org.name",
+    label=_("metadata/creators/person_or_org/name.label"),
 )
 
-metadata_creators_nameType = TermsFacet(
-    field="metadata.creators.nameType", label=_("metadata/creators/nameType.label")
+metadata_creators_person_or_org_type = TermsFacet(
+    field="metadata.creators.person_or_org.type",
+    label=_("metadata/creators/person_or_org/type.label"),
+)
+
+metadata_creators_role_id = TermsFacet(
+    field="metadata.creators.role.id", label=_("metadata/creators/role/id.label")
 )
 
 metadata_dateAvailable = DateTimeFacet(

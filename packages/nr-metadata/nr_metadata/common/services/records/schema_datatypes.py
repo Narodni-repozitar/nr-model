@@ -14,7 +14,6 @@ from oarepo_runtime.services.schema.validation import (
 )
 from oarepo_vocabularies.services.schema import HierarchySchema
 
-from nr_metadata.common.services.records.schema import AwardSchema, FunderSchema
 from nr_metadata.schema.identifiers import (
     NRObjectIdentifierSchema,
     NROrganizationIdentifierSchema,
@@ -69,17 +68,6 @@ class NRContributorSchema(PolymorphicSchema):
     Organizational = ma_fields.Nested(lambda: NRContributorOrganizationSchema())
 
     Personal = ma_fields.Nested(lambda: NRContributorPersonSchema())
-
-    type_field = "nameType"
-
-
-class NRCreatorSchema(PolymorphicSchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    Organizational = ma_fields.Nested(lambda: NROrganizationSchema())
-
-    Personal = ma_fields.Nested(lambda: NRPersonSchema())
 
     type_field = "nameType"
 
@@ -281,15 +269,6 @@ class NRCountryVocabularySchema(DictOnlySchema):
     _version = String(data_key="@v", attribute="@v")
 
     title = i18n_strings
-
-
-class NRFundingReferenceSchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    award = ma_fields.Nested(lambda: AwardSchema())
-
-    funder = ma_fields.Nested(lambda: FunderSchema())
 
 
 class NRGeoLocationPointSchema(DictOnlySchema):

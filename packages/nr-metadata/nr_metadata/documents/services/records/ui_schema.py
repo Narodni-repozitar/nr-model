@@ -1,7 +1,8 @@
 import marshmallow as ma
+from invenio_rdm_records.services.schemas.metadata import CreatorSchema
 from marshmallow import fields as ma_fields
 from marshmallow.fields import String
-from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
+from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema, DictOnlySchema
 from oarepo_runtime.services.schema.ui import InvenioRDMUISchema, LocalizedEDTF
 from oarepo_vocabularies.services.ui_schema import (
     HierarchyUISchema,
@@ -15,7 +16,6 @@ from nr_metadata.common.services.records.ui_schema_common import (
 from nr_metadata.common.services.records.ui_schema_datatypes import (
     NREventUISchema,
     NRExternalLocationUISchema,
-    NRFundingReferenceUISchema,
     NRGeoLocationUISchema,
     NRRelatedItemUISchema,
     NRSeriesUISchema,
@@ -53,13 +53,15 @@ class NRDocumentMetadataUISchema(NRCommonMetadataUISchema):
         ma_fields.Nested(lambda: AdditionalTitlesUISchema())
     )
 
+    creators = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()), required=True)
+
     dateModified = LocalizedEDTF()
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventUISchema()))
 
     externalLocation = ma_fields.Nested(lambda: NRExternalLocationUISchema())
 
-    funders = ma_fields.List(ma_fields.Nested(lambda: NRFundingReferenceUISchema()))
+    funders = ma_fields.List(ma_fields.Nested(lambda: BaseRecordSchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationUISchema()))
 

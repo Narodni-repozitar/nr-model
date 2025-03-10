@@ -124,9 +124,9 @@ class DocumentsRecord(RDMRecord):
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
-        Personal_affiliations=PIDRelation(
+        creators_affiliations=PIDRelation(
             "metadata.creators.affiliations",
-            keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
+            keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
         ),
         country=PIDRelation(
@@ -157,7 +157,7 @@ class DocumentsRecord(RDMRecord):
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("languages"),
         ),
-        itemContributors_Personal_affiliations=PIDRelation(
+        Personal_affiliations=PIDRelation(
             "metadata.relatedItems.itemContributors.affiliations",
             keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
             pid_field=Vocabulary.pid.with_type_ctx("affiliations"),

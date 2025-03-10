@@ -186,13 +186,44 @@ NRAuthority:
 
 NRCreator:
   $id: NRCreator
-  use: "nr-datatypes#NRAuthority"
+  properties:
+    role:
+      properties:
+        id:
+          type: keyword
+    affiliations[]:
+      type: vocabulary
+      vocabulary-type: affiliations
+    person_or_org:
+      properties:
+        name:
+          type: keyword
+        type:
+          type: keyword
+          enum: [ personal, organizational ]
+        given_name:
+          type: keyword
+        family_name:
+          type: keyword
+        identifiers[]:
+          properties:
+            identifier:
+              type: keyword
+            scheme:
+              type: keyword
+          marshmallow:
+            generate: false
+            read: false
+            write: false
   marshmallow:
-    class: nr_metadata.common.services.records.schema_datatypes.NRCreatorSchema
+    class: invenio_rdm_records.services.schemas.metadata.CreatorSchema
+    generate: false
   ui:
     detail: creator
     marshmallow:
-      class: nr_metadata.common.services.records.ui_schema_datatypes.NRCreatorUISchema
+      class: invenio_rdm_records.services.schemas.metadata.CreatorSchema
+      #todo:
+      generate: false
 
 NRContributor:
   $id: NRContributor
@@ -510,7 +541,6 @@ NRRelatedItem:
 
     itemResourceType:
       use: "nr-datatypes#NRResourceType"
-
 NRResourceType:
   $id: NRResourceType
   type: vocabulary
@@ -525,15 +555,33 @@ NRResourceType:
   marshmallow:
     class: nr_metadata.common.services.records.schema_datatypes.NRResourceTypeVocabularySchema
 
-NRFundingReference:
-  $id: NRFundingReference
+NRFunders:
+  $id: NRFunders
   label.cs: "Grant a financování"
-  label.en: "Funding Reference"
+  label.en: "Funders"
+  ui:
+    detail: funding_reference
+    marshmallow:
+      class: oarepo_runtime.services.schema.marshmallow.BaseRecordSchema
+      generate: false
+      #todo: oarepo_runtime.services.schema.ui_rdm.NRFundersUISchema
+  marshmallow:
+    class: oarepo_runtime.services.schema.marshmallow.BaseRecordSchema
+    #todo: oarepo_runtime.services.schema.rdm.FundingSchema
+    generate: false
   properties:
     funder:
       type: vocabulary
+      keys:
+        - key: identifiers
+          model:
+            type: object
+            properties:
+              identifier: keyword
+        - key: name
+          model:
+            type: keyword
       vocabulary-type: funders
-      keys: [ name, identifiers ]
       label.cs: Poskytovatel financí
       label.en: Funder
       hint.cs: Začněte zapisovat název poskytovatele, následně vyberte z nabídky našeptavače.
@@ -541,13 +589,38 @@ NRFundingReference:
     award:
       keys:
         - title
-        - identifiers
         - key: number
           model:
             type: keyword
+        - key: identifiers
+          model:
+            type: array
+            items:
+              properties:
+                identifier: keyword
+        - key: acronym
+          model:
+            type: keyword
+        - key: program
+          model:
+            type: keyword
+        - key: subjects
+          model:
+            type: array
+            items:
+              properties:
+                id: keyword
+                subject: keyword
+        - key: organizations
+          model:
+            type: array
+            items:
+              properties:
+                scheme: keyword
+                id: keyword
+                organization: keyword
       type: vocabulary
       vocabulary-type: awards
-
 NRSubject:
   $id: NRSubject
   label.cs: Klíčové slovo
@@ -593,20 +666,6 @@ NRSubjectCategory:
       class: nr_metadata.common.services.records.ui_schema_datatypes.NRSubjectCategoryVocabularyUISchema
   marshmallow:
     class: nr_metadata.common.services.records.schema_datatypes.NRSubjectCategoryVocabularySchema
-
-NRFunder:
-  $id: NRFunder
-  type: vocabulary
-  vocabulary-type: funders
-  label.cs: Poskytovatel financí
-  label.en: Funder
-  hint.cs: Začněte zapisovat název poskytovatele, následně vyberte z nabídky našeptavače.
-  hint.en: Start typing the name of the funder, then select the funder from the menu.
-  ui:
-    marshmallow:
-      class: nr_metadata.common.services.records.ui_schema_datatypes.NRFunderVocabularyUISchema
-  marshmallow:
-    class: nr_metadata.common.services.records.schema_datatypes.NRFunderVocabularySchema
 
 NRGeoLocation:
   $id: NRGeoLocation

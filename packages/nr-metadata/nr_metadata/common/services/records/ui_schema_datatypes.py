@@ -10,7 +10,6 @@ from oarepo_vocabularies.services.ui_schema import (
     VocabularyI18nStrUIField,
 )
 
-from nr_metadata.common.services.records.ui_schema import AwardUISchema, FunderUISchema
 from nr_metadata.ui_schema.identifiers import (
     NRObjectIdentifierUISchema,
     NROrganizationIdentifierUISchema,
@@ -122,27 +121,6 @@ class NRContributorUISchema(DictOnlySchema):
 
     contributorType = ma_fields.Nested(
         lambda: NRContributorTypeVocabularyUISchema(), required=True
-    )
-
-    familyName = ma_fields.String(required=True)
-
-    fullName = ma_fields.String(required=True)
-
-    givenName = ma_fields.String(required=True)
-
-    nameType = ma_fields.String(validate=[OneOf(["Organizational"])])
-
-
-class NRCreatorUISchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    affiliations = ma_fields.List(
-        ma_fields.Nested(lambda: NRAffiliationVocabularyUISchema())
-    )
-
-    authorityIdentifiers = ma_fields.List(
-        ma_fields.Nested(lambda: NROrganizationIdentifierUISchema())
     )
 
     familyName = ma_fields.String(required=True)
@@ -316,15 +294,6 @@ class NRCountryVocabularyUISchema(DictOnlySchema):
     _version = String(data_key="@v", attribute="@v")
 
     title = VocabularyI18nStrUIField()
-
-
-class NRFundingReferenceUISchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    award = ma_fields.Nested(lambda: AwardUISchema())
-
-    funder = ma_fields.Nested(lambda: FunderUISchema())
 
 
 class NRGeoLocationPointUISchema(DictOnlySchema):
