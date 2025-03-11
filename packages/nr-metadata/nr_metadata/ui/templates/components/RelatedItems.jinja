@@ -73,8 +73,8 @@
                         <{{ 'a href={url} target="_blank"'.format(url=pid.url) if pid.url else 'span' }} >
                             {{pid.scheme}} {{pid.identifier}}
                         </{{ 'a' if pid.url else 'span'}}>
-                        {% if pid.url %}
-                            <ClipboardCopyButton copyText={pid.url} />
+                        {% if pid.url or pid.identifier %}
+                            <ClipboardCopyButton copyText={pid.url or pid.identifier} />
                         {% endif %}
                         {% if not loop.last %}<span class="single separator"></span>{% endif %}
                 {% endfor %}
