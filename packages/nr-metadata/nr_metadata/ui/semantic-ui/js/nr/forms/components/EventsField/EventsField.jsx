@@ -65,13 +65,7 @@ export const EventsField = ({ fieldPath }) => {
               })}
               addButtonLabel={i18next.t("Add event alternate name")}
             />
-            <EDTFDaterangePicker
-              fieldPath={`${fieldPathPrefix}.eventDate`}
-              {...getFieldData({
-                fieldPath: `${fieldPathPrefix}.eventDate`,
-                icon: "calendar",
-              })}
-            />
+            <EDTFDaterangePicker fieldPath={`${fieldPathPrefix}.eventDate`} />
             <GroupField>
               <TextField
                 width={10}
