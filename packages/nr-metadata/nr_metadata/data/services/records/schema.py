@@ -13,10 +13,10 @@ from marshmallow.fields import Dict, Nested, String
 from marshmallow_utils.fields import SanitizedUnicode, TrimmedString
 from marshmallow_utils.fields.nestedattr import NestedAttribute
 from oarepo_runtime.services.schema.marshmallow import (
-    BaseRecordSchema,
     DictOnlySchema,
     RDMBaseRecordSchema,
 )
+from oarepo_runtime.services.schema.rdm import FundingSchema
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_date,
@@ -70,6 +70,8 @@ class NRDataMetadataSchema(NRCommonMetadataSchema):
         ma_fields.Nested(lambda: AdditionalTitlesSchema())
     )
 
+    contributors = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
+
     creators = ma_fields.List(
         ma_fields.Nested(lambda: CreatorSchema()),
         required=True,
@@ -90,7 +92,7 @@ class NRDataMetadataSchema(NRCommonMetadataSchema):
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventSchema()))
 
-    funders = ma_fields.List(ma_fields.Nested(lambda: BaseRecordSchema()))
+    funders = ma_fields.List(ma_fields.Nested(lambda: FundingSchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationSchema()))
 

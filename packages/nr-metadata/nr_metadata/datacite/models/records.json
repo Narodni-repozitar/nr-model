@@ -2530,7 +2530,6 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "type": "object",
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
@@ -2549,7 +2548,8 @@
                             }
                         }
                     },
-                    "uniqueItems": true
+                    "uniqueItems": true,
+                    "type": "object"
                 },
                 "ui": {
                     "marshmallow": {

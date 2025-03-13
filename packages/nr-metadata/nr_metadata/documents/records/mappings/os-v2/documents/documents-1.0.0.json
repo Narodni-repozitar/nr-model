@@ -222,115 +222,62 @@
                             "affiliations": {
                                 "type": "object",
                                 "properties": {
+                                    "name": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    },
                                     "id": {
-                                        "fields": {
-                                            "text": {
-                                                "type": "search_as_you_type"
-                                            }
-                                        },
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
-                                    "title": {
-                                        "dynamic": true,
-                                        "properties": {
-                                            "en": {
-                                                "type": "search_as_you_type",
-                                                "copy_to": "title_sort"
-                                            }
-                                        },
-                                        "type": "object"
-                                    },
-                                    "ror": {
+                                    "@v": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    }
+                                }
+                            },
+                            "person_or_org": {
+                                "type": "object",
+                                "properties": {
+                                    "family_name": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
-                                    "hierarchy": {
+                                    "given_name": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
+                                    },
+                                    "identifiers": {
                                         "type": "object",
                                         "properties": {
-                                            "ancestors": {
+                                            "identifier": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             },
-                                            "ancestors_or_self": {
+                                            "scheme": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
-                                            },
-                                            "level": {
-                                                "type": "integer"
-                                            },
-                                            "parent": {
-                                                "type": "keyword",
-                                                "ignore_above": 1024
-                                            },
-                                            "title": {
-                                                "dynamic": true,
-                                                "type": "object"
                                             }
                                         }
                                     },
-                                    "@v": {
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    }
-                                }
-                            },
-                            "authorityIdentifiers": {
-                                "type": "object",
-                                "properties": {
-                                    "identifier": {
+                                    "name": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
-                                    "scheme": {
+                                    "type": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     }
                                 }
                             },
-                            "contributorType": {
+                            "role": {
                                 "type": "object",
                                 "properties": {
                                     "id": {
-                                        "fields": {
-                                            "text": {
-                                                "type": "search_as_you_type"
-                                            }
-                                        },
-                                        "type": "keyword",
-                                        "ignore_above": 1024
-                                    },
-                                    "title": {
-                                        "dynamic": true,
-                                        "properties": {
-                                            "en": {
-                                                "type": "search_as_you_type",
-                                                "copy_to": "title_sort"
-                                            }
-                                        },
-                                        "type": "object"
-                                    },
-                                    "@v": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     }
                                 }
-                            },
-                            "familyName": {
-                                "type": "keyword",
-                                "ignore_above": 1024
-                            },
-                            "fullName": {
-                                "type": "keyword",
-                                "ignore_above": 1024
-                            },
-                            "givenName": {
-                                "type": "keyword",
-                                "ignore_above": 1024
-                            },
-                            "nameType": {
-                                "type": "keyword",
-                                "ignore_above": 1024
                             }
                         }
                     },
@@ -340,24 +287,13 @@
                             "affiliations": {
                                 "type": "object",
                                 "properties": {
-                                    "id": {
-                                        "fields": {
-                                            "text": {
-                                                "type": "search_as_you_type"
-                                            }
-                                        },
+                                    "name": {
                                         "type": "keyword",
                                         "ignore_above": 1024
                                     },
-                                    "title": {
-                                        "dynamic": true,
-                                        "properties": {
-                                            "en": {
-                                                "type": "search_as_you_type",
-                                                "copy_to": "title_sort"
-                                            }
-                                        },
-                                        "type": "object"
+                                    "id": {
+                                        "type": "keyword",
+                                        "ignore_above": 1024
                                     },
                                     "@v": {
                                         "type": "keyword",
@@ -513,6 +449,10 @@
                                             "identifier": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
+                                            },
+                                            "schema": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
                                             }
                                         }
                                     },
@@ -567,6 +507,10 @@
                                         "type": "object",
                                         "properties": {
                                             "identifier": {
+                                                "type": "keyword",
+                                                "ignore_above": 1024
+                                            },
+                                            "schema": {
                                                 "type": "keyword",
                                                 "ignore_above": 1024
                                             }

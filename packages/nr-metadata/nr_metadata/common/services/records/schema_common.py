@@ -12,10 +12,10 @@ from marshmallow_utils.fields import SanitizedUnicode, TrimmedString
 from marshmallow_utils.fields.nestedattr import NestedAttribute
 from oarepo_runtime.services.schema.i18n import I18nStrField, MultilingualField
 from oarepo_runtime.services.schema.marshmallow import (
-    BaseRecordSchema,
     DictOnlySchema,
     RDMBaseRecordSchema,
 )
+from oarepo_runtime.services.schema.rdm import FundingSchema
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_date,
@@ -23,7 +23,6 @@ from oarepo_runtime.services.schema.validation import (
 )
 
 from nr_metadata.common.services.records.schema_datatypes import (
-    NRContributorSchema,
     NREventSchema,
     NRGeoLocationSchema,
     NRLanguageVocabularySchema,
@@ -66,7 +65,7 @@ class NRCommonMetadataSchema(Schema):
         ma_fields.Nested(lambda: AdditionalTitlesSchema())
     )
 
-    contributors = ma_fields.List(ma_fields.Nested(lambda: NRContributorSchema()))
+    contributors = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
 
     creators = ma_fields.List(
         ma_fields.Nested(lambda: CreatorSchema()),
@@ -82,7 +81,7 @@ class NRCommonMetadataSchema(Schema):
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventSchema()))
 
-    funders = ma_fields.List(ma_fields.Nested(lambda: BaseRecordSchema()))
+    funders = ma_fields.List(ma_fields.Nested(lambda: FundingSchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationSchema()))
 

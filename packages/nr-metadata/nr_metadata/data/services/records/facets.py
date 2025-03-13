@@ -77,46 +77,45 @@ metadata_additionalTitles_titleType = TermsFacet(
     label=_("metadata/additionalTitles/titleType.label"),
 )
 
-metadata_contributors_affiliations = HierarchyVocabularyFacet(
+metadata_contributors_affiliations = VocabularyFacet(
     field="metadata.contributors.affiliations",
     label=_("metadata/contributors/affiliations.label"),
     vocabulary="affiliations",
 )
 
-metadata_contributors_authorityIdentifiers_identifier = TermsFacet(
-    field="metadata.contributors.authorityIdentifiers.identifier",
-    label=_("metadata/contributors/authorityIdentifiers/identifier.label"),
+metadata_contributors_person_or_org_family_name = TermsFacet(
+    field="metadata.contributors.person_or_org.family_name",
+    label=_("metadata/contributors/person_or_org/family_name.label"),
 )
 
-metadata_contributors_authorityIdentifiers_scheme = TermsFacet(
-    field="metadata.contributors.authorityIdentifiers.scheme",
-    label=_("metadata/contributors/authorityIdentifiers/scheme.label"),
+metadata_contributors_person_or_org_given_name = TermsFacet(
+    field="metadata.contributors.person_or_org.given_name",
+    label=_("metadata/contributors/person_or_org/given_name.label"),
 )
 
-metadata_contributors_contributorType = VocabularyFacet(
-    field="metadata.contributors.contributorType",
-    label=_("metadata/contributors/contributorType.label"),
-    vocabulary="contributor-types",
+metadata_contributors_person_or_org_identifiers_identifier = TermsFacet(
+    field="metadata.contributors.person_or_org.identifiers.identifier",
+    label=_("metadata/contributors/person_or_org/identifiers/identifier.label"),
 )
 
-metadata_contributors_familyName = TermsFacet(
-    field="metadata.contributors.familyName",
-    label=_("metadata/contributors/familyName.label"),
+metadata_contributors_person_or_org_identifiers_scheme = TermsFacet(
+    field="metadata.contributors.person_or_org.identifiers.scheme",
+    label=_("metadata/contributors/person_or_org/identifiers/scheme.label"),
 )
 
-metadata_contributors_fullName = TermsFacet(
-    field="metadata.contributors.fullName",
-    label=_("metadata/contributors/fullName.label"),
+metadata_contributors_person_or_org_name = TermsFacet(
+    field="metadata.contributors.person_or_org.name",
+    label=_("metadata/contributors/person_or_org/name.label"),
 )
 
-metadata_contributors_givenName = TermsFacet(
-    field="metadata.contributors.givenName",
-    label=_("metadata/contributors/givenName.label"),
+metadata_contributors_person_or_org_type = TermsFacet(
+    field="metadata.contributors.person_or_org.type",
+    label=_("metadata/contributors/person_or_org/type.label"),
 )
 
-metadata_contributors_nameType = TermsFacet(
-    field="metadata.contributors.nameType",
-    label=_("metadata/contributors/nameType.label"),
+metadata_contributors_role_id = TermsFacet(
+    field="metadata.contributors.role.id",
+    label=_("metadata/contributors/role/id.label"),
 )
 
 metadata_creators_affiliations = VocabularyFacet(

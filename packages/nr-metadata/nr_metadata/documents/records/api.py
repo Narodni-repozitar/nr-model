@@ -111,22 +111,12 @@ class DocumentsRecord(RDMRecord):
     relations = RelationsField(
         affiliations=PIDRelation(
             "metadata.contributors.affiliations",
-            keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
+            keys=["name", "id"],
             pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
-        ),
-        contributorType=PIDRelation(
-            "metadata.contributors.contributorType",
-            keys=["id", "title"],
-            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
-        ),
-        Organizational_contributorType=PIDRelation(
-            "metadata.contributors.contributorType",
-            keys=["id", "title"],
-            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
         creators_affiliations=PIDRelation(
             "metadata.creators.affiliations",
-            keys=["id", "title"],
+            keys=["name", "id"],
             pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
         ),
         country=PIDRelation(
@@ -162,12 +152,12 @@ class DocumentsRecord(RDMRecord):
             keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
             pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
         ),
-        Personal_contributorType=PIDRelation(
+        contributorType=PIDRelation(
             "metadata.relatedItems.itemContributors.contributorType",
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
-        itemContributors_Organizational_contributorType=PIDRelation(
+        Organizational_contributorType=PIDRelation(
             "metadata.relatedItems.itemContributors.contributorType",
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),

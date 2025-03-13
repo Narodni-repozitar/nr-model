@@ -61,17 +61,6 @@ class NRRelatedItemSchema(DictOnlySchema):
     itemYear = ma_fields.Integer()
 
 
-class NRContributorSchema(PolymorphicSchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    Organizational = ma_fields.Nested(lambda: NRContributorOrganizationSchema())
-
-    Personal = ma_fields.Nested(lambda: NRContributorPersonSchema())
-
-    type_field = "nameType"
-
-
 class NREventSchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
@@ -109,48 +98,6 @@ class NRRelatedItemCreatorSchema(PolymorphicSchema):
     Personal = ma_fields.Nested(lambda: NRPersonSchema())
 
     type_field = "nameType"
-
-
-class NRContributorOrganizationSchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    authorityIdentifiers = ma_fields.List(
-        ma_fields.Nested(lambda: NROrganizationIdentifierSchema())
-    )
-
-    contributorType = ma_fields.Nested(
-        lambda: NRContributorTypeVocabularySchema(), required=True
-    )
-
-    fullName = ma_fields.String(required=True)
-
-    nameType = ma_fields.String(validate=[OneOf(["Organizational"])])
-
-
-class NRContributorPersonSchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    affiliations = ma_fields.List(
-        ma_fields.Nested(lambda: NRAffiliationVocabularySchema())
-    )
-
-    authorityIdentifiers = ma_fields.List(
-        ma_fields.Nested(lambda: NRPersonIdentifierSchema())
-    )
-
-    contributorType = ma_fields.Nested(
-        lambda: NRContributorTypeVocabularySchema(), required=True
-    )
-
-    familyName = ma_fields.String(required=True)
-
-    fullName = ma_fields.String(required=True)
-
-    givenName = ma_fields.String(required=True)
-
-    nameType = ma_fields.String(validate=[OneOf(["Personal"])])
 
 
 class NRGeoLocationSchema(DictOnlySchema):

@@ -52,7 +52,7 @@ CommonMetadata:
       use: "nr-datatypes#NRCreator"
 
     contributors[]:
-      use: "nr-datatypes#NRContributor"
+      use: "nr-datatypes#NRCreator"
       ^label.cs: Přispěvatelé
       ^label.en: Contributors
       #^uniqueItems: true

@@ -1,8 +1,11 @@
 import marshmallow as ma
-from invenio_rdm_records.services.schemas.metadata import CreatorSchema
 from marshmallow import fields as ma_fields
 from marshmallow.fields import String
-from oarepo_runtime.services.schema.marshmallow import BaseRecordSchema, DictOnlySchema
+from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
+from oarepo_runtime.services.schema.rdm_ui import (
+    RDMCreatorsUISchema,
+    RDMFundersUISchema,
+)
 from oarepo_runtime.services.schema.ui import (
     InvenioRDMUISchema,
     LocalizedDate,
@@ -54,7 +57,11 @@ class NRDataMetadataUISchema(NRCommonMetadataUISchema):
         ma_fields.Nested(lambda: AdditionalTitlesUISchema())
     )
 
-    creators = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()), required=True)
+    contributors = ma_fields.List(ma_fields.Nested(lambda: RDMCreatorsUISchema()))
+
+    creators = ma_fields.List(
+        ma_fields.Nested(lambda: RDMCreatorsUISchema()), required=True
+    )
 
     dateCollected = LocalizedEDTFInterval()
 
@@ -66,7 +73,7 @@ class NRDataMetadataUISchema(NRCommonMetadataUISchema):
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventUISchema()))
 
-    funders = ma_fields.List(ma_fields.Nested(lambda: BaseRecordSchema()))
+    funders = ma_fields.List(ma_fields.Nested(lambda: RDMFundersUISchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationUISchema()))
 

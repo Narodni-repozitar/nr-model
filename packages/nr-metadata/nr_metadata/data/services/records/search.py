@@ -29,19 +29,25 @@ class DataSearchOptions(I18nRDMSearchOptions):
             facets.metadata_additionalTitles_titleType
         ),
         "metadata_contributors_affiliations": facets.metadata_contributors_affiliations,
-        "metadata_contributors_authorityIdentifiers_identifier": (
-            facets.metadata_contributors_authorityIdentifiers_identifier
+        "metadata_contributors_person_or_org_family_name": (
+            facets.metadata_contributors_person_or_org_family_name
         ),
-        "metadata_contributors_authorityIdentifiers_scheme": (
-            facets.metadata_contributors_authorityIdentifiers_scheme
+        "metadata_contributors_person_or_org_given_name": (
+            facets.metadata_contributors_person_or_org_given_name
         ),
-        "metadata_contributors_contributorType": (
-            facets.metadata_contributors_contributorType
+        "metadata_contributors_person_or_org_identifiers_identifier": (
+            facets.metadata_contributors_person_or_org_identifiers_identifier
         ),
-        "metadata_contributors_familyName": facets.metadata_contributors_familyName,
-        "metadata_contributors_fullName": facets.metadata_contributors_fullName,
-        "metadata_contributors_givenName": facets.metadata_contributors_givenName,
-        "metadata_contributors_nameType": facets.metadata_contributors_nameType,
+        "metadata_contributors_person_or_org_identifiers_scheme": (
+            facets.metadata_contributors_person_or_org_identifiers_scheme
+        ),
+        "metadata_contributors_person_or_org_name": (
+            facets.metadata_contributors_person_or_org_name
+        ),
+        "metadata_contributors_person_or_org_type": (
+            facets.metadata_contributors_person_or_org_type
+        ),
+        "metadata_contributors_role_id": facets.metadata_contributors_role_id,
         "metadata_creators_affiliations": facets.metadata_creators_affiliations,
         "metadata_creators_person_or_org_family_name": (
             facets.metadata_creators_person_or_org_family_name
