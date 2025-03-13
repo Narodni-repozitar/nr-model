@@ -145,8 +145,6 @@ create_metadata_test_venv() {
   "$TEST_VENV"/bin/pip install "oarepo[rdm]>=$OAREPO_VERSION,<$OAREPO_VERSION_MAX"
   "$TEST_VENV"/bin/pip install "pytest-invenio==2.*"
   "$TEST_VENV"/bin/pip install -e '.[tests]'
-  "$TEST_VENV"/bin/pip uninstall oarepo-runtime
-  "$TEST_VENV"/bin/pip install -e  ~/cesnet/26/fixtures_upload/oarepo-runtime
 }
 
 create_builder_test_builder_venv() {
