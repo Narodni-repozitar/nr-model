@@ -73,10 +73,8 @@
                         <{{ 'a href={url} target="_blank"'.format(url=pid.url) if pid.url else 'span' }} >
                             {{pid.scheme}} {{pid.identifier}}
                         </{{ 'a' if pid.url else 'span'}}>
-                        {% if pid.url %}
-                            <button class="ui icon button transparent copy-btn inline" data-clipboard-text="{{pid.url}}">
-                                <i class="copy icon"></i>
-                            </button>
+                        {% if pid.url or pid.identifier %}
+                            <ClipboardCopyButton copyText={pid.url or pid.identifier} />
                         {% endif %}
                         {% if not loop.last %}<span class="single separator"></span>{% endif %}
                 {% endfor %}
@@ -87,9 +85,7 @@
         {% if ri.itemURL %}
             <SeparatedProperty label={_('metadata/relatedItems/itemURL.label')} isLast={True}>
                 <a href={ri.itemURL} target="_blank">{{ri.itemURL}}</a>
-                <button class="ui icon button transparent copy-btn inline" data-clipboard-text="{{ri.itemURL}}">
-                    <i class="copy icon"></i>
-                </button>
+                <ClipboardCopyButton copyText={ri.itemURL} />
             </SeparatedProperty>
             <br>
         {% endif %}
