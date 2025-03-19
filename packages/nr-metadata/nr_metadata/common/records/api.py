@@ -95,25 +95,25 @@ class CommonRecord(RDMRecord):
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("languages"),
         ),
-        Personal_affiliations=PIDRelation(
+        itemContributors_affiliations=PIDRelation(
             "metadata.relatedItems.itemContributors.affiliations",
-            keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
+            keys=["name", "id"],
             pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
         ),
-        contributorType=PIDRelation(
-            "metadata.relatedItems.itemContributors.contributorType",
+        itemContributors_role=PIDRelation(
+            "metadata.relatedItems.itemContributors.role",
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
-        Organizational_contributorType=PIDRelation(
-            "metadata.relatedItems.itemContributors.contributorType",
-            keys=["id", "title"],
-            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
-        ),
-        itemCreators_Personal_affiliations=PIDRelation(
+        itemCreators_affiliations=PIDRelation(
             "metadata.relatedItems.itemCreators.affiliations",
-            keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
+            keys=["name", "id"],
             pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
+        ),
+        itemCreators_role=PIDRelation(
+            "metadata.relatedItems.itemCreators.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
         itemRelationType=PIDRelation(
             "metadata.relatedItems.itemRelationType",
