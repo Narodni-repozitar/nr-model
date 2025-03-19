@@ -37,8 +37,8 @@
             <SeparatedProperty label={_('metadata/relatedItems/itemCreators.label')} isLast={not ri.itemContributors}>
                 {% for person in ri.itemCreators %}
                 {% set person_dict = person | to_dict %}
-                {% set fullName = person_dict.fullName %}
-                {% set identifiers = person_dict.authorityIdentifiers%}
+                {% set fullName = person_dict.person_or_org.name %}
+                {% set identifiers = person_dict.person_or_org.identifiers%}
                     <span>{{fullName}}</span>
                     <CreatibutorIdentifier identifiers={identifiers} creatibutorName={fullName} />
                     {% if not loop.last %}<span class="single separator"></span>{% endif %}
@@ -53,9 +53,9 @@
             <SeparatedProperty label={_('metadata/relatedItems/itemContributors.label')} isLast={True}>
                 {% for person in ri.itemContributors %}
                 {% set person_dict = person | to_dict %}
-                {% set fullName = person_dict.fullName %}
-                {% set identifiers = person_dict.authorityIdentifiers%}
-                {% set role = person_dict.contributorType%}
+                {% set fullName = person_dict.person_or_org.name %}
+                {% set identifiers = person_dict.person_or_org.identifiers%}
+                {% set role = person_dict.role%}
                     <span>{{fullName}}</span>
                     <CreatibutorIdentifier identifiers={identifiers} creatibutorName={fullName} />   
                     {% if role.title %}

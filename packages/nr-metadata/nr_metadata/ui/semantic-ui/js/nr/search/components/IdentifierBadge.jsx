@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Image } from "react-invenio-forms";
 
 export const IconIdentifier = ({ link, badgeTitle, icon, alt }) => {
   return link ? (
@@ -12,14 +13,20 @@ export const IconIdentifier = ({ link, badgeTitle, icon, alt }) => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <img className="inline-id-icon identifier-badge" src={icon} alt={alt} />
+      <Image
+        className="inline-id-icon identifier-badge"
+        src={icon}
+        alt={alt}
+        fallbackSrc={"/static/images/identifiers/id.svg"}
+      />
     </a>
   ) : (
-    <img
+    <Image
       title={badgeTitle}
       className="inline-id-icon identifier-badge"
       src={icon}
       alt={alt}
+      fallbackSrc={"/static/images/identifiers/id.svg"}
     />
   );
 };
@@ -38,115 +45,23 @@ export const IdentifierBadge = ({ identifier, creatibutorName }) => {
 
   const badgeTitle = `${creatibutorName} ${scheme}: ${identifierValue}`;
 
-  switch (scheme.toLowerCase()) {
-    case "orcid":
-      return (
-        <IconIdentifier
-          link={url}
-          badgeTitle={badgeTitle}
-          icon="/static/images/identifiers/ORCID-iD_icon-vector.svg"
-          alt="ORCID logo"
-        />
-      );
-    case "scopusid":
-      return (
-        <IconIdentifier
-          link={url}
-          badgeTitle={badgeTitle}
-          icon="/static/images/identifiers/id.png"
-          alt="ScopusID logo"
-        />
-      );
-    case "ror":
-      return (
-        <IconIdentifier
-          link={url}
-          badgeTitle={badgeTitle}
-          icon="/static/images/identifiers/ror-icon-rgb.svg"
-          alt="ROR logo"
-        />
-      );
-    case "researcherid":
-      return (
-        <IconIdentifier
-          link={url}
-          badgeTitle={badgeTitle}
-          icon="/static/images/identifiers/id.png"
-          alt="WOS Researcher ID logo"
-        />
-      );
-    case "isni":
-      return (
-        <IconIdentifier
-          link={url}
-          badgeTitle={badgeTitle}
-          icon="/static/images/identifiers/id.png"
-          alt="ISNI logo"
-        />
-      );
-    case "doi":
-      return (
-        <IconIdentifier
-          link={url}
-          badgeTitle={badgeTitle}
-          icon="/static/images/identifiers/DOI_logo.svg"
-          alt="DOI logo"
-        />
-      );
-    case "gnd":
-      return (
-        <IconIdentifier
-          link={url}
-          badgeTitle={badgeTitle}
-          icon="/static/images/identifiers/id.png"
-          alt="GND logo"
-        />
-      );
-    case "czenasautid":
-      return (
-        <IconIdentifier
-          link={url}
-          badgeTitle={badgeTitle}
-          icon="/static/images/identifiers/id.png"
-          alt="CZENAS logo"
-        />
-      );
-    case "vedidk":
-      return (
-        <IconIdentifier
-          link={url}
-          badgeTitle={badgeTitle}
-          icon="/static/images/identifiers/id.png"
-          alt="VEDIDK logo"
-        />
-      );
-    case "institutionalid":
-      return (
-        <IconIdentifier
-          link={url}
-          badgeTitle={badgeTitle}
-          icon="/static/images/identifiers/id.png"
-          alt="Institutional ID logo"
-        />
-      );
-    case "ico":
-      return (
-        <IconIdentifier
-          link={url}
-          badgeTitle={badgeTitle}
-          icon="/static/images/identifiers/id.png"
-          alt="ICO logo"
-        />
-      );
-    default:
-      return null;
-  }
+  const lowerCaseScheme = scheme.toLowerCase();
+
+  return (
+    <IconIdentifier
+      link={url}
+      badgeTitle={badgeTitle}
+      icon={`/static/images/identifiers/${lowerCaseScheme}.svg`}
+      alt="ORCID logo"
+    />
+  );
 };
 
 IdentifierBadge.propTypes = {
   identifier: PropTypes.shape({
     scheme: PropTypes.string,
     identifier: PropTypes.string,
+    url: PropTypes.string,
   }),
   creatibutorName: PropTypes.string,
 };
