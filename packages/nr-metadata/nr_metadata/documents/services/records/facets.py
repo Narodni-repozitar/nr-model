@@ -116,9 +116,10 @@ metadata_contributors_person_or_org_type = TermsFacet(
     label=_("metadata/contributors/person_or_org/type.label"),
 )
 
-metadata_contributors_role_id = TermsFacet(
-    field="metadata.contributors.role.id",
-    label=_("metadata/contributors/role/id.label"),
+metadata_contributors_role = VocabularyFacet(
+    field="metadata.contributors.role",
+    label=_("metadata/contributors/role.label"),
+    vocabulary="contributor-types",
 )
 
 metadata_creators_affiliations = VocabularyFacet(
@@ -157,8 +158,10 @@ metadata_creators_person_or_org_type = TermsFacet(
     label=_("metadata/creators/person_or_org/type.label"),
 )
 
-metadata_creators_role_id = TermsFacet(
-    field="metadata.creators.role.id", label=_("metadata/creators/role/id.label")
+metadata_creators_role = VocabularyFacet(
+    field="metadata.creators.role",
+    label=_("metadata/creators/role.label"),
+    vocabulary="contributor-types",
 )
 
 metadata_dateAvailable = DateTimeFacet(

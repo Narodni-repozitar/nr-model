@@ -47,7 +47,7 @@ class CommonSearchOptions(I18nRDMSearchOptions):
         "metadata_contributors_person_or_org_type": (
             facets.metadata_contributors_person_or_org_type
         ),
-        "metadata_contributors_role_id": facets.metadata_contributors_role_id,
+        "metadata_contributors_role": facets.metadata_contributors_role,
         "metadata_creators_affiliations": facets.metadata_creators_affiliations,
         "metadata_creators_person_or_org_family_name": (
             facets.metadata_creators_person_or_org_family_name
@@ -67,7 +67,7 @@ class CommonSearchOptions(I18nRDMSearchOptions):
         "metadata_creators_person_or_org_type": (
             facets.metadata_creators_person_or_org_type
         ),
-        "metadata_creators_role_id": facets.metadata_creators_role_id,
+        "metadata_creators_role": facets.metadata_creators_role,
         "metadata_dateAvailable": facets.metadata_dateAvailable,
         "metadata_dateIssued": facets.metadata_dateIssued,
         "metadata_events_eventLocation_country": (

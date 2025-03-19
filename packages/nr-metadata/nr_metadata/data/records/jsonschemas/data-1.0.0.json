@@ -169,6 +169,12 @@
                                 "properties": {
                                     "id": {
                                         "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "object"
+                                    },
+                                    "@v": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -232,6 +238,12 @@
                                 "type": "object",
                                 "properties": {
                                     "id": {
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "object"
+                                    },
+                                    "@v": {
                                         "type": "string"
                                     }
                                 }
@@ -938,7 +950,6 @@
             "propertyNames": {
                 "pattern": "^[a-z_-][a-z0-9_-]*$"
             },
-            "uniqueItems": true,
             "type": "object",
             "additionalProperties": {
                 "type": "object",
@@ -954,7 +965,8 @@
                         "type": "string"
                     }
                 }
-            }
+            },
+            "uniqueItems": true
         },
         "updated": {
             "type": "string",
