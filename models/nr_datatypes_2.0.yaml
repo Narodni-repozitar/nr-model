@@ -362,48 +362,15 @@ NRRelatedItem:
       #^uniqueItems: true
       ^label.cs: Autoři
       ^label.en: Authors
-      use: "nr-datatypes#NRAuthority"
-      ui:
-        detail: creator
-        marshmallow:
-          class: nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemCreatorUISchema
-      marshmallow:
-        class: nr_metadata.common.services.records.schema_datatypes.NRRelatedItemCreatorSchema
+      use: "nr-datatypes#NRCreator"
 
     itemContributors[]:
       #^uniqueItems: true
       ^label.cs: Přispěvatelé
       ^label.en: Contributors
 
-      use: "nr-datatypes#NRAuthority"
-      ui:
-        detail: contributor
-        marshmallow:
-          class: nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemContributorUISchema
-      marshmallow:
-        class: nr_metadata.common.services.records.schema_datatypes.NRRelatedItemContributorSchema
-      schemas:
-        Personal:
-          ui:
-            detail: nr_contributor_person
-            marshmallow:
-              class: nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemContributorPersonUISchema
-          marshmallow:
-            class: nr_metadata.common.services.records.schema_datatypes.NRRelatedItemContributorPersonSchema
-          properties:
-            contributorType:
-              use: "nr-datatypes#NRContributorType"
-        Organizational:
-          ui:
-            detail: nr_contributor_organization
-            marshmallow:
-              class: nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemContributorOrganizationUISchema
-          marshmallow:
-            class: nr_metadata.common.services.records.schema_datatypes.NRRelatedItemContributorOrganizationSchema
-          properties:
-            contributorType:
-              use: "nr-datatypes#NRContributorType"
-
+      use: "nr-datatypes#NRCreator"
+      
     itemPIDs[]:
       use: "nr-datatypes#NRObjectPID"
       ^label.cs: Identifikátor
