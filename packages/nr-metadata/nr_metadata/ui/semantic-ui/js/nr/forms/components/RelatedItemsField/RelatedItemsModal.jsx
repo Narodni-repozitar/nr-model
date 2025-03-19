@@ -189,11 +189,6 @@ export const RelatedItemsModal = ({
                   autocompleteNames="search"
                 />
                 <CreatibutorsField
-                  addButtonLabel={i18next.t("Add contributor")}
-                  modal={{
-                    addLabel: i18next.t("Add contributor"),
-                    editLabel: i18next.t("Edit contributor"),
-                  }}
                   fieldPath="itemContributors"
                   schema="contributors"
                   autocompleteNames="search"
