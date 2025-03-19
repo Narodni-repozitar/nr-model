@@ -13,8 +13,7 @@ import { useDrag, useDrop } from "react-dnd";
 import { Button, Label, List, Ref } from "semantic-ui-react";
 import { CreatibutorsModal } from "./CreatibutorsModal";
 import PropTypes from "prop-types";
-import { useFormConfig } from "@js/oarepo_ui";
-import { NestedErrors } from "@nr/forms";
+import { useFormConfig, NestedErrors } from "@js/oarepo_ui/forms";
 import { CreatibutorIdentifier } from "@nr/search";
 
 export const CreatibutorsFieldItem = ({

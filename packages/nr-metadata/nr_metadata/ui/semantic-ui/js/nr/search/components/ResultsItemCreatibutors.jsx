@@ -1,7 +1,7 @@
 import React from "react";
 import { List } from "semantic-ui-react";
 import { DoubleSeparator } from "./DoubleSeparator";
-import { IdentifierBadge } from "./IdentifierBadge";
+import { IdentifierBadge } from "@js/oarepo_ui/components";
 import { SearchFacetLink } from "./SearchFacetLink";
 import { i18next } from "@translations/nr/i18next";
 import PropTypes from "prop-types";

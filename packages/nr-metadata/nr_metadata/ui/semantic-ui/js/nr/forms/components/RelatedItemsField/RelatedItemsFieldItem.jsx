@@ -12,7 +12,7 @@ import { useDrag, useDrop } from "react-dnd";
 import { Button, List, Ref } from "semantic-ui-react";
 import { RelatedItemsModal } from "./RelatedItemsModal";
 import PropTypes from "prop-types";
-import { NestedErrors } from "@nr/forms";
+import { NestedErrors } from "@js/oarepo_ui/forms";
 
 export const RelatedItemsFieldItem = ({
   compKey,
