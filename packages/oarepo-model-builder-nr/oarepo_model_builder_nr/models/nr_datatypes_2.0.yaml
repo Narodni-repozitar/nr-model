@@ -188,9 +188,7 @@ NRCreator:
   $id: NRCreator
   properties:
     role:
-      properties:
-        id:
-          type: keyword
+      use: "nr-datatypes#NRContributorType"
     affiliations[]:
       type: vocabulary
       vocabulary-type: affiliations

@@ -114,10 +114,20 @@ class DocumentsRecord(RDMRecord):
             keys=["name", "id"],
             pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
         ),
+        role=PIDRelation(
+            "metadata.contributors.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
         creators_affiliations=PIDRelation(
             "metadata.creators.affiliations",
             keys=["name", "id"],
             pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
+        ),
+        creators_role=PIDRelation(
+            "metadata.creators.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
         country=PIDRelation(
             "metadata.events.eventLocation.country",

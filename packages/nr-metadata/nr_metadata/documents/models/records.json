@@ -1122,29 +1122,118 @@
                                     }
                                 },
                                 "role": {
-                                    "type": "object",
+                                    "type": "vocabulary",
+                                    "required": true,
+                                    "vocabulary-type": "contributor-types",
                                     "ui": {
                                         "marshmallow": {
-                                            "generate": true,
-                                            "class": "nr_metadata.documents.services.records.ui_schema.RoleUISchema"
-                                        }
+                                            "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRContributorTypeVocabularyUISchema",
+                                            "read": false,
+                                            "write": false,
+                                            "unknown": "INCLUDE",
+                                            "generate": true
+                                        },
+                                        "detail": "vocabulary_item",
+                                        "edit": "vocabulary_item"
                                     },
                                     "marshmallow": {
-                                        "generate": true,
-                                        "class": "nr_metadata.documents.services.records.schema.RoleSchema"
+                                        "class": "nr_metadata.common.services.records.schema_datatypes.NRContributorTypeVocabularySchema",
+                                        "read": false,
+                                        "write": false,
+                                        "unknown": "INCLUDE",
+                                        "generate": true
+                                    },
+                                    "label.cs": "Role přispěvatele",
+                                    "label.en": "Contributor's role",
+                                    "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
+                                    "hint.en": "Choose the role of the contributor (editor, illustrator…).",
+                                    "imports": [
+                                        {
+                                            "import": "oarepo_vocabularies.records.api.Vocabulary"
+                                        }
+                                    ],
+                                    "model": "vocabularies",
+                                    "keys": [
+                                        "id",
+                                        "title"
+                                    ],
+                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"contributor-types\")",
+                                    "facets": {
+                                        "args": [
+                                            "vocabulary='contributor-types'"
+                                        ]
                                     },
                                     "properties": {
                                         "id": {
-                                            "type": "keyword",
                                             "marshmallow": {
-                                                "read": false,
-                                                "write": false
+                                                "field-class": "marshmallow.fields.String",
+                                                "validators": [],
+                                                "imports": []
                                             },
                                             "ui": {
                                                 "marshmallow": {
-                                                    "read": false,
-                                                    "write": false
+                                                    "field-class": "marshmallow.fields.String",
+                                                    "validators": [],
+                                                    "imports": []
                                                 }
+                                            },
+                                            "type": "keyword",
+                                            "mapping": {
+                                                "fields": {
+                                                    "text": {
+                                                        "type": "search_as_you_type"
+                                                    }
+                                                }
+                                            },
+                                            "sample": {
+                                                "skip": true
+                                            }
+                                        },
+                                        "title": {
+                                            "marshmallow": {
+                                                "generate": false,
+                                                "field": "{{invenio_vocabularies.services.schema.i18n_strings}}",
+                                                "field-class": "marshmallow.fields.Nested",
+                                                "validators": [],
+                                                "class": "invenio_vocabularies.services.records.schema.TitleSchema"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "field": "{{oarepo_vocabularies.services.ui_schema.VocabularyI18nStrUIField}}()",
+                                                    "generate": false
+                                                }
+                                            },
+                                            "mapping": {
+                                                "dynamic": true,
+                                                "properties": {
+                                                    "en": {
+                                                        "type": "search_as_you_type",
+                                                        "copy_to": "title_sort"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object",
+                                            "propertyNames": {
+                                                "pattern": "^[a-z]{2}$"
+                                            },
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "@v": {
+                                            "type": "keyword",
+                                            "marshmallow": {
+                                                "field-name": "_version",
+                                                "field-class": "marshmallow.fields.String"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "field-name": "_version",
+                                                    "field-class": "marshmallow.fields.String"
+                                                }
+                                            },
+                                            "facets": {
+                                                "facet": false
                                             }
                                         }
                                     }
@@ -1372,29 +1461,118 @@
                                     }
                                 },
                                 "role": {
-                                    "type": "object",
+                                    "type": "vocabulary",
+                                    "required": true,
+                                    "vocabulary-type": "contributor-types",
                                     "ui": {
                                         "marshmallow": {
-                                            "generate": false,
-                                            "class": "nr_metadata.documents.services.records.ui_schema.RoleUISchema"
-                                        }
+                                            "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRContributorTypeVocabularyUISchema",
+                                            "read": false,
+                                            "write": false,
+                                            "unknown": "INCLUDE",
+                                            "generate": false
+                                        },
+                                        "detail": "vocabulary_item",
+                                        "edit": "vocabulary_item"
                                     },
                                     "marshmallow": {
-                                        "generate": false,
-                                        "class": "nr_metadata.documents.services.records.schema.RoleSchema"
+                                        "class": "nr_metadata.common.services.records.schema_datatypes.NRContributorTypeVocabularySchema",
+                                        "read": false,
+                                        "write": false,
+                                        "unknown": "INCLUDE",
+                                        "generate": false
+                                    },
+                                    "label.cs": "Role přispěvatele",
+                                    "label.en": "Contributor's role",
+                                    "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
+                                    "hint.en": "Choose the role of the contributor (editor, illustrator…).",
+                                    "imports": [
+                                        {
+                                            "import": "oarepo_vocabularies.records.api.Vocabulary"
+                                        }
+                                    ],
+                                    "model": "vocabularies",
+                                    "keys": [
+                                        "id",
+                                        "title"
+                                    ],
+                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"contributor-types\")",
+                                    "facets": {
+                                        "args": [
+                                            "vocabulary='contributor-types'"
+                                        ]
                                     },
                                     "properties": {
                                         "id": {
-                                            "type": "keyword",
                                             "marshmallow": {
-                                                "read": false,
-                                                "write": false
+                                                "field-class": "marshmallow.fields.String",
+                                                "validators": [],
+                                                "imports": []
                                             },
                                             "ui": {
                                                 "marshmallow": {
-                                                    "read": false,
-                                                    "write": false
+                                                    "field-class": "marshmallow.fields.String",
+                                                    "validators": [],
+                                                    "imports": []
                                                 }
+                                            },
+                                            "type": "keyword",
+                                            "mapping": {
+                                                "fields": {
+                                                    "text": {
+                                                        "type": "search_as_you_type"
+                                                    }
+                                                }
+                                            },
+                                            "sample": {
+                                                "skip": true
+                                            }
+                                        },
+                                        "title": {
+                                            "marshmallow": {
+                                                "generate": false,
+                                                "field": "{{invenio_vocabularies.services.schema.i18n_strings}}",
+                                                "field-class": "marshmallow.fields.Nested",
+                                                "validators": [],
+                                                "class": "invenio_vocabularies.services.records.schema.TitleSchema"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "field": "{{oarepo_vocabularies.services.ui_schema.VocabularyI18nStrUIField}}()",
+                                                    "generate": false
+                                                }
+                                            },
+                                            "mapping": {
+                                                "dynamic": true,
+                                                "properties": {
+                                                    "en": {
+                                                        "type": "search_as_you_type",
+                                                        "copy_to": "title_sort"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object",
+                                            "propertyNames": {
+                                                "pattern": "^[a-z]{2}$"
+                                            },
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "@v": {
+                                            "type": "keyword",
+                                            "marshmallow": {
+                                                "field-name": "_version",
+                                                "field-class": "marshmallow.fields.String"
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "field-name": "_version",
+                                                    "field-class": "marshmallow.fields.String"
+                                                }
+                                            },
+                                            "facets": {
+                                                "facet": false
                                             }
                                         }
                                     }
@@ -2594,7 +2772,7 @@
                                                                 "read": false,
                                                                 "write": false,
                                                                 "unknown": "INCLUDE",
-                                                                "generate": true
+                                                                "generate": false
                                                             },
                                                             "detail": "vocabulary_item",
                                                             "edit": "vocabulary_item"
@@ -2604,7 +2782,7 @@
                                                             "read": false,
                                                             "write": false,
                                                             "unknown": "INCLUDE",
-                                                            "generate": true
+                                                            "generate": false
                                                         },
                                                         "label.cs": "Role přispěvatele",
                                                         "label.en": "Contributor's role",
@@ -6048,10 +6226,10 @@
                             }
                         }
                     },
-                    "type": "object",
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    }
+                    },
+                    "type": "object"
                 },
                 "ui": {
                     "marshmallow": {

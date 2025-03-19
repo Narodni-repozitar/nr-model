@@ -139,23 +139,6 @@ class NRPersonSchema(DictOnlySchema):
     nameType = ma_fields.String(validate=[OneOf(["Personal"])])
 
 
-class NRRelatedItemContributorOrganizationSchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    authorityIdentifiers = ma_fields.List(
-        ma_fields.Nested(lambda: NROrganizationIdentifierSchema())
-    )
-
-    contributorType = ma_fields.Nested(
-        lambda: NRContributorTypeVocabularySchema(), required=True
-    )
-
-    fullName = ma_fields.String(required=True)
-
-    nameType = ma_fields.String(validate=[OneOf(["Organizational"])])
-
-
 class NRRelatedItemContributorPersonSchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
@@ -192,17 +175,6 @@ class NRAffiliationVocabularySchema(DictOnlySchema):
     hierarchy = ma_fields.Nested(lambda: HierarchySchema())
 
     ror = ma_fields.String()
-
-    title = i18n_strings
-
-
-class NRContributorTypeVocabularySchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.INCLUDE
-
-    _id = String(data_key="id", attribute="id")
-
-    _version = String(data_key="@v", attribute="@v")
 
     title = i18n_strings
 
@@ -259,6 +231,23 @@ class NROrganizationSchema(DictOnlySchema):
 
     authorityIdentifiers = ma_fields.List(
         ma_fields.Nested(lambda: NROrganizationIdentifierSchema())
+    )
+
+    fullName = ma_fields.String(required=True)
+
+    nameType = ma_fields.String(validate=[OneOf(["Organizational"])])
+
+
+class NRRelatedItemContributorOrganizationSchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    authorityIdentifiers = ma_fields.List(
+        ma_fields.Nested(lambda: NROrganizationIdentifierSchema())
+    )
+
+    contributorType = ma_fields.Nested(
+        lambda: NRContributorTypeVocabularySchema(), required=True
     )
 
     fullName = ma_fields.String(required=True)
