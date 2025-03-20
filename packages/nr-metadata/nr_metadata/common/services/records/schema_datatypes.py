@@ -1,37 +1,60 @@
 import marshmallow as ma
 from edtf import Interval as EDTFInterval
+from invenio_rdm_records.services.schemas.metadata import CreatorSchema
 from invenio_vocabularies.services.schema import i18n_strings
 from marshmallow import fields as ma_fields
 from marshmallow.fields import String
-from marshmallow.validate import OneOf
 from marshmallow_utils.fields import TrimmedString
 from oarepo_runtime.services.schema.i18n import I18nStrField, MultilingualField
 from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
-from oarepo_runtime.services.schema.polymorphic import PolymorphicSchema
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_identifier,
 )
-from oarepo_vocabularies.services.schema import HierarchySchema
 
-from nr_metadata.schema.identifiers import (
-    NRObjectIdentifierSchema,
-    NROrganizationIdentifierSchema,
-    NRPersonIdentifierSchema,
-)
+from nr_metadata.schema.identifiers import NRObjectIdentifierSchema
+
+
+class NREventSchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    eventDate = TrimmedString(
+        required=True, validate=[CachedMultilayerEDTFValidator(types=(EDTFInterval,))]
+    )
+
+    eventLocation = ma_fields.Nested(lambda: NRLocationSchema(), required=True)
+
+    eventNameAlternate = ma_fields.List(ma_fields.String())
+
+    eventNameOriginal = ma_fields.String(required=True)
+
+
+class NRGeoLocationSchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    geoLocationPlace = ma_fields.String()
+
+    geoLocationPoint = ma_fields.Nested(lambda: NRGeoLocationPointSchema())
+
+
+class NRLocationSchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    country = ma_fields.Nested(lambda: NRCountryVocabularySchema())
+
+    place = ma_fields.String(required=True)
 
 
 class NRRelatedItemSchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
-    itemContributors = ma_fields.List(
-        ma_fields.Nested(lambda: NRRelatedItemContributorSchema())
-    )
+    itemContributors = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
 
-    itemCreators = ma_fields.List(
-        ma_fields.Nested(lambda: NRRelatedItemCreatorSchema())
-    )
+    itemCreators = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
 
     itemEndPage = ma_fields.String()
 
@@ -59,124 +82,6 @@ class NRRelatedItemSchema(DictOnlySchema):
     itemVolume = ma_fields.String()
 
     itemYear = ma_fields.Integer()
-
-
-class NREventSchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    eventDate = TrimmedString(
-        required=True, validate=[CachedMultilayerEDTFValidator(types=(EDTFInterval,))]
-    )
-
-    eventLocation = ma_fields.Nested(lambda: NRLocationSchema(), required=True)
-
-    eventNameAlternate = ma_fields.List(ma_fields.String())
-
-    eventNameOriginal = ma_fields.String(required=True)
-
-
-class NRRelatedItemContributorSchema(PolymorphicSchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    Organizational = ma_fields.Nested(
-        lambda: NRRelatedItemContributorOrganizationSchema()
-    )
-
-    Personal = ma_fields.Nested(lambda: NRRelatedItemContributorPersonSchema())
-
-    type_field = "nameType"
-
-
-class NRRelatedItemCreatorSchema(PolymorphicSchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    Organizational = ma_fields.Nested(lambda: NROrganizationSchema())
-
-    Personal = ma_fields.Nested(lambda: NRPersonSchema())
-
-    type_field = "nameType"
-
-
-class NRGeoLocationSchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    geoLocationPlace = ma_fields.String()
-
-    geoLocationPoint = ma_fields.Nested(lambda: NRGeoLocationPointSchema())
-
-
-class NRLocationSchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    country = ma_fields.Nested(lambda: NRCountryVocabularySchema())
-
-    place = ma_fields.String(required=True)
-
-
-class NRPersonSchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    affiliations = ma_fields.List(
-        ma_fields.Nested(lambda: NRAffiliationVocabularySchema())
-    )
-
-    authorityIdentifiers = ma_fields.List(
-        ma_fields.Nested(lambda: NRPersonIdentifierSchema())
-    )
-
-    familyName = ma_fields.String(required=True)
-
-    fullName = ma_fields.String(required=True)
-
-    givenName = ma_fields.String(required=True)
-
-    nameType = ma_fields.String(validate=[OneOf(["Personal"])])
-
-
-class NRRelatedItemContributorPersonSchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    affiliations = ma_fields.List(
-        ma_fields.Nested(lambda: NRAffiliationVocabularySchema())
-    )
-
-    authorityIdentifiers = ma_fields.List(
-        ma_fields.Nested(lambda: NRPersonIdentifierSchema())
-    )
-
-    contributorType = ma_fields.Nested(
-        lambda: NRContributorTypeVocabularySchema(), required=True
-    )
-
-    familyName = ma_fields.String(required=True)
-
-    fullName = ma_fields.String(required=True)
-
-    givenName = ma_fields.String(required=True)
-
-    nameType = ma_fields.String(validate=[OneOf(["Personal"])])
-
-
-class NRAffiliationVocabularySchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.INCLUDE
-
-    _id = String(data_key="id", attribute="id")
-
-    _version = String(data_key="@v", attribute="@v")
-
-    hierarchy = ma_fields.Nested(lambda: HierarchySchema())
-
-    ror = ma_fields.String()
-
-    title = i18n_strings
 
 
 class NRCountryVocabularySchema(DictOnlySchema):
@@ -223,36 +128,6 @@ class NRLanguageVocabularySchema(DictOnlySchema):
     _version = String(data_key="@v", attribute="@v")
 
     title = i18n_strings
-
-
-class NROrganizationSchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    authorityIdentifiers = ma_fields.List(
-        ma_fields.Nested(lambda: NROrganizationIdentifierSchema())
-    )
-
-    fullName = ma_fields.String(required=True)
-
-    nameType = ma_fields.String(validate=[OneOf(["Organizational"])])
-
-
-class NRRelatedItemContributorOrganizationSchema(DictOnlySchema):
-    class Meta:
-        unknown = ma.RAISE
-
-    authorityIdentifiers = ma_fields.List(
-        ma_fields.Nested(lambda: NROrganizationIdentifierSchema())
-    )
-
-    contributorType = ma_fields.Nested(
-        lambda: NRContributorTypeVocabularySchema(), required=True
-    )
-
-    fullName = ma_fields.String(required=True)
-
-    nameType = ma_fields.String(validate=[OneOf(["Organizational"])])
 
 
 class NRResourceTypeVocabularySchema(DictOnlySchema):
