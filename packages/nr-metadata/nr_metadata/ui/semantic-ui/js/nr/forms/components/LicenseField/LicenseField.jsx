@@ -6,6 +6,7 @@ import { LicenseModal } from "./LicenseModal";
 import { LicenseFieldItem } from "./LicenseFieldItem";
 import { i18next } from "@translations/nr/i18next";
 import { useFieldData } from "@js/oarepo_ui";
+import { FieldLabel } from "react-invenio-forms";
 
 const defaultSearchConfig = {
   searchApi: {
@@ -25,23 +26,22 @@ const defaultSearchConfig = {
 };
 
 export const LicenseField = ({
-  label = i18next.t("License"),
+  label,
   fieldPath,
-  required = false,
+  required,
   searchConfig = defaultSearchConfig,
   serializeLicense,
-  helpText = i18next.t(
-    "If a Creative Commons license is associated with the resource, select the appropriate license option from the menu. We recommend choosing the latest versions, namely 3.0 Czech and 4.0 International."
-  ),
+  helpText,
   icon = "drivers license",
 }) => {
   const { getFieldData } = useFieldData();
 
-  const {
-    label: modelLabel,
-    helpText: modelHelpText,
-    required: modelRequired,
-  } = getFieldData({ fieldPath, icon: icon });
+  const fieldData = {
+    ...getFieldData({ fieldPath, icon, fieldRepresentation: "text" }),
+    ...(label && { label }),
+    ...(required && { required }),
+    ...(helpText && { helpText }),
+  };
   const { values, setFieldValue } = useFormikContext();
   const license = getIn(values, fieldPath, {})?.id
     ? getIn(values, fieldPath, {})
@@ -50,9 +50,11 @@ export const LicenseField = ({
     setFieldValue(fieldPath, { id: selectedLicense.id });
   };
   return (
-    <Form.Field required={modelRequired ?? required}>
-      {modelLabel ?? label}
-      <label className="helptext">{modelHelpText ?? helpText}</label>
+    <Form.Field required={fieldData.required}>
+      <FieldLabel htmlFor={fieldPath} icon={icon} label={fieldData.label} />
+      {fieldData.helpText && (
+        <label className="helptext">{fieldData.helpText}</label>
+      )}
       {license ? (
         <LicenseFieldItem
           key={license.id}
