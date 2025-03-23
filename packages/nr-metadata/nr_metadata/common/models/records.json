@@ -921,7 +921,7 @@
                                             "detail": "vocabulary_item",
                                             "edit": "vocabulary_item"
                                         },
-                                        "pid-field": "Vocabulary.pid.with_type_ctx(\"affiliations\")",
+                                        "pid-field": "{{invenio_vocabularies.contrib.affiliations.api.Affiliation}}.pid",
                                         "facets": {
                                             "args": [
                                                 "vocabulary='affiliations'"
@@ -1192,7 +1192,7 @@
                                             "detail": "vocabulary_item",
                                             "edit": "vocabulary_item"
                                         },
-                                        "pid-field": "Vocabulary.pid.with_type_ctx(\"affiliations\")",
+                                        "pid-field": "{{invenio_vocabularies.contrib.affiliations.api.Affiliation}}.pid",
                                         "facets": {
                                             "args": [
                                                 "vocabulary='affiliations'"
@@ -1738,6 +1738,7 @@
                                             "target": "organizations"
                                         }
                                     ],
+                                    "class": "oarepo_runtime.records.relations.UnstrictPIDRelation",
                                     "vocabulary-type": "awards",
                                     "imports": [
                                         {
@@ -1759,7 +1760,7 @@
                                         "detail": "vocabulary_item",
                                         "edit": "vocabulary_item"
                                     },
-                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"awards\")",
+                                    "pid-field": "{{invenio_vocabularies.contrib.awards.api.Award}}.pid",
                                     "facets": {
                                         "args": [
                                             "vocabulary='awards'"
@@ -1938,6 +1939,7 @@
                                             "target": "name"
                                         }
                                     ],
+                                    "class": "oarepo_runtime.records.relations.UnstrictPIDRelation",
                                     "vocabulary-type": "funders",
                                     "label.cs": "Poskytovatel financí",
                                     "label.en": "Funder",
@@ -1963,7 +1965,7 @@
                                         "detail": "vocabulary_item",
                                         "edit": "vocabulary_item"
                                     },
-                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"funders\")",
+                                    "pid-field": "{{invenio_vocabularies.contrib.funders.api.Funder}}.pid",
                                     "facets": {
                                         "args": [
                                             "vocabulary='funders'"
@@ -2432,7 +2434,7 @@
                                                         "detail": "vocabulary_item",
                                                         "edit": "vocabulary_item"
                                                     },
-                                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"affiliations\")",
+                                                    "pid-field": "{{invenio_vocabularies.contrib.affiliations.api.Affiliation}}.pid",
                                                     "facets": {
                                                         "args": [
                                                             "vocabulary='affiliations'"
@@ -2696,7 +2698,7 @@
                                                         "detail": "vocabulary_item",
                                                         "edit": "vocabulary_item"
                                                     },
-                                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"affiliations\")",
+                                                    "pid-field": "{{invenio_vocabularies.contrib.affiliations.api.Affiliation}}.pid",
                                                     "facets": {
                                                         "args": [
                                                             "vocabulary='affiliations'"
@@ -3946,11 +3948,11 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "type": "object",
-                    "uniqueItems": true,
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
+                    "uniqueItems": true,
+                    "type": "object",
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,

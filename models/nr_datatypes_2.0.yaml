@@ -486,6 +486,7 @@ NRFunders:
   properties:
     funder:
       type: vocabulary
+      class: oarepo_runtime.records.relations.UnstrictPIDRelation
       keys:
         - key: identifiers
           model:
@@ -538,6 +539,7 @@ NRFunders:
                 organization: keyword
       type: vocabulary
       vocabulary-type: awards
+      class: oarepo_runtime.records.relations.UnstrictPIDRelation
 NRSubject:
   $id: NRSubject
   label.cs: Klíčové slovo

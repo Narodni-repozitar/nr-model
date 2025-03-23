@@ -363,12 +363,6 @@ NRRelatedItem:
       ^label.cs: Autoři
       ^label.en: Authors
       use: "nr-datatypes#NRCreator"
-#      ui:
-#        detail: creator
-#        marshmallow:
-#          class: nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemCreatorUISchema
-#      marshmallow:
-#        class: nr_metadata.common.services.records.schema_datatypes.NRRelatedItemCreatorSchema
 
     itemContributors[]:
       #^uniqueItems: true
@@ -376,34 +370,7 @@ NRRelatedItem:
       ^label.en: Contributors
 
       use: "nr-datatypes#NRCreator"
-#      ui:
-#        detail: contributor
-#        marshmallow:
-#          class: nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemContributorUISchema
-#      marshmallow:
-#        class: nr_metadata.common.services.records.schema_datatypes.NRRelatedItemContributorSchema
-#      schemas:
-#        Personal:
-#          ui:
-#            detail: nr_contributor_person
-#            marshmallow:
-#              class: nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemContributorPersonUISchema
-#          marshmallow:
-#            class: nr_metadata.common.services.records.schema_datatypes.NRRelatedItemContributorPersonSchema
-#          properties:
-#            contributorType:
-#              use: "nr-datatypes#NRContributorType"
-#        Organizational:
-#          ui:
-#            detail: nr_contributor_organization
-#            marshmallow:
-#              class: nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemContributorOrganizationUISchema
-#          marshmallow:
-#            class: nr_metadata.common.services.records.schema_datatypes.NRRelatedItemContributorOrganizationSchema
-#          properties:
-#            contributorType:
-#              use: "nr-datatypes#NRContributorType"
-
+      
     itemPIDs[]:
       use: "nr-datatypes#NRObjectPID"
       ^label.cs: Identifikátor
@@ -519,6 +486,7 @@ NRFunders:
   properties:
     funder:
       type: vocabulary
+      class: oarepo_runtime.records.relations.UnstrictPIDRelation
       keys:
         - key: identifiers
           model:
@@ -571,6 +539,7 @@ NRFunders:
                 organization: keyword
       type: vocabulary
       vocabulary-type: awards
+      class: oarepo_runtime.records.relations.UnstrictPIDRelation
 NRSubject:
   $id: NRSubject
   label.cs: Klíčové slovo

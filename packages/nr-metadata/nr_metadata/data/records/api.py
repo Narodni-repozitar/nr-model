@@ -6,7 +6,14 @@ from invenio_rdm_records.records.api import RDMMediaFileRecord, RDMParent, RDMRe
 from invenio_records.systemfields import ConstantField
 from invenio_records_resources.records.systemfields import FilesField, IndexField
 from invenio_records_resources.records.systemfields.pid import PIDField, PIDFieldContext
-from oarepo_runtime.records.relations import PIDRelation, RelationsField
+from invenio_vocabularies.contrib.affiliations.api import Affiliation
+from invenio_vocabularies.contrib.awards.api import Award
+from invenio_vocabularies.contrib.funders.api import Funder
+from oarepo_runtime.records.relations import (
+    PIDRelation,
+    RelationsField,
+    UnstrictPIDRelation,
+)
 from oarepo_vocabularies.records.api import Vocabulary
 
 from nr_metadata.data.records.dumpers.dumper import DataDumper
@@ -50,7 +57,7 @@ class DataRecord(RDMRecord):
         affiliations=PIDRelation(
             "metadata.contributors.affiliations",
             keys=["name", "id"],
-            pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
+            pid_field=Affiliation.pid,
         ),
         role=PIDRelation(
             "metadata.contributors.role",
@@ -60,7 +67,7 @@ class DataRecord(RDMRecord):
         creators_affiliations=PIDRelation(
             "metadata.creators.affiliations",
             keys=["name", "id"],
-            pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
+            pid_field=Affiliation.pid,
         ),
         creators_role=PIDRelation(
             "metadata.creators.role",
@@ -72,7 +79,7 @@ class DataRecord(RDMRecord):
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("countries"),
         ),
-        award=PIDRelation(
+        award=UnstrictPIDRelation(
             "metadata.funders.award",
             keys=[
                 "title",
@@ -83,12 +90,12 @@ class DataRecord(RDMRecord):
                 "subjects",
                 "organizations",
             ],
-            pid_field=Vocabulary.pid.with_type_ctx("awards"),
+            pid_field=Award.pid,
         ),
-        funder=PIDRelation(
+        funder=UnstrictPIDRelation(
             "metadata.funders.funder",
             keys=["identifiers", "name"],
-            pid_field=Vocabulary.pid.with_type_ctx("funders"),
+            pid_field=Funder.pid,
         ),
         languages=PIDRelation(
             "metadata.languages",
@@ -103,7 +110,7 @@ class DataRecord(RDMRecord):
         itemContributors_affiliations=PIDRelation(
             "metadata.relatedItems.itemContributors.affiliations",
             keys=["name", "id"],
-            pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
+            pid_field=Affiliation.pid,
         ),
         itemContributors_role=PIDRelation(
             "metadata.relatedItems.itemContributors.role",
@@ -113,7 +120,7 @@ class DataRecord(RDMRecord):
         itemCreators_affiliations=PIDRelation(
             "metadata.relatedItems.itemCreators.affiliations",
             keys=["name", "id"],
-            pid_field=Vocabulary.pid.with_type_ctx("affiliations"),
+            pid_field=Affiliation.pid,
         ),
         itemCreators_role=PIDRelation(
             "metadata.relatedItems.itemCreators.role",
