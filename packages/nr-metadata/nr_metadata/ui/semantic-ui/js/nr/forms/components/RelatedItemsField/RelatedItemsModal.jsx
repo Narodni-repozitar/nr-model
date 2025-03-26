@@ -12,7 +12,7 @@ import { Button, Form, Grid, Header, Modal } from "semantic-ui-react";
 import { Formik, getIn } from "formik";
 import * as Yup from "yup";
 import { i18next } from "@translations/nr/i18next";
-import { TextField, GroupField } from "react-invenio-forms";
+import { GroupField } from "react-invenio-forms";
 import { CreatibutorsField } from "../CreatibutorsField";
 import {
   IdentifiersField,
@@ -27,6 +27,7 @@ import {
   useSanitizeInput,
   useFieldData,
 } from "@js/oarepo_ui";
+import { TextField } from "@js/oarepo_ui/forms";
 import _isEmpty from "lodash/isEmpty";
 
 const RelatedItemsSchema = Yup.object({
@@ -178,10 +179,8 @@ export const RelatedItemsModal = ({
             <Modal.Content>
               <Form>
                 <TextField
-                  autoComplete="off"
                   fieldPath="itemTitle"
                   onBlur={() => handleBlur("itemTitle")}
-                  {...getFieldData({ fieldPath: "itemTitle" })}
                 />
                 <CreatibutorsField
                   fieldPath="itemCreators"
@@ -213,80 +212,49 @@ export const RelatedItemsModal = ({
                   validateOnBlur
                 />
                 <TextField
-                  autoComplete="off"
                   fieldPath="itemURL"
                   onBlur={() => handleBlur("itemURL")}
-                  {...getFieldData({ fieldPath: "itemURL" })}
                 />
                 <GroupField widths="equal">
                   <TextField
                     fieldPath="itemYear"
                     onBlur={() => handleBlur("itemYear")}
-                    {...getFieldData({
-                      fieldPath: "itemYear",
-                      fieldRepresentation: "compact",
-                    })}
                   />
                   <TextField
                     fieldPath="itemVolume"
                     onBlur={() => handleBlur("itemVolume")}
-                    {...getFieldData({
-                      fieldPath: "itemVolume",
-                      fieldRepresentation: "compact",
-                    })}
                   />
                   <TextField
                     fieldPath="itemIssue"
                     onBlur={() => handleBlur("itemIssue")}
-                    {...getFieldData({
-                      fieldPath: "itemIssue",
-                      fieldRepresentation: "compact",
-                    })}
                   />
                   <TextField
                     fieldPath="itemStartPage"
                     onBlur={() => handleBlur("itemStartPage")}
-                    {...getFieldData({
-                      fieldPath: "itemStartPage",
-                      fieldRepresentation: "compact",
-                    })}
                   />
                   <TextField
                     fieldPath="itemEndPage"
                     onBlur={() => handleBlur("itemEndPage")}
-                    {...getFieldData({
-                      fieldPath: "itemEndPage",
-                      fieldRepresentation: "compact",
-                    })}
                   />
                 </GroupField>
                 <TextField
                   width={16}
                   fieldPath="itemPublisher"
                   onBlur={() => handleBlur("itemPublisher")}
-                  {...getFieldData({ fieldPath: "itemPublisher" })}
                 />
                 <GroupField>
                   <LocalVocabularySelectField
                     width={16}
                     fieldPath="itemRelationType"
-                    clearable
                     optionsListName="item-relation-types"
-                    {...getFieldData({
-                      fieldPath: "itemRelationType",
-                      fieldRepresentation: "compact",
-                    })}
+                    fieldRepresentation="compact"
                   />
                   <LocalVocabularySelectField
                     width={16}
                     fieldPath="itemResourceType"
-                    clearable
                     optionsListName="resource-types"
                     showLeafsOnly
-                    {...getFieldData({
-                      fieldPath: "itemResourceType",
-                      fieldRepresentation: "compact",
-                    })}
+                    fieldRepresentation="compact"
                   />
                 </GroupField>
               </Form>

@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TextField } from "react-invenio-forms";
 import { Form, Icon, Button } from "semantic-ui-react";
-import { useFieldData, ArrayFieldItem } from "@js/oarepo_ui";
+import { useFieldData, ArrayFieldItem, TextField } from "@js/oarepo_ui/forms";
 import { i18next } from "@translations/nr/i18next";
 import { useFormikContext, getIn } from "formik";
 
@@ -64,23 +63,12 @@ export const ExternalLocationField = ({ fieldPath }) => {
               setShowInput(false);
             },
           }}
-          fieldPathPrefix={`${fieldPath}`}
+          fieldPathPrefix={fieldPath}
         >
-          <TextField
-            width={8}
-            fieldPath={`${fieldPath}.externalLocationURL`}
-            {...getFieldData({
-              fieldPath: `${fieldPath}.externalLocationURL`,
-              fieldRepresentation: "compact",
-            })}
-          />
+          <TextField width={8} fieldPath={`${fieldPath}.externalLocationURL`} />
           <TextField
             width={8}
             fieldPath={`${fieldPath}.externalLocationNote`}
-            {...getFieldData({
-              fieldPath: `${fieldPath}.externalLocationNote`,
-              fieldRepresentation: "compact",
-            })}
           />
         </ArrayFieldItem>
       )}

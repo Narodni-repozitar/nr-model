@@ -1,8 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ArrayField, TextField } from "react-invenio-forms";
+import { ArrayField } from "react-invenio-forms";
 import { i18next } from "@translations/nr/i18next";
-import { ArrayFieldItem, useFieldData, useSanitizeInput } from "@js/oarepo_ui";
+import {
+  ArrayFieldItem,
+  useFieldData,
+  useSanitizeInput,
+  TextField,
+} from "@js/oarepo_ui/forms";
 import { useFormikContext, getIn } from "formik";
 
 export const SeriesField = ({ fieldPath }) => {
@@ -30,10 +35,7 @@ export const SeriesField = ({ fieldPath }) => {
             <TextField
               width={8}
               fieldPath={seriesTitleFieldPath}
-              {...getFieldData({
-                fieldPath: seriesTitleFieldPath,
-                fieldRepresentation: "compact",
-              })}
+              fieldRepresentation="compact"
               onBlur={() => {
                 const cleanedContent = sanitizeInput(
                   getIn(values, seriesTitleFieldPath)
@@ -45,10 +47,7 @@ export const SeriesField = ({ fieldPath }) => {
             <TextField
               width={8}
               fieldPath={`${fieldPathPrefix}.seriesVolume`}
-              {...getFieldData({
-                fieldPath: `${fieldPathPrefix}.seriesVolume`,
-                fieldRepresentation: "compact",
-              })}
+              fieldRepresentation="compact"
             />
           </ArrayFieldItem>
         );
