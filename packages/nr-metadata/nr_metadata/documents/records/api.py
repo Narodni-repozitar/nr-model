@@ -56,23 +56,31 @@ class DocumentsRecord(RDMRecord):
     dumper = DocumentsDumper()
 
     people = SyntheticSystemField(
-        PathSelector("metadata.creators", "metadata.contributors"),
-        filter=lambda x: x.get("nameType") == "Personal",
-        map=lambda x: x.get("fullName"),
+        PathSelector(
+            "metadata.creators.person_or_org", "metadata.contributors.person_or_org"
+        ),
+        filter=lambda x: x.get("type") == "personal",
+        map=lambda x: x.get("name"),
         key="syntheticFields.people",
     )
 
     organizations = SyntheticSystemField(
         MultiSelector(
             FilteredSelector(
-                PathSelector("metadata.creators", "metadata.contributors"),
-                filter=lambda x: x["nameType"] == "Personal",
+                PathSelector(
+                    "metadata.creators.person_or_org",
+                    "metadata.contributors.person_or_org",
+                ),
+                filter=lambda x: x["type"] == "personal",
                 projection="affiliations.title.cs",
             ),
             FilteredSelector(
-                PathSelector("metadata.creators", "metadata.contributors"),
-                filter=lambda x: x["nameType"] == "Organizational",
-                projection="fullName",
+                PathSelector(
+                    "metadata.creators.person_or_org",
+                    "metadata.contributors.person_or_org",
+                ),
+                filter=lambda x: x["nameType"] == "organizational",
+                projection="name",
             ),
         ),
         key="syntheticFields.organizations",

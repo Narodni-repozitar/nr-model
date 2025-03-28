@@ -115,8 +115,8 @@
                 }
             ],
             "fields": {
-                "people": "SyntheticSystemField(\n    PathSelector(\"metadata.creators\", \"metadata.contributors\"),\n    filter=lambda x: x.get(\"nameType\") == \"Personal\",\n    map=lambda x: x.get(\"fullName\"),\n    key=\"syntheticFields.people\",\n)\n",
-                "organizations": "SyntheticSystemField(\n  MultiSelector(\n      FilteredSelector(\n          PathSelector(\"metadata.creators\", \"metadata.contributors\"),\n          filter=lambda x: x[\"nameType\"] == \"Personal\",\n          projection=\"affiliations.title.cs\",\n      ),\n      FilteredSelector(\n          PathSelector(\"metadata.creators\", \"metadata.contributors\"),\n          filter=lambda x: x[\"nameType\"] == \"Organizational\",\n          projection=\"fullName\",\n      ),\n  ),\n  key=\"syntheticFields.organizations\",\n)\n",
+                "people": "SyntheticSystemField(\n    PathSelector(\n        \"metadata.creators.person_or_org\", \"metadata.contributors.person_or_org\"\n    ),\n    filter=lambda x: x.get(\"type\") == \"personal\",\n    map=lambda x: x.get(\"name\"),\n    key=\"syntheticFields.people\",\n)\n",
+                "organizations": "SyntheticSystemField(\n  MultiSelector(\n      FilteredSelector(\n          PathSelector(\"metadata.creators.person_or_org\", \"metadata.contributors.person_or_org\"),\n          filter=lambda x: x[\"type\"] == \"personal\",\n          projection=\"affiliations.title.cs\",\n      ),\n      FilteredSelector(\n          PathSelector(\"metadata.creators.person_or_org\", \"metadata.contributors.person_or_org\"),\n          filter=lambda x: x[\"nameType\"] == \"organizational\",\n          projection=\"name\",\n      ),\n  ),\n  key=\"syntheticFields.organizations\",\n)\n",
                 "keywords": "SyntheticSystemField(\n    selector=KeywordsFieldSelector(\"metadata.subjects.subject\"),\n    key=\"syntheticFields.keywords\",\n)\n",
                 "date": "SyntheticSystemField(\n    selector=FirstItemSelector(\"metadata.dateModified\", \"metadata.dateIssued\"),\n    key=\"syntheticFields.date\",\n)\n",
                 "year": "SyntheticSystemField(\n    selector=FirstItemSelector(\"metadata.dateIssued\", \"metadata.thesis.dateDefended\"),\n    key=\"syntheticFields.year\",\n    filter=lambda x: len(x) >= 4,\n    map=lambda x: x[:4]\n)\n",
@@ -4955,6 +4955,7 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
+                    "uniqueItems": true,
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
@@ -4973,8 +4974,7 @@
                                 "type": "string"
                             }
                         }
-                    },
-                    "uniqueItems": true
+                    }
                 },
                 "ui": {
                     "marshmallow": {

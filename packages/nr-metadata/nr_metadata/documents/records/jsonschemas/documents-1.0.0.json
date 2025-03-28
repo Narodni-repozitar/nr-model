@@ -919,6 +919,7 @@
             }
         },
         "pids": {
+            "uniqueItems": true,
             "propertyNames": {
                 "pattern": "^[a-z_-][a-z0-9_-]*$"
             },
@@ -937,8 +938,7 @@
                         "type": "string"
                     }
                 }
-            },
-            "uniqueItems": true
+            }
         },
         "syntheticFields": {
             "type": "object",
