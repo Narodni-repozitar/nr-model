@@ -79,7 +79,7 @@ class DocumentsRecord(RDMRecord):
                     "metadata.creators.person_or_org",
                     "metadata.contributors.person_or_org",
                 ),
-                filter=lambda x: x["nameType"] == "organizational",
+                filter=lambda x: x["type"] == "organizational",
                 projection="name",
             ),
         ),
@@ -124,7 +124,7 @@ class DocumentsRecord(RDMRecord):
     )
 
     relations = RelationsField(
-        affiliations=PIDRelation(
+        affiliations=UnstrictPIDRelation(
             "metadata.contributors.affiliations",
             keys=["name", "id"],
             pid_field=Affiliation.pid,
@@ -134,7 +134,7 @@ class DocumentsRecord(RDMRecord):
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
-        creators_affiliations=PIDRelation(
+        creators_affiliations=UnstrictPIDRelation(
             "metadata.creators.affiliations",
             keys=["name", "id"],
             pid_field=Affiliation.pid,
@@ -172,7 +172,7 @@ class DocumentsRecord(RDMRecord):
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("languages"),
         ),
-        itemContributors_affiliations=PIDRelation(
+        itemContributors_affiliations=UnstrictPIDRelation(
             "metadata.relatedItems.itemContributors.affiliations",
             keys=["name", "id"],
             pid_field=Affiliation.pid,
@@ -182,7 +182,7 @@ class DocumentsRecord(RDMRecord):
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
-        itemCreators_affiliations=PIDRelation(
+        itemCreators_affiliations=UnstrictPIDRelation(
             "metadata.relatedItems.itemCreators.affiliations",
             keys=["name", "id"],
             pid_field=Affiliation.pid,

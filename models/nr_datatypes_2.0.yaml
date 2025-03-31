@@ -192,6 +192,7 @@ NRCreator:
     affiliations[]:
       type: vocabulary
       vocabulary-type: affiliations
+      class: oarepo_runtime.records.relations.UnstrictPIDRelation
       keys:
         - key: name
           model:
@@ -205,7 +206,7 @@ NRCreator:
           type: keyword
         type:
           type: keyword
-          enum: [ personal, organizational ]
+          enum: [personal, organizational]
         given_name:
           type: keyword
         family_name:
@@ -228,7 +229,6 @@ NRCreator:
     marshmallow:
       class: oarepo_runtime.services.schema.rdm_ui.RDMCreatorsUISchema
       generate: false
-
 
 NRObjectPID:
   $id: NRObjectPID
@@ -262,7 +262,7 @@ NRObjectPID:
       - import: oarepo_runtime.services.schema.validation.validate_identifier
     class: nr_metadata.schema.identifiers.NRObjectIdentifierSchema
     generate: false
-    validators: [ 'lambda value: validate_identifier(value)' ]
+    validators: ["lambda value: validate_identifier(value)"]
 
 NRDateOrRange:
   $id: NRDateOrRange
@@ -370,7 +370,7 @@ NRRelatedItem:
       ^label.en: Contributors
 
       use: "nr-datatypes#NRCreator"
-      
+
     itemPIDs[]:
       use: "nr-datatypes#NRObjectPID"
       ^label.cs: Identifikátor

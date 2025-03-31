@@ -110,7 +110,7 @@ DocumentModel:
               ),
               FilteredSelector(
                   PathSelector("metadata.creators.person_or_org", "metadata.contributors.person_or_org"),
-                  filter=lambda x: x["nameType"] == "organizational",
+                  filter=lambda x: x["type"] == "organizational",
                   projection="name",
               ),
           ),

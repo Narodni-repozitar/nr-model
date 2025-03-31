@@ -900,6 +900,7 @@
                                                 "target": "id"
                                             }
                                         ],
+                                        "class": "oarepo_runtime.records.relations.UnstrictPIDRelation",
                                         "vocabulary-type": "affiliations",
                                         "imports": [
                                             {
@@ -1171,6 +1172,7 @@
                                                 "target": "id"
                                             }
                                         ],
+                                        "class": "oarepo_runtime.records.relations.UnstrictPIDRelation",
                                         "vocabulary-type": "affiliations",
                                         "imports": [
                                             {
@@ -2413,6 +2415,7 @@
                                                             "target": "id"
                                                         }
                                                     ],
+                                                    "class": "oarepo_runtime.records.relations.UnstrictPIDRelation",
                                                     "vocabulary-type": "affiliations",
                                                     "imports": [
                                                         {
@@ -2677,6 +2680,7 @@
                                                             "target": "id"
                                                         }
                                                     ],
+                                                    "class": "oarepo_runtime.records.relations.UnstrictPIDRelation",
                                                     "vocabulary-type": "affiliations",
                                                     "imports": [
                                                         {
@@ -3948,11 +3952,7 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "uniqueItems": true,
                     "type": "object",
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -3967,7 +3967,11 @@
                                 "type": "string"
                             }
                         }
-                    }
+                    },
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
+                    "uniqueItems": true
                 },
                 "ui": {
                     "marshmallow": {

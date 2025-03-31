@@ -923,6 +923,7 @@
                                                 "target": "id"
                                             }
                                         ],
+                                        "class": "oarepo_runtime.records.relations.UnstrictPIDRelation",
                                         "vocabulary-type": "affiliations",
                                         "ui": {
                                             "marshmallow": {
@@ -1262,6 +1263,7 @@
                                                 "target": "id"
                                             }
                                         ],
+                                        "class": "oarepo_runtime.records.relations.UnstrictPIDRelation",
                                         "vocabulary-type": "affiliations",
                                         "ui": {
                                             "marshmallow": {
@@ -3020,6 +3022,7 @@
                                                             "target": "id"
                                                         }
                                                     ],
+                                                    "class": "oarepo_runtime.records.relations.UnstrictPIDRelation",
                                                     "vocabulary-type": "affiliations",
                                                     "ui": {
                                                         "marshmallow": {
@@ -3352,6 +3355,7 @@
                                                             "target": "id"
                                                         }
                                                     ],
+                                                    "class": "oarepo_runtime.records.relations.UnstrictPIDRelation",
                                                     "vocabulary-type": "affiliations",
                                                     "ui": {
                                                         "marshmallow": {
@@ -4893,11 +4897,6 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
-                    "type": "object",
-                    "uniqueItems": true,
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -4912,6 +4911,11 @@
                                 "type": "string"
                             }
                         }
+                    },
+                    "uniqueItems": true,
+                    "type": "object",
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
                     }
                 },
                 "ui": {

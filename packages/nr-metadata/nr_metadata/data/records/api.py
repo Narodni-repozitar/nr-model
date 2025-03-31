@@ -54,7 +54,7 @@ class DataRecord(RDMRecord):
     )
 
     relations = RelationsField(
-        affiliations=PIDRelation(
+        affiliations=UnstrictPIDRelation(
             "metadata.contributors.affiliations",
             keys=["name", "id"],
             pid_field=Affiliation.pid,
@@ -64,7 +64,7 @@ class DataRecord(RDMRecord):
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
-        creators_affiliations=PIDRelation(
+        creators_affiliations=UnstrictPIDRelation(
             "metadata.creators.affiliations",
             keys=["name", "id"],
             pid_field=Affiliation.pid,
@@ -107,7 +107,7 @@ class DataRecord(RDMRecord):
             keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
             pid_field=Vocabulary.pid.with_type_ctx("institutions"),
         ),
-        itemContributors_affiliations=PIDRelation(
+        itemContributors_affiliations=UnstrictPIDRelation(
             "metadata.relatedItems.itemContributors.affiliations",
             keys=["name", "id"],
             pid_field=Affiliation.pid,
@@ -117,7 +117,7 @@ class DataRecord(RDMRecord):
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
-        itemCreators_affiliations=PIDRelation(
+        itemCreators_affiliations=UnstrictPIDRelation(
             "metadata.relatedItems.itemCreators.affiliations",
             keys=["name", "id"],
             pid_field=Affiliation.pid,
