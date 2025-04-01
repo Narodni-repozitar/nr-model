@@ -52,7 +52,7 @@ CommonMetadata:
       use: "nr-datatypes#NRCreator"
 
     contributors[]:
-      use: "nr-datatypes#NRContributor"
+      use: "nr-datatypes#NRCreator"
       ^label.cs: Přispěvatelé
       ^label.en: Contributors
       #^uniqueItems: true
@@ -168,11 +168,11 @@ CommonMetadata:
       ^help.cs: Zapište informace o zdroji, který souvisí se zdrojem, který zde popisujete (např. pokud popisujete článek, sem můžete identifikovat časopis, ve kterém článek vyšel).
       ^help.en: Write down information about the resource related to the one you are describing here (e.g. if you are describing an article, you can identify the journal in which the article was published).
 
-    fundingReferences[]:
-      use: "nr-datatypes#NRFundingReference"
+    funders[]:
+      use: "nr-datatypes#NRFunders"
       #^uniqueItems: true
       ^label.cs: "Granty a financování"
-      ^label.en: "Funding References"
+      ^label.en: "Funders"
 
     version:
       # verze obsahu, nikoliv záznamu. hodnota ve formuláři není editovatelná.

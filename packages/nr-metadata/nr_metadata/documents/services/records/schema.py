@@ -4,6 +4,7 @@ from invenio_drafts_resources.services.records.schema import (
     ParentSchema as InvenioParentSchema,
 )
 from invenio_rdm_records.services.schemas.access import AccessSchema
+from invenio_rdm_records.services.schemas.metadata import CreatorSchema
 from invenio_rdm_records.services.schemas.pids import PIDSchema
 from invenio_rdm_records.services.schemas.record import validate_scheme
 from invenio_vocabularies.services.schema import i18n_strings
@@ -15,6 +16,7 @@ from oarepo_runtime.services.schema.marshmallow import (
     DictOnlySchema,
     RDMBaseRecordSchema,
 )
+from oarepo_runtime.services.schema.rdm import FundingSchema
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_identifier,
@@ -28,7 +30,6 @@ from nr_metadata.common.services.records.schema_common import (
 from nr_metadata.common.services.records.schema_datatypes import (
     NREventSchema,
     NRExternalLocationSchema,
-    NRFundingReferenceSchema,
     NRGeoLocationSchema,
     NRRelatedItemSchema,
     NRSeriesSchema,
@@ -71,6 +72,14 @@ class NRDocumentMetadataSchema(NRCommonMetadataSchema):
         ma_fields.Nested(lambda: AdditionalTitlesSchema())
     )
 
+    contributors = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
+
+    creators = ma_fields.List(
+        ma_fields.Nested(lambda: CreatorSchema()),
+        required=True,
+        validate=[ma.validate.Length(min=1)],
+    )
+
     dateModified = TrimmedString(
         validate=[CachedMultilayerEDTFValidator(types=(EDTFDate,))]
     )
@@ -79,9 +88,7 @@ class NRDocumentMetadataSchema(NRCommonMetadataSchema):
 
     externalLocation = ma_fields.Nested(lambda: NRExternalLocationSchema())
 
-    fundingReferences = ma_fields.List(
-        ma_fields.Nested(lambda: NRFundingReferenceSchema())
-    )
+    funders = ma_fields.List(ma_fields.Nested(lambda: FundingSchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationSchema()))
 

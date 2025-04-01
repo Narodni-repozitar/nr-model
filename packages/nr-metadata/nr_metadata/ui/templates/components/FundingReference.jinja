@@ -2,20 +2,23 @@
 
 <div class='detail-subfields'>
     {% for funder in funders %}
-        {% if funder.projectID %}
-            <strong>{{ funder.projectID }}</strong>
-            <br/>
-        {% endif %}
-        {% if funder.projectName %}
-            {{ funder.projectName }}
-            <br/>
-        {% endif %}
-        {% if funder.fundingProgram %}
-            {{ funder.fundingProgram }}
-            <br/>
-        {% endif %}
+        {% do funder.funder.update({"title": funder.funder.name}) %}
         {% if funder.funder %}
-            <VocabularyItem vocabulary={funder.funder} search_link={search_link} searchFacet="metadata_fundingReferences_funder" vocabulary_type="funders"></VocabularyItem> 
+            <VocabularyItem
+                vocabulary={funder.funder}
+                search_link={search_link}
+                searchFacet="metadata_fundingReferences_funder"
+                vocabulary_type="funders"
+            ></VocabularyItem>
+            <br/>
+        {% endif %}
+        {% if funder.award %}
+            <VocabularyItem
+                vocabulary={funder.award}
+                search_link={search_link}
+                searchFacet="metadata_fundingReferences_funder"
+                vocabulary_type="awards"
+            ></VocabularyItem>
             <br/>
         {% endif %}
         {% if not loop.last %}

@@ -121,43 +121,11 @@
                                 "items": {
                                     "type": "object",
                                     "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
                                         "id": {
                                             "type": "string"
-                                        },
-                                        "title": {
-                                            "type": "object"
-                                        },
-                                        "ror": {
-                                            "type": "string"
-                                        },
-                                        "hierarchy": {
-                                            "type": "object",
-                                            "properties": {
-                                                "ancestors": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "ancestors_or_self": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "level": {
-                                                    "type": "integer"
-                                                },
-                                                "parent": {
-                                                    "type": "string"
-                                                },
-                                                "title": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object"
-                                                    }
-                                                }
-                                            }
                                         },
                                         "@v": {
                                             "type": "string"
@@ -165,21 +133,38 @@
                                     }
                                 }
                             },
-                            "authorityIdentifiers": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "identifier": {
-                                            "type": "string"
-                                        },
-                                        "scheme": {
-                                            "type": "string"
+                            "person_or_org": {
+                                "type": "object",
+                                "properties": {
+                                    "family_name": {
+                                        "type": "string"
+                                    },
+                                    "given_name": {
+                                        "type": "string"
+                                    },
+                                    "identifiers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "identifier": {
+                                                    "type": "string"
+                                                },
+                                                "scheme": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
                                     }
                                 }
                             },
-                            "contributorType": {
+                            "role": {
                                 "type": "object",
                                 "properties": {
                                     "id": {
@@ -192,18 +177,6 @@
                                         "type": "string"
                                     }
                                 }
-                            },
-                            "familyName": {
-                                "type": "string"
-                            },
-                            "fullName": {
-                                "type": "string"
-                            },
-                            "givenName": {
-                                "type": "string"
-                            },
-                            "nameType": {
-                                "type": "string"
                             }
                         }
                     }
@@ -218,43 +191,11 @@
                                 "items": {
                                     "type": "object",
                                     "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
                                         "id": {
                                             "type": "string"
-                                        },
-                                        "title": {
-                                            "type": "object"
-                                        },
-                                        "ror": {
-                                            "type": "string"
-                                        },
-                                        "hierarchy": {
-                                            "type": "object",
-                                            "properties": {
-                                                "ancestors": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "ancestors_or_self": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "level": {
-                                                    "type": "integer"
-                                                },
-                                                "parent": {
-                                                    "type": "string"
-                                                },
-                                                "title": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object"
-                                                    }
-                                                }
-                                            }
                                         },
                                         "@v": {
                                             "type": "string"
@@ -262,31 +203,50 @@
                                     }
                                 }
                             },
-                            "authorityIdentifiers": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "identifier": {
-                                            "type": "string"
-                                        },
-                                        "scheme": {
-                                            "type": "string"
+                            "person_or_org": {
+                                "type": "object",
+                                "properties": {
+                                    "family_name": {
+                                        "type": "string"
+                                    },
+                                    "given_name": {
+                                        "type": "string"
+                                    },
+                                    "identifiers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "identifier": {
+                                                    "type": "string"
+                                                },
+                                                "scheme": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
                                     }
                                 }
                             },
-                            "familyName": {
-                                "type": "string"
-                            },
-                            "fullName": {
-                                "type": "string"
-                            },
-                            "givenName": {
-                                "type": "string"
-                            },
-                            "nameType": {
-                                "type": "string"
+                            "role": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "object"
+                                    },
+                                    "@v": {
+                                        "type": "string"
+                                    }
+                                }
                             }
                         }
                     }
@@ -366,33 +326,100 @@
                         }
                     }
                 },
-                "fundingReferences": {
+                "funders": {
                     "type": "array",
                     "items": {
                         "type": "object",
                         "properties": {
-                            "funder": {
+                            "award": {
                                 "type": "object",
                                 "properties": {
-                                    "id": {
-                                        "type": "string"
-                                    },
                                     "title": {
                                         "type": "object"
+                                    },
+                                    "number": {
+                                        "type": "string"
+                                    },
+                                    "identifiers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "identifier": {
+                                                    "type": "string"
+                                                },
+                                                "schema": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "acronym": {
+                                        "type": "string"
+                                    },
+                                    "program": {
+                                        "type": "string"
+                                    },
+                                    "subjects": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "subject": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "organizations": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "organization": {
+                                                    "type": "string"
+                                                },
+                                                "scheme": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
                                     },
                                     "@v": {
                                         "type": "string"
                                     }
                                 }
                             },
-                            "fundingProgram": {
-                                "type": "string"
-                            },
-                            "projectID": {
-                                "type": "string"
-                            },
-                            "projectName": {
-                                "type": "string"
+                            "funder": {
+                                "type": "object",
+                                "properties": {
+                                    "identifiers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "identifier": {
+                                                    "type": "string"
+                                                },
+                                                "schema": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "@v": {
+                                        "type": "string"
+                                    }
+                                }
                             }
                         }
                     }
@@ -537,43 +564,11 @@
                                             "items": {
                                                 "type": "object",
                                                 "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
                                                     "id": {
                                                         "type": "string"
-                                                    },
-                                                    "title": {
-                                                        "type": "object"
-                                                    },
-                                                    "ror": {
-                                                        "type": "string"
-                                                    },
-                                                    "hierarchy": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "ancestors": {
-                                                                "type": "array",
-                                                                "items": {
-                                                                    "type": "string"
-                                                                }
-                                                            },
-                                                            "ancestors_or_self": {
-                                                                "type": "array",
-                                                                "items": {
-                                                                    "type": "string"
-                                                                }
-                                                            },
-                                                            "level": {
-                                                                "type": "integer"
-                                                            },
-                                                            "parent": {
-                                                                "type": "string"
-                                                            },
-                                                            "title": {
-                                                                "type": "array",
-                                                                "items": {
-                                                                    "type": "object"
-                                                                }
-                                                            }
-                                                        }
                                                     },
                                                     "@v": {
                                                         "type": "string"
@@ -581,21 +576,38 @@
                                                 }
                                             }
                                         },
-                                        "authorityIdentifiers": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "identifier": {
-                                                        "type": "string"
-                                                    },
-                                                    "scheme": {
-                                                        "type": "string"
+                                        "person_or_org": {
+                                            "type": "object",
+                                            "properties": {
+                                                "family_name": {
+                                                    "type": "string"
+                                                },
+                                                "given_name": {
+                                                    "type": "string"
+                                                },
+                                                "identifiers": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "identifier": {
+                                                                "type": "string"
+                                                            },
+                                                            "scheme": {
+                                                                "type": "string"
+                                                            }
+                                                        }
                                                     }
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string"
                                                 }
                                             }
                                         },
-                                        "contributorType": {
+                                        "role": {
                                             "type": "object",
                                             "properties": {
                                                 "id": {
@@ -608,18 +620,6 @@
                                                     "type": "string"
                                                 }
                                             }
-                                        },
-                                        "familyName": {
-                                            "type": "string"
-                                        },
-                                        "fullName": {
-                                            "type": "string"
-                                        },
-                                        "givenName": {
-                                            "type": "string"
-                                        },
-                                        "nameType": {
-                                            "type": "string"
                                         }
                                     }
                                 }
@@ -634,43 +634,11 @@
                                             "items": {
                                                 "type": "object",
                                                 "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
                                                     "id": {
                                                         "type": "string"
-                                                    },
-                                                    "title": {
-                                                        "type": "object"
-                                                    },
-                                                    "ror": {
-                                                        "type": "string"
-                                                    },
-                                                    "hierarchy": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "ancestors": {
-                                                                "type": "array",
-                                                                "items": {
-                                                                    "type": "string"
-                                                                }
-                                                            },
-                                                            "ancestors_or_self": {
-                                                                "type": "array",
-                                                                "items": {
-                                                                    "type": "string"
-                                                                }
-                                                            },
-                                                            "level": {
-                                                                "type": "integer"
-                                                            },
-                                                            "parent": {
-                                                                "type": "string"
-                                                            },
-                                                            "title": {
-                                                                "type": "array",
-                                                                "items": {
-                                                                    "type": "object"
-                                                                }
-                                                            }
-                                                        }
                                                     },
                                                     "@v": {
                                                         "type": "string"
@@ -678,31 +646,50 @@
                                                 }
                                             }
                                         },
-                                        "authorityIdentifiers": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "identifier": {
-                                                        "type": "string"
-                                                    },
-                                                    "scheme": {
-                                                        "type": "string"
+                                        "person_or_org": {
+                                            "type": "object",
+                                            "properties": {
+                                                "family_name": {
+                                                    "type": "string"
+                                                },
+                                                "given_name": {
+                                                    "type": "string"
+                                                },
+                                                "identifiers": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "identifier": {
+                                                                "type": "string"
+                                                            },
+                                                            "scheme": {
+                                                                "type": "string"
+                                                            }
+                                                        }
                                                     }
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string"
                                                 }
                                             }
                                         },
-                                        "familyName": {
-                                            "type": "string"
-                                        },
-                                        "fullName": {
-                                            "type": "string"
-                                        },
-                                        "givenName": {
-                                            "type": "string"
-                                        },
-                                        "nameType": {
-                                            "type": "string"
+                                        "role": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "title": {
+                                                    "type": "object"
+                                                },
+                                                "@v": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -920,11 +907,6 @@
             }
         },
         "pids": {
-            "propertyNames": {
-                "pattern": "^[a-z_-][a-z0-9_-]*$"
-            },
-            "type": "object",
-            "uniqueItems": true,
             "additionalProperties": {
                 "type": "object",
                 "additionalProperties": false,
@@ -939,6 +921,11 @@
                         "type": "string"
                     }
                 }
+            },
+            "uniqueItems": true,
+            "type": "object",
+            "propertyNames": {
+                "pattern": "^[a-z_-][a-z0-9_-]*$"
             }
         },
         "updated": {

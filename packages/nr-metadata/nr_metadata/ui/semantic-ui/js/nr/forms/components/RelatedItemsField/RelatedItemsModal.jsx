@@ -13,7 +13,7 @@ import { Formik, getIn } from "formik";
 import * as Yup from "yup";
 import { i18next } from "@translations/nr/i18next";
 import { TextField, GroupField } from "react-invenio-forms";
-import { CreatibutorsField } from "../CreatibutorsField";
+import { CreatibutorsField, useFormConfig } from "@js/oarepo_ui/forms";
 import {
   IdentifiersField,
   objectIdentifiersSchema,
@@ -69,7 +69,7 @@ export const RelatedItemsModal = ({
   );
   const { getFieldData } = useFieldData();
   const { sanitizeInput } = useSanitizeInput();
-
+  const { formConfig } = useFormConfig();
   const openModal = () => {
     setOpen(true);
     setAction(initialAction);
@@ -186,24 +186,13 @@ export const RelatedItemsModal = ({
                 <CreatibutorsField
                   fieldPath="itemCreators"
                   schema="creators"
-                  autocompleteNames="off"
-                  {...getFieldData({ fieldPath: "itemCreators" })}
-                  fieldPathPrefix="metadata.relatedItems.0.itemCreators.0"
+                  autocompleteNames="search"
                 />
                 <CreatibutorsField
-                  addButtonLabel={i18next.t("Add contributor")}
-                  modal={{
-                    addLabel: i18next.t("Add contributor"),
-                    editLabel: i18next.t("Edit contributor"),
-                  }}
                   fieldPath="itemContributors"
                   schema="contributors"
-                  autocompleteNames="off"
-                  fieldPathPrefix="metadata.relatedItems.0.itemContributors.0"
-                  {...getFieldData({
-                    fieldPath: "itemContributors",
-                    icon: "user",
-                  })}
+                  autocompleteNames="search"
+                  showRoleField={true}
                 />
 
                 <IdentifiersField

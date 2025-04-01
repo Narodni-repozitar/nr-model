@@ -8,6 +8,10 @@ from oarepo_runtime.services.schema.i18n_ui import (
     MultilingualUIField,
 )
 from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
+from oarepo_runtime.services.schema.rdm_ui import (
+    RDMCreatorsUISchema,
+    RDMFundersUISchema,
+)
 from oarepo_runtime.services.schema.ui import (
     InvenioRDMUISchema,
     LocalizedDate,
@@ -15,10 +19,7 @@ from oarepo_runtime.services.schema.ui import (
 )
 
 from nr_metadata.common.services.records.ui_schema_datatypes import (
-    NRContributorUISchema,
-    NRCreatorUISchema,
     NREventUISchema,
-    NRFundingReferenceUISchema,
     NRGeoLocationUISchema,
     NRLanguageVocabularyUISchema,
     NRRelatedItemUISchema,
@@ -62,10 +63,10 @@ class NRCommonMetadataUISchema(Schema):
         ma_fields.Nested(lambda: AdditionalTitlesUISchema())
     )
 
-    contributors = ma_fields.List(ma_fields.Nested(lambda: NRContributorUISchema()))
+    contributors = ma_fields.List(ma_fields.Nested(lambda: RDMCreatorsUISchema()))
 
     creators = ma_fields.List(
-        ma_fields.Nested(lambda: NRCreatorUISchema()), required=True
+        ma_fields.Nested(lambda: RDMCreatorsUISchema()), required=True
     )
 
     dateAvailable = LocalizedDate()
@@ -74,9 +75,7 @@ class NRCommonMetadataUISchema(Schema):
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventUISchema()))
 
-    fundingReferences = ma_fields.List(
-        ma_fields.Nested(lambda: NRFundingReferenceUISchema())
-    )
+    funders = ma_fields.List(ma_fields.Nested(lambda: RDMFundersUISchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationUISchema()))
 

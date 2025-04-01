@@ -6,7 +6,14 @@ from invenio_rdm_records.records.api import RDMMediaFileRecord, RDMParent, RDMRe
 from invenio_records.systemfields import ConstantField
 from invenio_records_resources.records.systemfields import FilesField, IndexField
 from invenio_records_resources.records.systemfields.pid import PIDField, PIDFieldContext
-from oarepo_runtime.records.relations import PIDRelation, RelationsField
+from invenio_vocabularies.contrib.affiliations.api import Affiliation
+from invenio_vocabularies.contrib.awards.api import Award
+from invenio_vocabularies.contrib.funders.api import Funder
+from oarepo_runtime.records.relations import (
+    PIDRelation,
+    RelationsField,
+    UnstrictPIDRelation,
+)
 from oarepo_runtime.records.systemfields import (
     FilteredSelector,
     FirstItemSelector,
@@ -38,7 +45,9 @@ class DocumentsRecord(RDMRecord):
 
     schema = ConstantField("$schema", "local://documents-1.0.0.json")
 
-    index = IndexField("documents-documents-1.0.0", search_alias="documents")
+    index = IndexField(
+        "documents-documents-1.0.0",
+    )
 
     pid = PIDField(
         provider=DocumentsIdProvider, context_cls=PIDFieldContext, create=True
@@ -47,23 +56,31 @@ class DocumentsRecord(RDMRecord):
     dumper = DocumentsDumper()
 
     people = SyntheticSystemField(
-        PathSelector("metadata.creators", "metadata.contributors"),
-        filter=lambda x: x.get("nameType") == "Personal",
-        map=lambda x: x.get("fullName"),
+        PathSelector(
+            "metadata.creators.person_or_org", "metadata.contributors.person_or_org"
+        ),
+        filter=lambda x: x.get("type") == "personal",
+        map=lambda x: x.get("name"),
         key="syntheticFields.people",
     )
 
     organizations = SyntheticSystemField(
         MultiSelector(
             FilteredSelector(
-                PathSelector("metadata.creators", "metadata.contributors"),
-                filter=lambda x: x["nameType"] == "Personal",
+                PathSelector(
+                    "metadata.creators.person_or_org",
+                    "metadata.contributors.person_or_org",
+                ),
+                filter=lambda x: x["type"] == "personal",
                 projection="affiliations.title.cs",
             ),
             FilteredSelector(
-                PathSelector("metadata.creators", "metadata.contributors"),
-                filter=lambda x: x["nameType"] == "Organizational",
-                projection="fullName",
+                PathSelector(
+                    "metadata.creators.person_or_org",
+                    "metadata.contributors.person_or_org",
+                ),
+                filter=lambda x: x["type"] == "organizational",
+                projection="name",
             ),
         ),
         key="syntheticFields.organizations",
@@ -107,60 +124,73 @@ class DocumentsRecord(RDMRecord):
     )
 
     relations = RelationsField(
-        affiliations=PIDRelation(
+        affiliations=UnstrictPIDRelation(
             "metadata.contributors.affiliations",
-            keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
-            pid_field=Vocabulary.pid.with_type_ctx("institutions"),
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
         ),
-        contributorType=PIDRelation(
-            "metadata.contributors.contributorType",
+        role=PIDRelation(
+            "metadata.contributors.role",
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
-        Organizational_contributorType=PIDRelation(
-            "metadata.contributors.contributorType",
-            keys=["id", "title"],
-            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
-        ),
-        Personal_affiliations=PIDRelation(
+        creators_affiliations=UnstrictPIDRelation(
             "metadata.creators.affiliations",
-            keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
-            pid_field=Vocabulary.pid.with_type_ctx("institutions"),
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        creators_role=PIDRelation(
+            "metadata.creators.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
         country=PIDRelation(
             "metadata.events.eventLocation.country",
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("countries"),
         ),
-        funder=PIDRelation(
-            "metadata.fundingReferences.funder",
-            keys=["id", "title"],
-            pid_field=Vocabulary.pid.with_type_ctx("funders"),
+        award=UnstrictPIDRelation(
+            "metadata.funders.award",
+            keys=[
+                "title",
+                "number",
+                "identifiers",
+                "acronym",
+                "program",
+                "subjects",
+                "organizations",
+            ],
+            pid_field=Award.pid,
+        ),
+        funder=UnstrictPIDRelation(
+            "metadata.funders.funder",
+            keys=["identifiers", "name"],
+            pid_field=Funder.pid,
         ),
         languages=PIDRelation(
             "metadata.languages",
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("languages"),
         ),
-        itemContributors_Personal_affiliations=PIDRelation(
+        itemContributors_affiliations=UnstrictPIDRelation(
             "metadata.relatedItems.itemContributors.affiliations",
-            keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
-            pid_field=Vocabulary.pid.with_type_ctx("institutions"),
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
         ),
-        Personal_contributorType=PIDRelation(
-            "metadata.relatedItems.itemContributors.contributorType",
+        itemContributors_role=PIDRelation(
+            "metadata.relatedItems.itemContributors.role",
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
-        itemContributors_Organizational_contributorType=PIDRelation(
-            "metadata.relatedItems.itemContributors.contributorType",
-            keys=["id", "title"],
-            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
-        ),
-        itemCreators_Personal_affiliations=PIDRelation(
+        itemCreators_affiliations=UnstrictPIDRelation(
             "metadata.relatedItems.itemCreators.affiliations",
-            keys=["id", "title", {"key": "props.ror", "target": "ror"}, "hierarchy"],
-            pid_field=Vocabulary.pid.with_type_ctx("institutions"),
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        itemCreators_role=PIDRelation(
+            "metadata.relatedItems.itemCreators.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
         ),
         itemRelationType=PIDRelation(
             "metadata.relatedItems.itemRelationType",
