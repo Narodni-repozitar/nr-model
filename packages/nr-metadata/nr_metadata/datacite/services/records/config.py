@@ -17,6 +17,7 @@ from oarepo_runtime.services.config import (
 )
 from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
 from oarepo_runtime.services.records import pagination_links_html
+from oarepo_workflows.services.components.workflow import WorkflowComponent
 
 from nr_metadata.datacite.records.api import DataciteRecord
 from nr_metadata.datacite.services.records.permissions import DatacitePermissionPolicy
@@ -35,7 +36,7 @@ class DataciteServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfi
 
     result_list_cls = DataciteRecordList
 
-    PERMISSIONS_PRESETS = ["everyone"]
+    PERMISSIONS_PRESETS = ["workflow"]
 
     url_prefix = "/nr-metadata-datacite/"
 
@@ -53,7 +54,7 @@ class DataciteServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfi
 
     @property
     def components(self):
-        return process_service_configs(self, CustomFieldsComponent)
+        return process_service_configs(self, CustomFieldsComponent, WorkflowComponent)
 
     model = "nr_metadata.datacite"
 

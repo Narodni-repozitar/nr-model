@@ -5,10 +5,13 @@ from invenio_rdm_records.records.systemfields.deletion_status import (
     RecordDeletionStatusEnum,
 )
 from invenio_records.models import RecordMetadataBase
+from oarepo_workflows.records.models import RecordWorkflowParentModelMixin
 from sqlalchemy_utils.types import ChoiceType, UUIDType
 
 
-class DocumentsParentMetadata(db.Model, RecordMetadataBase):
+class DocumentsParentMetadata(
+    RecordWorkflowParentModelMixin, db.Model, RecordMetadataBase
+):
 
     __tablename__ = "nr_metadata.documents_parent_record_metadata"
 

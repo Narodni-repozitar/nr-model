@@ -19,6 +19,7 @@ from oarepo_runtime.services.schema.rdm import FundingSchema
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_date,
+    validate_datetime,
     validate_identifier,
 )
 
@@ -51,6 +52,10 @@ class NRCommonRecordSchema(RDMBaseRecordSchema):
         keys=SanitizedUnicode(validate=validate_scheme),
         values=Nested(PIDSchema),
     )
+
+    state = ma_fields.String(dump_only=True)
+
+    state_timestamp = ma_fields.String(dump_only=True, validate=[validate_datetime])
 
 
 class NRCommonMetadataSchema(Schema):

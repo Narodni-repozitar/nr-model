@@ -113,6 +113,19 @@
             "extra-code": "",
             "module": "tests"
         },
+        "permissions": {
+            "presets": [
+                "workflow"
+            ],
+            "generate": true,
+            "extra-code": "",
+            "module": "nr_metadata.data.services.records.permissions",
+            "class": "nr_metadata.data.services.records.permissions.DataPermissionPolicy",
+            "base-classes": [
+                "invenio_records_permissions.RecordPermissionPolicy"
+            ],
+            "imports": []
+        },
         "sample": {
             "file": "data/sample_data.yaml"
         },
@@ -124,6 +137,41 @@
             "skip": false
         },
         "model-name": "Data",
+        "record": {
+            "fields": {
+                "state": "{{oarepo_workflows.records.systemfields.state.RecordStateField}}(initial='published')",
+                "state_timestamp": "{{oarepo_workflows.records.systemfields.state.RecordStateTimestampField}}()",
+                "media_files": "FilesField(key=MediaFilesAttrConfig[\"_files_attr_key\"],bucket_id_attr=MediaFilesAttrConfig[\"_files_bucket_id_attr_key\"],bucket_attr=MediaFilesAttrConfig[\"_files_bucket_attr_key\"],store=False,dump=False,file_cls={{invenio_rdm_records.records.api.RDMMediaFileRecord}},create=False,delete=False,)"
+            },
+            "base-classes": [
+                "invenio_rdm_records.records.api.RDMRecord"
+            ],
+            "generate": true,
+            "module": "nr_metadata.data.records.api",
+            "class": "nr_metadata.data.records.api.DataRecord",
+            "imports": [],
+            "extra-code": ""
+        },
+        "draft-parent-record-metadata": {
+            "base-classes": [
+                "oarepo_workflows.records.models.RecordWorkflowParentModelMixin",
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase"
+            ],
+            "class": "nr_metadata.data.records.models.DataParentMetadata",
+            "imports": [],
+            "table": "nr_metadata.data_parent_record_metadata",
+            "module": "nr_metadata.data.records.models",
+            "generate": true
+        },
+        "parent-record-marshmallow": {
+            "base-classes": [
+                "oarepo_workflows.services.records.schema.RDMWorkflowParentSchema"
+            ],
+            "module": "nr_metadata.data.services.records.schema",
+            "class": "nr_metadata.data.services.records.schema.GeneratedParentSchema",
+            "generate": true
+        },
         "config": {
             "generate": true,
             "module": "nr_metadata.data.config",
@@ -170,19 +218,6 @@
             "module": "nr_metadata.data.proxies",
             "generate": true
         },
-        "record": {
-            "base-classes": [
-                "invenio_rdm_records.records.api.RDMRecord"
-            ],
-            "generate": true,
-            "module": "nr_metadata.data.records.api",
-            "class": "nr_metadata.data.records.api.DataRecord",
-            "imports": [],
-            "extra-code": "",
-            "fields": {
-                "media_files": "FilesField(key=MediaFilesAttrConfig[\"_files_attr_key\"],bucket_id_attr=MediaFilesAttrConfig[\"_files_bucket_id_attr_key\"],bucket_attr=MediaFilesAttrConfig[\"_files_bucket_attr_key\"],store=False,dump=False,file_cls={{invenio_rdm_records.records.api.RDMMediaFileRecord}},create=False,delete=False,)"
-            }
-        },
         "resource": {
             "base-classes": [
                 "invenio_drafts_resources.resources.RecordResource"
@@ -228,14 +263,6 @@
                 ]
             }
         },
-        "json-schema-settings": {
-            "generate": true,
-            "alias": "data",
-            "version": "1.0.0",
-            "module": "nr_metadata.data.records.jsonschemas",
-            "name": "data-1.0.0.json",
-            "file": "nr_metadata/data/records/jsonschemas/data-1.0.0.json"
-        },
         "json-serializer": {
             "module": "nr_metadata.data.resources.records.ui",
             "class": "nr_metadata.data.resources.records.ui.DataUIJSONSerializer",
@@ -255,6 +282,70 @@
         "translations": {
             "module": "nr_metadata.data.translations",
             "alias": "data"
+        },
+        "service": {
+            "imports": [],
+            "base-classes": [
+                "invenio_rdm_records.services.services.RDMRecordService"
+            ],
+            "generate": true,
+            "config-key": "DATA_RECORD_SERVICE_CLASS",
+            "proxy": "current_service",
+            "module": "nr_metadata.data.services.records.service",
+            "class": "nr_metadata.data.services.records.service.DataService",
+            "extra-code": "",
+            "additional-args": [
+                "files_service=self.service_files",
+                "draft_files_service=self.service_draft_files"
+            ]
+        },
+        "service-config": {
+            "base-classes": [
+                "oarepo_runtime.services.config.service.PermissionsPresetsConfigMixin",
+                "invenio_rdm_records.services.config.RDMRecordServiceConfig"
+            ],
+            "generate": true,
+            "config-key": "DATA_RECORD_SERVICE_CONFIG",
+            "module": "nr_metadata.data.services.records.config",
+            "class": "nr_metadata.data.services.records.config.DataServiceConfig",
+            "extra-code": "",
+            "service-id": "data",
+            "components": [
+                "{{oarepo_runtime.services.components.CustomFieldsComponent}}",
+                "{{oarepo_workflows.services.components.workflow.WorkflowComponent}}"
+            ],
+            "additional-args": [],
+            "search-item-links-template-cls": "invenio_records_resources.services.LinksTemplate"
+        },
+        "json-schema-settings": {
+            "generate": true,
+            "alias": "data",
+            "version": "1.0.0",
+            "module": "nr_metadata.data.records.jsonschemas",
+            "name": "data-1.0.0.json",
+            "file": "nr_metadata/data/records/jsonschemas/data-1.0.0.json"
+        },
+        "record-list": {
+            "generate": true,
+            "module": "nr_metadata.data.services.records.results",
+            "class": "nr_metadata.data.services.records.results.DataRecordList",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordList"
+            ],
+            "components": [],
+            "imports": []
+        },
+        "record-item": {
+            "generate": true,
+            "module": "nr_metadata.data.services.records.results",
+            "class": "nr_metadata.data.services.records.results.DataRecordItem",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordItem"
+            ],
+            "components": [],
+            "imports": []
         },
         "files-field": {
             "generate": true,
@@ -304,39 +395,6 @@
             ],
             "extra-code": ""
         },
-        "service": {
-            "imports": [],
-            "base-classes": [
-                "invenio_rdm_records.services.services.RDMRecordService"
-            ],
-            "generate": true,
-            "config-key": "DATA_RECORD_SERVICE_CLASS",
-            "proxy": "current_service",
-            "module": "nr_metadata.data.services.records.service",
-            "class": "nr_metadata.data.services.records.service.DataService",
-            "extra-code": "",
-            "additional-args": [
-                "files_service=self.service_files",
-                "draft_files_service=self.service_draft_files"
-            ]
-        },
-        "service-config": {
-            "base-classes": [
-                "oarepo_runtime.services.config.service.PermissionsPresetsConfigMixin",
-                "invenio_rdm_records.services.config.RDMRecordServiceConfig"
-            ],
-            "generate": true,
-            "config-key": "DATA_RECORD_SERVICE_CONFIG",
-            "module": "nr_metadata.data.services.records.config",
-            "class": "nr_metadata.data.services.records.config.DataServiceConfig",
-            "extra-code": "",
-            "service-id": "data",
-            "components": [
-                "{{oarepo_runtime.services.components.CustomFieldsComponent}}"
-            ],
-            "additional-args": [],
-            "search-item-links-template-cls": "invenio_records_resources.services.LinksTemplate"
-        },
         "record-dumper": {
             "generate": true,
             "module": "nr_metadata.data.records.dumpers.dumper",
@@ -363,19 +421,6 @@
             "extensions": [],
             "imports": []
         },
-        "permissions": {
-            "generate": true,
-            "presets": [
-                "everyone"
-            ],
-            "extra-code": "",
-            "module": "nr_metadata.data.services.records.permissions",
-            "class": "nr_metadata.data.services.records.permissions.DataPermissionPolicy",
-            "base-classes": [
-                "invenio_records_permissions.RecordPermissionPolicy"
-            ],
-            "imports": []
-        },
         "edtf-interval-dumper": {
             "generate": true,
             "module": "nr_metadata.data.records.dumpers.edtf",
@@ -387,35 +432,15 @@
             "extensions": [],
             "imports": []
         },
-        "record-list": {
-            "generate": true,
-            "module": "nr_metadata.data.services.records.results",
-            "class": "nr_metadata.data.services.records.results.DataRecordList",
-            "extra-code": "",
-            "base-classes": [
-                "oarepo_runtime.services.results.RecordList"
-            ],
-            "components": [],
-            "imports": []
-        },
-        "record-item": {
-            "generate": true,
-            "module": "nr_metadata.data.services.records.results",
-            "class": "nr_metadata.data.services.records.results.DataRecordItem",
-            "extra-code": "",
-            "base-classes": [
-                "oarepo_runtime.services.results.RecordItem"
-            ],
-            "components": [],
-            "imports": []
-        },
         "draft-parent-record": {
             "class": "nr_metadata.data.records.api.DataParentRecord",
             "base-classes": [
                 "invenio_rdm_records.records.api.RDMParent"
             ],
             "imports": [],
-            "fields": {},
+            "fields": {
+                "workflow": "{{oarepo_workflows.records.systemfields.workflow.WorkflowField}}()"
+            },
             "module": "nr_metadata.data.records.api",
             "generate": true
         },
@@ -430,29 +455,10 @@
             "generate": true,
             "table": "nr_metadata.data_parent_state_metadata"
         },
-        "draft-parent-record-metadata": {
-            "class": "nr_metadata.data.records.models.DataParentMetadata",
-            "base-classes": [
-                "invenio_db.db{db.Model}",
-                "invenio_records.models.RecordMetadataBase"
-            ],
-            "imports": [],
-            "table": "nr_metadata.data_parent_record_metadata",
-            "module": "nr_metadata.data.records.models",
-            "generate": true
-        },
         "draft-parent-record-schema": {
             "name": "parent-v1.0.0.json",
             "file": "nr_metadata/data/records/jsonschemas/parent-v1.0.0.json",
             "generate": true
-        },
-        "parent-record-marshmallow": {
-            "module": "nr_metadata.data.services.records.schema",
-            "class": "nr_metadata.data.services.records.schema.GeneratedParentSchema",
-            "generate": true,
-            "base-classes": [
-                "invenio_drafts_resources.services.records.schema.ParentSchema{InvenioParentSchema}"
-            ]
         },
         "sortable": [],
         "properties": {
@@ -4929,6 +4935,32 @@
                 "marshmallow": {
                     "generate": false,
                     "field": "{{marshmallow.fields.Dict}}( keys={{marshmallow_utils.fields.SanitizedUnicode}}(validate={{invenio_rdm_records.services.schemas.record.validate_scheme}}),values={{marshmallow.fields.Nested}}({{invenio_rdm_records.services.schemas.pids.PIDSchema}}),)"
+                }
+            },
+            "state": {
+                "type": "keyword",
+                "marshmallow": {
+                    "read": true,
+                    "write": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": true,
+                        "write": false
+                    }
+                }
+            },
+            "state_timestamp": {
+                "type": "datetime",
+                "marshmallow": {
+                    "read": true,
+                    "write": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": true,
+                        "write": false
+                    }
                 }
             },
             "updated": {

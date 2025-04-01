@@ -15,6 +15,11 @@ from oarepo_runtime.records.relations import (
     UnstrictPIDRelation,
 )
 from oarepo_vocabularies.records.api import Vocabulary
+from oarepo_workflows.records.systemfields.state import (
+    RecordStateField,
+    RecordStateTimestampField,
+)
+from oarepo_workflows.records.systemfields.workflow import WorkflowField
 
 from nr_metadata.common.records.dumpers.dumper import CommonDumper
 from nr_metadata.common.records.models import CommonMetadata, CommonParentMetadata
@@ -22,6 +27,8 @@ from nr_metadata.common.records.models import CommonMetadata, CommonParentMetada
 
 class CommonParentRecord(RDMParent):
     model_cls = CommonParentMetadata
+
+    workflow = WorkflowField()
 
 
 class CommonIdProvider(DraftRecordIdProviderV2):
@@ -41,6 +48,10 @@ class CommonRecord(RDMRecord):
     pid = PIDField(provider=CommonIdProvider, context_cls=PIDFieldContext, create=True)
 
     dumper = CommonDumper()
+
+    state = RecordStateField(initial="published")
+
+    state_timestamp = RecordStateTimestampField()
 
     media_files = FilesField(
         key=MediaFilesAttrConfig["_files_attr_key"],

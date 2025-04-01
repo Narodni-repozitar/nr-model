@@ -196,6 +196,8 @@ class DocumentsSearchOptions(I18nRDMSearchOptions):
         "metadata_thesis_degreeGrantors": facets.metadata_thesis_degreeGrantors,
         "metadata_thesis_studyFields": facets.metadata_thesis_studyFields,
         "metadata_version": facets.metadata_version,
+        "state": facets.state,
+        "state_timestamp": facets.state_timestamp,
         "syntheticFields_date": facets.syntheticFields_date,
         "syntheticFields_defenseYear": facets.syntheticFields_defenseYear,
         "syntheticFields_keywords": facets.syntheticFields_keywords,

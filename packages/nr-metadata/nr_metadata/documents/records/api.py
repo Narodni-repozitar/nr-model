@@ -22,6 +22,11 @@ from oarepo_runtime.records.systemfields import (
     SyntheticSystemField,
 )
 from oarepo_vocabularies.records.api import Vocabulary
+from oarepo_workflows.records.systemfields.state import (
+    RecordStateField,
+    RecordStateTimestampField,
+)
+from oarepo_workflows.records.systemfields.workflow import WorkflowField
 
 from nr_metadata.documents.records.dumpers.dumper import DocumentsDumper
 from nr_metadata.documents.records.models import (
@@ -33,6 +38,8 @@ from nr_metadata.records.synthetic_fields import KeywordsFieldSelector
 
 class DocumentsParentRecord(RDMParent):
     model_cls = DocumentsParentMetadata
+
+    workflow = WorkflowField()
 
 
 class DocumentsIdProvider(DraftRecordIdProviderV2):
@@ -111,6 +118,10 @@ class DocumentsRecord(RDMRecord):
         filter=lambda x: len(x) >= 4,
         map=lambda x: x[:4],
     )
+
+    state = RecordStateField(initial="published")
+
+    state_timestamp = RecordStateTimestampField()
 
     media_files = FilesField(
         key=MediaFilesAttrConfig["_files_attr_key"],

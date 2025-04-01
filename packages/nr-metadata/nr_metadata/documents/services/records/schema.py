@@ -1,8 +1,5 @@
 import marshmallow as ma
 from edtf import Date as EDTFDate
-from invenio_drafts_resources.services.records.schema import (
-    ParentSchema as InvenioParentSchema,
-)
 from invenio_rdm_records.services.schemas.access import AccessSchema
 from invenio_rdm_records.services.schemas.metadata import CreatorSchema
 from invenio_rdm_records.services.schemas.pids import PIDSchema
@@ -19,9 +16,11 @@ from oarepo_runtime.services.schema.marshmallow import (
 from oarepo_runtime.services.schema.rdm import FundingSchema
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
+    validate_datetime,
     validate_identifier,
 )
 from oarepo_vocabularies.services.schema import HierarchySchema
+from oarepo_workflows.services.records.schema import RDMWorkflowParentSchema
 
 from nr_metadata.common.services.records.schema_common import (
     AdditionalTitlesSchema,
@@ -41,7 +40,7 @@ from nr_metadata.schema.identifiers import (
 )
 
 
-class GeneratedParentSchema(InvenioParentSchema):
+class GeneratedParentSchema(RDMWorkflowParentSchema):
     """"""
 
     owners = ma.fields.List(ma.fields.Dict(), load_only=True)
@@ -59,6 +58,10 @@ class NRDocumentRecordSchema(RDMBaseRecordSchema):
         keys=SanitizedUnicode(validate=validate_scheme),
         values=Nested(PIDSchema),
     )
+
+    state = ma_fields.String(dump_only=True)
+
+    state_timestamp = ma_fields.String(dump_only=True, validate=[validate_datetime])
 
     syntheticFields = ma_fields.Nested(lambda: NRDocumentSyntheticFieldsSchema())
     parent = ma.fields.Nested(GeneratedParentSchema)

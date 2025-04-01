@@ -1,9 +1,7 @@
-from invenio_drafts_resources.services.records.schema import (
-    ParentSchema as InvenioParentSchema,
-)
+from oarepo_workflows.services.records.schema import RDMWorkflowParentSchema
 
 
-class GeneratedParentSchema(InvenioParentSchema):
+class GeneratedParentSchema(RDMWorkflowParentSchema):
     """"""
 
     owners = ma.fields.List(ma.fields.Dict(), load_only=True)

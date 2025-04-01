@@ -919,6 +919,7 @@
             }
         },
         "pids": {
+            "uniqueItems": true,
             "type": "object",
             "additionalProperties": {
                 "type": "object",
@@ -937,8 +938,14 @@
             },
             "propertyNames": {
                 "pattern": "^[a-z_-][a-z0-9_-]*$"
-            },
-            "uniqueItems": true
+            }
+        },
+        "state": {
+            "type": "string"
+        },
+        "state_timestamp": {
+            "type": "string",
+            "format": "date-time"
         },
         "syntheticFields": {
             "type": "object",

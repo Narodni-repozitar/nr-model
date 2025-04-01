@@ -9,6 +9,7 @@ from oarepo_runtime.services.schema.rdm_ui import (
 from oarepo_runtime.services.schema.ui import (
     InvenioRDMUISchema,
     LocalizedDate,
+    LocalizedDateTime,
     LocalizedEDTFInterval,
 )
 from oarepo_vocabularies.services.ui_schema import (
@@ -45,6 +46,10 @@ class NRDataRecordUISchema(InvenioRDMUISchema):
     is_published = ma_fields.Boolean()
 
     metadata = ma_fields.Nested(lambda: NRDataMetadataUISchema())
+
+    state = ma_fields.String(dump_only=True)
+
+    state_timestamp = LocalizedDateTime(dump_only=True)
 
     version_id = ma_fields.Integer()
 
