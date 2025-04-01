@@ -194,6 +194,8 @@ class DataSearchOptions(I18nRDMSearchOptions):
         "metadata_technicalInfo_en": facets.metadata_technicalInfo_en,
         "metadata_technicalInfo_lang": facets.metadata_technicalInfo_lang,
         "metadata_version": facets.metadata_version,
+        "state": facets.state,
+        "state_timestamp": facets.state_timestamp,
         **getattr(I18nRDMSearchOptions, "facets", {}),
         "record_status": facets.record_status,
         "has_draft": facets.has_draft,

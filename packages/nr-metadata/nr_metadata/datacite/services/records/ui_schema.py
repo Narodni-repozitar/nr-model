@@ -1,7 +1,7 @@
 import marshmallow as ma
 from marshmallow import Schema
 from marshmallow import fields as ma_fields
-from oarepo_runtime.services.schema.ui import InvenioRDMUISchema
+from oarepo_runtime.services.schema.ui import InvenioRDMUISchema, LocalizedDateTime
 
 from nr_metadata.datacite.services.records.ui_schema_datatypes import (
     AlternateIdentifierUISchema,
@@ -33,6 +33,10 @@ class DataCiteRecordUISchema(InvenioRDMUISchema):
     is_published = ma_fields.Boolean()
 
     metadata = ma_fields.Nested(lambda: NRDataCiteMetadataUISchema())
+
+    state = ma_fields.String(dump_only=True)
+
+    state_timestamp = LocalizedDateTime(dump_only=True)
 
     version_id = ma_fields.Integer()
 

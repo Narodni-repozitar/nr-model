@@ -17,6 +17,7 @@ from oarepo_runtime.services.config import (
 )
 from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
 from oarepo_runtime.services.records import pagination_links_html
+from oarepo_workflows.services.components.workflow import WorkflowComponent
 
 from nr_metadata.data.records.api import DataRecord
 from nr_metadata.data.services.records.permissions import DataPermissionPolicy
@@ -32,7 +33,7 @@ class DataServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig):
 
     result_list_cls = DataRecordList
 
-    PERMISSIONS_PRESETS = ["everyone"]
+    PERMISSIONS_PRESETS = ["workflow"]
 
     url_prefix = "/nr-metadata-data/"
 
@@ -50,7 +51,7 @@ class DataServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig):
 
     @property
     def components(self):
-        return process_service_configs(self, CustomFieldsComponent)
+        return process_service_configs(self, CustomFieldsComponent, WorkflowComponent)
 
     model = "nr_metadata.data"
 

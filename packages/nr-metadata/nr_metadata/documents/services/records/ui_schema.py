@@ -6,7 +6,11 @@ from oarepo_runtime.services.schema.rdm_ui import (
     RDMCreatorsUISchema,
     RDMFundersUISchema,
 )
-from oarepo_runtime.services.schema.ui import InvenioRDMUISchema, LocalizedEDTF
+from oarepo_runtime.services.schema.ui import (
+    InvenioRDMUISchema,
+    LocalizedDateTime,
+    LocalizedEDTF,
+)
 from oarepo_vocabularies.services.ui_schema import (
     HierarchyUISchema,
     VocabularyI18nStrUIField,
@@ -42,6 +46,10 @@ class NRDocumentRecordUISchema(InvenioRDMUISchema):
     is_published = ma_fields.Boolean()
 
     metadata = ma_fields.Nested(lambda: NRDocumentMetadataUISchema())
+
+    state = ma_fields.String(dump_only=True)
+
+    state_timestamp = LocalizedDateTime(dump_only=True)
 
     syntheticFields = ma_fields.Nested(lambda: NRDocumentSyntheticFieldsUISchema())
 
