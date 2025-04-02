@@ -3,10 +3,10 @@ import { Image } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
 const iconsObject = {
-  open: "zamky_open_access.svg",
-  restricted: "zamky_Partialy_closed_access.svg",
-  embargoed: "zamky_Closed_access.svg",
-  "metadata-only": "zamky_Partialy_closed_access.svg",
+  open: "open_access.svg",
+  restricted: "partially_closed_access.svg",
+  embargoed: "closed_access.svg",
+  "metadata-only": "partially_closed_access_grey.svg",
 };
 
 export const ResultsItemAccessStatus = ({ status }) => {
