@@ -9,4 +9,3 @@ export * from "./IdentifiersField";
 export * from "./CreatibutorsField";
 export * from "./RelatedItemsField";
 export * from "./LicenseField";
-export * from "./NestedErrors";

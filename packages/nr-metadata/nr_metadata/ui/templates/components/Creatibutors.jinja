@@ -2,7 +2,6 @@
 {% set creators = metadata.creators if metadata.creators  else [] %}
 {% set contributors = metadata.contributors if metadata.contributors  else [] %}
 {% set all_creatibutors = creators + contributors %}
-
 {% if all_creatibutors %}
     <dt>{{ _("Creators") }}</dt>
     <dd>
@@ -18,8 +17,8 @@
                 {% endif %}
                 <div role="list" class="ui horizontal separated creatibutors list">
                     {% for contributor in contributors%}
-                        {% if contributor.contributorType.title %}
-                            {% set role = contributor.contributorType.title %}
+                        {% if contributor.role %}
+                            {% set role = contributor.role %}
                         {% endif %}
                         <Creatibutor creatibutor={contributor} search_link={search_link} role={role}></Creatibutor>
                     {% endfor %}

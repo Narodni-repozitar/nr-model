@@ -1,7 +1,7 @@
 import React from "react";
 import { List } from "semantic-ui-react";
 import { DoubleSeparator } from "./DoubleSeparator";
-import { IdentifierBadge } from "./IdentifierBadge";
+import { IdentifierBadge } from "@js/oarepo_ui/components";
 import { SearchFacetLink } from "./SearchFacetLink";
 import { i18next } from "@translations/nr/i18next";
 import PropTypes from "prop-types";
@@ -15,7 +15,7 @@ const CreatibutorSearchLink = ({
   <SearchFacetLink
     searchUrl={searchUrl}
     searchFacet={
-      nameType === "Personal"
+      nameType === "personal"
         ? "syntheticFields_people"
         : "syntheticFields_organizations"
     }
@@ -38,7 +38,7 @@ CreatibutorSearchLink.propTypes = {
 };
 
 CreatibutorSearchLink.defaultProps = {
-  nameType: "Personal",
+  nameType: "personal",
 };
 
 export const CreatibutorIdentifier = ({
@@ -82,20 +82,20 @@ export function ResultsItemCreatibutors({
       <List horizontal className="separated creators inline">
         {creators
           .slice(0, maxCreators)
-          .map(({ fullName, authorityIdentifiers, nameType }) => (
+          .map(({ person_or_org: { name, identifiers, type } }) => (
             <List.Item
               as="span"
               className={`creatibutor-wrap separated ${className}`}
-              key={fullName}
+              key={name}
             >
               <CreatibutorSearchLink
-                personName={fullName}
+                personName={name}
                 searchUrl={searchUrl}
-                nameType={nameType}
+                nameType={type}
               />
               <CreatibutorIdentifier
-                creatibutorName={fullName}
-                identifiers={authorityIdentifiers}
+                creatibutorName={name}
+                identifiers={identifiers}
               />
             </List.Item>
           ))}
@@ -104,28 +104,28 @@ export function ResultsItemCreatibutors({
       <List horizontal className="separated contributors inline">
         {contributors
           .slice(0, maxContributors)
-          .map(({ fullName, authorityIdentifiers, contributorType }, index) => (
-            <List.Item
-              as="span"
-              className={`creatibutor-wrap separated ${className}`}
-              key={`${fullName}-${index}`}
-            >
-              <CreatibutorSearchLink
-                personName={fullName}
-                searchUrl={searchUrl}
-                searchField="contributors"
-              />
-              <CreatibutorIdentifier
-                creatibutorName={fullName}
-                identifiers={authorityIdentifiers}
-              />
-              {contributorType?.title && (
-                <span className="contributor-role">
-                  ({contributorType?.title})
-                </span>
-              )}
-            </List.Item>
-          ))}
+          .map(
+            ({ role, person_or_org: { name, identifiers, type } }, index) => (
+              <List.Item
+                as="span"
+                className={`creatibutor-wrap separated ${className}`}
+                key={`${name}-${index}`}
+              >
+                <CreatibutorSearchLink
+                  personName={name}
+                  searchUrl={searchUrl}
+                  searchField="contributors"
+                />
+                <CreatibutorIdentifier
+                  creatibutorName={name}
+                  identifiers={identifiers}
+                />
+                {role?.title && (
+                  <span className="contributor-role">({role?.title})</span>
+                )}
+              </List.Item>
+            )
+          )}
       </List>
     </>
   );

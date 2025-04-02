@@ -48,7 +48,7 @@ NRPerson:
 
     affiliations[]:
       type: taxonomy
-      vocabulary-type: institutions
+      vocabulary-type: affiliations
       keys: [id, title, props.ror]
       ui:
         marshmallow:
@@ -186,69 +186,49 @@ NRAuthority:
 
 NRCreator:
   $id: NRCreator
-  use: "nr-datatypes#NRAuthority"
+  properties:
+    role:
+      use: "nr-datatypes#NRContributorType"
+    affiliations[]:
+      type: vocabulary
+      vocabulary-type: affiliations
+      class: oarepo_runtime.records.relations.UnstrictPIDRelation
+      keys:
+        - key: name
+          model:
+            type: keyword
+        - key: id
+          model:
+            type: keyword
+    person_or_org:
+      properties:
+        name:
+          type: keyword
+        type:
+          type: keyword
+          enum: [personal, organizational]
+        given_name:
+          type: keyword
+        family_name:
+          type: keyword
+        identifiers[]:
+          properties:
+            identifier:
+              type: keyword
+            scheme:
+              type: keyword
+          marshmallow:
+            generate: false
+            read: false
+            write: false
   marshmallow:
-    class: nr_metadata.common.services.records.schema_datatypes.NRCreatorSchema
+    class: invenio_rdm_records.services.schemas.metadata.CreatorSchema
+    generate: false
   ui:
     detail: creator
     marshmallow:
-      class: nr_metadata.common.services.records.ui_schema_datatypes.NRCreatorUISchema
-
-NRContributor:
-  $id: NRContributor
-  use: "nr-datatypes#NRAuthority"
-  schemas:
-    Personal:
-      ui:
-        detail: nr_contributor_person
-        marshmallow:
-          class: nr_metadata.common.services.records.ui_schema_datatypes.NRContributorPersonUISchema
-      marshmallow:
-        class: nr_metadata.common.services.records.schema_datatypes.NRContributorPersonSchema
-      properties:
-        contributorType:
-          use: "nr-datatypes#NRContributorType"
-        fullName:
-          type: keyword
-          label.cs: Jméno přispěvatele
-          label.en: "Contributor's name"
-          required: true
-        givenName:
-          type: keyword
-          label.cs: Křestní jméno
-          label.en: Given Name
-          hint.cs: Uveďte křestní jméno přispěvatele.
-          hint.en: "Fill in the contributor's given name."
-          required: true
-        familyName:
-          label.cs: Příjmení
-          label.en: Family name
-          hint.cs: Uveďte příjmení přispěvatele.
-          hint.en: "Fill in the contributor's family name."
-          required: true
-    Organizational:
-      ui:
-        detail: nr_contributor_organization
-        marshmallow:
-          class: nr_metadata.common.services.records.ui_schema_datatypes.NRContributorOrganizationUISchema
-      marshmallow:
-        class: nr_metadata.common.services.records.schema_datatypes.NRContributorOrganizationSchema
-      properties:
-        contributorType:
-          use: "nr-datatypes#NRContributorType"
-        fullName:
-          type: keyword
-          label.cs: Organizace
-          label.en: Organization
-          hint.cs: Začněte zapisovat název instituce, následně zvolte instituci z nabídky našeptavače.
-          hint.en: Start typing the name of the institution, then select the institution from the menu.
-
-  ui:
-    detail: contributor
-    marshmallow:
-      class: nr_metadata.common.services.records.ui_schema_datatypes.NRContributorUISchema
-  marshmallow:
-    class: nr_metadata.common.services.records.schema_datatypes.NRContributorSchema
+      class: oarepo_runtime.services.schema.rdm_ui.RDMCreatorsUISchema
+      generate: false
 
 NRObjectPID:
   $id: NRObjectPID
@@ -282,7 +262,7 @@ NRObjectPID:
       - import: oarepo_runtime.services.schema.validation.validate_identifier
     class: nr_metadata.schema.identifiers.NRObjectIdentifierSchema
     generate: false
-    validators: [ 'lambda value: validate_identifier(value)' ]
+    validators: ["lambda value: validate_identifier(value)"]
 
 NRDateOrRange:
   $id: NRDateOrRange
@@ -382,47 +362,14 @@ NRRelatedItem:
       #^uniqueItems: true
       ^label.cs: Autoři
       ^label.en: Authors
-      use: "nr-datatypes#NRAuthority"
-      ui:
-        detail: creator
-        marshmallow:
-          class: nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemCreatorUISchema
-      marshmallow:
-        class: nr_metadata.common.services.records.schema_datatypes.NRRelatedItemCreatorSchema
+      use: "nr-datatypes#NRCreator"
 
     itemContributors[]:
       #^uniqueItems: true
       ^label.cs: Přispěvatelé
       ^label.en: Contributors
 
-      use: "nr-datatypes#NRAuthority"
-      ui:
-        detail: contributor
-        marshmallow:
-          class: nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemContributorUISchema
-      marshmallow:
-        class: nr_metadata.common.services.records.schema_datatypes.NRRelatedItemContributorSchema
-      schemas:
-        Personal:
-          ui:
-            detail: nr_contributor_person
-            marshmallow:
-              class: nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemContributorPersonUISchema
-          marshmallow:
-            class: nr_metadata.common.services.records.schema_datatypes.NRRelatedItemContributorPersonSchema
-          properties:
-            contributorType:
-              use: "nr-datatypes#NRContributorType"
-        Organizational:
-          ui:
-            detail: nr_contributor_organization
-            marshmallow:
-              class: nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemContributorOrganizationUISchema
-          marshmallow:
-            class: nr_metadata.common.services.records.schema_datatypes.NRRelatedItemContributorOrganizationSchema
-          properties:
-            contributorType:
-              use: "nr-datatypes#NRContributorType"
+      use: "nr-datatypes#NRCreator"
 
     itemPIDs[]:
       use: "nr-datatypes#NRObjectPID"
@@ -510,7 +457,6 @@ NRRelatedItem:
 
     itemResourceType:
       use: "nr-datatypes#NRResourceType"
-
 NRResourceType:
   $id: NRResourceType
   type: vocabulary
@@ -525,45 +471,75 @@ NRResourceType:
   marshmallow:
     class: nr_metadata.common.services.records.schema_datatypes.NRResourceTypeVocabularySchema
 
-NRFundingReference:
-  $id: NRFundingReference
+NRFunders:
+  $id: NRFunders
   label.cs: "Grant a financování"
-  label.en: "Funding Reference"
-  # informace o přidruženém projektu
-  #
-  # MIGRACE NUŠL - protože v datech NUŠL hrozný stav v polích pro poskytovatele.
-  # u českých projektů na základě prvních dvou znaků v řetězci s identifikátorem
-  # projektu lze přiřadit poskytovatele.
+  label.en: "Funders"
   ui:
     detail: funding_reference
     marshmallow:
-      class: nr_metadata.common.services.records.ui_schema_datatypes.NRFundingReferenceUISchema
+      class: oarepo_runtime.services.schema.rdm_ui.RDMFundersUISchema
+      generate: false
   marshmallow:
-    class: nr_metadata.common.services.records.schema_datatypes.NRFundingReferenceSchema
+    class: oarepo_runtime.services.schema.rdm.FundingSchema
+    generate: false
   properties:
-    projectID:
-      type: keyword
-      required: true
-      label.cs: Číslo projektu
-      label.en: Award number
-      hint.cs: Uveďte kód/číslo projektu.
-      hint.en: Fill in the award number.
-    projectName:
-      type: fulltext
-      label.cs: Název projektu
-      label.en: Award Title
-      hint.cs: Uveďte název projektu.
-      hint.en: Fill in the award title.
-    fundingProgram:
-      type: fulltext
-      label.cs: Výzkumný program
-      label.en: Funding program
-      hint.cs: Uveďte název výzkumného programu, v rámci kterého byl projekt financován.
-      hint.en: Fill in the name of the research program under which the award was funded.
     funder:
-      required: true
-      use: "nr-datatypes#NRFunder"
-
+      type: vocabulary
+      class: oarepo_runtime.records.relations.UnstrictPIDRelation
+      keys:
+        - key: identifiers
+          model:
+            type: array
+            items:
+              properties:
+                identifier: keyword
+                schema: keyword
+        - key: name
+          model:
+            type: keyword
+      vocabulary-type: funders
+      label.cs: Poskytovatel financí
+      label.en: Funder
+      hint.cs: Začněte zapisovat název poskytovatele, následně vyberte z nabídky našeptavače.
+      hint.en: Start typing the name of the funder, then select the funder from the menu.
+    award:
+      keys:
+        - title
+        - key: number
+          model:
+            type: keyword
+        - key: identifiers
+          model:
+            type: array
+            items:
+              properties:
+                identifier: keyword
+                schema: keyword
+        - key: acronym
+          model:
+            type: keyword
+        - key: program
+          model:
+            type: keyword
+        - key: subjects
+          model:
+            type: array
+            items:
+              properties:
+                id: keyword
+                subject: keyword
+        - key: organizations
+          model:
+            type: array
+            items:
+              properties:
+                scheme: keyword
+                id: keyword
+                organization: keyword
+      type: vocabulary
+      vocabulary-type: awards
+      class: oarepo_runtime.records.relations.UnstrictPIDRelation
 NRSubject:
   $id: NRSubject
   label.cs: Klíčové slovo
@@ -609,20 +585,6 @@ NRSubjectCategory:
       class: nr_metadata.common.services.records.ui_schema_datatypes.NRSubjectCategoryVocabularyUISchema
   marshmallow:
     class: nr_metadata.common.services.records.schema_datatypes.NRSubjectCategoryVocabularySchema
-
-NRFunder:
-  $id: NRFunder
-  type: vocabulary
-  vocabulary-type: funders
-  label.cs: Poskytovatel financí
-  label.en: Funder
-  hint.cs: Začněte zapisovat název poskytovatele, následně vyberte z nabídky našeptavače.
-  hint.en: Start typing the name of the funder, then select the funder from the menu.
-  ui:
-    marshmallow:
-      class: nr_metadata.common.services.records.ui_schema_datatypes.NRFunderVocabularyUISchema
-  marshmallow:
-    class: nr_metadata.common.services.records.schema_datatypes.NRFunderVocabularySchema
 
 NRGeoLocation:
   $id: NRGeoLocation

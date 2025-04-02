@@ -17,6 +17,7 @@ from oarepo_runtime.services.config import (
 )
 from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
 from oarepo_runtime.services.records import pagination_links_html
+from oarepo_workflows.services.components.workflow import WorkflowComponent
 
 from nr_metadata.documents.records.api import DocumentsRecord
 from nr_metadata.documents.services.records.permissions import DocumentsPermissionPolicy
@@ -35,7 +36,7 @@ class DocumentsServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConf
 
     result_list_cls = DocumentsRecordList
 
-    PERMISSIONS_PRESETS = ["everyone"]
+    PERMISSIONS_PRESETS = ["workflow"]
 
     url_prefix = "/nr-metadata-documents/"
 
@@ -53,7 +54,7 @@ class DocumentsServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConf
 
     @property
     def components(self):
-        return process_service_configs(self, CustomFieldsComponent)
+        return process_service_configs(self, CustomFieldsComponent, WorkflowComponent)
 
     model = "nr_metadata.documents"
 

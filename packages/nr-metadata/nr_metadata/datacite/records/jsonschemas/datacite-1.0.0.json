@@ -728,6 +728,8 @@
             }
         },
         "pids": {
+            "type": "object",
+            "uniqueItems": true,
             "additionalProperties": {
                 "type": "object",
                 "additionalProperties": false,
@@ -743,11 +745,16 @@
                     }
                 }
             },
-            "type": "object",
-            "uniqueItems": true,
             "propertyNames": {
                 "pattern": "^[a-z_-][a-z0-9_-]*$"
             }
+        },
+        "state": {
+            "type": "string"
+        },
+        "state_timestamp": {
+            "type": "string",
+            "format": "date-time"
         },
         "updated": {
             "type": "string",

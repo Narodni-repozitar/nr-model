@@ -2,7 +2,15 @@ import marshmallow as ma
 from marshmallow import fields as ma_fields
 from marshmallow.fields import String
 from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
-from oarepo_runtime.services.schema.ui import InvenioRDMUISchema, LocalizedEDTF
+from oarepo_runtime.services.schema.rdm_ui import (
+    RDMCreatorsUISchema,
+    RDMFundersUISchema,
+)
+from oarepo_runtime.services.schema.ui import (
+    InvenioRDMUISchema,
+    LocalizedDateTime,
+    LocalizedEDTF,
+)
 from oarepo_vocabularies.services.ui_schema import (
     HierarchyUISchema,
     VocabularyI18nStrUIField,
@@ -15,7 +23,6 @@ from nr_metadata.common.services.records.ui_schema_common import (
 from nr_metadata.common.services.records.ui_schema_datatypes import (
     NREventUISchema,
     NRExternalLocationUISchema,
-    NRFundingReferenceUISchema,
     NRGeoLocationUISchema,
     NRRelatedItemUISchema,
     NRSeriesUISchema,
@@ -40,6 +47,10 @@ class NRDocumentRecordUISchema(InvenioRDMUISchema):
 
     metadata = ma_fields.Nested(lambda: NRDocumentMetadataUISchema())
 
+    state = ma_fields.String(dump_only=True)
+
+    state_timestamp = LocalizedDateTime(dump_only=True)
+
     syntheticFields = ma_fields.Nested(lambda: NRDocumentSyntheticFieldsUISchema())
 
     version_id = ma_fields.Integer()
@@ -53,15 +64,19 @@ class NRDocumentMetadataUISchema(NRCommonMetadataUISchema):
         ma_fields.Nested(lambda: AdditionalTitlesUISchema())
     )
 
+    contributors = ma_fields.List(ma_fields.Nested(lambda: RDMCreatorsUISchema()))
+
+    creators = ma_fields.List(
+        ma_fields.Nested(lambda: RDMCreatorsUISchema()), required=True
+    )
+
     dateModified = LocalizedEDTF()
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventUISchema()))
 
     externalLocation = ma_fields.Nested(lambda: NRExternalLocationUISchema())
 
-    fundingReferences = ma_fields.List(
-        ma_fields.Nested(lambda: NRFundingReferenceUISchema())
-    )
+    funders = ma_fields.List(ma_fields.Nested(lambda: RDMFundersUISchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationUISchema()))
 

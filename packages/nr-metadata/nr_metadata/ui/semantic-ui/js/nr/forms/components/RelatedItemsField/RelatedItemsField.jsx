@@ -63,7 +63,7 @@ class RelatedItemsFieldForm extends Component {
       error || (relatedItemsList === formikInitialValues && initialError);
     return (
       <FieldDataProvider fieldPathPrefix={`${fieldPath}.0`}>
-        <DndProvider context={window} backend={HTML5Backend}>
+        <DndProvider backend={HTML5Backend}>
           <Form.Field
             required={required}
             className={relatedItemsError ? "error" : ""}

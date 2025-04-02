@@ -29,30 +29,45 @@ class DocumentsSearchOptions(I18nRDMSearchOptions):
             facets.metadata_additionalTitles_titleType
         ),
         "metadata_contributors_affiliations": facets.metadata_contributors_affiliations,
-        "metadata_contributors_authorityIdentifiers_identifier": (
-            facets.metadata_contributors_authorityIdentifiers_identifier
+        "metadata_contributors_person_or_org_family_name": (
+            facets.metadata_contributors_person_or_org_family_name
         ),
-        "metadata_contributors_authorityIdentifiers_scheme": (
-            facets.metadata_contributors_authorityIdentifiers_scheme
+        "metadata_contributors_person_or_org_given_name": (
+            facets.metadata_contributors_person_or_org_given_name
         ),
-        "metadata_contributors_contributorType": (
-            facets.metadata_contributors_contributorType
+        "metadata_contributors_person_or_org_identifiers_identifier": (
+            facets.metadata_contributors_person_or_org_identifiers_identifier
         ),
-        "metadata_contributors_familyName": facets.metadata_contributors_familyName,
-        "metadata_contributors_fullName": facets.metadata_contributors_fullName,
-        "metadata_contributors_givenName": facets.metadata_contributors_givenName,
-        "metadata_contributors_nameType": facets.metadata_contributors_nameType,
+        "metadata_contributors_person_or_org_identifiers_scheme": (
+            facets.metadata_contributors_person_or_org_identifiers_scheme
+        ),
+        "metadata_contributors_person_or_org_name": (
+            facets.metadata_contributors_person_or_org_name
+        ),
+        "metadata_contributors_person_or_org_type": (
+            facets.metadata_contributors_person_or_org_type
+        ),
+        "metadata_contributors_role": facets.metadata_contributors_role,
         "metadata_creators_affiliations": facets.metadata_creators_affiliations,
-        "metadata_creators_authorityIdentifiers_identifier": (
-            facets.metadata_creators_authorityIdentifiers_identifier
+        "metadata_creators_person_or_org_family_name": (
+            facets.metadata_creators_person_or_org_family_name
         ),
-        "metadata_creators_authorityIdentifiers_scheme": (
-            facets.metadata_creators_authorityIdentifiers_scheme
+        "metadata_creators_person_or_org_given_name": (
+            facets.metadata_creators_person_or_org_given_name
         ),
-        "metadata_creators_familyName": facets.metadata_creators_familyName,
-        "metadata_creators_fullName": facets.metadata_creators_fullName,
-        "metadata_creators_givenName": facets.metadata_creators_givenName,
-        "metadata_creators_nameType": facets.metadata_creators_nameType,
+        "metadata_creators_person_or_org_identifiers_identifier": (
+            facets.metadata_creators_person_or_org_identifiers_identifier
+        ),
+        "metadata_creators_person_or_org_identifiers_scheme": (
+            facets.metadata_creators_person_or_org_identifiers_scheme
+        ),
+        "metadata_creators_person_or_org_name": (
+            facets.metadata_creators_person_or_org_name
+        ),
+        "metadata_creators_person_or_org_type": (
+            facets.metadata_creators_person_or_org_type
+        ),
+        "metadata_creators_role": facets.metadata_creators_role,
         "metadata_dateAvailable": facets.metadata_dateAvailable,
         "metadata_dateIssued": facets.metadata_dateIssued,
         "metadata_dateModified": facets.metadata_dateModified,
@@ -65,10 +80,8 @@ class DocumentsSearchOptions(I18nRDMSearchOptions):
         "metadata_externalLocation_externalLocationURL": (
             facets.metadata_externalLocation_externalLocationURL
         ),
-        "metadata_fundingReferences_funder": facets.metadata_fundingReferences_funder,
-        "metadata_fundingReferences_projectID": (
-            facets.metadata_fundingReferences_projectID
-        ),
+        "metadata_funders_award": facets.metadata_funders_award,
+        "metadata_funders_funder": facets.metadata_funders_funder,
         "metadata_geoLocations_geoLocationPlace": (
             facets.metadata_geoLocations_geoLocationPlace
         ),
@@ -90,47 +103,50 @@ class DocumentsSearchOptions(I18nRDMSearchOptions):
         "metadata_relatedItems_itemContributors_affiliations": (
             facets.metadata_relatedItems_itemContributors_affiliations
         ),
-        "metadata_relatedItems_itemContributors_authorityIdentifiers_identifier": (
-            facets.metadata_relatedItems_itemContributors_authorityIdentifiers_identifier
+        "metadata_relatedItems_itemContributors_person_or_org_family_name": (
+            facets.metadata_relatedItems_itemContributors_person_or_org_family_name
         ),
-        "metadata_relatedItems_itemContributors_authorityIdentifiers_scheme": (
-            facets.metadata_relatedItems_itemContributors_authorityIdentifiers_scheme
+        "metadata_relatedItems_itemContributors_person_or_org_given_name": (
+            facets.metadata_relatedItems_itemContributors_person_or_org_given_name
         ),
-        "metadata_relatedItems_itemContributors_contributorType": (
-            facets.metadata_relatedItems_itemContributors_contributorType
+        "metadata_relatedItems_itemContributors_person_or_org_identifiers_identifier": (
+            facets.metadata_relatedItems_itemContributors_person_or_org_identifiers_identifier
         ),
-        "metadata_relatedItems_itemContributors_familyName": (
-            facets.metadata_relatedItems_itemContributors_familyName
+        "metadata_relatedItems_itemContributors_person_or_org_identifiers_scheme": (
+            facets.metadata_relatedItems_itemContributors_person_or_org_identifiers_scheme
         ),
-        "metadata_relatedItems_itemContributors_fullName": (
-            facets.metadata_relatedItems_itemContributors_fullName
+        "metadata_relatedItems_itemContributors_person_or_org_name": (
+            facets.metadata_relatedItems_itemContributors_person_or_org_name
         ),
-        "metadata_relatedItems_itemContributors_givenName": (
-            facets.metadata_relatedItems_itemContributors_givenName
+        "metadata_relatedItems_itemContributors_person_or_org_type": (
+            facets.metadata_relatedItems_itemContributors_person_or_org_type
         ),
-        "metadata_relatedItems_itemContributors_nameType": (
-            facets.metadata_relatedItems_itemContributors_nameType
+        "metadata_relatedItems_itemContributors_role": (
+            facets.metadata_relatedItems_itemContributors_role
         ),
         "metadata_relatedItems_itemCreators_affiliations": (
             facets.metadata_relatedItems_itemCreators_affiliations
         ),
-        "metadata_relatedItems_itemCreators_authorityIdentifiers_identifier": (
-            facets.metadata_relatedItems_itemCreators_authorityIdentifiers_identifier
+        "metadata_relatedItems_itemCreators_person_or_org_family_name": (
+            facets.metadata_relatedItems_itemCreators_person_or_org_family_name
         ),
-        "metadata_relatedItems_itemCreators_authorityIdentifiers_scheme": (
-            facets.metadata_relatedItems_itemCreators_authorityIdentifiers_scheme
+        "metadata_relatedItems_itemCreators_person_or_org_given_name": (
+            facets.metadata_relatedItems_itemCreators_person_or_org_given_name
         ),
-        "metadata_relatedItems_itemCreators_familyName": (
-            facets.metadata_relatedItems_itemCreators_familyName
+        "metadata_relatedItems_itemCreators_person_or_org_identifiers_identifier": (
+            facets.metadata_relatedItems_itemCreators_person_or_org_identifiers_identifier
         ),
-        "metadata_relatedItems_itemCreators_fullName": (
-            facets.metadata_relatedItems_itemCreators_fullName
+        "metadata_relatedItems_itemCreators_person_or_org_identifiers_scheme": (
+            facets.metadata_relatedItems_itemCreators_person_or_org_identifiers_scheme
         ),
-        "metadata_relatedItems_itemCreators_givenName": (
-            facets.metadata_relatedItems_itemCreators_givenName
+        "metadata_relatedItems_itemCreators_person_or_org_name": (
+            facets.metadata_relatedItems_itemCreators_person_or_org_name
         ),
-        "metadata_relatedItems_itemCreators_nameType": (
-            facets.metadata_relatedItems_itemCreators_nameType
+        "metadata_relatedItems_itemCreators_person_or_org_type": (
+            facets.metadata_relatedItems_itemCreators_person_or_org_type
+        ),
+        "metadata_relatedItems_itemCreators_role": (
+            facets.metadata_relatedItems_itemCreators_role
         ),
         "metadata_relatedItems_itemEndPage": facets.metadata_relatedItems_itemEndPage,
         "metadata_relatedItems_itemIssue": facets.metadata_relatedItems_itemIssue,
@@ -180,6 +196,8 @@ class DocumentsSearchOptions(I18nRDMSearchOptions):
         "metadata_thesis_degreeGrantors": facets.metadata_thesis_degreeGrantors,
         "metadata_thesis_studyFields": facets.metadata_thesis_studyFields,
         "metadata_version": facets.metadata_version,
+        "state": facets.state,
+        "state_timestamp": facets.state_timestamp,
         "syntheticFields_date": facets.syntheticFields_date,
         "syntheticFields_defenseYear": facets.syntheticFields_defenseYear,
         "syntheticFields_keywords": facets.syntheticFields_keywords,

@@ -304,6 +304,8 @@ class DataciteSearchOptions(I18nRDMSearchOptions):
         "metadata_titles_titleType": facets.metadata_titles_titleType,
         "metadata_url": facets.metadata_url,
         "metadata_version": facets.metadata_version,
+        "state": facets.state,
+        "state_timestamp": facets.state_timestamp,
         **getattr(I18nRDMSearchOptions, "facets", {}),
         "record_status": facets.record_status,
         "has_draft": facets.has_draft,

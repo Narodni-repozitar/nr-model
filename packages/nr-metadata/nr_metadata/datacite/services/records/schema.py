@@ -1,7 +1,4 @@
 import marshmallow as ma
-from invenio_drafts_resources.services.records.schema import (
-    ParentSchema as InvenioParentSchema,
-)
 from invenio_rdm_records.services.schemas.access import AccessSchema
 from invenio_rdm_records.services.schemas.pids import PIDSchema
 from invenio_rdm_records.services.schemas.record import validate_scheme
@@ -11,6 +8,8 @@ from marshmallow.fields import Dict, Nested
 from marshmallow_utils.fields import SanitizedUnicode
 from marshmallow_utils.fields.nestedattr import NestedAttribute
 from oarepo_runtime.services.schema.marshmallow import RDMBaseRecordSchema
+from oarepo_runtime.services.schema.validation import validate_datetime
+from oarepo_workflows.services.records.schema import RDMWorkflowParentSchema
 
 from nr_metadata.datacite.services.records.schema_datatypes import (
     AlternateIdentifierSchema,
@@ -31,7 +30,7 @@ from nr_metadata.datacite.services.records.schema_datatypes import (
 )
 
 
-class GeneratedParentSchema(InvenioParentSchema):
+class GeneratedParentSchema(RDMWorkflowParentSchema):
     """"""
 
     owners = ma.fields.List(ma.fields.Dict(), load_only=True)
@@ -49,6 +48,10 @@ class DataCiteRecordSchema(RDMBaseRecordSchema):
         keys=SanitizedUnicode(validate=validate_scheme),
         values=Nested(PIDSchema),
     )
+
+    state = ma_fields.String(dump_only=True)
+
+    state_timestamp = ma_fields.String(dump_only=True, validate=[validate_datetime])
     parent = ma.fields.Nested(GeneratedParentSchema)
 
 

@@ -13,7 +13,6 @@ import { Formik, getIn } from "formik";
 import * as Yup from "yup";
 import { i18next } from "@translations/nr/i18next";
 import { GroupField } from "react-invenio-forms";
-import { CreatibutorsField } from "../CreatibutorsField";
 import {
   IdentifiersField,
   objectIdentifiersSchema,
@@ -25,9 +24,8 @@ import {
   requiredMessage,
   handleValidateAndBlur,
   useSanitizeInput,
-  useFieldData,
 } from "@js/oarepo_ui";
-import { TextField } from "@js/oarepo_ui/forms";
+import { TextField, CreatibutorsField } from "@js/oarepo_ui/forms";
 import _isEmpty from "lodash/isEmpty";
 
 const RelatedItemsSchema = Yup.object({
@@ -68,9 +66,7 @@ export const RelatedItemsModal = ({
   const [saveAndContinueLabel, setSaveAndContinueLabel] = React.useState(
     i18next.t("Save and add another")
   );
-  const { getFieldData } = useFieldData();
   const { sanitizeInput } = useSanitizeInput();
-
   const openModal = () => {
     setOpen(true);
     setAction(initialAction);
@@ -185,24 +181,13 @@ export const RelatedItemsModal = ({
                 <CreatibutorsField
                   fieldPath="itemCreators"
                   schema="creators"
-                  autocompleteNames="off"
-                  {...getFieldData({ fieldPath: "itemCreators" })}
-                  fieldPathPrefix="metadata.relatedItems.0.itemCreators.0"
+                  autocompleteNames="search"
                 />
                 <CreatibutorsField
-                  addButtonLabel={i18next.t("Add contributor")}
-                  modal={{
-                    addLabel: i18next.t("Add contributor"),
-                    editLabel: i18next.t("Edit contributor"),
-                  }}
                   fieldPath="itemContributors"
                   schema="contributors"
-                  autocompleteNames="off"
-                  fieldPathPrefix="metadata.relatedItems.0.itemContributors.0"
-                  {...getFieldData({
-                    fieldPath: "itemContributors",
-                    icon: "user",
-                  })}
+                  autocompleteNames="search"
+                  showRoleField={true}
                 />
 
                 <IdentifiersField

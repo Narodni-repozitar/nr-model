@@ -1,6 +1,7 @@
 import marshmallow as ma
 from edtf import Date as EDTFDate
 from invenio_rdm_records.services.schemas.access import AccessSchema
+from invenio_rdm_records.services.schemas.metadata import CreatorSchema
 from invenio_rdm_records.services.schemas.pids import PIDSchema
 from invenio_rdm_records.services.schemas.record import validate_scheme
 from marshmallow import Schema
@@ -14,17 +15,16 @@ from oarepo_runtime.services.schema.marshmallow import (
     DictOnlySchema,
     RDMBaseRecordSchema,
 )
+from oarepo_runtime.services.schema.rdm import FundingSchema
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_date,
+    validate_datetime,
     validate_identifier,
 )
 
 from nr_metadata.common.services.records.schema_datatypes import (
-    NRContributorSchema,
-    NRCreatorSchema,
     NREventSchema,
-    NRFundingReferenceSchema,
     NRGeoLocationSchema,
     NRLanguageVocabularySchema,
     NRRelatedItemSchema,
@@ -53,6 +53,10 @@ class NRCommonRecordSchema(RDMBaseRecordSchema):
         values=Nested(PIDSchema),
     )
 
+    state = ma_fields.String(dump_only=True)
+
+    state_timestamp = ma_fields.String(dump_only=True, validate=[validate_datetime])
+
 
 class NRCommonMetadataSchema(Schema):
     class Meta:
@@ -66,10 +70,10 @@ class NRCommonMetadataSchema(Schema):
         ma_fields.Nested(lambda: AdditionalTitlesSchema())
     )
 
-    contributors = ma_fields.List(ma_fields.Nested(lambda: NRContributorSchema()))
+    contributors = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
 
     creators = ma_fields.List(
-        ma_fields.Nested(lambda: NRCreatorSchema()),
+        ma_fields.Nested(lambda: CreatorSchema()),
         required=True,
         validate=[ma.validate.Length(min=1)],
     )
@@ -82,9 +86,7 @@ class NRCommonMetadataSchema(Schema):
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventSchema()))
 
-    fundingReferences = ma_fields.List(
-        ma_fields.Nested(lambda: NRFundingReferenceSchema())
-    )
+    funders = ma_fields.List(ma_fields.Nested(lambda: FundingSchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationSchema()))
 

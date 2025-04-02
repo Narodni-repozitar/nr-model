@@ -1,9 +1,7 @@
 import marshmallow as ma
 from edtf import Date as EDTFDate
-from invenio_drafts_resources.services.records.schema import (
-    ParentSchema as InvenioParentSchema,
-)
 from invenio_rdm_records.services.schemas.access import AccessSchema
+from invenio_rdm_records.services.schemas.metadata import CreatorSchema
 from invenio_rdm_records.services.schemas.pids import PIDSchema
 from invenio_rdm_records.services.schemas.record import validate_scheme
 from invenio_vocabularies.services.schema import i18n_strings
@@ -15,11 +13,14 @@ from oarepo_runtime.services.schema.marshmallow import (
     DictOnlySchema,
     RDMBaseRecordSchema,
 )
+from oarepo_runtime.services.schema.rdm import FundingSchema
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
+    validate_datetime,
     validate_identifier,
 )
 from oarepo_vocabularies.services.schema import HierarchySchema
+from oarepo_workflows.services.records.schema import RDMWorkflowParentSchema
 
 from nr_metadata.common.services.records.schema_common import (
     AdditionalTitlesSchema,
@@ -28,7 +29,6 @@ from nr_metadata.common.services.records.schema_common import (
 from nr_metadata.common.services.records.schema_datatypes import (
     NREventSchema,
     NRExternalLocationSchema,
-    NRFundingReferenceSchema,
     NRGeoLocationSchema,
     NRRelatedItemSchema,
     NRSeriesSchema,
@@ -40,7 +40,7 @@ from nr_metadata.schema.identifiers import (
 )
 
 
-class GeneratedParentSchema(InvenioParentSchema):
+class GeneratedParentSchema(RDMWorkflowParentSchema):
     """"""
 
     owners = ma.fields.List(ma.fields.Dict(), load_only=True)
@@ -59,6 +59,10 @@ class NRDocumentRecordSchema(RDMBaseRecordSchema):
         values=Nested(PIDSchema),
     )
 
+    state = ma_fields.String(dump_only=True)
+
+    state_timestamp = ma_fields.String(dump_only=True, validate=[validate_datetime])
+
     syntheticFields = ma_fields.Nested(lambda: NRDocumentSyntheticFieldsSchema())
     parent = ma.fields.Nested(GeneratedParentSchema)
 
@@ -71,6 +75,14 @@ class NRDocumentMetadataSchema(NRCommonMetadataSchema):
         ma_fields.Nested(lambda: AdditionalTitlesSchema())
     )
 
+    contributors = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
+
+    creators = ma_fields.List(
+        ma_fields.Nested(lambda: CreatorSchema()),
+        required=True,
+        validate=[ma.validate.Length(min=1)],
+    )
+
     dateModified = TrimmedString(
         validate=[CachedMultilayerEDTFValidator(types=(EDTFDate,))]
     )
@@ -79,9 +91,7 @@ class NRDocumentMetadataSchema(NRCommonMetadataSchema):
 
     externalLocation = ma_fields.Nested(lambda: NRExternalLocationSchema())
 
-    fundingReferences = ma_fields.List(
-        ma_fields.Nested(lambda: NRFundingReferenceSchema())
-    )
+    funders = ma_fields.List(ma_fields.Nested(lambda: FundingSchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationSchema()))
 

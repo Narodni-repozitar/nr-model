@@ -2,9 +2,14 @@ import marshmallow as ma
 from marshmallow import fields as ma_fields
 from marshmallow.fields import String
 from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
+from oarepo_runtime.services.schema.rdm_ui import (
+    RDMCreatorsUISchema,
+    RDMFundersUISchema,
+)
 from oarepo_runtime.services.schema.ui import (
     InvenioRDMUISchema,
     LocalizedDate,
+    LocalizedDateTime,
     LocalizedEDTFInterval,
 )
 from oarepo_vocabularies.services.ui_schema import (
@@ -18,7 +23,6 @@ from nr_metadata.common.services.records.ui_schema_common import (
 )
 from nr_metadata.common.services.records.ui_schema_datatypes import (
     NREventUISchema,
-    NRFundingReferenceUISchema,
     NRGeoLocationUISchema,
     NRRelatedItemUISchema,
     NRSeriesUISchema,
@@ -43,6 +47,10 @@ class NRDataRecordUISchema(InvenioRDMUISchema):
 
     metadata = ma_fields.Nested(lambda: NRDataMetadataUISchema())
 
+    state = ma_fields.String(dump_only=True)
+
+    state_timestamp = LocalizedDateTime(dump_only=True)
+
     version_id = ma_fields.Integer()
 
 
@@ -52,6 +60,12 @@ class NRDataMetadataUISchema(NRCommonMetadataUISchema):
 
     additionalTitles = ma_fields.List(
         ma_fields.Nested(lambda: AdditionalTitlesUISchema())
+    )
+
+    contributors = ma_fields.List(ma_fields.Nested(lambda: RDMCreatorsUISchema()))
+
+    creators = ma_fields.List(
+        ma_fields.Nested(lambda: RDMCreatorsUISchema()), required=True
     )
 
     dateCollected = LocalizedEDTFInterval()
@@ -64,9 +78,7 @@ class NRDataMetadataUISchema(NRCommonMetadataUISchema):
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventUISchema()))
 
-    fundingReferences = ma_fields.List(
-        ma_fields.Nested(lambda: NRFundingReferenceUISchema())
-    )
+    funders = ma_fields.List(ma_fields.Nested(lambda: RDMFundersUISchema()))
 
     geoLocations = ma_fields.List(ma_fields.Nested(lambda: NRGeoLocationUISchema()))
 
