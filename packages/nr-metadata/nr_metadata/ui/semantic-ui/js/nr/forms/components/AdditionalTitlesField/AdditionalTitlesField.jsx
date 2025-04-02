@@ -39,6 +39,11 @@ export const AdditionalTitlesField = ({
     subValuesUnique: false,
   });
 
+  const selectFieldData = getFieldData({
+    fieldPath: `${fieldPath}.0.titleType`,
+    fieldRepresentation: "compact",
+  });
+
   return (
     <ArrayField
       addButtonLabel={addButtonLabel}
@@ -75,10 +80,7 @@ export const AdditionalTitlesField = ({
                 clearable
                 id={`${fieldPathPrefix}.titleType`}
                 width={16}
-                {...getFieldData({
-                  fieldPath: `${fieldPathPrefix}.titleType`,
-                  fieldRepresentation: "compact",
-                })}
+                {...selectFieldData}
               />
             </Form.Field>
           </ArrayFieldItem>
