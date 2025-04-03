@@ -1,29 +1,10 @@
 import React from "react";
-import { Image } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
-const iconsObject = {
-  open: "open_access.svg",
-  restricted: "partially_closed_access.svg",
-  embargoed: "closed_access.svg",
-  "metadata-only": "partially_closed_access_grey.svg",
-};
-
 export const ResultsItemAccessStatus = ({ status }) => {
-  const { id, title_l10n } = status;
-  const iconFile = iconsObject[id] || null;
-  return (
-    iconFile && (
-      <Image
-        centered
-        fluid
-        title={title_l10n}
-        aria-label={title_l10n}
-        className={`access-status ${title_l10n}`}
-        src={`/static/icons/locks/${iconFile}`}
-      />
-    )
-  );
+  const { id } = status;
+
+  return id && <i className={`ui access-status ${id}`} />;
 };
 
 ResultsItemAccessStatus.propTypes = {
