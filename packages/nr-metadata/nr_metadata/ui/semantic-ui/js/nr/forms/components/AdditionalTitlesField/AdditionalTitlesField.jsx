@@ -39,7 +39,7 @@ export const AdditionalTitlesField = ({
     subValuesUnique: false,
   });
 
-  const selectFieldData = getFieldData({
+  const titleTypeProps = getFieldData({
     fieldPath: `${fieldPath}.0.titleType`,
     fieldRepresentation: "compact",
   });
@@ -80,7 +80,7 @@ export const AdditionalTitlesField = ({
                 clearable
                 id={`${fieldPathPrefix}.titleType`}
                 width={16}
-                {...selectFieldData}
+                {...titleTypeProps}
               />
             </Form.Field>
           </ArrayFieldItem>

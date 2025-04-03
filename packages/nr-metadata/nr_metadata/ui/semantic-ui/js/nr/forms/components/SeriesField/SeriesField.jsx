@@ -36,13 +36,6 @@ export const SeriesField = ({ fieldPath }) => {
               width={8}
               fieldPath={seriesTitleFieldPath}
               fieldRepresentation="compact"
-              onBlur={() => {
-                const cleanedContent = sanitizeInput(
-                  getIn(values, seriesTitleFieldPath)
-                );
-                setFieldValue(seriesTitleFieldPath, cleanedContent);
-                setFieldTouched(seriesTitleFieldPath, true);
-              }}
             />
             <TextField
               width={8}
