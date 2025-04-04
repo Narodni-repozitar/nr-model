@@ -20,7 +20,6 @@ import {
 import { Formik } from "formik";
 import {
   Image,
-  TextField,
   RadioField,
   RemoteSelectField,
   FieldLabel,
@@ -43,6 +42,7 @@ import {
   handleValidateAndBlur,
   useFieldData,
 } from "@js/oarepo_ui";
+import { TextField } from "@js/oarepo_ui/forms";
 import { RORAffiliationsField } from "./RORAffiliationsField";
 
 const ModalActions = {
@@ -543,14 +543,10 @@ export const CreatibutorsModal = ({
                         <Form.Group widths="equal">
                           <TextField
                             fieldPath={familyNameFieldPath}
-                            {...getFieldData({
-                              fieldPath: familyNameFieldPath,
-                            })}
                             onBlur={() => handleBlur(familyNameFieldPath)}
                           />
                           <TextField
                             fieldPath={givenNameFieldPath}
-                            {...getFieldData({ fieldPath: givenNameFieldPath })}
                             onBlur={() => handleBlur(givenNameFieldPath)}
                           />
                         </Form.Group>

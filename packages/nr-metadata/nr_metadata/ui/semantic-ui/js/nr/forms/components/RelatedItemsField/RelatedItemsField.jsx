@@ -18,7 +18,7 @@ import { DndProvider } from "react-dnd";
 import { RelatedItemsModal } from "./RelatedItemsModal";
 import { RelatedItemsFieldItem } from "./RelatedItemsFieldItem";
 import { i18next } from "@translations/nr/i18next";
-import { FieldDataProvider } from "@js/oarepo_ui";
+import { FieldDataProvider, useFieldData } from "@js/oarepo_ui/forms";
 
 const relatedItemNameDisplay = (value) => {
   const name = _get(value, `itemTitle`);
@@ -52,7 +52,6 @@ class RelatedItemsFieldForm extends Component {
       addButtonLabel,
       required,
       helpText,
-      fieldPathPrefix,
     } = this.props;
 
     const relatedItemsList = getIn(values, fieldPath, []);
@@ -63,7 +62,7 @@ class RelatedItemsFieldForm extends Component {
     const relatedItemsError =
       error || (relatedItemsList === formikInitialValues && initialError);
     return (
-      <FieldDataProvider fieldPathPrefix={fieldPathPrefix}>
+      <FieldDataProvider fieldPathPrefix={`${fieldPath}.0`}>
         <DndProvider backend={HTML5Backend}>
           <Form.Field
             required={required}
@@ -122,7 +121,7 @@ class RelatedItemsFieldForm extends Component {
   }
 }
 
-export class RelatedItemsField extends Component {
+export class RelatedItemsFieldComponent extends Component {
   render() {
     const { fieldPath } = this.props;
 
@@ -153,7 +152,6 @@ RelatedItemsFieldForm.propTypes = {
   push: PropTypes.func.isRequired,
   required: PropTypes.bool,
   helpText: PropTypes.string,
-  fieldPathPrefix: PropTypes.string,
 };
 
 RelatedItemsFieldForm.defaultProps = {
@@ -166,10 +164,9 @@ RelatedItemsFieldForm.defaultProps = {
   helpText: i18next.t(
     "Write down information about a resource related to the resource being described (i.e. if you are describing an article, here you can identify a magazine in which the article was published)."
   ),
-  fieldPathPrefix: "metadata.relatedItems.0",
 };
 
-RelatedItemsField.propTypes = {
+RelatedItemsFieldComponent.propTypes = {
   fieldPath: PropTypes.string.isRequired,
   addButtonLabel: PropTypes.string,
   modal: PropTypes.shape({
@@ -180,10 +177,9 @@ RelatedItemsField.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   labelIcon: PropTypes.string,
   required: PropTypes.bool,
-  fieldPathPrefix: PropTypes.string,
 };
 
-RelatedItemsField.defaultProps = {
+RelatedItemsFieldComponent.defaultProps = {
   label: undefined,
   labelIcon: undefined,
   modal: {
@@ -191,5 +187,39 @@ RelatedItemsField.defaultProps = {
     editLabel: i18next.t("Edit related item"),
   },
   addButtonLabel: i18next.t("Add related item"),
-  fieldPathPrefix: "metadata.relatedItems.0",
+};
+
+export const RelatedItemsField = ({
+  overrides,
+  icon = "pencil",
+  label,
+  required,
+  helpText,
+  fieldPath,
+  ...props
+}) => {
+  const { getFieldData } = useFieldData();
+  const fieldData = {
+    ...getFieldData({ fieldPath, icon }),
+    ...(label && { label }),
+    ...(required && { required }),
+    ...(helpText && { helpText }),
+  };
+
+  return (
+    <RelatedItemsFieldComponent
+      fieldPath={fieldPath}
+      {...fieldData}
+      {...props}
+    />
+  );
+};
+
+RelatedItemsField.propTypes = {
+  label: PropTypes.string,
+  overrides: PropTypes.object,
+  icon: PropTypes.string,
+  fieldPath: PropTypes.string.isRequired,
+  required: PropTypes.bool,
+  helpText: PropTypes.string,
 };
