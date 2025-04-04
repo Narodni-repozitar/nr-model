@@ -57,7 +57,8 @@ class DataServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig):
 
     @property
     def links_item(self):
-        return {
+        links = {
+            **super().links_item,
             "draft": RecordLink(
                 "{+api}/nr-metadata-data/{id}/draft",
                 when=has_draft() & has_permission("read_draft"),
@@ -106,10 +107,12 @@ class DataServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig):
                 when=has_permission("search_versions"),
             ),
         }
+        return {k: v for k, v in links.items() if v is not None}
 
     @property
     def links_search_item(self):
-        return {
+        links = {
+            **super().links_search_item,
             "self": ConditionalLink(
                 cond=is_published_record(),
                 if_=RecordLink(
@@ -131,23 +134,30 @@ class DataServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig):
                 ),
             ),
         }
+        return {k: v for k, v in links.items() if v is not None}
 
     @property
     def links_search(self):
-        return {
+        links = {
+            **super().links_search,
             **pagination_links("{+api}/nr-metadata-data/{?args*}"),
             **pagination_links_html("{+ui}/nr-metadata-data/{?args*}"),
         }
+        return {k: v for k, v in links.items() if v is not None}
 
     @property
     def links_search_drafts(self):
-        return {
+        links = {
+            **super().links_search_drafts,
             **pagination_links("{+api}/user/nr-metadata-data/{?args*}"),
             **pagination_links_html("{+ui}/user/nr-metadata-data/{?args*}"),
         }
+        return {k: v for k, v in links.items() if v is not None}
 
     @property
     def links_search_versions(self):
-        return {
+        links = {
+            **super().links_search_versions,
             **pagination_links("{+api}/nr-metadata-data/{id}/versions{?args*}"),
         }
+        return {k: v for k, v in links.items() if v is not None}

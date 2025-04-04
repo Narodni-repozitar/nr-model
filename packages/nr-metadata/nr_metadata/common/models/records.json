@@ -263,6 +263,10 @@
                 ]
             }
         },
+        "translations": {
+            "module": "nr_metadata.common.translations",
+            "alias": "common"
+        },
         "json-serializer": {
             "module": "nr_metadata.common.resources.records.ui",
             "class": "nr_metadata.common.resources.records.ui.CommonUIJSONSerializer",
@@ -278,10 +282,6 @@
                 "\"object_key\"": "\"ui\"",
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
-        },
-        "translations": {
-            "module": "nr_metadata.common.translations",
-            "alias": "common"
         },
         "service": {
             "imports": [],
@@ -2368,7 +2368,6 @@
                         "help.en": "Write down information about the resource related to the one you are describing here (e.g. if you are describing an article, you can identify the journal in which the article was published).",
                         "items": {
                             "type": "object",
-                            "description": "linkdata, propojení přidružených dokumentů a datasetů.",
                             "ui": {
                                 "marshmallow": {
                                     "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemUISchema",
@@ -2380,6 +2379,7 @@
                                 "class": "nr_metadata.common.services.records.schema_datatypes.NRRelatedItemSchema",
                                 "generate": true
                             },
+                            "description": "linkdata, propojení přidružených dokumentů a datasetů.",
                             "label.cs": "Vazba na související zdroj:",
                             "label.en": "Link to related resource:",
                             "properties": {
@@ -2993,7 +2993,6 @@
                                 "itemRelationType": {
                                     "type": "vocabulary",
                                     "vocabulary-type": "item-relation-types",
-                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "ui": {
                                         "marshmallow": {
                                             "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRItemRelationTypeVocabularyUISchema",
@@ -3008,6 +3007,7 @@
                                         "unknown": "INCLUDE",
                                         "generate": true
                                     },
+                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "label.cs": "Typ vazby",
                                     "label.en": "Relation type",
                                     "hint.cs": "Vyberte typ vazby mezi popisovaným a souvisejícím zdrojem.",
@@ -3958,6 +3958,11 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
+                    "uniqueItems": true,
+                    "type": "object",
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -3972,12 +3977,7 @@
                                 "type": "string"
                             }
                         }
-                    },
-                    "type": "object",
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
-                    "uniqueItems": true
+                    }
                 },
                 "ui": {
                     "marshmallow": {

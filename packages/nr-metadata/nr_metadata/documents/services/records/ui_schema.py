@@ -33,9 +33,10 @@ from nr_metadata.ui_schema.identifiers import (
     NRSystemIdentifierUISchema,
 )
 from nr_metadata.ui_schema.subjects import NRSubjectListField
+from nr_metadata.ui_schema.versions import FillMissingVersionMixin
 
 
-class NRDocumentRecordUISchema(InvenioRDMUISchema):
+class NRDocumentRecordUISchema(FillMissingVersionMixin, InvenioRDMUISchema):
     class Meta:
         unknown = ma.RAISE
 

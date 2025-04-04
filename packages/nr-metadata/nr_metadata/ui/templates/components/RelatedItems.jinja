@@ -59,7 +59,7 @@
                     <span>{{fullName}}</span>
                     <CreatibutorIdentifier identifiers={identifiers} creatibutorName={fullName} />   
                     {% if role.title %}
-                        ({{role.title}})
+                        &nbsp;({{role.title}})
                     {% endif %}
                     {% if not loop.last %}<span class="single separator"></span>{% endif %}
                 {% endfor %} 

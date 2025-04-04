@@ -263,6 +263,10 @@
                 ]
             }
         },
+        "translations": {
+            "module": "nr_metadata.datacite.translations",
+            "alias": "datacite"
+        },
         "json-serializer": {
             "module": "nr_metadata.datacite.resources.records.ui",
             "class": "nr_metadata.datacite.resources.records.ui.DataciteUIJSONSerializer",
@@ -278,10 +282,6 @@
                 "\"object_key\"": "\"ui\"",
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
-        },
-        "translations": {
-            "module": "nr_metadata.datacite.translations",
-            "alias": "datacite"
         },
         "service": {
             "imports": [],
@@ -2537,7 +2537,9 @@
                 "type": "object",
                 "json-schema": {
                     "type": "object",
-                    "uniqueItems": true,
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -2553,9 +2555,7 @@
                             }
                         }
                     },
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    }
+                    "uniqueItems": true
                 },
                 "ui": {
                     "marshmallow": {

@@ -19,8 +19,6 @@
   <div class="content">
       <SearchLink data={data}  searchFacet={searchFacet} search_link={search_link}></SearchLink>
               <CreatibutorIdentifier identifiers={creatibutor_dict.person_or_org.identifiers} creatibutorName={name} />
-      {%- if role.title -%}
-          ({{role.title}})
-      {%- endif -%}
+      {%- if role.title -%} &nbsp;({{ role.title }}){%- endif -%}
   </div>
 </div>
