@@ -55,6 +55,13 @@ class NRDocumentRecordUISchema(InvenioRDMUISchema):
 
     version_id = ma_fields.Integer()
 
+    @ma.post_dump
+    def fill_missing_version(self, value, **kwargs):
+        value.setdefault("metadata", {}).setdefault(
+            "version", value.get("versions", {}).get("index")
+        )
+        return value
+
 
 class NRDocumentMetadataUISchema(NRCommonMetadataUISchema):
     class Meta:
