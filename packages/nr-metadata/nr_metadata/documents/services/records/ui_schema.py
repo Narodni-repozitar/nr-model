@@ -55,6 +55,7 @@ class NRDocumentRecordUISchema(InvenioRDMUISchema):
 
     version_id = ma_fields.Integer()
 
+    # TODO: this cannot survive model rebuild, needs to be put in the model builder directly or similar
     @ma.post_dump
     def fill_missing_version(self, value, **kwargs):
         value.setdefault("metadata", {}).setdefault(
