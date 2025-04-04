@@ -83,14 +83,22 @@ class DataExt:
 
     def init_app_callback_rdm_models(self, app):
         rdm_model_config = {
+            "service_id": "data",
+            # deprecated
             "model_service": "nr_metadata.data.services.records.service.DataService",
+            # deprecated
             "service_config": (
                 "nr_metadata.data.services.records.config.DataServiceConfig"
             ),
-            "ui_resource_config": "ui.nr_metadata.data.DataUIResourceConfig",
+            "api_service": "nr_metadata.data.services.records.service.DataService",
+            "api_service_config": (
+                "nr_metadata.data.services.records.config.DataServiceConfig"
+            ),
+            "api_resource": "nr_metadata.data.resources.records.resource.DataResource",
             "api_resource_config": (
                 "nr_metadata.data.resources.records.config.DataResourceConfig"
             ),
+            "ui_resource_config": "ui.nr_metadata.data.DataUIResourceConfig",
         }
 
         app.config.setdefault("GLOBAL_SEARCH_MODELS", [])

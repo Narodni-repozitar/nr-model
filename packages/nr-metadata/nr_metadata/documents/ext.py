@@ -83,16 +83,28 @@ class DocumentsExt:
 
     def init_app_callback_rdm_models(self, app):
         rdm_model_config = {
+            "service_id": "documents",
+            # deprecated
             "model_service": (
                 "nr_metadata.documents.services.records.service.DocumentsService"
             ),
+            # deprecated
             "service_config": (
                 "nr_metadata.documents.services.records.config.DocumentsServiceConfig"
             ),
-            "ui_resource_config": "ui.nr_metadata.documents.DocumentsUIResourceConfig",
+            "api_service": (
+                "nr_metadata.documents.services.records.service.DocumentsService"
+            ),
+            "api_service_config": (
+                "nr_metadata.documents.services.records.config.DocumentsServiceConfig"
+            ),
+            "api_resource": (
+                "nr_metadata.documents.resources.records.resource.DocumentsResource"
+            ),
             "api_resource_config": (
                 "nr_metadata.documents.resources.records.config.DocumentsResourceConfig"
             ),
+            "ui_resource_config": "ui.nr_metadata.documents.DocumentsUIResourceConfig",
         }
 
         app.config.setdefault("GLOBAL_SEARCH_MODELS", [])

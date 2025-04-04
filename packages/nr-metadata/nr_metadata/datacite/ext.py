@@ -83,16 +83,28 @@ class DataciteExt:
 
     def init_app_callback_rdm_models(self, app):
         rdm_model_config = {
+            "service_id": "datacite",
+            # deprecated
             "model_service": (
                 "nr_metadata.datacite.services.records.service.DataciteService"
             ),
+            # deprecated
             "service_config": (
                 "nr_metadata.datacite.services.records.config.DataciteServiceConfig"
             ),
-            "ui_resource_config": "ui.nr_metadata.datacite.DataciteUIResourceConfig",
+            "api_service": (
+                "nr_metadata.datacite.services.records.service.DataciteService"
+            ),
+            "api_service_config": (
+                "nr_metadata.datacite.services.records.config.DataciteServiceConfig"
+            ),
+            "api_resource": (
+                "nr_metadata.datacite.resources.records.resource.DataciteResource"
+            ),
             "api_resource_config": (
                 "nr_metadata.datacite.resources.records.config.DataciteResourceConfig"
             ),
+            "ui_resource_config": "ui.nr_metadata.datacite.DataciteUIResourceConfig",
         }
 
         app.config.setdefault("GLOBAL_SEARCH_MODELS", [])

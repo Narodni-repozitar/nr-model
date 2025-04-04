@@ -79,6 +79,10 @@ DocumentModel:
   ui:
     marshmallow:
       class: nr_metadata.documents.services.records.ui_schema.NRDocumentRecordUISchema
+      base-classes:
+        - nr_metadata.ui_schema.versions.FillMissingVersionMixin
+        - oarepo_runtime.services.schema.ui.InvenioRDMUISchema
+
   use: [invenio, rdm]
 
   record:

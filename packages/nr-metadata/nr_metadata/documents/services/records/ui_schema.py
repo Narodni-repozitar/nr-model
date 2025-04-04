@@ -33,9 +33,10 @@ from nr_metadata.ui_schema.identifiers import (
     NRSystemIdentifierUISchema,
 )
 from nr_metadata.ui_schema.subjects import NRSubjectListField
+from nr_metadata.ui_schema.versions import FillMissingVersionMixin
 
 
-class NRDocumentRecordUISchema(InvenioRDMUISchema):
+class NRDocumentRecordUISchema(FillMissingVersionMixin, InvenioRDMUISchema):
     class Meta:
         unknown = ma.RAISE
 
@@ -54,14 +55,6 @@ class NRDocumentRecordUISchema(InvenioRDMUISchema):
     syntheticFields = ma_fields.Nested(lambda: NRDocumentSyntheticFieldsUISchema())
 
     version_id = ma_fields.Integer()
-
-    # TODO: this cannot survive model rebuild, needs to be put in the model builder directly or similar
-    @ma.post_dump
-    def fill_missing_version(self, value, **kwargs):
-        value.setdefault("metadata", {}).setdefault(
-            "version", value.get("versions", {}).get("index")
-        )
-        return value
 
 
 class NRDocumentMetadataUISchema(NRCommonMetadataUISchema):

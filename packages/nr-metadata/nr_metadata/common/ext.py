@@ -83,16 +83,26 @@ class CommonExt:
 
     def init_app_callback_rdm_models(self, app):
         rdm_model_config = {
+            "service_id": "common",
+            # deprecated
             "model_service": (
                 "nr_metadata.common.services.records.service.CommonService"
             ),
+            # deprecated
             "service_config": (
                 "nr_metadata.common.services.records.config.CommonServiceConfig"
             ),
-            "ui_resource_config": "ui.nr_metadata.common.CommonUIResourceConfig",
+            "api_service": "nr_metadata.common.services.records.service.CommonService",
+            "api_service_config": (
+                "nr_metadata.common.services.records.config.CommonServiceConfig"
+            ),
+            "api_resource": (
+                "nr_metadata.common.resources.records.resource.CommonResource"
+            ),
             "api_resource_config": (
                 "nr_metadata.common.resources.records.config.CommonResourceConfig"
             ),
+            "ui_resource_config": "ui.nr_metadata.common.CommonUIResourceConfig",
         }
 
         app.config.setdefault("GLOBAL_SEARCH_MODELS", [])
