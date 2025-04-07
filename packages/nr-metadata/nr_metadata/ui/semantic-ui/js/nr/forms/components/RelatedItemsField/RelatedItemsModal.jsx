@@ -204,22 +204,27 @@ export const RelatedItemsModal = ({
                   <TextField
                     fieldPath="itemYear"
                     onBlur={() => handleBlur("itemYear")}
+                    fieldRepresentation="compact"
                   />
                   <TextField
                     fieldPath="itemVolume"
                     onBlur={() => handleBlur("itemVolume")}
+                    fieldRepresentation="compact"
                   />
                   <TextField
                     fieldPath="itemIssue"
                     onBlur={() => handleBlur("itemIssue")}
+                    fieldRepresentation="compact"
                   />
                   <TextField
                     fieldPath="itemStartPage"
                     onBlur={() => handleBlur("itemStartPage")}
+                    fieldRepresentation="compact"
                   />
                   <TextField
                     fieldPath="itemEndPage"
                     onBlur={() => handleBlur("itemEndPage")}
+                    fieldRepresentation="compact"
                   />
                 </GroupField>
                 <TextField
