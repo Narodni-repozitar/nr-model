@@ -4,6 +4,7 @@ import { Form, Icon, Button } from "semantic-ui-react";
 import { useFieldData, ArrayFieldItem, TextField } from "@js/oarepo_ui/forms";
 import { i18next } from "@translations/nr/i18next";
 import { useFormikContext, getIn } from "formik";
+import { FieldLabel } from "react-invenio-forms";
 
 const RemoveButton = ({
   handleClick,
@@ -43,10 +44,15 @@ export const ExternalLocationField = ({ fieldPath }) => {
 
   const [showInput, setShowInput] = React.useState(hasValue);
 
-  const { label, helpText } = getFieldData({ fieldPath });
+  const { label, helpText } = getFieldData({
+    fieldPath,
+    fieldRepresentation: "text",
+  });
+
+  console.log(getFieldData({ fieldPath, fieldRepresentation: "text" }));
   return (
     <Form.Field>
-      {label}
+      <FieldLabel htmlFor={fieldPath} label={label} />
       {showInput && (
         <ArrayFieldItem
           removeButton={RemoveButton}
@@ -65,10 +71,15 @@ export const ExternalLocationField = ({ fieldPath }) => {
           }}
           fieldPathPrefix={fieldPath}
         >
-          <TextField width={8} fieldPath={`${fieldPath}.externalLocationURL`} />
+          <TextField
+            width={8}
+            fieldPath={`${fieldPath}.externalLocationURL`}
+            fieldRepresentation="compact"
+          />
           <TextField
             width={8}
             fieldPath={`${fieldPath}.externalLocationNote`}
+            fieldRepresentation="compact"
           />
         </ArrayFieldItem>
       )}

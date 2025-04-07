@@ -51,23 +51,27 @@ export const EventsField = ({ fieldPath }) => {
                 setFieldValue(eventNameOriginalFieldPath, cleanedContent);
                 setFieldTouched(eventNameOriginalFieldPath, true);
               }}
+              fieldRepresentation="compact"
             />
             <StringArrayField
               width={16}
               fieldPath={`${fieldPathPrefix}.eventNameAlternate`}
               addButtonLabel={i18next.t("Add event alternate name")}
+              fieldRepresentation="compact"
             />
             <EDTFDaterangePicker fieldPath={`${fieldPathPrefix}.eventDate`} />
             <GroupField>
               <TextField
                 width={10}
                 fieldPath={`${fieldPathPrefix}.eventLocation.place`}
+                fieldRepresentation="compact"
               />
               <LocalVocabularySelectField
                 width={6}
                 fieldPath={`${fieldPathPrefix}.eventLocation.country`}
                 optionsListName="countries"
                 clearable
+                fieldRepresentation="compact"
               />
             </GroupField>
             {eventLocationError && (
