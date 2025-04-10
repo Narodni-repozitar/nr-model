@@ -49,7 +49,6 @@ export const ExternalLocationField = ({ fieldPath }) => {
     fieldRepresentation: "text",
   });
 
-  console.log(getFieldData({ fieldPath, fieldRepresentation: "text" }));
   return (
     <Form.Field>
       <FieldLabel htmlFor={fieldPath} label={label} />

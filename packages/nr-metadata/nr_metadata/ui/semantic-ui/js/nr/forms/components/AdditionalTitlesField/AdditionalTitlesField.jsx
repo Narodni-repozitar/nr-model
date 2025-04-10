@@ -68,7 +68,7 @@ export const AdditionalTitlesField = ({
             <Form.Field width={12}>
               <I18nTextInputField
                 fieldPath={`${fieldPathPrefix}.title`}
-                lngFieldWidth={5}
+                lngFieldWidth={6}
               />
             </Form.Field>
             <Form.Field width={4}>

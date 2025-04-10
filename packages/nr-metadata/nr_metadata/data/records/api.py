@@ -94,18 +94,20 @@ class DataRecord(RDMRecord):
             "metadata.funders.award",
             keys=[
                 "title",
+                "id",
                 "number",
-                "identifiers",
-                "acronym",
                 "program",
+                "acronym",
+                "identifiers",
                 "subjects",
                 "organizations",
+                "@v",
             ],
             pid_field=Award.pid,
         ),
         funder=UnstrictPIDRelation(
             "metadata.funders.funder",
-            keys=["identifiers", "name"],
+            keys=["id", "@v", "name"],
             pid_field=Funder.pid,
         ),
         languages=PIDRelation(
