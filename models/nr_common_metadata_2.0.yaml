@@ -16,15 +16,15 @@ CommonMetadata:
       required: true
       label.cs: Název
       label.en: Title
-      hint.cs: Uveďte hlavní název zdroje.
-      hint.en: Fill in the main title of the resource.
+      hint.cs: Uveďte hlavní název dokumentu.
+      hint.en: Fill in the main title of the document.
 
     additionalTitles[]:
       # Additional titles of the object/work such as subtitle, translatedTitle and alternativeTitle.
       ^label.cs: Další názvy
       ^label.en: Additional Titles
-      ^help.cs: Pokud existují další názvy zdroje, uveďte je. Vyberte typ a jazyk.
-      ^help.en: If the resource is given any additional titles, choose the type of title and corresponding language.
+      ^help.cs: Pokud existují další názvy dokumentu, uveďte je. Vyberte typ a jazyk. Doporučujeme zadat alespoň překlad názvu dokumentu.
+      ^help.en: If the document is given any additional titles, choose the type of title and corresponding language. We recommend to fill out a translation of the title.
       #^uniqueItems: true
       properties:
         title:
@@ -61,8 +61,8 @@ CommonMetadata:
       # Taxonomy driven typology of objects that's possible to store in the repository
       use: "nr-datatypes#NRResourceType"
       required: true
-      hint.cs: Vyberte typ zdroje.
-      hint.en: Choose resource type.
+      hint.cs: Vyberte typ dokumentu.
+      hint.en: Choose document type.
 
     dateAvailable:
       # The date the resource is publicly available in a repository.
@@ -81,7 +81,7 @@ CommonMetadata:
         faker: date
       label.cs: Datum vydání
       label.en: Date Issued
-      hint.cs: Zvolte z kalendáře datum, kdy byl zdroj vydán.
+      hint.cs: Zvolte z kalendáře datum, kdy byl dokument vydán.
       hint.en: Choose the issuance date from the calendar.
       help.cs: Datum může být rok, rok a měsíc nebo celé datum. V záhlaví kalendáře můžete zvolit typ data.
       help.en: The date can be a year, year and month or a full date. In the calendar header select type of date.
@@ -91,8 +91,8 @@ CommonMetadata:
       use: "nr-datatypes#NRSubject"
       ^label.cs: "Klíčová slova"
       ^label.en: "Keywords"
-      ^help.cs: Zapisujte slova popisující zdroj, zvolte vždy jazyk. Zapisujte klíčová slova jednotlivě.
-      ^help.en: Write down words describing the resource, always choose language. Write the keywords one by one.
+      ^help.cs: Zapisujte slova popisující dokument, zvolte vždy jazyk. Zapisujte klíčová slova jednotlivě.
+      ^help.en: Write down words describing the document, always choose language. Write the keywords one by one.
       #^uniqueItems: true
       ^ui:
         marshmallow:
@@ -103,6 +103,8 @@ CommonMetadata:
       use: "nr-datatypes#NRSubjectCategory"
       ^label.cs: Oborové třídění
       ^label.en: Subject Categories
+      ^help.cs: Vyberte zařazení do vědního oboru. Lze vybrat více oborů.
+      ^help.en: Choose a scientific field. You can pick multiple fields.
       ^hint.cs: Vyberte název oboru.
       ^hint.en: Choose subject category.
       #^uniqueItems: true
@@ -120,8 +122,8 @@ CommonMetadata:
       #^uniqueItems: true
       ^label.cs: Poznámky
       ^label.en: Notes
-      ^help.cs: Prostor pro další informace ke zdroji.
-      ^help.en: Space for additional information related to the resource.
+      ^help.cs: Prostor pro další informace k dokumentu.
+      ^help.en: Space for additional information related to the document.
 
     abstract:
       type: multilingual
@@ -164,9 +166,9 @@ CommonMetadata:
       use: "nr-datatypes#NRRelatedItem"
       #^uniqueItems: true
       ^label.cs: "Vazba na související zdroje"
-      ^label.en: "Link to related resources"
-      ^help.cs: Zapište informace o zdroji, který souvisí se zdrojem, který zde popisujete (např. pokud popisujete článek, sem můžete identifikovat časopis, ve kterém článek vyšel).
-      ^help.en: Write down information about the resource related to the one you are describing here (e.g. if you are describing an article, you can identify the journal in which the article was published).
+      ^label.en: "Link to Related Resources"
+      ^help.cs: Zapište informace o zdroji, který souvisí s dokumentem, který zde popisujete (např. pokud popisujete článek, můžete zde identifikovat časopis, ve kterém byl článek vydán).
+      ^help.en: Write down information about the resource related to the document you are describing here (e.g. if you are describing an article, you can identify the journal in which the article was published).
 
     funders[]:
       use: "nr-datatypes#NRFunders"
@@ -178,8 +180,8 @@ CommonMetadata:
       # verze obsahu, nikoliv záznamu. hodnota ve formuláři není editovatelná.
       type: keyword
       sample: ["1.0", "1.1", "2.0", "2.1", "2.2"]
-      label.cs: Verze zdroje
-      label.en: Resource version
+      label.cs: Verze dokumentu
+      label.en: Document Version
       hint.cs: Zapište verzi (první, druhá…).
       hint.en: Write down the version (first, second…).
 
@@ -195,8 +197,8 @@ CommonMetadata:
       # nastavuje se pro každý zdroj zvlášť během konverze podle dostupnosti souborů
       # ve zdrojovém systému. ve vkládacím formuláři by bylo pouze pro restricted access
       type: multilingual
-      label.cs: Dostupnost zdroje
-      label.en: Resource accessibility
+      label.cs: Dostupnost dokumentu
+      label.en: Document Accessibility
       ui:
         detail: string
         marshmallow:
@@ -220,7 +222,7 @@ CommonMetadata:
       sample:
         faker: url
       label.cs: Odkaz na původní záznam
-      label.en: Original record URL
+      label.en: Original Record URL
 
     objectIdentifiers[]:
       # Persistent identifier/s of object as ISBN, DOI, etc. + assigned by National Repository.
@@ -236,13 +238,15 @@ CommonMetadata:
       #^uniqueItems: true
       use: "nr-datatypes#NRSystemIdentifier"
       ^label.cs: Systémové identifikátory
-      ^label.en: System identifiers
+      ^label.en: System Identifiers
 
     events[]:
       #^uniqueItems: true
       use: "nr-datatypes#NREvent"
       ^label.cs: Související akce
       ^label.en: Events
+      ^help.cs: Akce související s dokumentem (např. konference).
+      ^help.en: Event related to the document (i.e. conference).
 
 CommonModel:
   $id: CommonModel

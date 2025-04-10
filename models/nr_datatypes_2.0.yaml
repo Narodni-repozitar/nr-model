@@ -16,7 +16,7 @@ NRPerson:
       type: keyword
       required: true
       label.cs: Jméno autora
-      label.en: "Author's name"
+      label.en: "Author's Name"
       sample:
         faker: name
     givenName:
@@ -127,7 +127,7 @@ NRPersonIdentifier:
           ISNI,
         ]
       label.cs: Typ identifikátoru
-      label.en: Identifier type
+      label.en: Identifier Type
       hint.cs: "Identifikátor osoby"
       hint.en: "Person identifier"
 
@@ -155,7 +155,7 @@ NROrganizationIdentifier:
       required: true
       enum: [ISNI, ROR, ICO, DOI]
       label.cs: Typ identifikátoru
-      label.en: Identifier type
+      label.en: Identifier Type
 
   ui:
     detail: nr_organization_identifier
@@ -176,7 +176,7 @@ NRAuthority:
   type: polymorphic
   discriminator: nameType
   hint.cs: Jako tvůrce je možné označit osobu nebo instituci.
-  hint.en: It is possible to designate a person or an institution as the creator/contributor.
+  hint.en: It is possible to designate a person or an institution as the creator or contributor.
   ui:
     detail: nr_authority
     marshmallow:
@@ -233,7 +233,7 @@ NRCreator:
 NRObjectPID:
   $id: NRObjectPID
   label.cs: Identifikátor objektu
-  label.en: Object identifier
+  label.en: Object Identifier
   properties:
     identifier:
       type: keyword
@@ -241,7 +241,7 @@ NRObjectPID:
       sample:
         faker: isbn13
       label.cs: Identifikátor objektu
-      label.en: Object identifier
+      label.en: Object Identifier
       hint.cs: "např. 10.1086/679716 pro DOI."
       hint.en: "e.g. 10.1086/679716 for DOI."
     scheme:
@@ -249,7 +249,7 @@ NRObjectPID:
       required: true
       enum: [DOI, Handle, ISBN, ISSN, RIV, IGSN]
       label.cs: Typ identifikátoru
-      label.en: Identifier type
+      label.en: Identifier Type
       hint.cs: např. DOI, HANDLE nebo ISBN.
       hint.en: e.g. DOI, HANDLE or ISBN.
   ui:
@@ -328,7 +328,7 @@ NRContributorType:
   type: vocabulary
   vocabulary-type: contributor-types
   label.cs: Role přispěvatele
-  label.en: Contributor's role
+  label.en: Contributor's Role
   hint.cs: Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).
   hint.en: Choose the role of the contributor (editor, illustrator…).
   required: true
@@ -341,7 +341,7 @@ NRContributorType:
 NRRelatedItem:
   $id: NRRelatedItem
   label.cs: "Vazba na související zdroj:"
-  label.en: "Link to related resource:"
+  label.en: "Link to Related Resource:"
   description: linkdata, propojení přidružených dokumentů a datasetů.
   ui:
     detail: related_item
@@ -384,7 +384,7 @@ NRRelatedItem:
           sample:
             faker: isbn13
           label.cs: Identifikátor objektu
-          label.en: Object identifier
+          label.en: Object Identifier
           hint.cs: "např. 10.1086/679716 pro DOI."
           hint.en: "e.g. 10.1086/679716 for DOI."
         scheme:
@@ -392,7 +392,7 @@ NRRelatedItem:
           required: true
           enum: [DOI, Handle, ISBN, ISSN, RIV, IGSN]
           label.cs: Typ identifikátoru
-          label.en: Identifier type
+          label.en: Identifier Type
           hint.cs: např. DOI, HANDLE nebo ISBN.
           hint.en: e.g. DOI, HANDLE or ISBN.
 
@@ -405,7 +405,7 @@ NRRelatedItem:
       label.cs: URL
       label.en: URL
       hint.cs: Uveďte URL adresu souvisejícího zdroje, ze které je dostupný.
-      hint.en: Fill in URL of related resource from which is available.
+      hint.en: Fill in URL of related resource from which it is available.
 
     itemYear:
       type: integer
@@ -446,9 +446,9 @@ NRRelatedItem:
       type: vocabulary
       vocabulary-type: item-relation-types
       label.cs: Typ vazby
-      label.en: Relation type
-      hint.cs: Vyberte typ vazby mezi popisovaným a souvisejícím zdrojem.
-      hint.en: Choose the relation type between described and related resource.
+      label.en: Relation Type
+      hint.cs: Vyberte typ vazby mezi popisovaným dokumentem a souvisejícím zdrojem.
+      hint.en: Choose the relation type between the described document and the related resource.
       ui:
         marshmallow:
           class: nr_metadata.common.services.records.ui_schema_datatypes.NRItemRelationTypeVocabularyUISchema
@@ -462,8 +462,8 @@ NRResourceType:
   type: vocabulary
   vocabulary-type: resource-types
   sample: ["Bakalářská práce", "Diplomová práce", "Dataset"]
-  label.cs: Typ zdroje
-  label.en: Resource type
+  label.cs: Typ dokumentu
+  label.en: Document Type
 
   ui:
     marshmallow:
@@ -473,7 +473,7 @@ NRResourceType:
 
 NRFunders:
   $id: NRFunders
-  label.cs: "Grant a financování"
+  label.cs: "Granty a financování"
   label.en: "Funders"
   ui:
     detail: funding_reference
@@ -554,7 +554,7 @@ NRSubject:
     subjectScheme:
       type: keyword
       label.cs: Schema klíčového slova
-      label.en: Subject scheme
+      label.en: Subject Scheme
       sample: ["keyword", "czenas", "psh"]
     subject:
       type: multilingual
@@ -568,7 +568,7 @@ NRSubject:
     valueURI:
       type: url
       label.cs: Definice klíčového slova
-      label.en: Subject definition URI
+      label.en: Subject Definition URI
       sample:
         faker: url
     classificationCode:
@@ -618,7 +618,7 @@ NRGeoLocation:
 NRSystemIdentifier:
   $id: NRSystemIdentifier
   label.cs: Systémový identifikátor
-  label.en: System identifier
+  label.en: System Identifier
   ui:
     detail: identifier
     marshmallow:
@@ -638,7 +638,7 @@ NRSystemIdentifier:
       enum: [nusl, nuslOAI, originalRecordOAI, catalogueSysNo, nrOAI]
       required: true
       label.cs: Typ identifikátoru
-      label.en: Identifier type
+      label.en: Identifier Type
 
 NREvent:
   $id: NREvent
@@ -688,8 +688,8 @@ NRLanguage:
   sample: ["cs", "en", "de", "fr", "it"]
   label.cs: Jazyk
   label.en: Language
-  hint.cs: Vyberte jazyk/jazyky zdroje.
-  hint.en: Choose the language(s) of the resource.
+  hint.cs: Vyberte jazyk/jazyky dokumentu.
+  hint.en: Choose the language(s) of the document.
   ui:
     marshmallow:
       class: nr_metadata.common.services.records.ui_schema_datatypes.NRLanguageVocabularyUISchema
@@ -709,9 +709,9 @@ NRRights:
     - "CC BY-NC-SA"
     - "CC BY-NC-ND"
   label.cs: Licence
-  label.en: Licenses
-  help.cs: Pokud se k popisovanému zdroji váže licence Creative Commons, vyberte příslušnou variantu z nabídky. Doporučujeme výběr nejnovější verze 4.0 International.
-  help.en: If a Creative Commons license is associated with the resource, select the appropriate license option from the menu. We recommend choosing the latest version, namely 4.0 International.
+  label.en: License
+  help.cs: Pokud se k popisovanému dokumentu váže licence Creative Commons, vyberte příslušnou variantu z nabídky. Doporučujeme výběr nejnovější verze 4.0 International.
+  help.en: If a Creative Commons license is associated with the document, select the appropriate license option from the menu. We recommend choosing the latest version, namely 4.0 International.
   ui:
     marshmallow:
       class: nr_metadata.common.services.records.ui_schema_datatypes.NRRightsVocabularyUISchema
@@ -724,9 +724,9 @@ NRAccessRights:
   vocabulary-type: access-rights
   sample: [open, embargoed, restricted, "metadata only"]
   label.cs: Přístupová práva
-  label.en: Access rights
-  hint.cs: "Vyberte typ přístupu, zda bude zdroj dostupný otevřeně nebo s omezením."
-  hint.en: "Choose access type - if the resource is open or has some restrictions."
+  label.en: Access Rights
+  hint.cs: "Vyberte typ přístupu, zda bude dokument dostupný otevřeně nebo s omezením."
+  hint.en: "Choose access type - if the document is open or has some restrictions."
   ui:
     marshmallow:
       class: nr_metadata.common.services.records.ui_schema_datatypes.NRAccessRightsVocabularyUISchema
@@ -753,8 +753,8 @@ NRSeries:
       sample: ["series A", "series B", "series C"]
       label.cs: Název edice
       label.en: Series Title
-      help.cs: Tématicky sdružuje podobné zdroje k sobě.
-      help.en: Thematically groups similar resources together.
+      help.cs: Tématicky sdružuje podobné dokumenty k sobě.
+      help.en: Thematically groups similar documents together.
 
     seriesVolume:
       type: keyword
@@ -766,8 +766,8 @@ NRExternalLocation:
   $id: NRExternalLocation
   label.cs: Externí umístění
   label.en: External Location
-  help.cs: "Vložte URL adresu dalšího umístění zdroje (př. jiný repozitář, databáze, webová stránka)."
-  help.en: "Provide the URL link for another location of the resource (e.g. another repository, database, website)."
+  help.cs: "Vložte URL adresu dalšího umístění dokumentu (př. jiný repozitář, databáze, webová stránka)."
+  help.en: "Provide the URL link for another location of the document (e.g. another repository, database, website)."
   # externí umístění dokumentu (mimo repozitáře), formát URL
   ui:
     detail: external_location
@@ -781,8 +781,8 @@ NRExternalLocation:
       required: true
       sample:
         faker: url
-      label.cs: Externí umístění zdroje
-      label.en: Resource External Location
+      label.cs: Externí umístění dokumentu
+      label.en: Document External Location
 
     externalLocationNote:
       type: fulltext
