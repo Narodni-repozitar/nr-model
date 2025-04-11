@@ -113,6 +113,16 @@
             "extra-code": "",
             "module": "tests"
         },
+        "sample": {
+            "file": "data/sample_data.yaml"
+        },
+        "ext-resource": {
+            "service-kwargs": {
+                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(config_class, {{invenio_rdm_records.services.pids.PIDManager}})"
+            },
+            "generate": true,
+            "skip": false
+        },
         "permissions": {
             "presets": [
                 "workflow"
@@ -126,52 +136,7 @@
             ],
             "imports": []
         },
-        "sample": {
-            "file": "data/sample_data.yaml"
-        },
-        "ext-resource": {
-            "service-kwargs": {
-                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(config_class, {{invenio_rdm_records.services.pids.PIDManager}})"
-            },
-            "generate": true,
-            "skip": false
-        },
         "model-name": "Datacite",
-        "record": {
-            "fields": {
-                "state": "{{oarepo_workflows.records.systemfields.state.RecordStateField}}(initial='published')",
-                "state_timestamp": "{{oarepo_workflows.records.systemfields.state.RecordStateTimestampField}}()",
-                "media_files": "FilesField(key=MediaFilesAttrConfig[\"_files_attr_key\"],bucket_id_attr=MediaFilesAttrConfig[\"_files_bucket_id_attr_key\"],bucket_attr=MediaFilesAttrConfig[\"_files_bucket_attr_key\"],store=False,dump=False,file_cls={{invenio_rdm_records.records.api.RDMMediaFileRecord}},create=False,delete=False,)"
-            },
-            "base-classes": [
-                "invenio_rdm_records.records.api.RDMRecord"
-            ],
-            "generate": true,
-            "module": "nr_metadata.datacite.records.api",
-            "class": "nr_metadata.datacite.records.api.DataciteRecord",
-            "imports": [],
-            "extra-code": ""
-        },
-        "draft-parent-record-metadata": {
-            "base-classes": [
-                "oarepo_workflows.records.models.RecordWorkflowParentModelMixin",
-                "invenio_db.db{db.Model}",
-                "invenio_records.models.RecordMetadataBase"
-            ],
-            "class": "nr_metadata.datacite.records.models.DataciteParentMetadata",
-            "imports": [],
-            "table": "nr_metadata.datacite_parent_record_metadata",
-            "module": "nr_metadata.datacite.records.models",
-            "generate": true
-        },
-        "parent-record-marshmallow": {
-            "base-classes": [
-                "oarepo_workflows.services.records.schema.RDMWorkflowParentSchema"
-            ],
-            "module": "nr_metadata.datacite.services.records.schema",
-            "class": "nr_metadata.datacite.services.records.schema.GeneratedParentSchema",
-            "generate": true
-        },
         "config": {
             "generate": true,
             "module": "nr_metadata.datacite.config",
@@ -216,6 +181,41 @@
         },
         "proxy": {
             "module": "nr_metadata.datacite.proxies",
+            "generate": true
+        },
+        "record": {
+            "fields": {
+                "state": "{{oarepo_workflows.records.systemfields.state.RecordStateField}}(initial='published')",
+                "state_timestamp": "{{oarepo_workflows.records.systemfields.state.RecordStateTimestampField}}()",
+                "media_files": "FilesField(key=MediaFilesAttrConfig[\"_files_attr_key\"],bucket_id_attr=MediaFilesAttrConfig[\"_files_bucket_id_attr_key\"],bucket_attr=MediaFilesAttrConfig[\"_files_bucket_attr_key\"],store=False,dump=False,file_cls={{invenio_rdm_records.records.api.RDMMediaFileRecord}},create=False,delete=False,)"
+            },
+            "base-classes": [
+                "invenio_rdm_records.records.api.RDMRecord"
+            ],
+            "generate": true,
+            "module": "nr_metadata.datacite.records.api",
+            "class": "nr_metadata.datacite.records.api.DataciteRecord",
+            "imports": [],
+            "extra-code": ""
+        },
+        "draft-parent-record-metadata": {
+            "base-classes": [
+                "oarepo_workflows.records.models.RecordWorkflowParentModelMixin",
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase"
+            ],
+            "class": "nr_metadata.datacite.records.models.DataciteParentMetadata",
+            "imports": [],
+            "table": "nr_metadata.datacite_parent_record_metadata",
+            "module": "nr_metadata.datacite.records.models",
+            "generate": true
+        },
+        "parent-record-marshmallow": {
+            "base-classes": [
+                "oarepo_workflows.services.records.schema.RDMWorkflowParentSchema"
+            ],
+            "module": "nr_metadata.datacite.services.records.schema",
+            "class": "nr_metadata.datacite.services.records.schema.GeneratedParentSchema",
             "generate": true
         },
         "resource": {
@@ -263,10 +263,6 @@
                 ]
             }
         },
-        "translations": {
-            "module": "nr_metadata.datacite.translations",
-            "alias": "datacite"
-        },
         "json-serializer": {
             "module": "nr_metadata.datacite.resources.records.ui",
             "class": "nr_metadata.datacite.resources.records.ui.DataciteUIJSONSerializer",
@@ -282,6 +278,10 @@
                 "\"object_key\"": "\"ui\"",
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
+        },
+        "translations": {
+            "module": "nr_metadata.datacite.translations",
+            "alias": "datacite"
         },
         "service": {
             "imports": [],
@@ -405,20 +405,9 @@
             "extra-code": "",
             "extensions": [
                 "{{oarepo_runtime.records.systemfields.mapping.SystemFieldDumperExt}}()",
-                "{{nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
-                "{{nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt}}()"
+                "{{nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt}}()",
+                "{{nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt}}()"
             ],
-            "imports": []
-        },
-        "multilingual-dumper": {
-            "generate": true,
-            "module": "nr_metadata.datacite.records.dumpers.multilingual",
-            "class": "nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
             "imports": []
         },
         "edtf-interval-dumper": {
@@ -427,6 +416,17 @@
             "class": "nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt",
             "base-classes": [
                 "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
+        },
+        "multilingual-dumper": {
+            "generate": true,
+            "module": "nr_metadata.datacite.records.dumpers.multilingual",
+            "class": "nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
             ],
             "extra-code": "",
             "extensions": [],
@@ -2536,7 +2536,6 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "type": "object",
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
@@ -2555,7 +2554,8 @@
                             }
                         }
                     },
-                    "uniqueItems": true
+                    "uniqueItems": true,
+                    "type": "object"
                 },
                 "ui": {
                     "marshmallow": {

@@ -488,40 +488,42 @@ NRFunders:
       type: vocabulary
       class: oarepo_runtime.records.relations.UnstrictPIDRelation
       keys:
-        - key: identifiers
-          model:
-            type: array
-            items:
-              properties:
-                identifier: keyword
-                schema: keyword
-        - key: name
+        - key: id
           model:
             type: keyword
+        - key: "@v"
+          model:
+            type: keyword
+        - key: name
+          model:
+            type: fulltext
       vocabulary-type: funders
       label.cs: Poskytovatel financí
       label.en: Funder
       hint.cs: Začněte zapisovat název poskytovatele, následně vyberte z nabídky našeptavače.
       hint.en: Start typing the name of the funder, then select the funder from the menu.
+
     award:
       keys:
         - title
+        - key: id
+          model:
+            type: keyword
         - key: number
           model:
-            type: keyword
-        - key: identifiers
-          model:
-            type: array
-            items:
-              properties:
-                identifier: keyword
-                schema: keyword
-        - key: acronym
-          model:
-            type: keyword
+            type: fulltext
         - key: program
           model:
             type: keyword
+        - key: acronym
+          model:
+            type: fulltext+keyword
+        - key: identifiers
+          model:
+            type: object
+            properties:
+              identifier: keyword
+              scheme: keyword
         - key: subjects
           model:
             type: array
@@ -531,15 +533,20 @@ NRFunders:
                 subject: keyword
         - key: organizations
           model:
-            type: array
-            items:
-              properties:
-                scheme: keyword
-                id: keyword
-                organization: keyword
+            type: object
+            properties:
+              scheme: keyword
+              id: keyword
+              organization: keyword
+        - key: "@v"
+          model:
+            type: keyword
       type: vocabulary
       vocabulary-type: awards
+      label.cs: Číslo projektu
+      label.en: Award number
       class: oarepo_runtime.records.relations.UnstrictPIDRelation
+
 NRSubject:
   $id: NRSubject
   label.cs: Klíčové slovo
