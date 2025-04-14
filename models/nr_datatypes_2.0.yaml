@@ -474,7 +474,7 @@ NRResourceType:
 NRFunders:
   $id: NRFunders
   label.cs: "Granty a financování"
-  label.en: "Funders"
+  label.en: "Funding Reference"
   ui:
     detail: funding_reference
     marshmallow:
@@ -686,8 +686,8 @@ NRLanguage:
   type: vocabulary
   vocabulary-type: languages
   sample: ["cs", "en", "de", "fr", "it"]
-  label.cs: Jazyk
-  label.en: Language
+  label.cs: Jazyk dokumentu
+  label.en: Document Language
   hint.cs: Vyberte jazyk/jazyky dokumentu.
   hint.en: Choose the language(s) of the document.
   ui:

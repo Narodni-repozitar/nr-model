@@ -23,8 +23,8 @@ CommonMetadata:
       # Additional titles of the object/work such as subtitle, translatedTitle and alternativeTitle.
       ^label.cs: Další názvy
       ^label.en: Additional Titles
-      ^help.cs: Pokud existují další názvy dokumentu, uveďte je. Vyberte typ a jazyk. Doporučujeme zadat alespoň překlad názvu dokumentu.
-      ^help.en: If the document is given any additional titles, choose the type of title and corresponding language. We recommend to fill out a translation of the title.
+      ^help.cs: Pokud existují další názvy dokumentu, uveďte je. Vyberte typ a jazyk. Doporučujeme zadat zejména překlad názvu dokumentu, pokud existuje.
+      ^help.en: If the document is given any additional titles, choose the type of title and corresponding language. We recommend to fill out mainly a translation of the title, if it exists.
       #^uniqueItems: true
       properties:
         title:
@@ -77,6 +77,7 @@ CommonMetadata:
 
     dateIssued:
       use: "nr-datatypes#NRDate"
+      required: true
       sample:
         faker: date
       label.cs: Datum vydání
@@ -112,8 +113,8 @@ CommonMetadata:
     languages[]:
       # ISO 639-2 B in slug, ISO 639-2 T in alias, ISO 639-1 as Alpha2.
       use: "nr-datatypes#NRLanguage"
-      ^label.cs: Jazyk
-      ^label.en: Language
+      ^label.cs: Jazyk dokumentu
+      ^label.en: Document Language
       #^uniqueItems: true
 
     notes[]:
@@ -174,7 +175,7 @@ CommonMetadata:
       use: "nr-datatypes#NRFunders"
       #^uniqueItems: true
       ^label.cs: "Granty a financování"
-      ^label.en: "Funders"
+      ^label.en: "Funding Reference"
 
     version:
       # verze obsahu, nikoliv záznamu. hodnota ve formuláři není editovatelná.
@@ -211,8 +212,8 @@ CommonMetadata:
       use: "nr-datatypes#NRSeries"
       ^label.cs: Edice
       ^label.en: Series
-      ^help.cs: "Zapište název edice/série. Zapište svazek edice/série, pokud je název uveden."
-      ^help.en: "Write down the name of the series/edition. Write down the volume of the series/edition if the name is provided."
+      ^help.cs: "Zapište název edice/série. Zapište svazek edice/série, pokud je uveden."
+      ^help.en: "Write down the name of the series/edition. Write down the volume of the series/edition if it is provided."
 
     originalRecord:
       # pro harvest
