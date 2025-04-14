@@ -313,28 +313,28 @@
                                     "title": {
                                         "type": "object"
                                     },
-                                    "number": {
+                                    "id": {
                                         "type": "string"
                                     },
-                                    "identifiers": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "identifier": {
-                                                    "type": "string"
-                                                },
-                                                "schema": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "acronym": {
+                                    "number": {
                                         "type": "string"
                                     },
                                     "program": {
                                         "type": "string"
+                                    },
+                                    "acronym": {
+                                        "type": "string"
+                                    },
+                                    "identifiers": {
+                                        "type": "object",
+                                        "properties": {
+                                            "identifier": {
+                                                "type": "string"
+                                            },
+                                            "scheme": {
+                                                "type": "string"
+                                            }
+                                        }
                                     },
                                     "subjects": {
                                         "type": "array",
@@ -351,19 +351,16 @@
                                         }
                                     },
                                     "organizations": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "id": {
-                                                    "type": "string"
-                                                },
-                                                "organization": {
-                                                    "type": "string"
-                                                },
-                                                "scheme": {
-                                                    "type": "string"
-                                                }
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "organization": {
+                                                "type": "string"
+                                            },
+                                            "scheme": {
+                                                "type": "string"
                                             }
                                         }
                                     },
@@ -375,24 +372,13 @@
                             "funder": {
                                 "type": "object",
                                 "properties": {
-                                    "identifiers": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "identifier": {
-                                                    "type": "string"
-                                                },
-                                                "schema": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "name": {
+                                    "id": {
                                         "type": "string"
                                     },
                                     "@v": {
+                                        "type": "string"
+                                    },
+                                    "name": {
                                         "type": "string"
                                     }
                                 }
@@ -834,11 +820,7 @@
             }
         },
         "pids": {
-            "uniqueItems": true,
             "type": "object",
-            "propertyNames": {
-                "pattern": "^[a-z_-][a-z0-9_-]*$"
-            },
             "additionalProperties": {
                 "type": "object",
                 "additionalProperties": false,
@@ -853,7 +835,11 @@
                         "type": "string"
                     }
                 }
-            }
+            },
+            "propertyNames": {
+                "pattern": "^[a-z_-][a-z0-9_-]*$"
+            },
+            "uniqueItems": true
         },
         "state": {
             "type": "string"

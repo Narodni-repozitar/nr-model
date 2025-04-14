@@ -49,6 +49,7 @@ class CommonServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig)
     record_cls = CommonRecord
 
     service_id = "common"
+    indexer_queue_name = "common"
 
     search_item_links_template = LinksTemplate
 
@@ -60,8 +61,12 @@ class CommonServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig)
 
     @property
     def links_item(self):
+        try:
+            supercls_links = super().links_item
+        except AttributeError:  # if they aren't defined in the superclass
+            supercls_links = {}
         links = {
-            **super().links_item,
+            **supercls_links,
             "draft": RecordLink(
                 "{+api}/nr-metadata-common/{id}/draft",
                 when=has_draft() & has_permission("read_draft"),
@@ -114,8 +119,12 @@ class CommonServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig)
 
     @property
     def links_search_item(self):
+        try:
+            supercls_links = super().links_search_item
+        except AttributeError:  # if they aren't defined in the superclass
+            supercls_links = {}
         links = {
-            **super().links_search_item,
+            **supercls_links,
             "self": ConditionalLink(
                 cond=is_published_record(),
                 if_=RecordLink(
@@ -141,8 +150,12 @@ class CommonServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig)
 
     @property
     def links_search(self):
+        try:
+            supercls_links = super().links_search
+        except AttributeError:  # if they aren't defined in the superclass
+            supercls_links = {}
         links = {
-            **super().links_search,
+            **supercls_links,
             **pagination_links("{+api}/nr-metadata-common/{?args*}"),
             **pagination_links_html("{+ui}/nr-metadata-common/{?args*}"),
         }
@@ -150,8 +163,12 @@ class CommonServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig)
 
     @property
     def links_search_drafts(self):
+        try:
+            supercls_links = super().links_search_drafts
+        except AttributeError:  # if they aren't defined in the superclass
+            supercls_links = {}
         links = {
-            **super().links_search_drafts,
+            **supercls_links,
             **pagination_links("{+api}/user/nr-metadata-common/{?args*}"),
             **pagination_links_html("{+ui}/user/nr-metadata-common/{?args*}"),
         }
@@ -159,8 +176,12 @@ class CommonServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig)
 
     @property
     def links_search_versions(self):
+        try:
+            supercls_links = super().links_search_versions
+        except AttributeError:  # if they aren't defined in the superclass
+            supercls_links = {}
         links = {
-            **super().links_search_versions,
+            **supercls_links,
             **pagination_links("{+api}/nr-metadata-common/{id}/versions{?args*}"),
         }
         return {k: v for k, v in links.items() if v is not None}
