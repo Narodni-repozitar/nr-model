@@ -405,20 +405,9 @@
             "extra-code": "",
             "extensions": [
                 "{{oarepo_runtime.records.systemfields.mapping.SystemFieldDumperExt}}()",
-                "{{nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt}}()",
-                "{{nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt}}()"
+                "{{nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
+                "{{nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt}}()"
             ],
-            "imports": []
-        },
-        "edtf-interval-dumper": {
-            "generate": true,
-            "module": "nr_metadata.datacite.records.dumpers.edtf",
-            "class": "nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
-            ],
-            "extra-code": "",
-            "extensions": [],
             "imports": []
         },
         "multilingual-dumper": {
@@ -427,6 +416,17 @@
             "class": "nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt",
             "base-classes": [
                 "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
+        },
+        "edtf-interval-dumper": {
+            "generate": true,
+            "module": "nr_metadata.datacite.records.dumpers.edtf",
+            "class": "nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
             ],
             "extra-code": "",
             "extensions": [],
@@ -2536,9 +2536,6 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -2554,8 +2551,11 @@
                             }
                         }
                     },
-                    "uniqueItems": true,
-                    "type": "object"
+                    "type": "object",
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
+                    "uniqueItems": true
                 },
                 "ui": {
                     "marshmallow": {

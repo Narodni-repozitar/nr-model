@@ -10,6 +10,6 @@ class CommonDumper(SearchDumper):
 
     extensions = [
         SystemFieldDumperExt(),
-        CommonEDTFIntervalDumperExt(),
         MultilingualSearchDumperExt(),
+        CommonEDTFIntervalDumperExt(),
     ]

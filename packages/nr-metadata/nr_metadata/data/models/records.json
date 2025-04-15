@@ -405,20 +405,9 @@
             "extra-code": "",
             "extensions": [
                 "{{oarepo_runtime.records.systemfields.mapping.SystemFieldDumperExt}}()",
-                "{{nr_metadata.data.records.dumpers.edtf.DataEDTFIntervalDumperExt}}()",
-                "{{nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt}}()"
+                "{{nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
+                "{{nr_metadata.data.records.dumpers.edtf.DataEDTFIntervalDumperExt}}()"
             ],
-            "imports": []
-        },
-        "edtf-interval-dumper": {
-            "generate": true,
-            "module": "nr_metadata.data.records.dumpers.edtf",
-            "class": "nr_metadata.data.records.dumpers.edtf.DataEDTFIntervalDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
-            ],
-            "extra-code": "",
-            "extensions": [],
             "imports": []
         },
         "multilingual-dumper": {
@@ -427,6 +416,17 @@
             "class": "nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt",
             "base-classes": [
                 "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
+        },
+        "edtf-interval-dumper": {
+            "generate": true,
+            "module": "nr_metadata.data.records.dumpers.edtf",
+            "class": "nr_metadata.data.records.dumpers.edtf.DataEDTFIntervalDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
             ],
             "extra-code": "",
             "extensions": [],
@@ -758,8 +758,8 @@
                             },
                             "detail": "string"
                         },
-                        "label.cs": "Dostupnost zdroje",
-                        "label.en": "Resource accessibility",
+                        "label.cs": "Dostupnost dokumentu",
+                        "label.en": "Document Accessibility",
                         "items": {
                             "type": "i18nStr",
                             "multilingual": {
@@ -810,8 +810,8 @@
                         "type": "array",
                         "label.cs": "Další názvy",
                         "label.en": "Additional Titles",
-                        "help.cs": "Pokud existují další názvy zdroje, uveďte je. Vyberte typ a jazyk.",
-                        "help.en": "If the resource is given any additional titles, choose the type of title and corresponding language.",
+                        "help.cs": "Pokud existují další názvy dokumentu, uveďte je. Vyberte typ a jazyk. Doporučujeme zadat zejména překlad názvu dokumentu, pokud existuje.",
+                        "help.en": "If the document is given any additional titles, choose the type of title and corresponding language. We recommend to fill out mainly a translation of the title, if it exists.",
                         "items": {
                             "type": "object",
                             "ui": {
@@ -829,13 +829,6 @@
                                 "title": {
                                     "type": "i18nStr",
                                     "required": true,
-                                    "marshmallow": {
-                                        "read": false,
-                                        "write": false,
-                                        "class": null,
-                                        "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
-                                        "generate": false
-                                    },
                                     "ui": {
                                         "marshmallow": {
                                             "read": false,
@@ -844,6 +837,13 @@
                                             "field-class": "oarepo_runtime.services.schema.i18n_ui.I18nStrUIField"
                                         },
                                         "detail": "multilingual"
+                                    },
+                                    "marshmallow": {
+                                        "read": false,
+                                        "write": false,
+                                        "class": null,
+                                        "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
+                                        "generate": false
                                     },
                                     "sample": {
                                         "skip": false
@@ -1127,7 +1127,7 @@
                                         "generate": true
                                     },
                                     "label.cs": "Role přispěvatele",
-                                    "label.en": "Contributor's role",
+                                    "label.en": "Contributor's Role",
                                     "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                     "hint.en": "Choose the role of the contributor (editor, illustrator…).",
                                     "imports": [
@@ -1467,7 +1467,7 @@
                                         "generate": false
                                     },
                                     "label.cs": "Role přispěvatele",
-                                    "label.en": "Contributor's role",
+                                    "label.en": "Contributor's Role",
                                     "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                     "hint.en": "Choose the role of the contributor (editor, illustrator…).",
                                     "imports": [
@@ -1598,6 +1598,7 @@
                     },
                     "dateIssued": {
                         "type": "edtf",
+                        "required": true,
                         "ui": {
                             "marshmallow": {
                                 "read": false,
@@ -1613,7 +1614,7 @@
                         },
                         "label.cs": "Datum vydání",
                         "label.en": "Date Issued",
-                        "hint.cs": "Zvolte z kalendáře datum, kdy byl zdroj vydán.",
+                        "hint.cs": "Zvolte z kalendáře datum, kdy byl dokument vydán.",
                         "hint.en": "Choose the issuance date from the calendar.",
                         "help.cs": "Datum může být rok, rok a měsíc nebo celé datum. V záhlaví kalendáře můžete zvolit typ data.",
                         "help.en": "The date can be a year, year and month or a full date. In the calendar header select type of date."
@@ -1650,6 +1651,8 @@
                         "type": "array",
                         "label.cs": "Související akce",
                         "label.en": "Events",
+                        "help.cs": "Akce související s dokumentem (např. konference).",
+                        "help.en": "Event related to the document (i.e. conference).",
                         "items": {
                             "type": "object",
                             "ui": {
@@ -1877,7 +1880,7 @@
                     "funders": {
                         "type": "array",
                         "label.cs": "Granty a financování",
-                        "label.en": "Funders",
+                        "label.en": "Funding Reference",
                         "items": {
                             "type": "object",
                             "ui": {
@@ -2362,8 +2365,8 @@
                     },
                     "languages": {
                         "type": "array",
-                        "label.cs": "Jazyk",
-                        "label.en": "Language",
+                        "label.cs": "Jazyk dokumentu",
+                        "label.en": "Document Language",
                         "items": {
                             "type": "vocabulary",
                             "vocabulary-type": "languages",
@@ -2392,10 +2395,10 @@
                                 "fr",
                                 "it"
                             ],
-                            "label.cs": "Jazyk",
-                            "label.en": "Language",
-                            "hint.cs": "Vyberte jazyk/jazyky zdroje.",
-                            "hint.en": "Choose the language(s) of the resource.",
+                            "label.cs": "Jazyk dokumentu",
+                            "label.en": "Document Language",
+                            "hint.cs": "Vyberte jazyk/jazyky dokumentu.",
+                            "hint.en": "Choose the language(s) of the document.",
                             "imports": [
                                 {
                                     "import": "oarepo_vocabularies.records.api.Vocabulary"
@@ -2557,8 +2560,8 @@
                         "type": "array",
                         "label.cs": "Poznámky",
                         "label.en": "Notes",
-                        "help.cs": "Prostor pro další informace ke zdroji.",
-                        "help.en": "Space for additional information related to the resource.",
+                        "help.cs": "Prostor pro další informace k dokumentu.",
+                        "help.en": "Space for additional information related to the document.",
                         "items": {
                             "type": "fulltext",
                             "marshmallow": {
@@ -2618,7 +2621,7 @@
                                         "faker": "isbn13"
                                     },
                                     "label.cs": "Identifikátor objektu",
-                                    "label.en": "Object identifier",
+                                    "label.en": "Object Identifier",
                                     "hint.cs": "např. 10.1086/679716 pro DOI.",
                                     "hint.en": "e.g. 10.1086/679716 for DOI."
                                 },
@@ -2644,7 +2647,7 @@
                                         }
                                     },
                                     "label.cs": "Typ identifikátoru",
-                                    "label.en": "Identifier type",
+                                    "label.en": "Identifier Type",
                                     "hint.cs": "např. DOI, HANDLE nebo ISBN.",
                                     "hint.en": "e.g. DOI, HANDLE or ISBN."
                                 }
@@ -2667,7 +2670,7 @@
                             "faker": "url"
                         },
                         "label.cs": "Odkaz na původní záznam",
-                        "label.en": "Original record URL"
+                        "label.en": "Original Record URL"
                     },
                     "publishers": {
                         "type": "array",
@@ -2945,9 +2948,9 @@
                     "relatedItems": {
                         "type": "array",
                         "label.cs": "Vazba na související zdroje",
-                        "label.en": "Link to related resources",
-                        "help.cs": "Zapište informace o zdroji, který souvisí se zdrojem, který zde popisujete (např. pokud popisujete článek, sem můžete identifikovat časopis, ve kterém článek vyšel).",
-                        "help.en": "Write down information about the resource related to the one you are describing here (e.g. if you are describing an article, you can identify the journal in which the article was published).",
+                        "label.en": "Link to Related Resources",
+                        "help.cs": "Zapište informace o zdroji, který souvisí s dokumentem, který zde popisujete (např. pokud popisujete článek, můžete zde identifikovat časopis, ve kterém byl článek vydán).",
+                        "help.en": "Write down information about the resource related to the document you are describing here (e.g. if you are describing an article, you can identify the journal in which the article was published).",
                         "items": {
                             "type": "object",
                             "ui": {
@@ -3198,7 +3201,7 @@
                                                     "generate": false
                                                 },
                                                 "label.cs": "Role přispěvatele",
-                                                "label.en": "Contributor's role",
+                                                "label.en": "Contributor's Role",
                                                 "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                                 "hint.en": "Choose the role of the contributor (editor, illustrator…).",
                                                 "imports": [
@@ -3531,7 +3534,7 @@
                                                     "generate": false
                                                 },
                                                 "label.cs": "Role přispěvatele",
-                                                "label.en": "Contributor's role",
+                                                "label.en": "Contributor's Role",
                                                 "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                                 "hint.en": "Choose the role of the contributor (editor, illustrator…).",
                                                 "imports": [
@@ -3697,7 +3700,7 @@
                                                     "faker": "isbn13"
                                                 },
                                                 "label.cs": "Identifikátor objektu",
-                                                "label.en": "Object identifier",
+                                                "label.en": "Object Identifier",
                                                 "hint.cs": "např. 10.1086/679716 pro DOI.",
                                                 "hint.en": "e.g. 10.1086/679716 for DOI."
                                             },
@@ -3723,7 +3726,7 @@
                                                     }
                                                 },
                                                 "label.cs": "Typ identifikátoru",
-                                                "label.en": "Identifier type",
+                                                "label.en": "Identifier Type",
                                                 "hint.cs": "např. DOI, HANDLE nebo ISBN.",
                                                 "hint.en": "e.g. DOI, HANDLE or ISBN."
                                             }
@@ -3768,9 +3771,9 @@
                                         "generate": true
                                     },
                                     "label.cs": "Typ vazby",
-                                    "label.en": "Relation type",
-                                    "hint.cs": "Vyberte typ vazby mezi popisovaným a souvisejícím zdrojem.",
-                                    "hint.en": "Choose the relation type between described and related resource.",
+                                    "label.en": "Relation Type",
+                                    "hint.cs": "Vyberte typ vazby mezi popisovaným dokumentem a souvisejícím zdrojem.",
+                                    "hint.en": "Choose the relation type between the described document and the related resource.",
                                     "imports": [
                                         {
                                             "import": "oarepo_vocabularies.records.api.Vocabulary"
@@ -3888,8 +3891,8 @@
                                         "Diplomová práce",
                                         "Dataset"
                                     ],
-                                    "label.cs": "Typ zdroje",
-                                    "label.en": "Resource type",
+                                    "label.cs": "Typ dokumentu",
+                                    "label.en": "Document Type",
                                     "imports": [
                                         {
                                             "import": "oarepo_vocabularies.records.api.Vocabulary"
@@ -4032,7 +4035,7 @@
                                     "label.cs": "URL",
                                     "label.en": "URL",
                                     "hint.cs": "Uveďte URL adresu souvisejícího zdroje, ze které je dostupný.",
-                                    "hint.en": "Fill in URL of related resource from which is available."
+                                    "hint.en": "Fill in URL of related resource from which it is available."
                                 },
                                 "itemVolume": {
                                     "type": "keyword",
@@ -4096,10 +4099,10 @@
                             "Diplomová práce",
                             "Dataset"
                         ],
-                        "hint.cs": "Vyberte typ zdroje.",
-                        "hint.en": "Choose resource type.",
-                        "label.cs": "Typ zdroje",
-                        "label.en": "Resource type",
+                        "hint.cs": "Vyberte typ dokumentu.",
+                        "hint.en": "Choose document type.",
+                        "label.cs": "Typ dokumentu",
+                        "label.en": "Document Type",
                         "imports": [
                             {
                                 "import": "oarepo_vocabularies.records.api.Vocabulary"
@@ -4221,9 +4224,9 @@
                             "CC BY-NC-ND"
                         ],
                         "label.cs": "Licence",
-                        "label.en": "Licenses",
-                        "help.cs": "Pokud se k popisovanému zdroji váže licence Creative Commons, vyberte příslušnou variantu z nabídky. Doporučujeme výběr nejnovější verze 4.0 International.",
-                        "help.en": "If a Creative Commons license is associated with the resource, select the appropriate license option from the menu. We recommend choosing the latest version, namely 4.0 International.",
+                        "label.en": "License",
+                        "help.cs": "Pokud se k popisovanému dokumentu váže licence Creative Commons, vyberte příslušnou variantu z nabídky. Doporučujeme výběr nejnovější verze 4.0 International.",
+                        "help.en": "If a Creative Commons license is associated with the document, select the appropriate license option from the menu. We recommend choosing the latest version, namely 4.0 International.",
                         "imports": [
                             {
                                 "import": "oarepo_vocabularies.records.api.Vocabulary"
@@ -4319,8 +4322,8 @@
                         "type": "array",
                         "label.cs": "Edice",
                         "label.en": "Series",
-                        "help.cs": "Zapište název edice/série. Zapište svazek edice/série, pokud je název uveden.",
-                        "help.en": "Write down the name of the series/edition. Write down the volume of the series/edition if the name is provided.",
+                        "help.cs": "Zapište název edice/série. Zapište svazek edice/série, pokud je uveden.",
+                        "help.en": "Write down the name of the series/edition. Write down the volume of the series/edition if it is provided.",
                         "items": {
                             "type": "object",
                             "ui": {
@@ -4355,8 +4358,8 @@
                                     ],
                                     "label.cs": "Název edice",
                                     "label.en": "Series Title",
-                                    "help.cs": "Tématicky sdružuje podobné zdroje k sobě.",
-                                    "help.en": "Thematically groups similar resources together."
+                                    "help.cs": "Tématicky sdružuje podobné dokumenty k sobě.",
+                                    "help.en": "Thematically groups similar documents together."
                                 },
                                 "seriesVolume": {
                                     "type": "keyword",
@@ -4386,6 +4389,8 @@
                         "type": "array",
                         "label.cs": "Oborové třídění",
                         "label.en": "Subject Categories",
+                        "help.cs": "Vyberte zařazení do vědního oboru. Lze vybrat více oborů.",
+                        "help.en": "Choose a scientific field. You can pick multiple fields.",
                         "hint.cs": "Vyberte název oboru.",
                         "hint.en": "Choose subject category.",
                         "items": {
@@ -4512,8 +4517,8 @@
                         },
                         "label.cs": "Klíčová slova",
                         "label.en": "Keywords",
-                        "help.cs": "Zapisujte slova popisující zdroj, zvolte vždy jazyk. Zapisujte klíčová slova jednotlivě.",
-                        "help.en": "Write down words describing the resource, always choose language. Write the keywords one by one.",
+                        "help.cs": "Zapisujte slova popisující dokument, zvolte vždy jazyk. Zapisujte klíčová slova jednotlivě.",
+                        "help.en": "Write down words describing the document, always choose language. Write the keywords one by one.",
                         "items": {
                             "type": "object",
                             "ui": {
@@ -4624,7 +4629,7 @@
                                         "psh"
                                     ],
                                     "label.cs": "Schema klíčového slova",
-                                    "label.en": "Subject scheme"
+                                    "label.en": "Subject Scheme"
                                 },
                                 "valueURI": {
                                     "type": "url",
@@ -4642,7 +4647,7 @@
                                         "faker": "url"
                                     },
                                     "label.cs": "Definice klíčového slova",
-                                    "label.en": "Subject definition URI"
+                                    "label.en": "Subject Definition URI"
                                 }
                             }
                         }
@@ -4650,7 +4655,7 @@
                     "systemIdentifiers": {
                         "type": "array",
                         "label.cs": "Systémové identifikátory",
-                        "label.en": "System identifiers",
+                        "label.en": "System Identifiers",
                         "items": {
                             "type": "object",
                             "ui": {
@@ -4702,7 +4707,7 @@
                                         }
                                     },
                                     "label.cs": "Typ identifikátoru",
-                                    "label.en": "Identifier type"
+                                    "label.en": "Identifier Type"
                                 }
                             }
                         }
@@ -4787,8 +4792,8 @@
                         },
                         "label.cs": "Název",
                         "label.en": "Title",
-                        "hint.cs": "Uveďte hlavní název zdroje.",
-                        "hint.en": "Fill in the main title of the resource."
+                        "hint.cs": "Uveďte hlavní název dokumentu.",
+                        "hint.en": "Fill in the main title of the document."
                     },
                     "version": {
                         "type": "keyword",
@@ -4809,8 +4814,8 @@
                             "2.1",
                             "2.2"
                         ],
-                        "label.cs": "Verze zdroje",
-                        "label.en": "Resource version",
+                        "label.cs": "Verze dokumentu",
+                        "label.en": "Document Version",
                         "hint.cs": "Zapište verzi (první, druhá…).",
                         "hint.en": "Write down the version (first, second…)."
                     }
@@ -4878,7 +4883,7 @@
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
-                    "uniqueItems": true,
+                    "type": "object",
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -4894,7 +4899,7 @@
                             }
                         }
                     },
-                    "type": "object"
+                    "uniqueItems": true
                 },
                 "ui": {
                     "marshmallow": {

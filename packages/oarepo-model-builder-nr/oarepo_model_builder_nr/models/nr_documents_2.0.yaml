@@ -28,7 +28,7 @@ NRDocumentMetadata:
         dateDefended:
           use: "nr-datatypes#NRDate"
           label.cs: Datum obhajoby
-          label.en: Date defended
+          label.en: Date Defended
         defended:
           type: boolean
           label.cs: Obhájeno?
@@ -43,11 +43,11 @@ NRDocumentMetadata:
           type: taxonomy
           vocabulary-type: institutions
           ^label.cs: Instituce / grantor
-          ^label.en: Degree grantor
+          ^label.en: Degree Grantor
         studyFields[]:
           type: keyword
           ^label.cs: Oblasti studia
-          ^label.en: Study fields
+          ^label.en: Study Fields
     externalLocation:
       use: "nr-datatypes#NRExternalLocation"
     publishers[]:
@@ -69,8 +69,8 @@ NRDocumentMetadata:
       use: "nr-datatypes#NRDate"
       sample:
         faker: date
-      label.cs: Datum změny zdroje
-      label.en: Date modified
+      label.cs: Datum změny dokumentu
+      label.en: Date Modified
 
 DocumentModel:
   $id: DocumentModel
@@ -204,7 +204,7 @@ DocumentModel:
             read: false
             write: false
           label.cs: Datum poslední změny
-          label.en: Updated date
+          label.en: Updated Date
         year:
           type: edtf
           marshmallow:
@@ -215,7 +215,7 @@ DocumentModel:
               read: false
               write: false
           label.cs: Datum vydání
-          label.en: Publication date
+          label.en: Publication Date
           facets:
             facet-class: oarepo_runtime.services.facets.year_histogram.YearAutoHistogramFacet
         defenseYear:
@@ -228,7 +228,7 @@ DocumentModel:
               read: false
               write: false
           label.cs: Rok obhajoby
-          label.en: Defense year
+          label.en: Defense Year
           facets:
             facet-class: oarepo_runtime.services.facets.year_histogram.YearAutoHistogramFacet
       marshmallow:

@@ -76,7 +76,7 @@ class NRCommonMetadataUISchema(Schema):
 
     dateAvailable = LocalizedDate()
 
-    dateIssued = LocalizedEDTF()
+    dateIssued = LocalizedEDTF(required=True)
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventUISchema()))
 
