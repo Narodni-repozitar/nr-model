@@ -1,4 +1,4 @@
-from invenio_rdm_records.services.config import RDMRecordServiceConfig
+from invenio_rdm_records.services.config import RDMRecordServiceConfig, _groups_enabled
 from invenio_records_resources.services import (
     ConditionalLink,
     LinksTemplate,
@@ -67,6 +67,12 @@ class DataciteServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfi
             supercls_links = {}
         links = {
             **supercls_links,
+            "access_grants": RecordLink("{+api}/records/{id}/access/grants"),
+            "access_groups": RecordLink(
+                "{+api}/records/{id}/access/groups", when=_groups_enabled
+            ),
+            "access_links": RecordLink("{+api}/records/{id}/access/links"),
+            "access_users": RecordLink("{+api}/records/{id}/access/users"),
             "draft": RecordLink(
                 "{+api}/nr-metadata-datacite/{id}/draft",
                 when=has_draft() & has_permission("read_draft"),

@@ -81,7 +81,7 @@ class NRCommonMetadataSchema(Schema):
     dateAvailable = ma_fields.String(validate=[validate_date("%Y-%m-%d")])
 
     dateIssued = TrimmedString(
-        validate=[CachedMultilayerEDTFValidator(types=(EDTFDate,))]
+        required=True, validate=[CachedMultilayerEDTFValidator(types=(EDTFDate,))]
     )
 
     events = ma_fields.List(ma_fields.Nested(lambda: NREventSchema()))
