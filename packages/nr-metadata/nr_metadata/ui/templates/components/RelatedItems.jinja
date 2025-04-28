@@ -28,7 +28,7 @@
 
         {% if ri.itemTitle %}
             <SeparatedProperty label={_('metadata/relatedItems/itemTitle.label')}  isLast={True}>
-                {{ri.itemTitle}}
+                {{ri.itemTitle|safe}}
             </SeparatedProperty>
             <br>
         {% endif %}

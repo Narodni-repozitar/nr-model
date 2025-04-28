@@ -4,6 +4,6 @@
         <div class="ui green basic label lang-tag">
         {{ title.title.lang | upper }}
         </div>
-        {{ title.title.value }}
+        {{ title.title.value|safe }}
     </span>
 {% endfor %}
