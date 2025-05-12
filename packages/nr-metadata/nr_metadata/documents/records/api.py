@@ -9,6 +9,7 @@ from invenio_records_resources.records.systemfields.pid import PIDField, PIDFiel
 from invenio_vocabularies.contrib.affiliations.api import Affiliation
 from invenio_vocabularies.contrib.awards.api import Award
 from invenio_vocabularies.contrib.funders.api import Funder
+from oarepo_runtime.records.pid_providers import UniversalPIDMixin
 from oarepo_runtime.records.relations import (
     PIDRelation,
     RelationsField,
@@ -42,7 +43,7 @@ class DocumentsParentRecord(RDMParent):
     workflow = WorkflowField()
 
 
-class DocumentsIdProvider(DraftRecordIdProviderV2):
+class DocumentsIdProvider(UniversalPIDMixin, DraftRecordIdProviderV2):
     pid_type = "dcmnts"
 
 
@@ -177,7 +178,7 @@ class DocumentsRecord(RDMRecord):
         ),
         funder=UnstrictPIDRelation(
             "metadata.funders.funder",
-            keys=["id", "@v", "name"],
+            keys=["id", "@v", "name", "title"],
             pid_field=Funder.pid,
         ),
         languages=PIDRelation(

@@ -82,41 +82,39 @@ class DataciteExt:
         )
 
     def init_app_callback_rdm_models(self, app):
-        rdm_model_config = {
-            "service_id": "datacite",
-            # deprecated
-            "model_service": (
-                "nr_metadata.datacite.services.records.service.DataciteService"
-            ),
-            # deprecated
-            "service_config": (
-                "nr_metadata.datacite.services.records.config.DataciteServiceConfig"
-            ),
-            "api_service": (
-                "nr_metadata.datacite.services.records.service.DataciteService"
-            ),
-            "api_service_config": (
-                "nr_metadata.datacite.services.records.config.DataciteServiceConfig"
-            ),
-            "api_resource": (
-                "nr_metadata.datacite.resources.records.resource.DataciteResource"
-            ),
-            "api_resource_config": (
-                "nr_metadata.datacite.resources.records.config.DataciteResourceConfig"
-            ),
-            "ui_resource_config": "ui.nr_metadata.datacite.DataciteUIResourceConfig",
-        }
 
         app.config.setdefault("GLOBAL_SEARCH_MODELS", [])
         for cfg in app.config["GLOBAL_SEARCH_MODELS"]:
-            if cfg["model_service"] == rdm_model_config["model_service"]:
+            if cfg["model_service"] == RDM_MODEL_CONFIG["model_service"]:
                 break
         else:
-            app.config["GLOBAL_SEARCH_MODELS"].append(rdm_model_config)
+            app.config["GLOBAL_SEARCH_MODELS"].append(RDM_MODEL_CONFIG)
 
         app.config.setdefault("RDM_MODELS", [])
         for cfg in app.config["RDM_MODELS"]:
-            if cfg["model_service"] == rdm_model_config["model_service"]:
+            if cfg["model_service"] == RDM_MODEL_CONFIG["model_service"]:
                 break
         else:
-            app.config["RDM_MODELS"].append(rdm_model_config)
+            app.config["RDM_MODELS"].append(RDM_MODEL_CONFIG)
+
+
+RDM_MODEL_CONFIG = {  # allows merging stuff from other builders
+    "service_id": "datacite",
+    # deprecated
+    "model_service": "nr_metadata.datacite.services.records.service.DataciteService",
+    # deprecated
+    "service_config": (
+        "nr_metadata.datacite.services.records.config.DataciteServiceConfig"
+    ),
+    "api_service": "nr_metadata.datacite.services.records.service.DataciteService",
+    "api_service_config": (
+        "nr_metadata.datacite.services.records.config.DataciteServiceConfig"
+    ),
+    "api_resource": "nr_metadata.datacite.resources.records.resource.DataciteResource",
+    "api_resource_config": (
+        "nr_metadata.datacite.resources.records.config.DataciteResourceConfig"
+    ),
+    "ui_resource_config": "ui.nr_metadata.datacite.DataciteUIResourceConfig",
+    "record_cls": "nr_metadata.datacite.records.api.DataciteRecord",
+    "pid_type": "dtct",
+}

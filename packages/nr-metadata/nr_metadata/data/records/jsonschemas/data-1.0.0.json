@@ -404,6 +404,15 @@
                                     },
                                     "name": {
                                         "type": "string"
+                                    },
+                                    "title": {
+                                        "additionalProperties": {
+                                            "type": "string"
+                                        },
+                                        "propertyNames": {
+                                            "pattern": "^[a-z]{2}$"
+                                        },
+                                        "type": "object"
                                     }
                                 }
                             }
@@ -893,9 +902,7 @@
             }
         },
         "pids": {
-            "propertyNames": {
-                "pattern": "^[a-z_-][a-z0-9_-]*$"
-            },
+            "uniqueItems": true,
             "type": "object",
             "additionalProperties": {
                 "type": "object",
@@ -912,7 +919,9 @@
                     }
                 }
             },
-            "uniqueItems": true
+            "propertyNames": {
+                "pattern": "^[a-z_-][a-z0-9_-]*$"
+            }
         },
         "state": {
             "type": "string"

@@ -6,6 +6,7 @@ from invenio_rdm_records.records.api import RDMMediaFileRecord, RDMParent, RDMRe
 from invenio_records.systemfields import ConstantField
 from invenio_records_resources.records.systemfields import FilesField, IndexField
 from invenio_records_resources.records.systemfields.pid import PIDField, PIDFieldContext
+from oarepo_runtime.records.pid_providers import UniversalPIDMixin
 from oarepo_workflows.records.systemfields.state import (
     RecordStateField,
     RecordStateTimestampField,
@@ -22,7 +23,7 @@ class DataciteParentRecord(RDMParent):
     workflow = WorkflowField()
 
 
-class DataciteIdProvider(DraftRecordIdProviderV2):
+class DataciteIdProvider(UniversalPIDMixin, DraftRecordIdProviderV2):
     pid_type = "dtct"
 
 

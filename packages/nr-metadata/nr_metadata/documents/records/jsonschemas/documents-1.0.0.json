@@ -395,6 +395,15 @@
                                     },
                                     "name": {
                                         "type": "string"
+                                    },
+                                    "title": {
+                                        "additionalProperties": {
+                                            "type": "string"
+                                        },
+                                        "propertyNames": {
+                                            "pattern": "^[a-z]{2}$"
+                                        },
+                                        "type": "object"
                                     }
                                 }
                             }
@@ -908,7 +917,6 @@
             "propertyNames": {
                 "pattern": "^[a-z_-][a-z0-9_-]*$"
             },
-            "uniqueItems": true,
             "additionalProperties": {
                 "type": "object",
                 "additionalProperties": false,
@@ -924,7 +932,8 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "uniqueItems": true
         },
         "state": {
             "type": "string"
