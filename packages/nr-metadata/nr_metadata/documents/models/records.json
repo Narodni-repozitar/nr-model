@@ -154,16 +154,6 @@
             "extra-code": "",
             "module": "tests"
         },
-        "sample": {
-            "file": "data/sample_data.yaml"
-        },
-        "ext-resource": {
-            "service-kwargs": {
-                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(config_class, {{invenio_rdm_records.services.pids.PIDManager}})"
-            },
-            "generate": true,
-            "skip": false
-        },
         "permissions": {
             "presets": [
                 "workflow"
@@ -177,7 +167,37 @@
             ],
             "imports": []
         },
+        "sample": {
+            "file": "data/sample_data.yaml"
+        },
+        "ext-resource": {
+            "service-kwargs": {
+                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(config_class, {{invenio_rdm_records.services.pids.PIDManager}})"
+            },
+            "generate": true,
+            "skip": false
+        },
         "model-name": "Documents",
+        "draft-parent-record-metadata": {
+            "base-classes": [
+                "oarepo_workflows.records.models.RecordWorkflowParentModelMixin",
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase"
+            ],
+            "class": "nr_metadata.documents.records.models.DocumentsParentMetadata",
+            "imports": [],
+            "table": "nr_metadata.documents_parent_record_metadata",
+            "module": "nr_metadata.documents.records.models",
+            "generate": true
+        },
+        "parent-record-marshmallow": {
+            "base-classes": [
+                "oarepo_workflows.services.records.schema.RDMWorkflowParentSchema"
+            ],
+            "module": "nr_metadata.documents.services.records.schema",
+            "class": "nr_metadata.documents.services.records.schema.GeneratedParentSchema",
+            "generate": true
+        },
         "config": {
             "generate": true,
             "module": "nr_metadata.documents.config",
@@ -222,26 +242,6 @@
         },
         "proxy": {
             "module": "nr_metadata.documents.proxies",
-            "generate": true
-        },
-        "draft-parent-record-metadata": {
-            "base-classes": [
-                "oarepo_workflows.records.models.RecordWorkflowParentModelMixin",
-                "invenio_db.db{db.Model}",
-                "invenio_records.models.RecordMetadataBase"
-            ],
-            "class": "nr_metadata.documents.records.models.DocumentsParentMetadata",
-            "imports": [],
-            "table": "nr_metadata.documents_parent_record_metadata",
-            "module": "nr_metadata.documents.records.models",
-            "generate": true
-        },
-        "parent-record-marshmallow": {
-            "base-classes": [
-                "oarepo_workflows.services.records.schema.RDMWorkflowParentSchema"
-            ],
-            "module": "nr_metadata.documents.services.records.schema",
-            "class": "nr_metadata.documents.services.records.schema.GeneratedParentSchema",
             "generate": true
         },
         "resource": {
@@ -305,10 +305,6 @@
                 "\"identity\"": "{{ flask.g{g.identity} }}"
             }
         },
-        "translations": {
-            "module": "nr_metadata.documents.translations",
-            "alias": "documents"
-        },
         "service": {
             "imports": [],
             "base-classes": [
@@ -343,6 +339,10 @@
             "additional-args": [],
             "search-item-links-template-cls": "invenio_records_resources.services.LinksTemplate"
         },
+        "translations": {
+            "module": "nr_metadata.documents.translations",
+            "alias": "documents"
+        },
         "json-schema-settings": {
             "generate": true,
             "alias": "documents",
@@ -373,15 +373,6 @@
             "components": [],
             "imports": []
         },
-        "files-field": {
-            "generate": true,
-            "field-class": "invenio_records_resources.records.systemfields.FilesField",
-            "file-class": "nr_metadata.documents.records.api.DocumentsRecord",
-            "field-args": [
-                "store=False"
-            ],
-            "imports": []
-        },
         "record-metadata": {
             "generate": true,
             "module": "nr_metadata.documents.records.models",
@@ -400,6 +391,7 @@
         },
         "pid": {
             "provider-base-classes": [
+                "oarepo_runtime.records.pid_providers.UniversalPIDMixin",
                 "invenio_drafts_resources.records.api.DraftRecordIdProviderV2"
             ],
             "imports": [
@@ -433,6 +425,15 @@
                 "{{oarepo_runtime.records.systemfields.mapping.SystemFieldDumperExt}}()",
                 "{{nr_metadata.documents.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
                 "{{nr_metadata.documents.records.dumpers.edtf.DocumentsEDTFIntervalDumperExt}}()"
+            ],
+            "imports": []
+        },
+        "files-field": {
+            "generate": true,
+            "field-class": "invenio_records_resources.records.systemfields.FilesField",
+            "file-class": "nr_metadata.documents.records.api.DocumentsRecord",
+            "field-args": [
+                "store=False"
             ],
             "imports": []
         },
@@ -2229,6 +2230,37 @@
                                                 "type": "fulltext"
                                             },
                                             "target": "name"
+                                        },
+                                        {
+                                            "key": "title",
+                                            "model": {
+                                                "type": "object",
+                                                "json-schema": {
+                                                    "additionalProperties": {
+                                                        "type": "string"
+                                                    },
+                                                    "propertyNames": {
+                                                        "pattern": "^[a-z]{2}$"
+                                                    }
+                                                },
+                                                "mapping": {
+                                                    "dynamic": true
+                                                },
+                                                "properties": {},
+                                                "ui": {
+                                                    "marshmallow": {
+                                                        "unknown": "INCLUDE",
+                                                        "generate": true,
+                                                        "class": "nr_metadata.documents.services.records.ui_schema.TitleUISchema"
+                                                    }
+                                                },
+                                                "marshmallow": {
+                                                    "unknown": "INCLUDE",
+                                                    "generate": true,
+                                                    "class": "nr_metadata.documents.services.records.schema.TitleSchema"
+                                                }
+                                            },
+                                            "target": "title"
                                         }
                                     ],
                                     "class": "oarepo_runtime.records.relations.UnstrictPIDRelation",
@@ -2289,6 +2321,32 @@
                                         },
                                         "name": {
                                             "type": "fulltext"
+                                        },
+                                        "title": {
+                                            "type": "object",
+                                            "json-schema": {
+                                                "additionalProperties": {
+                                                    "type": "string"
+                                                },
+                                                "propertyNames": {
+                                                    "pattern": "^[a-z]{2}$"
+                                                }
+                                            },
+                                            "mapping": {
+                                                "dynamic": true
+                                            },
+                                            "ui": {
+                                                "marshmallow": {
+                                                    "unknown": "INCLUDE",
+                                                    "generate": true,
+                                                    "class": "nr_metadata.documents.services.records.ui_schema.TitleUISchema"
+                                                }
+                                            },
+                                            "marshmallow": {
+                                                "unknown": "INCLUDE",
+                                                "generate": true,
+                                                "class": "nr_metadata.documents.services.records.schema.TitleSchema"
+                                            }
                                         }
                                     }
                                 }
@@ -4946,7 +5004,6 @@
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
-                    "uniqueItems": true,
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -4962,7 +5019,8 @@
                             }
                         }
                     },
-                    "type": "object"
+                    "type": "object",
+                    "uniqueItems": true
                 },
                 "ui": {
                     "marshmallow": {

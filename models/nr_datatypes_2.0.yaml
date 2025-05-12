@@ -497,6 +497,22 @@ NRFunders:
         - key: name
           model:
             type: fulltext
+        - key: title
+          model:
+            type: object
+            json-schema:
+              propertyNames:
+                pattern: "^[a-z]{2}$"
+              additionalProperties:
+                type: string
+            mapping:
+              dynamic: true
+            marshmallow:
+              unknown: INCLUDE
+            ui:
+              marshmallow:
+                unknown: INCLUDE
+
       vocabulary-type: funders
       label.cs: Poskytovatel financí
       label.en: Funder

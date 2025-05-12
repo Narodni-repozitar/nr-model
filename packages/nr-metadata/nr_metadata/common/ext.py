@@ -82,39 +82,37 @@ class CommonExt:
         )
 
     def init_app_callback_rdm_models(self, app):
-        rdm_model_config = {
-            "service_id": "common",
-            # deprecated
-            "model_service": (
-                "nr_metadata.common.services.records.service.CommonService"
-            ),
-            # deprecated
-            "service_config": (
-                "nr_metadata.common.services.records.config.CommonServiceConfig"
-            ),
-            "api_service": "nr_metadata.common.services.records.service.CommonService",
-            "api_service_config": (
-                "nr_metadata.common.services.records.config.CommonServiceConfig"
-            ),
-            "api_resource": (
-                "nr_metadata.common.resources.records.resource.CommonResource"
-            ),
-            "api_resource_config": (
-                "nr_metadata.common.resources.records.config.CommonResourceConfig"
-            ),
-            "ui_resource_config": "ui.nr_metadata.common.CommonUIResourceConfig",
-        }
 
         app.config.setdefault("GLOBAL_SEARCH_MODELS", [])
         for cfg in app.config["GLOBAL_SEARCH_MODELS"]:
-            if cfg["model_service"] == rdm_model_config["model_service"]:
+            if cfg["model_service"] == RDM_MODEL_CONFIG["model_service"]:
                 break
         else:
-            app.config["GLOBAL_SEARCH_MODELS"].append(rdm_model_config)
+            app.config["GLOBAL_SEARCH_MODELS"].append(RDM_MODEL_CONFIG)
 
         app.config.setdefault("RDM_MODELS", [])
         for cfg in app.config["RDM_MODELS"]:
-            if cfg["model_service"] == rdm_model_config["model_service"]:
+            if cfg["model_service"] == RDM_MODEL_CONFIG["model_service"]:
                 break
         else:
-            app.config["RDM_MODELS"].append(rdm_model_config)
+            app.config["RDM_MODELS"].append(RDM_MODEL_CONFIG)
+
+
+RDM_MODEL_CONFIG = {  # allows merging stuff from other builders
+    "service_id": "common",
+    # deprecated
+    "model_service": "nr_metadata.common.services.records.service.CommonService",
+    # deprecated
+    "service_config": "nr_metadata.common.services.records.config.CommonServiceConfig",
+    "api_service": "nr_metadata.common.services.records.service.CommonService",
+    "api_service_config": (
+        "nr_metadata.common.services.records.config.CommonServiceConfig"
+    ),
+    "api_resource": "nr_metadata.common.resources.records.resource.CommonResource",
+    "api_resource_config": (
+        "nr_metadata.common.resources.records.config.CommonResourceConfig"
+    ),
+    "ui_resource_config": "ui.nr_metadata.common.CommonUIResourceConfig",
+    "record_cls": "nr_metadata.common.records.api.CommonRecord",
+    "pid_type": "common",
+}

@@ -543,6 +543,10 @@
                                     },
                                     "name": {
                                         "type": "text"
+                                    },
+                                    "title": {
+                                        "dynamic": true,
+                                        "type": "object"
                                     }
                                 }
                             }

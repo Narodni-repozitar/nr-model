@@ -10,7 +10,7 @@ from oarepo_runtime.services.components import (
     process_service_configs,
 )
 from oarepo_runtime.services.config import (
-    has_draft,
+    has_draft_permission,
     has_permission,
     has_published_record,
     is_published_record,
@@ -75,11 +75,11 @@ class DocumentsServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConf
             "access_users": RecordLink("{+api}/records/{id}/access/users"),
             "draft": RecordLink(
                 "{+api}/nr-metadata-documents/{id}/draft",
-                when=has_draft() & has_permission("read_draft"),
+                when=has_draft_permission("read_draft"),
             ),
             "edit_html": RecordLink(
                 "{+ui}/nr-metadata-documents/{id}/edit",
-                when=has_draft() & has_permission("update"),
+                when=has_draft_permission("update_draft"),
             ),
             "latest": RecordLink(
                 "{+api}/nr-metadata-documents/{id}/versions/latest",
