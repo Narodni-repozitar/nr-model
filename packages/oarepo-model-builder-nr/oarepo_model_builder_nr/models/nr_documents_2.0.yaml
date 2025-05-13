@@ -41,7 +41,7 @@ NRDocumentMetadata:
           marshmallow:
             class: nr_metadata.documents.services.records.schema.NRDegreeGrantorSchema
           type: taxonomy
-          vocabulary-type: institutions
+          vocabulary-type: degree-grantors
           ^label.cs: Instituce / grantor
           ^label.en: Degree Grantor
         studyFields[]:

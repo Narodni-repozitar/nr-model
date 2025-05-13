@@ -4938,6 +4938,8 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
+                    "uniqueItems": true,
+                    "type": "object",
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
@@ -4955,9 +4957,7 @@
                                 "type": "string"
                             }
                         }
-                    },
-                    "type": "object",
-                    "uniqueItems": true
+                    }
                 },
                 "ui": {
                     "marshmallow": {
