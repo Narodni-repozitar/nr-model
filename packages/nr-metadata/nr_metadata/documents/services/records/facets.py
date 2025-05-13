@@ -496,7 +496,7 @@ metadata_thesis_defended = TermsFacet(
 metadata_thesis_degreeGrantors = HierarchyVocabularyFacet(
     field="metadata.thesis.degreeGrantors",
     label=_("metadata/thesis/degreeGrantors.label"),
-    vocabulary="institutions",
+    vocabulary="degree-grantors",
 )
 
 metadata_thesis_studyFields = TermsFacet(
