@@ -2236,11 +2236,11 @@
                                             "model": {
                                                 "type": "object",
                                                 "json-schema": {
-                                                    "additionalProperties": {
-                                                        "type": "string"
-                                                    },
                                                     "propertyNames": {
                                                         "pattern": "^[a-z]{2}$"
+                                                    },
+                                                    "additionalProperties": {
+                                                        "type": "string"
                                                     }
                                                 },
                                                 "mapping": {
@@ -2325,11 +2325,11 @@
                                         "title": {
                                             "type": "object",
                                             "json-schema": {
-                                                "additionalProperties": {
-                                                    "type": "string"
-                                                },
                                                 "propertyNames": {
                                                     "pattern": "^[a-z]{2}$"
+                                                },
+                                                "additionalProperties": {
+                                                    "type": "string"
                                                 }
                                             },
                                             "mapping": {
@@ -4637,7 +4637,7 @@
                                 "label.en": "Degree Grantor",
                                 "items": {
                                     "type": "taxonomy",
-                                    "vocabulary-type": "institutions",
+                                    "vocabulary-type": "degree-grantors",
                                     "ui": {
                                         "marshmallow": {
                                             "class": "nr_metadata.documents.services.records.ui_schema.NRDegreeGrantorUISchema",
@@ -4736,10 +4736,10 @@
                                         }
                                     ],
                                     "model": "vocabularies",
-                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"institutions\")",
+                                    "pid-field": "Vocabulary.pid.with_type_ctx(\"degree-grantors\")",
                                     "facets": {
                                         "args": [
-                                            "vocabulary='institutions'"
+                                            "vocabulary='degree-grantors'"
                                         ]
                                     },
                                     "properties": {
@@ -5004,6 +5004,8 @@
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
+                    "type": "object",
+                    "uniqueItems": true,
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -5018,9 +5020,7 @@
                                 "type": "string"
                             }
                         }
-                    },
-                    "type": "object",
-                    "uniqueItems": true
+                    }
                 },
                 "ui": {
                     "marshmallow": {

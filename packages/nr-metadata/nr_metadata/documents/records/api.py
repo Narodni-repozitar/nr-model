@@ -234,7 +234,7 @@ class DocumentsRecord(RDMRecord):
         degreeGrantors=PIDRelation(
             "metadata.thesis.degreeGrantors",
             keys=["id", "title", "hierarchy"],
-            pid_field=Vocabulary.pid.with_type_ctx("institutions"),
+            pid_field=Vocabulary.pid.with_type_ctx("degree-grantors"),
         ),
     )
 

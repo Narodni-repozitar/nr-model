@@ -2211,11 +2211,11 @@
                                             "model": {
                                                 "type": "object",
                                                 "json-schema": {
-                                                    "additionalProperties": {
-                                                        "type": "string"
-                                                    },
                                                     "propertyNames": {
                                                         "pattern": "^[a-z]{2}$"
+                                                    },
+                                                    "additionalProperties": {
+                                                        "type": "string"
                                                     }
                                                 },
                                                 "mapping": {
@@ -2300,11 +2300,11 @@
                                         "title": {
                                             "type": "object",
                                             "json-schema": {
-                                                "additionalProperties": {
-                                                    "type": "string"
-                                                },
                                                 "propertyNames": {
                                                     "pattern": "^[a-z]{2}$"
+                                                },
+                                                "additionalProperties": {
+                                                    "type": "string"
                                                 }
                                             },
                                             "mapping": {
@@ -4938,8 +4938,9 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "uniqueItems": true,
-                    "type": "object",
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -4955,9 +4956,8 @@
                             }
                         }
                     },
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    }
+                    "type": "object",
+                    "uniqueItems": true
                 },
                 "ui": {
                     "marshmallow": {
