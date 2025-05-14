@@ -912,6 +912,8 @@
                             "properties": {
                                 "affiliations": {
                                     "type": "array",
+                                    "label.cs": "Afiliace",
+                                    "label.en": "Affiliation",
                                     "items": {
                                         "type": "vocabulary",
                                         "keys": [
@@ -1000,6 +1002,8 @@
                                         "generate": true,
                                         "class": "nr_metadata.data.services.records.schema.PersonOrOrgSchema"
                                     },
+                                    "label.cs": "Osoba nebo organizace",
+                                    "label.en": "Person or Organization",
                                     "properties": {
                                         "family_name": {
                                             "type": "keyword",
@@ -1012,7 +1016,9 @@
                                                     "read": false,
                                                     "write": false
                                                 }
-                                            }
+                                            },
+                                            "label.cs": "Příjmení",
+                                            "label.en": "Family Name"
                                         },
                                         "given_name": {
                                             "type": "keyword",
@@ -1025,10 +1031,14 @@
                                                     "read": false,
                                                     "write": false
                                                 }
-                                            }
+                                            },
+                                            "label.cs": "Jméno",
+                                            "label.en": "Name"
                                         },
                                         "identifiers": {
                                             "type": "array",
+                                            "label.cs": "Identifikátory",
+                                            "label.en": "Identifiers",
                                             "items": {
                                                 "type": "object",
                                                 "ui": {
@@ -1055,7 +1065,9 @@
                                                                 "read": false,
                                                                 "write": false
                                                             }
-                                                        }
+                                                        },
+                                                        "label.cs": "Identifikátor",
+                                                        "label.en": "Identifier"
                                                     },
                                                     "scheme": {
                                                         "type": "keyword",
@@ -1068,7 +1080,9 @@
                                                                 "read": false,
                                                                 "write": false
                                                             }
-                                                        }
+                                                        },
+                                                        "label.cs": "Schéma",
+                                                        "label.en": "Scheme"
                                                     }
                                                 }
                                             }
@@ -1084,7 +1098,9 @@
                                                     "read": false,
                                                     "write": false
                                                 }
-                                            }
+                                            },
+                                            "label.cs": "Plné jméno",
+                                            "label.en": "Full Name"
                                         },
                                         "type": {
                                             "type": "keyword",
@@ -1101,7 +1117,9 @@
                                                     "read": false,
                                                     "write": false
                                                 }
-                                            }
+                                            },
+                                            "label.cs": "Typ",
+                                            "label.en": "Type"
                                         }
                                     }
                                 },
@@ -1127,8 +1145,8 @@
                                         "unknown": "INCLUDE",
                                         "generate": true
                                     },
-                                    "label.cs": "Role přispěvatele",
-                                    "label.en": "Contributor's Role",
+                                    "label.cs": "Role",
+                                    "label.en": "Role",
                                     "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                     "hint.en": "Choose the role of the contributor (editor, illustrator…).",
                                     "imports": [
@@ -1252,6 +1270,8 @@
                             "properties": {
                                 "affiliations": {
                                     "type": "array",
+                                    "label.cs": "Afiliace",
+                                    "label.en": "Affiliation",
                                     "items": {
                                         "type": "vocabulary",
                                         "keys": [
@@ -1340,6 +1360,8 @@
                                         "generate": false,
                                         "class": "nr_metadata.data.services.records.schema.PersonOrOrgSchema"
                                     },
+                                    "label.cs": "Osoba nebo organizace",
+                                    "label.en": "Person or Organization",
                                     "properties": {
                                         "family_name": {
                                             "type": "keyword",
@@ -1352,7 +1374,9 @@
                                                     "read": false,
                                                     "write": false
                                                 }
-                                            }
+                                            },
+                                            "label.cs": "Příjmení",
+                                            "label.en": "Family Name"
                                         },
                                         "given_name": {
                                             "type": "keyword",
@@ -1365,10 +1389,14 @@
                                                     "read": false,
                                                     "write": false
                                                 }
-                                            }
+                                            },
+                                            "label.cs": "Jméno",
+                                            "label.en": "Name"
                                         },
                                         "identifiers": {
                                             "type": "array",
+                                            "label.cs": "Identifikátory",
+                                            "label.en": "Identifiers",
                                             "items": {
                                                 "type": "object",
                                                 "ui": {
@@ -1395,7 +1423,9 @@
                                                                 "read": false,
                                                                 "write": false
                                                             }
-                                                        }
+                                                        },
+                                                        "label.cs": "Identifikátor",
+                                                        "label.en": "Identifier"
                                                     },
                                                     "scheme": {
                                                         "type": "keyword",
@@ -1408,7 +1438,9 @@
                                                                 "read": false,
                                                                 "write": false
                                                             }
-                                                        }
+                                                        },
+                                                        "label.cs": "Schéma",
+                                                        "label.en": "Scheme"
                                                     }
                                                 }
                                             }
@@ -1424,7 +1456,9 @@
                                                     "read": false,
                                                     "write": false
                                                 }
-                                            }
+                                            },
+                                            "label.cs": "Plné jméno",
+                                            "label.en": "Full Name"
                                         },
                                         "type": {
                                             "type": "keyword",
@@ -1441,7 +1475,9 @@
                                                     "read": false,
                                                     "write": false
                                                 }
-                                            }
+                                            },
+                                            "label.cs": "Typ",
+                                            "label.en": "Type"
                                         }
                                     }
                                 },
@@ -1467,8 +1503,8 @@
                                         "unknown": "INCLUDE",
                                         "generate": false
                                     },
-                                    "label.cs": "Role přispěvatele",
-                                    "label.en": "Contributor's Role",
+                                    "label.cs": "Role",
+                                    "label.en": "Role",
                                     "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                     "hint.en": "Choose the role of the contributor (editor, illustrator…).",
                                     "imports": [
@@ -3043,6 +3079,8 @@
                                         "properties": {
                                             "affiliations": {
                                                 "type": "array",
+                                                "label.cs": "Afiliace",
+                                                "label.en": "Affiliation",
                                                 "items": {
                                                     "type": "vocabulary",
                                                     "keys": [
@@ -3131,6 +3169,8 @@
                                                     "generate": false,
                                                     "class": "nr_metadata.data.services.records.schema.PersonOrOrgSchema"
                                                 },
+                                                "label.cs": "Osoba nebo organizace",
+                                                "label.en": "Person or Organization",
                                                 "properties": {
                                                     "family_name": {
                                                         "type": "keyword",
@@ -3143,7 +3183,9 @@
                                                                 "read": false,
                                                                 "write": false
                                                             }
-                                                        }
+                                                        },
+                                                        "label.cs": "Příjmení",
+                                                        "label.en": "Family Name"
                                                     },
                                                     "given_name": {
                                                         "type": "keyword",
@@ -3156,10 +3198,14 @@
                                                                 "read": false,
                                                                 "write": false
                                                             }
-                                                        }
+                                                        },
+                                                        "label.cs": "Jméno",
+                                                        "label.en": "Name"
                                                     },
                                                     "identifiers": {
                                                         "type": "array",
+                                                        "label.cs": "Identifikátory",
+                                                        "label.en": "Identifiers",
                                                         "items": {
                                                             "type": "object",
                                                             "ui": {
@@ -3186,7 +3232,9 @@
                                                                             "read": false,
                                                                             "write": false
                                                                         }
-                                                                    }
+                                                                    },
+                                                                    "label.cs": "Identifikátor",
+                                                                    "label.en": "Identifier"
                                                                 },
                                                                 "scheme": {
                                                                     "type": "keyword",
@@ -3199,7 +3247,9 @@
                                                                             "read": false,
                                                                             "write": false
                                                                         }
-                                                                    }
+                                                                    },
+                                                                    "label.cs": "Schéma",
+                                                                    "label.en": "Scheme"
                                                                 }
                                                             }
                                                         }
@@ -3215,7 +3265,9 @@
                                                                 "read": false,
                                                                 "write": false
                                                             }
-                                                        }
+                                                        },
+                                                        "label.cs": "Plné jméno",
+                                                        "label.en": "Full Name"
                                                     },
                                                     "type": {
                                                         "type": "keyword",
@@ -3232,7 +3284,9 @@
                                                                 "read": false,
                                                                 "write": false
                                                             }
-                                                        }
+                                                        },
+                                                        "label.cs": "Typ",
+                                                        "label.en": "Type"
                                                     }
                                                 }
                                             },
@@ -3258,8 +3312,8 @@
                                                     "unknown": "INCLUDE",
                                                     "generate": false
                                                 },
-                                                "label.cs": "Role přispěvatele",
-                                                "label.en": "Contributor's Role",
+                                                "label.cs": "Role",
+                                                "label.en": "Role",
                                                 "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                                 "hint.en": "Choose the role of the contributor (editor, illustrator…).",
                                                 "imports": [
@@ -3376,6 +3430,8 @@
                                         "properties": {
                                             "affiliations": {
                                                 "type": "array",
+                                                "label.cs": "Afiliace",
+                                                "label.en": "Affiliation",
                                                 "items": {
                                                     "type": "vocabulary",
                                                     "keys": [
@@ -3464,6 +3520,8 @@
                                                     "generate": false,
                                                     "class": "nr_metadata.data.services.records.schema.PersonOrOrgSchema"
                                                 },
+                                                "label.cs": "Osoba nebo organizace",
+                                                "label.en": "Person or Organization",
                                                 "properties": {
                                                     "family_name": {
                                                         "type": "keyword",
@@ -3476,7 +3534,9 @@
                                                                 "read": false,
                                                                 "write": false
                                                             }
-                                                        }
+                                                        },
+                                                        "label.cs": "Příjmení",
+                                                        "label.en": "Family Name"
                                                     },
                                                     "given_name": {
                                                         "type": "keyword",
@@ -3489,10 +3549,14 @@
                                                                 "read": false,
                                                                 "write": false
                                                             }
-                                                        }
+                                                        },
+                                                        "label.cs": "Jméno",
+                                                        "label.en": "Name"
                                                     },
                                                     "identifiers": {
                                                         "type": "array",
+                                                        "label.cs": "Identifikátory",
+                                                        "label.en": "Identifiers",
                                                         "items": {
                                                             "type": "object",
                                                             "ui": {
@@ -3519,7 +3583,9 @@
                                                                             "read": false,
                                                                             "write": false
                                                                         }
-                                                                    }
+                                                                    },
+                                                                    "label.cs": "Identifikátor",
+                                                                    "label.en": "Identifier"
                                                                 },
                                                                 "scheme": {
                                                                     "type": "keyword",
@@ -3532,7 +3598,9 @@
                                                                             "read": false,
                                                                             "write": false
                                                                         }
-                                                                    }
+                                                                    },
+                                                                    "label.cs": "Schéma",
+                                                                    "label.en": "Scheme"
                                                                 }
                                                             }
                                                         }
@@ -3548,7 +3616,9 @@
                                                                 "read": false,
                                                                 "write": false
                                                             }
-                                                        }
+                                                        },
+                                                        "label.cs": "Plné jméno",
+                                                        "label.en": "Full Name"
                                                     },
                                                     "type": {
                                                         "type": "keyword",
@@ -3565,7 +3635,9 @@
                                                                 "read": false,
                                                                 "write": false
                                                             }
-                                                        }
+                                                        },
+                                                        "label.cs": "Typ",
+                                                        "label.en": "Type"
                                                     }
                                                 }
                                             },
@@ -3591,8 +3663,8 @@
                                                     "unknown": "INCLUDE",
                                                     "generate": false
                                                 },
-                                                "label.cs": "Role přispěvatele",
-                                                "label.en": "Contributor's Role",
+                                                "label.cs": "Role",
+                                                "label.en": "Role",
                                                 "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                                 "hint.en": "Choose the role of the contributor (editor, illustrator…).",
                                                 "imports": [
@@ -4938,11 +5010,11 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "uniqueItems": true,
                     "type": "object",
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
+                    "uniqueItems": true,
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
