@@ -1170,7 +1170,7 @@
                                         "unknown": "INCLUDE",
                                         "generate": true
                                     },
-                                    "label.cs": "Role",
+                                    "label.cs": "Role přispěvatele",
                                     "label.en": "Role",
                                     "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                     "hint.en": "Choose the role of the contributor (editor, illustrator…).",
@@ -1528,7 +1528,7 @@
                                         "unknown": "INCLUDE",
                                         "generate": false
                                     },
-                                    "label.cs": "Role",
+                                    "label.cs": "Role přispěvatele",
                                     "label.en": "Role",
                                     "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                     "hint.en": "Choose the role of the contributor (editor, illustrator…).",
@@ -2272,11 +2272,11 @@
                                             "model": {
                                                 "type": "object",
                                                 "json-schema": {
-                                                    "propertyNames": {
-                                                        "pattern": "^[a-z]{2}$"
-                                                    },
                                                     "additionalProperties": {
                                                         "type": "string"
+                                                    },
+                                                    "propertyNames": {
+                                                        "pattern": "^[a-z]{2}$"
                                                     }
                                                 },
                                                 "mapping": {
@@ -2361,11 +2361,11 @@
                                         "title": {
                                             "type": "object",
                                             "json-schema": {
-                                                "propertyNames": {
-                                                    "pattern": "^[a-z]{2}$"
-                                                },
                                                 "additionalProperties": {
                                                     "type": "string"
+                                                },
+                                                "propertyNames": {
+                                                    "pattern": "^[a-z]{2}$"
                                                 }
                                             },
                                             "mapping": {
@@ -3084,7 +3084,7 @@
                                                     "unknown": "INCLUDE",
                                                     "generate": false
                                                 },
-                                                "label.cs": "Role",
+                                                "label.cs": "Role přispěvatele",
                                                 "label.en": "Role",
                                                 "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                                 "hint.en": "Choose the role of the contributor (editor, illustrator…).",
@@ -3435,7 +3435,7 @@
                                                     "unknown": "INCLUDE",
                                                     "generate": false
                                                 },
-                                                "label.cs": "Role",
+                                                "label.cs": "Role přispěvatele",
                                                 "label.en": "Role",
                                                 "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                                 "hint.en": "Choose the role of the contributor (editor, illustrator…).",
@@ -5073,11 +5073,6 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "type": "object",
-                    "uniqueItems": true,
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -5092,6 +5087,11 @@
                                 "type": "string"
                             }
                         }
+                    },
+                    "type": "object",
+                    "uniqueItems": true,
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
                     }
                 },
                 "ui": {
