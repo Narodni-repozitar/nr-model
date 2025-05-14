@@ -189,8 +189,10 @@ NRCreator:
   properties:
     role:
       use: "nr-datatypes#NRContributorType"
-      label.cs: Role
+      label.cs: Role přispěvatele
       label.en: Role
+      hint.cs: Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).
+      hint.en: Choose the role of the contributor (editor, illustrator…).
     affiliations[]:
       type: vocabulary
       vocabulary-type: affiliations

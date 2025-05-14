@@ -1054,7 +1054,7 @@
                                         "unknown": "INCLUDE",
                                         "generate": true
                                     },
-                                    "label.cs": "Role",
+                                    "label.cs": "Role přispěvatele",
                                     "label.en": "Role",
                                     "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                     "hint.en": "Choose the role of the contributor (editor, illustrator…).",
@@ -1344,7 +1344,7 @@
                                         "unknown": "INCLUDE",
                                         "generate": false
                                     },
-                                    "label.cs": "Role",
+                                    "label.cs": "Role přispěvatele",
                                     "label.en": "Role",
                                     "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                     "hint.en": "Choose the role of the contributor (editor, illustrator…).",
@@ -2637,7 +2637,7 @@
                                                     "unknown": "INCLUDE",
                                                     "generate": false
                                                 },
-                                                "label.cs": "Role",
+                                                "label.cs": "Role přispěvatele",
                                                 "label.en": "Role",
                                                 "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                                 "hint.en": "Choose the role of the contributor (editor, illustrator…).",
@@ -2920,7 +2920,7 @@
                                                     "unknown": "INCLUDE",
                                                     "generate": false
                                                 },
-                                                "label.cs": "Role",
+                                                "label.cs": "Role přispěvatele",
                                                 "label.en": "Role",
                                                 "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                                 "hint.en": "Choose the role of the contributor (editor, illustrator…).",
@@ -4065,6 +4065,7 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
+                    "uniqueItems": true,
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -4083,8 +4084,7 @@
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
-                    "type": "object",
-                    "uniqueItems": true
+                    "type": "object"
                 },
                 "ui": {
                     "marshmallow": {

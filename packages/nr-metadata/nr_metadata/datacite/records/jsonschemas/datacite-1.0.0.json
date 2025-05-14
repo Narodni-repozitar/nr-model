@@ -728,7 +728,6 @@
             }
         },
         "pids": {
-            "type": "object",
             "propertyNames": {
                 "pattern": "^[a-z_-][a-z0-9_-]*$"
             },
@@ -747,7 +746,8 @@
                     }
                 }
             },
-            "uniqueItems": true
+            "uniqueItems": true,
+            "type": "object"
         },
         "state": {
             "type": "string"

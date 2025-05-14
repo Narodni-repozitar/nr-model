@@ -119,12 +119,12 @@ NRPersonIdentifier:
       enum:
         [
           orcid,
-          scopusID,
-          researcherID,
-          czenasAutID,
+          scopusId,
+          researcherId,
+          czenasAutId,
           vedidk,
-          institutionalID,
-          ISNI,
+          institutionalId,
+          isni,
         ]
       label.cs: Typ identifikátoru
       label.en: Identifier Type
@@ -153,7 +153,7 @@ NROrganizationIdentifier:
     scheme:
       type: keyword
       required: true
-      enum: [ISNI, ROR, ICO, DOI]
+      enum: [isni, ror, ico, doi]
       label.cs: Typ identifikátoru
       label.en: Identifier Type
 
@@ -189,9 +189,15 @@ NRCreator:
   properties:
     role:
       use: "nr-datatypes#NRContributorType"
+      label.cs: Role přispěvatele
+      label.en: Role
+      hint.cs: Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).
+      hint.en: Choose the role of the contributor (editor, illustrator…).
     affiliations[]:
       type: vocabulary
       vocabulary-type: affiliations
+      ^label.cs: Afiliace
+      ^label.en: Affiliation
       class: oarepo_runtime.records.relations.UnstrictPIDRelation
       keys:
         - key: name
@@ -201,22 +207,38 @@ NRCreator:
           model:
             type: keyword
     person_or_org:
+      label.cs: Osoba nebo organizace
+      label.en: Person or Organization
       properties:
         name:
           type: keyword
+          label.cs: Plné jméno
+          label.en: Full Name
         type:
           type: keyword
           enum: [personal, organizational]
+          label.cs: Typ
+          label.en: Type
         given_name:
           type: keyword
+          label.cs: Jméno
+          label.en: Name
         family_name:
           type: keyword
+          label.cs: Příjmení
+          label.en: Family Name
         identifiers[]:
+          ^label.cs: Identifikátory
+          ^label.en: Identifiers
           properties:
             identifier:
               type: keyword
+              label.cs: Identifikátor
+              label.en: Identifier
             scheme:
               type: keyword
+              label.cs: Schéma
+              label.en: Scheme
           marshmallow:
             generate: false
             read: false
