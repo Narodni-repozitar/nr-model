@@ -889,6 +889,8 @@
                             "properties": {
                                 "affiliations": {
                                     "type": "array",
+                                    "label.cs": "Afiliace",
+                                    "label.en": "Affiliation",
                                     "items": {
                                         "type": "vocabulary",
                                         "keys": [
@@ -963,6 +965,8 @@
                                 },
                                 "person_or_org": {
                                     "type": "object",
+                                    "label.cs": "Osoba nebo organizace",
+                                    "label.en": "Person or Organization",
                                     "marshmallow": {
                                         "generate": true,
                                         "class": "nr_metadata.common.services.records.schema.PersonOrOrgSchema"
@@ -975,13 +979,19 @@
                                     },
                                     "properties": {
                                         "family_name": {
-                                            "type": "keyword"
+                                            "type": "keyword",
+                                            "label.cs": "Příjmení",
+                                            "label.en": "Family Name"
                                         },
                                         "given_name": {
-                                            "type": "keyword"
+                                            "type": "keyword",
+                                            "label.cs": "Jméno",
+                                            "label.en": "Name"
                                         },
                                         "identifiers": {
                                             "type": "array",
+                                            "label.cs": "Identifikátory",
+                                            "label.en": "Identifiers",
                                             "items": {
                                                 "type": "object",
                                                 "marshmallow": {
@@ -998,23 +1008,31 @@
                                                 },
                                                 "properties": {
                                                     "identifier": {
-                                                        "type": "keyword"
+                                                        "type": "keyword",
+                                                        "label.cs": "Identifikátor",
+                                                        "label.en": "Identifier"
                                                     },
                                                     "scheme": {
-                                                        "type": "keyword"
+                                                        "type": "keyword",
+                                                        "label.cs": "Schéma",
+                                                        "label.en": "Scheme"
                                                     }
                                                 }
                                             }
                                         },
                                         "name": {
-                                            "type": "keyword"
+                                            "type": "keyword",
+                                            "label.cs": "Plné jméno",
+                                            "label.en": "Full Name"
                                         },
                                         "type": {
                                             "type": "keyword",
                                             "enum": [
                                                 "personal",
                                                 "organizational"
-                                            ]
+                                            ],
+                                            "label.cs": "Typ",
+                                            "label.en": "Type"
                                         }
                                     }
                                 },
@@ -1036,8 +1054,8 @@
                                         "unknown": "INCLUDE",
                                         "generate": true
                                     },
-                                    "label.cs": "Role přispěvatele",
-                                    "label.en": "Contributor's Role",
+                                    "label.cs": "Role",
+                                    "label.en": "Role",
                                     "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                     "hint.en": "Choose the role of the contributor (editor, illustrator…).",
                                     "imports": [
@@ -1161,6 +1179,8 @@
                             "properties": {
                                 "affiliations": {
                                     "type": "array",
+                                    "label.cs": "Afiliace",
+                                    "label.en": "Affiliation",
                                     "items": {
                                         "type": "vocabulary",
                                         "keys": [
@@ -1235,6 +1255,8 @@
                                 },
                                 "person_or_org": {
                                     "type": "object",
+                                    "label.cs": "Osoba nebo organizace",
+                                    "label.en": "Person or Organization",
                                     "marshmallow": {
                                         "generate": false,
                                         "class": "nr_metadata.common.services.records.schema.PersonOrOrgSchema"
@@ -1247,13 +1269,19 @@
                                     },
                                     "properties": {
                                         "family_name": {
-                                            "type": "keyword"
+                                            "type": "keyword",
+                                            "label.cs": "Příjmení",
+                                            "label.en": "Family Name"
                                         },
                                         "given_name": {
-                                            "type": "keyword"
+                                            "type": "keyword",
+                                            "label.cs": "Jméno",
+                                            "label.en": "Name"
                                         },
                                         "identifiers": {
                                             "type": "array",
+                                            "label.cs": "Identifikátory",
+                                            "label.en": "Identifiers",
                                             "items": {
                                                 "type": "object",
                                                 "marshmallow": {
@@ -1270,23 +1298,31 @@
                                                 },
                                                 "properties": {
                                                     "identifier": {
-                                                        "type": "keyword"
+                                                        "type": "keyword",
+                                                        "label.cs": "Identifikátor",
+                                                        "label.en": "Identifier"
                                                     },
                                                     "scheme": {
-                                                        "type": "keyword"
+                                                        "type": "keyword",
+                                                        "label.cs": "Schéma",
+                                                        "label.en": "Scheme"
                                                     }
                                                 }
                                             }
                                         },
                                         "name": {
-                                            "type": "keyword"
+                                            "type": "keyword",
+                                            "label.cs": "Plné jméno",
+                                            "label.en": "Full Name"
                                         },
                                         "type": {
                                             "type": "keyword",
                                             "enum": [
                                                 "personal",
                                                 "organizational"
-                                            ]
+                                            ],
+                                            "label.cs": "Typ",
+                                            "label.en": "Type"
                                         }
                                     }
                                 },
@@ -1308,8 +1344,8 @@
                                         "unknown": "INCLUDE",
                                         "generate": false
                                     },
-                                    "label.cs": "Role přispěvatele",
-                                    "label.en": "Contributor's Role",
+                                    "label.cs": "Role",
+                                    "label.en": "Role",
                                     "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                     "hint.en": "Choose the role of the contributor (editor, illustrator…).",
                                     "imports": [
@@ -1948,11 +1984,11 @@
                                             "model": {
                                                 "type": "object",
                                                 "json-schema": {
-                                                    "propertyNames": {
-                                                        "pattern": "^[a-z]{2}$"
-                                                    },
                                                     "additionalProperties": {
                                                         "type": "string"
+                                                    },
+                                                    "propertyNames": {
+                                                        "pattern": "^[a-z]{2}$"
                                                     }
                                                 },
                                                 "mapping": {
@@ -2033,11 +2069,11 @@
                                         "title": {
                                             "type": "object",
                                             "json-schema": {
-                                                "propertyNames": {
-                                                    "pattern": "^[a-z]{2}$"
-                                                },
                                                 "additionalProperties": {
                                                     "type": "string"
+                                                },
+                                                "propertyNames": {
+                                                    "pattern": "^[a-z]{2}$"
                                                 }
                                             },
                                             "mapping": {
@@ -2436,6 +2472,8 @@
                                         "properties": {
                                             "affiliations": {
                                                 "type": "array",
+                                                "label.cs": "Afiliace",
+                                                "label.en": "Affiliation",
                                                 "items": {
                                                     "type": "vocabulary",
                                                     "keys": [
@@ -2510,6 +2548,8 @@
                                             },
                                             "person_or_org": {
                                                 "type": "object",
+                                                "label.cs": "Osoba nebo organizace",
+                                                "label.en": "Person or Organization",
                                                 "marshmallow": {
                                                     "generate": false,
                                                     "class": "nr_metadata.common.services.records.schema.PersonOrOrgSchema"
@@ -2522,13 +2562,19 @@
                                                 },
                                                 "properties": {
                                                     "family_name": {
-                                                        "type": "keyword"
+                                                        "type": "keyword",
+                                                        "label.cs": "Příjmení",
+                                                        "label.en": "Family Name"
                                                     },
                                                     "given_name": {
-                                                        "type": "keyword"
+                                                        "type": "keyword",
+                                                        "label.cs": "Jméno",
+                                                        "label.en": "Name"
                                                     },
                                                     "identifiers": {
                                                         "type": "array",
+                                                        "label.cs": "Identifikátory",
+                                                        "label.en": "Identifiers",
                                                         "items": {
                                                             "type": "object",
                                                             "marshmallow": {
@@ -2545,23 +2591,31 @@
                                                             },
                                                             "properties": {
                                                                 "identifier": {
-                                                                    "type": "keyword"
+                                                                    "type": "keyword",
+                                                                    "label.cs": "Identifikátor",
+                                                                    "label.en": "Identifier"
                                                                 },
                                                                 "scheme": {
-                                                                    "type": "keyword"
+                                                                    "type": "keyword",
+                                                                    "label.cs": "Schéma",
+                                                                    "label.en": "Scheme"
                                                                 }
                                                             }
                                                         }
                                                     },
                                                     "name": {
-                                                        "type": "keyword"
+                                                        "type": "keyword",
+                                                        "label.cs": "Plné jméno",
+                                                        "label.en": "Full Name"
                                                     },
                                                     "type": {
                                                         "type": "keyword",
                                                         "enum": [
                                                             "personal",
                                                             "organizational"
-                                                        ]
+                                                        ],
+                                                        "label.cs": "Typ",
+                                                        "label.en": "Type"
                                                     }
                                                 }
                                             },
@@ -2583,8 +2637,8 @@
                                                     "unknown": "INCLUDE",
                                                     "generate": false
                                                 },
-                                                "label.cs": "Role přispěvatele",
-                                                "label.en": "Contributor's Role",
+                                                "label.cs": "Role",
+                                                "label.en": "Role",
                                                 "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                                 "hint.en": "Choose the role of the contributor (editor, illustrator…).",
                                                 "imports": [
@@ -2701,6 +2755,8 @@
                                         "properties": {
                                             "affiliations": {
                                                 "type": "array",
+                                                "label.cs": "Afiliace",
+                                                "label.en": "Affiliation",
                                                 "items": {
                                                     "type": "vocabulary",
                                                     "keys": [
@@ -2775,6 +2831,8 @@
                                             },
                                             "person_or_org": {
                                                 "type": "object",
+                                                "label.cs": "Osoba nebo organizace",
+                                                "label.en": "Person or Organization",
                                                 "marshmallow": {
                                                     "generate": false,
                                                     "class": "nr_metadata.common.services.records.schema.PersonOrOrgSchema"
@@ -2787,13 +2845,19 @@
                                                 },
                                                 "properties": {
                                                     "family_name": {
-                                                        "type": "keyword"
+                                                        "type": "keyword",
+                                                        "label.cs": "Příjmení",
+                                                        "label.en": "Family Name"
                                                     },
                                                     "given_name": {
-                                                        "type": "keyword"
+                                                        "type": "keyword",
+                                                        "label.cs": "Jméno",
+                                                        "label.en": "Name"
                                                     },
                                                     "identifiers": {
                                                         "type": "array",
+                                                        "label.cs": "Identifikátory",
+                                                        "label.en": "Identifiers",
                                                         "items": {
                                                             "type": "object",
                                                             "marshmallow": {
@@ -2810,23 +2874,31 @@
                                                             },
                                                             "properties": {
                                                                 "identifier": {
-                                                                    "type": "keyword"
+                                                                    "type": "keyword",
+                                                                    "label.cs": "Identifikátor",
+                                                                    "label.en": "Identifier"
                                                                 },
                                                                 "scheme": {
-                                                                    "type": "keyword"
+                                                                    "type": "keyword",
+                                                                    "label.cs": "Schéma",
+                                                                    "label.en": "Scheme"
                                                                 }
                                                             }
                                                         }
                                                     },
                                                     "name": {
-                                                        "type": "keyword"
+                                                        "type": "keyword",
+                                                        "label.cs": "Plné jméno",
+                                                        "label.en": "Full Name"
                                                     },
                                                     "type": {
                                                         "type": "keyword",
                                                         "enum": [
                                                             "personal",
                                                             "organizational"
-                                                        ]
+                                                        ],
+                                                        "label.cs": "Typ",
+                                                        "label.en": "Type"
                                                     }
                                                 }
                                             },
@@ -2848,8 +2920,8 @@
                                                     "unknown": "INCLUDE",
                                                     "generate": false
                                                 },
-                                                "label.cs": "Role přispěvatele",
-                                                "label.en": "Contributor's Role",
+                                                "label.cs": "Role",
+                                                "label.en": "Role",
                                                 "hint.cs": "Vyberte roli přispěvatele z nabídky (editor, ilustrátor…).",
                                                 "hint.en": "Choose the role of the contributor (editor, illustrator…).",
                                                 "imports": [
@@ -3993,11 +4065,6 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "type": "object",
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
-                    "uniqueItems": true,
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -4012,7 +4079,12 @@
                                 "type": "string"
                             }
                         }
-                    }
+                    },
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
+                    "type": "object",
+                    "uniqueItems": true
                 },
                 "ui": {
                     "marshmallow": {
