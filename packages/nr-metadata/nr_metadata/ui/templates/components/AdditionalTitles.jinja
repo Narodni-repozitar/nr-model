@@ -1,6 +1,14 @@
-{#def data #}
+{#def data, subtitleTypes=False #}
+
+{% set subtitle_types = subtitleTypes or  [
+  { "text": _("Alternative title"), "value": "alternativeTitle" },
+  { "text": _("Translated title"), "value": "translatedTitle" },
+  { "text": _("Subtitle"), "value": "subtitle" },
+  { "text": _("Other"), "value": "other" }
+] %}
+
 {% for title in data %}
-    <span title="{{ title.titleType }}">
+<span title="{{ (subtitle_types|selectattr('value', 'equalto', title.titleType)|first).text|default(title.titleType) }}">
         <div class="ui green basic label lang-tag">
         {{ title.title.lang | upper }}
         </div>
