@@ -9,6 +9,11 @@ class DocumentsSearchOptions(I18nRDMSearchOptions):
     facet_groups = {}
 
     facets = {
+        **getattr(I18nRDMSearchOptions, "facets", {}),
+        "record_status": facets.record_status,
+        "has_draft": facets.has_draft,
+        "expires_at": facets.expires_at,
+        "fork_version_id": facets.fork_version_id,
         "access_embargo_active": facets.access_embargo_active,
         "access_embargo_until": facets.access_embargo_until,
         "access_files": facets.access_files,
@@ -16,12 +21,15 @@ class DocumentsSearchOptions(I18nRDMSearchOptions):
         "access_status": facets.access_status,
         "metadata_abstract_cs": facets.metadata_abstract_cs,
         "metadata_abstract_en": facets.metadata_abstract_en,
+        "metadata_abstract": facets.metadata_abstract,
         "metadata_abstract_lang": facets.metadata_abstract_lang,
         "metadata_accessibility_cs": facets.metadata_accessibility_cs,
         "metadata_accessibility_en": facets.metadata_accessibility_en,
+        "metadata_accessibility": facets.metadata_accessibility,
         "metadata_accessibility_lang": facets.metadata_accessibility_lang,
         "metadata_additionalTitles_title_cs": facets.metadata_additionalTitles_title_cs,
         "metadata_additionalTitles_title_en": facets.metadata_additionalTitles_title_en,
+        "metadata_additionalTitles_title": facets.metadata_additionalTitles_title,
         "metadata_additionalTitles_title_lang": (
             facets.metadata_additionalTitles_title_lang
         ),
@@ -94,6 +102,7 @@ class DocumentsSearchOptions(I18nRDMSearchOptions):
         "metadata_languages": facets.metadata_languages,
         "metadata_methods_cs": facets.metadata_methods_cs,
         "metadata_methods_en": facets.metadata_methods_en,
+        "metadata_methods": facets.metadata_methods,
         "metadata_methods_lang": facets.metadata_methods_lang,
         "metadata_objectIdentifiers_identifier": (
             facets.metadata_objectIdentifiers_identifier
@@ -181,6 +190,7 @@ class DocumentsSearchOptions(I18nRDMSearchOptions):
         ),
         "metadata_subjects_subject_cs": facets.metadata_subjects_subject_cs,
         "metadata_subjects_subject_en": facets.metadata_subjects_subject_en,
+        "metadata_subjects_subject": facets.metadata_subjects_subject,
         "metadata_subjects_subject_lang": facets.metadata_subjects_subject_lang,
         "metadata_subjects_subjectScheme": facets.metadata_subjects_subjectScheme,
         "metadata_subjects_valueURI": facets.metadata_subjects_valueURI,
@@ -190,6 +200,7 @@ class DocumentsSearchOptions(I18nRDMSearchOptions):
         "metadata_systemIdentifiers_scheme": facets.metadata_systemIdentifiers_scheme,
         "metadata_technicalInfo_cs": facets.metadata_technicalInfo_cs,
         "metadata_technicalInfo_en": facets.metadata_technicalInfo_en,
+        "metadata_technicalInfo": facets.metadata_technicalInfo,
         "metadata_technicalInfo_lang": facets.metadata_technicalInfo_lang,
         "metadata_thesis_dateDefended": facets.metadata_thesis_dateDefended,
         "metadata_thesis_defended": facets.metadata_thesis_defended,
@@ -204,7 +215,4 @@ class DocumentsSearchOptions(I18nRDMSearchOptions):
         "syntheticFields_organizations": facets.syntheticFields_organizations,
         "syntheticFields_people": facets.syntheticFields_people,
         "syntheticFields_year": facets.syntheticFields_year,
-        **getattr(I18nRDMSearchOptions, "facets", {}),
-        "record_status": facets.record_status,
-        "has_draft": facets.has_draft,
     }

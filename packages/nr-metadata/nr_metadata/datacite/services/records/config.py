@@ -15,7 +15,10 @@ from oarepo_runtime.services.config import (
     has_published_record,
     is_published_record,
 )
-from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
+from oarepo_runtime.services.config.service import (
+    PermissionsPresetsConfigMixin,
+    SearchAllConfigMixin,
+)
 from oarepo_runtime.services.records import pagination_links_html
 from oarepo_workflows.services.components.workflow import WorkflowComponent
 
@@ -29,7 +32,9 @@ from nr_metadata.datacite.services.records.schema import DataCiteRecordSchema
 from nr_metadata.datacite.services.records.search import DataciteSearchOptions
 
 
-class DataciteServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig):
+class DataciteServiceConfig(
+    SearchAllConfigMixin, PermissionsPresetsConfigMixin, RDMRecordServiceConfig
+):
     """DataciteRecord service config."""
 
     result_item_cls = DataciteRecordItem

@@ -829,6 +829,10 @@
             }
         },
         "pids": {
+            "type": "object",
+            "propertyNames": {
+                "pattern": "^[a-z_-][a-z0-9_-]*$"
+            },
             "uniqueItems": true,
             "additionalProperties": {
                 "type": "object",
@@ -844,11 +848,7 @@
                         "type": "string"
                     }
                 }
-            },
-            "propertyNames": {
-                "pattern": "^[a-z_-][a-z0-9_-]*$"
-            },
-            "type": "object"
+            }
         },
         "state": {
             "type": "string"

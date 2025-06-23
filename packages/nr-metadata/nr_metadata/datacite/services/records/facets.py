@@ -4,6 +4,14 @@ from invenio_records_resources.services.records.facets import TermsFacet
 from oarepo_runtime.i18n import lazy_gettext as _
 from oarepo_runtime.services.facets.date import DateTimeFacet
 
+record_status = TermsFacet(field="record_status", label=_("record_status"))
+
+has_draft = TermsFacet(field="has_draft", label=_("has_draft"))
+
+expires_at = DateTimeFacet(field="expires_at", label=_("expires_at.label"))
+
+fork_version_id = TermsFacet(field="fork_version_id", label=_("fork_version_id.label"))
+
 access_embargo_active = TermsFacet(
     field="access.embargo.active", label=_("access/embargo/active.label")
 )
@@ -662,8 +670,3 @@ state = TermsFacet(field="state", label=_("state.label"))
 state_timestamp = DateTimeFacet(
     field="state_timestamp", label=_("state_timestamp.label")
 )
-
-
-record_status = TermsFacet(field="record_status", label=_("record_status"))
-
-has_draft = TermsFacet(field="has_draft", label=_("has_draft"))

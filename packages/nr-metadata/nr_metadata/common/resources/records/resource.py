@@ -1,7 +1,7 @@
-from invenio_drafts_resources.resources import RecordResource
+from oarepo_runtime.resources.resource import BaseRecordResource
 
 
-class CommonResource(RecordResource):
+class CommonResource(BaseRecordResource):
     """CommonRecord resource."""
 
     # here you can for example redefine

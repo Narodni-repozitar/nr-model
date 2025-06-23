@@ -2,6 +2,7 @@ import re
 from functools import cached_property
 
 from invenio_rdm_records.services.pids import PIDManager, PIDsService
+from oarepo_runtime.config import build_config
 
 from nr_metadata.data import config
 
@@ -58,15 +59,11 @@ class DataExt:
 
     @cached_property
     def service_records(self):
-        service_config = config.DATA_RECORD_SERVICE_CONFIG
-        if hasattr(service_config, "build"):
-            config_class = service_config.build(self.app)
-        else:
-            config_class = service_config()
+        service_config = build_config(config.DATA_RECORD_SERVICE_CONFIG, self.app)
 
         service_kwargs = {
-            "pids_service": PIDsService(config_class, PIDManager),
-            "config": config_class,
+            "pids_service": PIDsService(service_config, PIDManager),
+            "config": service_config,
         }
         return config.DATA_RECORD_SERVICE_CLASS(
             **service_kwargs,
@@ -78,7 +75,7 @@ class DataExt:
     def resource_records(self):
         return config.DATA_RECORD_RESOURCE_CLASS(
             service=self.service_records,
-            config=config.DATA_RECORD_RESOURCE_CONFIG(),
+            config=build_config(config.DATA_RECORD_RESOURCE_CONFIG, self.app),
         )
 
     def init_app_callback_rdm_models(self, app):

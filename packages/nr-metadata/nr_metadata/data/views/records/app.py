@@ -2,17 +2,20 @@ from flask import Blueprint
 
 
 def create_app_blueprint(app):
-    blueprint = Blueprint("data_app", __name__, url_prefix="/nr-metadata-data/")
-    blueprint.record_once(init_create_app_blueprint)
+    with app.app_context():
+        blueprint = Blueprint("data_app", __name__, url_prefix="/nr-metadata-data/")
+        blueprint.record_once(init_create_app_blueprint)
 
-    # calls record_once for all other functions starting with "init_addons_"
-    # https://stackoverflow.com/questions/58785162/how-can-i-call-function-with-string-value-that-equals-to-function-name
-    funcs = globals()
-    funcs = [
-        v for k, v in funcs.items() if k.startswith("init_addons_data") and callable(v)
-    ]
-    for func in funcs:
-        blueprint.record_once(func)
+        # calls record_once for all other functions starting with "init_addons_"
+        # https://stackoverflow.com/questions/58785162/how-can-i-call-function-with-string-value-that-equals-to-function-name
+        funcs = globals()
+        funcs = [
+            v
+            for k, v in funcs.items()
+            if k.startswith("init_addons_data") and callable(v)
+        ]
+        for func in funcs:
+            blueprint.record_once(func)
 
     return blueprint
 

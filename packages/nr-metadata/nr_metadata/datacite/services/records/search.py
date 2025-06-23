@@ -9,6 +9,11 @@ class DataciteSearchOptions(I18nRDMSearchOptions):
     facet_groups = {}
 
     facets = {
+        **getattr(I18nRDMSearchOptions, "facets", {}),
+        "record_status": facets.record_status,
+        "has_draft": facets.has_draft,
+        "expires_at": facets.expires_at,
+        "fork_version_id": facets.fork_version_id,
         "access_embargo_active": facets.access_embargo_active,
         "access_embargo_until": facets.access_embargo_until,
         "access_files": facets.access_files,
@@ -306,7 +311,4 @@ class DataciteSearchOptions(I18nRDMSearchOptions):
         "metadata_version": facets.metadata_version,
         "state": facets.state,
         "state_timestamp": facets.state_timestamp,
-        **getattr(I18nRDMSearchOptions, "facets", {}),
-        "record_status": facets.record_status,
-        "has_draft": facets.has_draft,
     }

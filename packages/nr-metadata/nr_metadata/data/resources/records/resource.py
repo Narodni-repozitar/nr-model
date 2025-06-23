@@ -1,7 +1,7 @@
-from invenio_drafts_resources.resources import RecordResource
+from oarepo_runtime.resources.resource import BaseRecordResource
 
 
-class DataResource(RecordResource):
+class DataResource(BaseRecordResource):
     """DataRecord resource."""
 
     # here you can for example redefine
