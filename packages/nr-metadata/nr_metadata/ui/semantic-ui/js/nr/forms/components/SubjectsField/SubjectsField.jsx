@@ -9,7 +9,7 @@ import { ExternalSubjects } from "./ExternalSubjects";
 import { KeywordSubjects } from "./KeywordSubjects";
 import { useFieldData } from "@js/oarepo_ui";
 
-export const SubjectsField = ({ fieldPath }) => {
+export const SubjectsField = ({ fieldPath, hasLocalLanguageSelectField }) => {
   const { values, setFieldValue } = useFormikContext();
   const subjects = getIn(values, fieldPath, []);
   const externalSubjects = subjects.filter(
@@ -71,6 +71,7 @@ export const SubjectsField = ({ fieldPath }) => {
           handleSubjectAdd={handleSubjectAdd}
           fieldPath={fieldPath}
           helpText={helpText}
+          hasLocalLanguageSelectField={hasLocalLanguageSelectField}
           trigger={
             <Form.Button
               className="array-field-add-button rel-mt-1"
@@ -90,4 +91,5 @@ export const SubjectsField = ({ fieldPath }) => {
 
 SubjectsField.propTypes = {
   fieldPath: PropTypes.string.isRequired,
+  hasLocalLanguageSelectField: PropTypes.bool,
 };

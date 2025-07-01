@@ -22,7 +22,12 @@ const SubjectsValidationSchema = Yup.object({
   ),
 });
 
-export const SubjectsModal = ({ trigger, handleSubjectAdd, helpText }) => {
+export const SubjectsModal = ({
+  trigger,
+  handleSubjectAdd,
+  helpText,
+  hasLocalLanguageSelectField,
+}) => {
   const [open, setOpen] = React.useState(false);
   const [saveAndContinueLabel, setSaveAndContinueLabel] = React.useState(
     i18next.t("Save and add another")
@@ -116,6 +121,7 @@ export const SubjectsModal = ({ trigger, handleSubjectAdd, helpText }) => {
                       fieldPath="subject"
                       lngFieldWidth={3}
                       showEmptyValue
+                      hasLocalLanguageSelectField={hasLocalLanguageSelectField}
                       displayFirstInputRemoveButton={false}
                     />
                   </FieldDataProvider>
@@ -176,4 +182,5 @@ SubjectsModal.propTypes = {
   trigger: PropTypes.node,
   handleSubjectAdd: PropTypes.func.isRequired,
   helpText: PropTypes.string,
+  hasLocalLanguageSelectField: PropTypes.bool,
 };
