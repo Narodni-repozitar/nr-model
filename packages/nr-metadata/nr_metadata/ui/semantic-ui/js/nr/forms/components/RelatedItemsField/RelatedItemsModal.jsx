@@ -30,7 +30,8 @@ import _isEmpty from "lodash/isEmpty";
 
 const RelatedItemsSchema = Yup.object({
   itemTitle: Yup.string().required(requiredMessage).label(i18next.t("Title")),
-  itemURL: Yup.string().url(i18next.t("Please provide an URL in valid format")),
+  itemURL: Yup.string()
+  .url(i18next.t("Please provide an URL in valid format")),
   itemYear: Yup.number()
     .typeError(i18next.t("Year must be a number."))
     .test("len", i18next.t("Year must be in format YYYY."), (val) => {
@@ -137,6 +138,7 @@ export const RelatedItemsModal = ({
         handleSubmit,
         validateField,
         setFieldTouched,
+        setFieldValue,
       }) => {
         const handleBlur = handleValidateAndBlur(
           validateField,
@@ -145,7 +147,9 @@ export const RelatedItemsModal = ({
 
         const handleAction = (action) => {
           setAction(action);
-          handleSubmit();
+          // We need to wait for the state to be set before submitting in order to avoid
+          // issues with validation
+          setTimeout(handleSubmit, 0);
         };
 
         return (
@@ -198,7 +202,17 @@ export const RelatedItemsModal = ({
                 />
                 <TextField
                   fieldPath="itemURL"
-                  onBlur={() => handleBlur("itemURL")}
+                  onBlur={() => {
+                    const url = getIn(values, "itemURL");
+                    if (
+                      url &&
+                      !url.startsWith("http://") &&
+                      !url.startsWith("https://")
+                    ) {
+                      setFieldValue("itemURL", `https://${url}`);
+                    }
+                    handleBlur("itemURL");
+                  }}
                 />
                 <GroupField widths="equal">
                   <TextField
