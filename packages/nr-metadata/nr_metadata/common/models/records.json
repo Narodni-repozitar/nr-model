@@ -131,12 +131,57 @@
         },
         "ext-resource": {
             "service-kwargs": {
-                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(config_class, {{invenio_rdm_records.services.pids.PIDManager}})"
+                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(service_config, {{invenio_rdm_records.services.pids.PIDManager}})"
             },
             "generate": true,
             "skip": false
         },
         "model-name": "Common",
+        "resource": {
+            "base-classes": [
+                "oarepo_runtime.resources.resource.BaseRecordResource"
+            ],
+            "generate": true,
+            "config-key": "COMMON_RECORD_RESOURCE_CLASS",
+            "module": "nr_metadata.common.resources.records.resource",
+            "class": "nr_metadata.common.resources.records.resource.CommonResource",
+            "proxy": "current_resource",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "resource-config": {
+            "base-classes": [
+                "oarepo_runtime.resources.config.BaseRecordResourceConfig"
+            ],
+            "generate": true,
+            "base-url": "/nr-metadata-common/",
+            "base-html-url": "/nr-metadata-common/",
+            "config-key": "COMMON_RECORD_RESOURCE_CONFIG",
+            "module": "nr_metadata.common.resources.records.config",
+            "class": "nr_metadata.common.resources.records.config.CommonResourceConfig",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "search-options": {
+            "module": "nr_metadata.common.services.records.search",
+            "class": "nr_metadata.common.services.records.search.CommonSearchOptions",
+            "generate": true,
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.search.I18nRDMSearchOptions"
+            ],
+            "imports": [],
+            "fields": {},
+            "sort-options-field": "sort_options",
+            "versions": {
+                "class": "nr_metadata.common.CommonVersionsSearchOptions",
+                "base-classes": [
+                    "invenio_rdm_records.services.config.RDMSearchVersionsOptions"
+                ]
+            }
+        },
         "record": {
             "fields": {
                 "state": "{{oarepo_workflows.records.systemfields.state.RecordStateField}}(initial='published')",
@@ -218,71 +263,14 @@
             "module": "nr_metadata.common.proxies",
             "generate": true
         },
-        "resource": {
-            "base-classes": [
-                "invenio_drafts_resources.resources.RecordResource"
-            ],
-            "generate": true,
-            "config-key": "COMMON_RECORD_RESOURCE_CLASS",
-            "module": "nr_metadata.common.resources.records.resource",
-            "class": "nr_metadata.common.resources.records.resource.CommonResource",
-            "proxy": "current_resource",
-            "extra-code": "",
-            "imports": [],
-            "additional-args": []
-        },
-        "resource-config": {
-            "base-classes": [
-                "invenio_drafts_resources.resources.RecordResourceConfig"
-            ],
-            "generate": true,
-            "base-url": "/nr-metadata-common/",
-            "base-html-url": "/nr-metadata-common/",
-            "config-key": "COMMON_RECORD_RESOURCE_CONFIG",
-            "module": "nr_metadata.common.resources.records.config",
-            "class": "nr_metadata.common.resources.records.config.CommonResourceConfig",
-            "extra-code": "",
-            "imports": [],
-            "additional-args": []
-        },
-        "search-options": {
-            "module": "nr_metadata.common.services.records.search",
-            "class": "nr_metadata.common.services.records.search.CommonSearchOptions",
-            "generate": true,
-            "extra-code": "",
-            "base-classes": [
-                "oarepo_runtime.services.search.I18nRDMSearchOptions"
-            ],
-            "imports": [],
-            "fields": {},
-            "sort-options-field": "sort_options",
-            "versions": {
-                "class": "nr_metadata.common.CommonVersionsSearchOptions",
-                "base-classes": [
-                    "invenio_rdm_records.services.config.RDMSearchVersionsOptions"
-                ]
-            }
-        },
-        "json-serializer": {
-            "module": "nr_metadata.common.resources.records.ui",
-            "class": "nr_metadata.common.resources.records.ui.CommonUIJSONSerializer",
-            "base-classes": [
-                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
-            ],
-            "imports": [],
-            "extra-code": "",
-            "generate": true,
-            "list_schema_cls": "flask_resources.BaseListSchema",
-            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
-            "schema-context-args": {
-                "\"object_key\"": "\"ui\"",
-                "\"identity\"": "{{ flask.g{g.identity} }}"
-            }
+        "translations": {
+            "module": "nr_metadata.common.translations",
+            "alias": "common"
         },
         "service": {
             "imports": [],
             "base-classes": [
-                "invenio_rdm_records.services.services.RDMRecordService"
+                "oarepo_runtime.services.service.SearchAllRecordsService"
             ],
             "generate": true,
             "config-key": "COMMON_RECORD_SERVICE_CLASS",
@@ -297,6 +285,7 @@
         },
         "service-config": {
             "base-classes": [
+                "oarepo_runtime.services.config.service.SearchAllConfigMixin",
                 "oarepo_runtime.services.config.service.PermissionsPresetsConfigMixin",
                 "invenio_rdm_records.services.config.RDMRecordServiceConfig"
             ],
@@ -313,39 +302,21 @@
             "additional-args": [],
             "search-item-links-template-cls": "invenio_records_resources.services.LinksTemplate"
         },
-        "translations": {
-            "module": "nr_metadata.common.translations",
-            "alias": "common"
-        },
-        "json-schema-settings": {
-            "generate": true,
-            "alias": "common",
-            "version": "1.0.0",
-            "module": "nr_metadata.common.records.jsonschemas",
-            "name": "common-1.0.0.json",
-            "file": "nr_metadata/common/records/jsonschemas/common-1.0.0.json"
-        },
-        "record-list": {
-            "generate": true,
-            "module": "nr_metadata.common.services.records.results",
-            "class": "nr_metadata.common.services.records.results.CommonRecordList",
-            "extra-code": "",
+        "json-serializer": {
+            "module": "nr_metadata.common.resources.records.ui",
+            "class": "nr_metadata.common.resources.records.ui.CommonUIJSONSerializer",
             "base-classes": [
-                "oarepo_runtime.services.results.RecordList"
+                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
             ],
-            "components": [],
-            "imports": []
-        },
-        "record-item": {
-            "generate": true,
-            "module": "nr_metadata.common.services.records.results",
-            "class": "nr_metadata.common.services.records.results.CommonRecordItem",
+            "imports": [],
             "extra-code": "",
-            "base-classes": [
-                "oarepo_runtime.services.results.RecordItem"
-            ],
-            "components": [],
-            "imports": []
+            "generate": true,
+            "list_schema_cls": "flask_resources.BaseListSchema",
+            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
+            "schema-context-args": {
+                "\"object_key\"": "\"ui\"",
+                "\"identity\"": "{{ flask.g{g.identity} }}"
+            }
         },
         "record-metadata": {
             "generate": true,
@@ -411,23 +382,42 @@
             ],
             "imports": []
         },
+        "json-schema-settings": {
+            "generate": true,
+            "alias": "common",
+            "version": "1.0.0",
+            "module": "nr_metadata.common.records.jsonschemas",
+            "name": "common-1.0.0.json",
+            "file": "nr_metadata/common/records/jsonschemas/common-1.0.0.json"
+        },
+        "record-list": {
+            "generate": true,
+            "module": "nr_metadata.common.services.records.results",
+            "class": "nr_metadata.common.services.records.results.CommonRecordList",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordList"
+            ],
+            "components": [],
+            "imports": []
+        },
+        "record-item": {
+            "generate": true,
+            "module": "nr_metadata.common.services.records.results",
+            "class": "nr_metadata.common.services.records.results.CommonRecordItem",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordItem"
+            ],
+            "components": [],
+            "imports": []
+        },
         "multilingual-dumper": {
             "generate": true,
             "module": "nr_metadata.common.records.dumpers.multilingual",
             "class": "nr_metadata.common.records.dumpers.multilingual.MultilingualSearchDumperExt",
             "base-classes": [
                 "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
-        },
-        "edtf-interval-dumper": {
-            "generate": true,
-            "module": "nr_metadata.common.records.dumpers.edtf",
-            "class": "nr_metadata.common.records.dumpers.edtf.CommonEDTFIntervalDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
             ],
             "extra-code": "",
             "extensions": [],
@@ -460,6 +450,17 @@
             "name": "parent-v1.0.0.json",
             "file": "nr_metadata/common/records/jsonschemas/parent-v1.0.0.json",
             "generate": true
+        },
+        "edtf-interval-dumper": {
+            "generate": true,
+            "module": "nr_metadata.common.records.dumpers.edtf",
+            "class": "nr_metadata.common.records.dumpers.edtf.CommonEDTFIntervalDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
         },
         "sortable": [],
         "properties": {
@@ -2437,7 +2438,6 @@
                         "help.en": "Write down information about the resource related to the document you are describing here (e.g. if you are describing an article, you can identify the journal in which the article was published).",
                         "items": {
                             "type": "object",
-                            "description": "linkdata, propojení přidružených dokumentů a datasetů.",
                             "ui": {
                                 "marshmallow": {
                                     "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRRelatedItemUISchema",
@@ -2449,6 +2449,7 @@
                                 "class": "nr_metadata.common.services.records.schema_datatypes.NRRelatedItemSchema",
                                 "generate": true
                             },
+                            "description": "linkdata, propojení přidružených dokumentů a datasetů.",
                             "label.cs": "Vazba na související zdroj:",
                             "label.en": "Link to Related Resource:",
                             "properties": {
@@ -3098,7 +3099,6 @@
                                 "itemRelationType": {
                                     "type": "vocabulary",
                                     "vocabulary-type": "item-relation-types",
-                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "ui": {
                                         "marshmallow": {
                                             "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRItemRelationTypeVocabularyUISchema",
@@ -3113,6 +3113,7 @@
                                         "unknown": "INCLUDE",
                                         "generate": true
                                     },
+                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "label.cs": "Typ vazby",
                                     "label.en": "Relation Type",
                                     "hint.cs": "Vyberte typ vazby mezi popisovaným dokumentem a souvisejícím zdrojem.",
@@ -4065,6 +4066,10 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
+                    "type": "object",
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
                     "uniqueItems": true,
                     "additionalProperties": {
                         "type": "object",
@@ -4080,11 +4085,7 @@
                                 "type": "string"
                             }
                         }
-                    },
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
-                    "type": "object"
+                    }
                 },
                 "ui": {
                     "marshmallow": {

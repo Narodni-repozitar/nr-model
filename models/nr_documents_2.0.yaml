@@ -50,6 +50,11 @@ NRDocumentMetadata:
           ^label.en: Study Fields
     externalLocation:
       use: "nr-datatypes#NRExternalLocation"
+      # adding label, hint etc. because it is not propagating from nr_datatypes, should be fixed when we switch to new model builder?
+      label.cs: Externí umístění
+      label.en: External Location
+      help.cs: "Vložte URL adresu dalšího umístění dokumentu (př. jiný repozitář, databáze, webová stránka)."
+      help.en: "Provide the URL link for another location of the document (e.g. another repository, database, website)."
     publishers[]:
       # volný zápis vydavatele
       type: fulltext

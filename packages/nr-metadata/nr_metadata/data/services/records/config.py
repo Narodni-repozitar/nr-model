@@ -15,7 +15,10 @@ from oarepo_runtime.services.config import (
     has_published_record,
     is_published_record,
 )
-from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
+from oarepo_runtime.services.config.service import (
+    PermissionsPresetsConfigMixin,
+    SearchAllConfigMixin,
+)
 from oarepo_runtime.services.records import pagination_links_html
 from oarepo_workflows.services.components.workflow import WorkflowComponent
 
@@ -26,7 +29,9 @@ from nr_metadata.data.services.records.schema import NRDataRecordSchema
 from nr_metadata.data.services.records.search import DataSearchOptions
 
 
-class DataServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig):
+class DataServiceConfig(
+    SearchAllConfigMixin, PermissionsPresetsConfigMixin, RDMRecordServiceConfig
+):
     """DataRecord service config."""
 
     result_item_cls = DataRecordItem

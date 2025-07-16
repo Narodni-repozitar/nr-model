@@ -15,7 +15,10 @@ from oarepo_runtime.services.config import (
     has_published_record,
     is_published_record,
 )
-from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
+from oarepo_runtime.services.config.service import (
+    PermissionsPresetsConfigMixin,
+    SearchAllConfigMixin,
+)
 from oarepo_runtime.services.records import pagination_links_html
 from oarepo_workflows.services.components.workflow import WorkflowComponent
 
@@ -29,7 +32,9 @@ from nr_metadata.common.services.records.schema_common import NRCommonRecordSche
 from nr_metadata.common.services.records.search import CommonSearchOptions
 
 
-class CommonServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig):
+class CommonServiceConfig(
+    SearchAllConfigMixin, PermissionsPresetsConfigMixin, RDMRecordServiceConfig
+):
     """CommonRecord service config."""
 
     result_item_cls = CommonRecordItem

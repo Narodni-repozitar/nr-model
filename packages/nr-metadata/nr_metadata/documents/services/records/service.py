@@ -1,5 +1,5 @@
-from invenio_rdm_records.services.services import RDMRecordService
+from oarepo_runtime.services.service import SearchAllRecordsService
 
 
-class DocumentsService(RDMRecordService):
+class DocumentsService(SearchAllRecordsService):
     """DocumentsRecord service."""

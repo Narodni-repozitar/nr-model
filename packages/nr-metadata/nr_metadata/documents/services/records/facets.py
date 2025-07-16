@@ -2,6 +2,7 @@
 
 from invenio_records_resources.services.records.facets import TermsFacet
 from oarepo_runtime.i18n import lazy_gettext as _
+from oarepo_runtime.services.facets import MultilingualFacet
 from oarepo_runtime.services.facets.date import DateTimeFacet
 from oarepo_runtime.services.facets.nested_facet import NestedLabeledFacet
 from oarepo_runtime.services.facets.year_histogram import YearAutoHistogramFacet
@@ -11,6 +12,14 @@ from oarepo_vocabularies.services.facets import (
 )
 
 from nr_metadata.services.records.facets import KeywordsFacet
+
+record_status = TermsFacet(field="record_status", label=_("record_status"))
+
+has_draft = TermsFacet(field="has_draft", label=_("has_draft"))
+
+expires_at = DateTimeFacet(field="expires_at", label=_("expires_at.label"))
+
+fork_version_id = TermsFacet(field="fork_version_id", label=_("fork_version_id.label"))
 
 access_embargo_active = TermsFacet(
     field="access.embargo.active", label=_("access/embargo/active.label")
@@ -27,11 +36,16 @@ access_record = TermsFacet(field="access.record", label=_("access/record.label")
 access_status = TermsFacet(field="access.status", label=_("access/status.label"))
 
 metadata_abstract_cs = TermsFacet(
-    field="metadata.abstract.cs.keyword", label=_("metadata/abstract.label")
+    field="metadata.abstract_cs.keyword", label=_("metadata/abstract.label")
 )
 
 metadata_abstract_en = TermsFacet(
-    field="metadata.abstract.en.keyword", label=_("metadata/abstract.label")
+    field="metadata.abstract_en.keyword", label=_("metadata/abstract.label")
+)
+
+metadata_abstract = MultilingualFacet(
+    lang_facets={"cs": metadata_abstract_cs, "en": metadata_abstract_en},
+    label=_("metadata/abstract.label"),
 )
 
 metadata_abstract_lang = NestedLabeledFacet(
@@ -42,11 +56,16 @@ metadata_abstract_lang = NestedLabeledFacet(
 )
 
 metadata_accessibility_cs = TermsFacet(
-    field="metadata.accessibility.cs.keyword", label=_("metadata/accessibility.label")
+    field="metadata.accessibility_cs.keyword", label=_("metadata/accessibility.label")
 )
 
 metadata_accessibility_en = TermsFacet(
-    field="metadata.accessibility.en.keyword", label=_("metadata/accessibility.label")
+    field="metadata.accessibility_en.keyword", label=_("metadata/accessibility.label")
+)
+
+metadata_accessibility = MultilingualFacet(
+    lang_facets={"cs": metadata_accessibility_cs, "en": metadata_accessibility_en},
+    label=_("metadata/accessibility.label"),
 )
 
 metadata_accessibility_lang = NestedLabeledFacet(
@@ -58,12 +77,20 @@ metadata_accessibility_lang = NestedLabeledFacet(
 )
 
 metadata_additionalTitles_title_cs = TermsFacet(
-    field="metadata.additionalTitles.title.cs.keyword",
+    field="metadata.additionalTitles.title_cs.keyword",
     label=_("metadata/additionalTitles/title.label"),
 )
 
 metadata_additionalTitles_title_en = TermsFacet(
-    field="metadata.additionalTitles.title.en.keyword",
+    field="metadata.additionalTitles.title_en.keyword",
+    label=_("metadata/additionalTitles/title.label"),
+)
+
+metadata_additionalTitles_title = MultilingualFacet(
+    lang_facets={
+        "cs": metadata_additionalTitles_title_cs,
+        "en": metadata_additionalTitles_title_en,
+    },
     label=_("metadata/additionalTitles/title.label"),
 )
 
@@ -226,11 +253,16 @@ metadata_languages = VocabularyFacet(
 )
 
 metadata_methods_cs = TermsFacet(
-    field="metadata.methods.cs.keyword", label=_("metadata/methods.label")
+    field="metadata.methods_cs.keyword", label=_("metadata/methods.label")
 )
 
 metadata_methods_en = TermsFacet(
-    field="metadata.methods.en.keyword", label=_("metadata/methods.label")
+    field="metadata.methods_en.keyword", label=_("metadata/methods.label")
+)
+
+metadata_methods = MultilingualFacet(
+    lang_facets={"cs": metadata_methods_cs, "en": metadata_methods_en},
+    label=_("metadata/methods.label"),
 )
 
 metadata_methods_lang = NestedLabeledFacet(
@@ -433,12 +465,20 @@ metadata_subjects_classificationCode = TermsFacet(
 )
 
 metadata_subjects_subject_cs = TermsFacet(
-    field="metadata.subjects.subject.cs.keyword",
+    field="metadata.subjects.subject_cs.keyword",
     label=_("metadata/subjects/subject.label"),
 )
 
 metadata_subjects_subject_en = TermsFacet(
-    field="metadata.subjects.subject.en.keyword",
+    field="metadata.subjects.subject_en.keyword",
+    label=_("metadata/subjects/subject.label"),
+)
+
+metadata_subjects_subject = MultilingualFacet(
+    lang_facets={
+        "cs": metadata_subjects_subject_cs,
+        "en": metadata_subjects_subject_en,
+    },
     label=_("metadata/subjects/subject.label"),
 )
 
@@ -470,11 +510,16 @@ metadata_systemIdentifiers_scheme = TermsFacet(
 )
 
 metadata_technicalInfo_cs = TermsFacet(
-    field="metadata.technicalInfo.cs.keyword", label=_("metadata/technicalInfo.label")
+    field="metadata.technicalInfo_cs.keyword", label=_("metadata/technicalInfo.label")
 )
 
 metadata_technicalInfo_en = TermsFacet(
-    field="metadata.technicalInfo.en.keyword", label=_("metadata/technicalInfo.label")
+    field="metadata.technicalInfo_en.keyword", label=_("metadata/technicalInfo.label")
+)
+
+metadata_technicalInfo = MultilingualFacet(
+    lang_facets={"cs": metadata_technicalInfo_cs, "en": metadata_technicalInfo_en},
+    label=_("metadata/technicalInfo.label"),
 )
 
 metadata_technicalInfo_lang = NestedLabeledFacet(
@@ -537,8 +582,3 @@ syntheticFields_people = TermsFacet(
 syntheticFields_year = YearAutoHistogramFacet(
     field="syntheticFields.year", label=_("syntheticFields/year.label")
 )
-
-
-record_status = TermsFacet(field="record_status", label=_("record_status"))
-
-has_draft = TermsFacet(field="has_draft", label=_("has_draft"))

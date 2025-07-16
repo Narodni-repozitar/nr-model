@@ -1,14 +1,14 @@
 import importlib_metadata
 from flask_resources.serializers.json import JSONSerializer
-from invenio_drafts_resources.resources import RecordResourceConfig
 from invenio_records_resources.resources.records.headers import etag_headers
 from oarepo_runtime.i18n import lazy_gettext as _
+from oarepo_runtime.resources.config import BaseRecordResourceConfig
 from oarepo_runtime.resources.responses import ExportableResponseHandler
 
 from nr_metadata.common.resources.records.ui import CommonUIJSONSerializer
 
 
-class CommonResourceConfig(RecordResourceConfig):
+class CommonResourceConfig(BaseRecordResourceConfig):
     """CommonRecord resource config."""
 
     blueprint_name = "common"
