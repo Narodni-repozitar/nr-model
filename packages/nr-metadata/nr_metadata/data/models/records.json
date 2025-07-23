@@ -263,10 +263,6 @@
             "module": "nr_metadata.data.proxies",
             "generate": true
         },
-        "translations": {
-            "module": "nr_metadata.data.translations",
-            "alias": "data"
-        },
         "service": {
             "imports": [],
             "base-classes": [
@@ -301,6 +297,10 @@
             ],
             "additional-args": [],
             "search-item-links-template-cls": "invenio_records_resources.services.LinksTemplate"
+        },
+        "translations": {
+            "module": "nr_metadata.data.translations",
+            "alias": "data"
         },
         "json-serializer": {
             "module": "nr_metadata.data.resources.records.ui",
@@ -412,17 +412,6 @@
             "components": [],
             "imports": []
         },
-        "multilingual-dumper": {
-            "generate": true,
-            "module": "nr_metadata.data.records.dumpers.multilingual",
-            "class": "nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
-        },
         "draft-parent-record": {
             "class": "nr_metadata.data.records.api.DataParentRecord",
             "base-classes": [
@@ -450,6 +439,25 @@
             "name": "parent-v1.0.0.json",
             "file": "nr_metadata/data/records/jsonschemas/parent-v1.0.0.json",
             "generate": true
+        },
+        "parent-record-ui-marshmallow": {
+            "module": "nr_metadata.data.services.records.ui_schema",
+            "class": "nr_metadata.data.services.records.ui_schema.GeneratedParentUISchema",
+            "generate": false,
+            "base-classes": [
+                "invenio_drafts_resources.services.records.schema.ParentSchema"
+            ]
+        },
+        "multilingual-dumper": {
+            "generate": true,
+            "module": "nr_metadata.data.records.dumpers.multilingual",
+            "class": "nr_metadata.data.records.dumpers.multilingual.MultilingualSearchDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
         },
         "edtf-interval-dumper": {
             "generate": true,
@@ -2074,8 +2082,8 @@
                                         "generate": true,
                                         "class": "nr_metadata.data.services.records.schema.AwardSchema"
                                     },
-                                    "label.cs": "Číslo projektu",
-                                    "label.en": "Award number",
+                                    "label.cs": "Název projektu",
+                                    "label.en": "Project name",
                                     "imports": [
                                         {
                                             "import": "oarepo_vocabularies.records.api.Vocabulary"
@@ -2248,11 +2256,11 @@
                                             "model": {
                                                 "type": "object",
                                                 "json-schema": {
-                                                    "propertyNames": {
-                                                        "pattern": "^[a-z]{2}$"
-                                                    },
                                                     "additionalProperties": {
                                                         "type": "string"
+                                                    },
+                                                    "propertyNames": {
+                                                        "pattern": "^[a-z]{2}$"
                                                     }
                                                 },
                                                 "mapping": {
@@ -2337,11 +2345,11 @@
                                         "title": {
                                             "type": "object",
                                             "json-schema": {
-                                                "propertyNames": {
-                                                    "pattern": "^[a-z]{2}$"
-                                                },
                                                 "additionalProperties": {
                                                     "type": "string"
+                                                },
+                                                "propertyNames": {
+                                                    "pattern": "^[a-z]{2}$"
                                                 }
                                             },
                                             "mapping": {
@@ -5011,10 +5019,10 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
+                    "type": "object",
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
-                    "type": "object",
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,

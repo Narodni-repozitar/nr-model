@@ -581,8 +581,8 @@ NRFunders:
             type: keyword
       type: vocabulary
       vocabulary-type: awards
-      label.cs: Číslo projektu
-      label.en: Award number
+      label.cs: Název projektu
+      label.en: Project name
       class: oarepo_runtime.records.relations.UnstrictPIDRelation
 
 NRSubject:
