@@ -30,6 +30,8 @@ CommonMetadata:
         title:
           type: i18nStr
           required: true
+          label.cs: Další název
+          label.en: Additional Title
         titleType:
           type: keyword
           required: true

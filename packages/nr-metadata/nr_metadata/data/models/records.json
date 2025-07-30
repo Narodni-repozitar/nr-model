@@ -855,6 +855,8 @@
                                         "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
                                         "generate": false
                                     },
+                                    "label.cs": "Další název",
+                                    "label.en": "Additional Title",
                                     "sample": {
                                         "skip": false
                                     },
@@ -1745,6 +1747,8 @@
                                         "generate": false,
                                         "class": "nr_metadata.common.services.records.schema_datatypes.NRLocationSchema"
                                     },
+                                    "label.cs": "Místo konání akce",
+                                    "label.en": "Event Location",
                                     "properties": {
                                         "country": {
                                             "type": "vocabulary",
@@ -2256,11 +2260,11 @@
                                             "model": {
                                                 "type": "object",
                                                 "json-schema": {
-                                                    "additionalProperties": {
-                                                        "type": "string"
-                                                    },
                                                     "propertyNames": {
                                                         "pattern": "^[a-z]{2}$"
+                                                    },
+                                                    "additionalProperties": {
+                                                        "type": "string"
                                                     }
                                                 },
                                                 "mapping": {
@@ -2345,11 +2349,11 @@
                                         "title": {
                                             "type": "object",
                                             "json-schema": {
-                                                "additionalProperties": {
-                                                    "type": "string"
-                                                },
                                                 "propertyNames": {
                                                     "pattern": "^[a-z]{2}$"
+                                                },
+                                                "additionalProperties": {
+                                                    "type": "string"
                                                 }
                                             },
                                             "mapping": {
