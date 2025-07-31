@@ -397,11 +397,11 @@
                                         "type": "string"
                                     },
                                     "title": {
-                                        "additionalProperties": {
-                                            "type": "string"
-                                        },
                                         "propertyNames": {
                                             "pattern": "^[a-z]{2}$"
+                                        },
+                                        "additionalProperties": {
+                                            "type": "string"
                                         },
                                         "type": "object"
                                     }
@@ -915,6 +915,9 @@
         },
         "pids": {
             "uniqueItems": true,
+            "propertyNames": {
+                "pattern": "^[a-z_-][a-z0-9_-]*$"
+            },
             "type": "object",
             "additionalProperties": {
                 "type": "object",
@@ -930,9 +933,6 @@
                         "type": "string"
                     }
                 }
-            },
-            "propertyNames": {
-                "pattern": "^[a-z_-][a-z0-9_-]*$"
             }
         },
         "state": {
