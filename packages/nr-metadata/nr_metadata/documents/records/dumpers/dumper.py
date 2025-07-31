@@ -12,6 +12,6 @@ class DocumentsDumper(SearchDumper):
 
     extensions = [
         SystemFieldDumperExt(),
-        MultilingualSearchDumperExt(),
         DocumentsEDTFIntervalDumperExt(),
+        MultilingualSearchDumperExt(),
     ]

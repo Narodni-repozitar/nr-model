@@ -382,11 +382,11 @@
                                         "type": "string"
                                     },
                                     "title": {
-                                        "propertyNames": {
-                                            "pattern": "^[a-z]{2}$"
-                                        },
                                         "additionalProperties": {
                                             "type": "string"
+                                        },
+                                        "propertyNames": {
+                                            "pattern": "^[a-z]{2}$"
                                         },
                                         "type": "object"
                                     }
@@ -829,6 +829,7 @@
             }
         },
         "pids": {
+            "uniqueItems": true,
             "type": "object",
             "additionalProperties": {
                 "type": "object",
@@ -845,7 +846,6 @@
                     }
                 }
             },
-            "uniqueItems": true,
             "propertyNames": {
                 "pattern": "^[a-z_-][a-z0-9_-]*$"
             }

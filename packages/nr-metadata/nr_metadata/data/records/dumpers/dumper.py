@@ -10,6 +10,6 @@ class DataDumper(SearchDumper):
 
     extensions = [
         SystemFieldDumperExt(),
-        MultilingualSearchDumperExt(),
         DataEDTFIntervalDumperExt(),
+        MultilingualSearchDumperExt(),
     ]

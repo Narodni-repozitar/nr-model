@@ -113,6 +113,16 @@
             "extra-code": "",
             "module": "tests"
         },
+        "sample": {
+            "file": "data/sample_data.yaml"
+        },
+        "ext-resource": {
+            "service-kwargs": {
+                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(service_config, {{invenio_rdm_records.services.pids.PIDManager}})"
+            },
+            "generate": true,
+            "skip": false
+        },
         "permissions": {
             "presets": [
                 "workflow"
@@ -126,17 +136,53 @@
             ],
             "imports": []
         },
-        "sample": {
-            "file": "data/sample_data.yaml"
-        },
-        "ext-resource": {
-            "service-kwargs": {
-                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(service_config, {{invenio_rdm_records.services.pids.PIDManager}})"
-            },
-            "generate": true,
-            "skip": false
-        },
         "model-name": "Datacite",
+        "config": {
+            "generate": true,
+            "module": "nr_metadata.datacite.config",
+            "extra_code": "",
+            "imports": []
+        },
+        "ext": {
+            "generate": true,
+            "module": "nr_metadata.datacite.ext",
+            "class": "nr_metadata.datacite.ext.DataciteExt",
+            "base-classes": [],
+            "extra_code": "",
+            "alias": "nr_metadata.datacite",
+            "imports": []
+        },
+        "api-blueprint": {
+            "generate": true,
+            "alias": "datacite",
+            "extra_code": "",
+            "module": "nr_metadata.datacite.views.records.api",
+            "function": "nr_metadata.datacite.views.records.api.create_api_blueprint",
+            "imports": []
+        },
+        "app-blueprint": {
+            "generate": true,
+            "alias": "datacite",
+            "extra_code": "",
+            "module": "nr_metadata.datacite.views.records.app",
+            "function": "nr_metadata.datacite.views.records.app.create_app_blueprint",
+            "imports": []
+        },
+        "facets": {
+            "generate": true,
+            "module": "nr_metadata.datacite.services.records.facets",
+            "extra-code": "",
+            "groups": true
+        },
+        "saved-model": {
+            "file": "nr_metadata/datacite/models/records.json",
+            "module": "nr_metadata.datacite.models",
+            "alias": "datacite"
+        },
+        "proxy": {
+            "module": "nr_metadata.datacite.proxies",
+            "generate": true
+        },
         "resource": {
             "base-classes": [
                 "oarepo_runtime.resources.resource.BaseRecordResource"
@@ -217,51 +263,21 @@
             "class": "nr_metadata.datacite.services.records.schema.GeneratedParentSchema",
             "generate": true
         },
-        "config": {
-            "generate": true,
-            "module": "nr_metadata.datacite.config",
-            "extra_code": "",
-            "imports": []
-        },
-        "ext": {
-            "generate": true,
-            "module": "nr_metadata.datacite.ext",
-            "class": "nr_metadata.datacite.ext.DataciteExt",
-            "base-classes": [],
-            "extra_code": "",
-            "alias": "nr_metadata.datacite",
-            "imports": []
-        },
-        "api-blueprint": {
-            "generate": true,
-            "alias": "datacite",
-            "extra_code": "",
-            "module": "nr_metadata.datacite.views.records.api",
-            "function": "nr_metadata.datacite.views.records.api.create_api_blueprint",
-            "imports": []
-        },
-        "app-blueprint": {
-            "generate": true,
-            "alias": "datacite",
-            "extra_code": "",
-            "module": "nr_metadata.datacite.views.records.app",
-            "function": "nr_metadata.datacite.views.records.app.create_app_blueprint",
-            "imports": []
-        },
-        "facets": {
-            "generate": true,
-            "module": "nr_metadata.datacite.services.records.facets",
+        "json-serializer": {
+            "module": "nr_metadata.datacite.resources.records.ui",
+            "class": "nr_metadata.datacite.resources.records.ui.DataciteUIJSONSerializer",
+            "base-classes": [
+                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
+            ],
+            "imports": [],
             "extra-code": "",
-            "groups": true
-        },
-        "saved-model": {
-            "file": "nr_metadata/datacite/models/records.json",
-            "module": "nr_metadata.datacite.models",
-            "alias": "datacite"
-        },
-        "proxy": {
-            "module": "nr_metadata.datacite.proxies",
-            "generate": true
+            "generate": true,
+            "list_schema_cls": "flask_resources.BaseListSchema",
+            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
+            "schema-context-args": {
+                "\"object_key\"": "\"ui\"",
+                "\"identity\"": "{{ flask.g{g.identity} }}"
+            }
         },
         "service": {
             "imports": [],
@@ -302,21 +318,35 @@
             "module": "nr_metadata.datacite.translations",
             "alias": "datacite"
         },
-        "json-serializer": {
-            "module": "nr_metadata.datacite.resources.records.ui",
-            "class": "nr_metadata.datacite.resources.records.ui.DataciteUIJSONSerializer",
-            "base-classes": [
-                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
-            ],
-            "imports": [],
-            "extra-code": "",
+        "json-schema-settings": {
             "generate": true,
-            "list_schema_cls": "flask_resources.BaseListSchema",
-            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
-            "schema-context-args": {
-                "\"object_key\"": "\"ui\"",
-                "\"identity\"": "{{ flask.g{g.identity} }}"
-            }
+            "alias": "datacite",
+            "version": "1.0.0",
+            "module": "nr_metadata.datacite.records.jsonschemas",
+            "name": "datacite-1.0.0.json",
+            "file": "nr_metadata/datacite/records/jsonschemas/datacite-1.0.0.json"
+        },
+        "record-list": {
+            "generate": true,
+            "module": "nr_metadata.datacite.services.records.results",
+            "class": "nr_metadata.datacite.services.records.results.DataciteRecordList",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordList"
+            ],
+            "components": [],
+            "imports": []
+        },
+        "record-item": {
+            "generate": true,
+            "module": "nr_metadata.datacite.services.records.results",
+            "class": "nr_metadata.datacite.services.records.results.DataciteRecordItem",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordItem"
+            ],
+            "components": [],
+            "imports": []
         },
         "record-metadata": {
             "generate": true,
@@ -368,8 +398,8 @@
             "extra-code": "",
             "extensions": [
                 "{{oarepo_runtime.records.systemfields.mapping.SystemFieldDumperExt}}()",
-                "{{nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
-                "{{nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt}}()"
+                "{{nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt}}()",
+                "{{nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt}}()"
             ],
             "imports": []
         },
@@ -382,34 +412,15 @@
             ],
             "imports": []
         },
-        "json-schema-settings": {
+        "edtf-interval-dumper": {
             "generate": true,
-            "alias": "datacite",
-            "version": "1.0.0",
-            "module": "nr_metadata.datacite.records.jsonschemas",
-            "name": "datacite-1.0.0.json",
-            "file": "nr_metadata/datacite/records/jsonschemas/datacite-1.0.0.json"
-        },
-        "record-list": {
-            "generate": true,
-            "module": "nr_metadata.datacite.services.records.results",
-            "class": "nr_metadata.datacite.services.records.results.DataciteRecordList",
-            "extra-code": "",
+            "module": "nr_metadata.datacite.records.dumpers.edtf",
+            "class": "nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt",
             "base-classes": [
-                "oarepo_runtime.services.results.RecordList"
+                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
             ],
-            "components": [],
-            "imports": []
-        },
-        "record-item": {
-            "generate": true,
-            "module": "nr_metadata.datacite.services.records.results",
-            "class": "nr_metadata.datacite.services.records.results.DataciteRecordItem",
             "extra-code": "",
-            "base-classes": [
-                "oarepo_runtime.services.results.RecordItem"
-            ],
-            "components": [],
+            "extensions": [],
             "imports": []
         },
         "draft-parent-record": {
@@ -454,17 +465,6 @@
             "class": "nr_metadata.datacite.records.dumpers.multilingual.MultilingualSearchDumperExt",
             "base-classes": [
                 "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
-        },
-        "edtf-interval-dumper": {
-            "generate": true,
-            "module": "nr_metadata.datacite.records.dumpers.edtf",
-            "class": "nr_metadata.datacite.records.dumpers.edtf.DataciteEDTFIntervalDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
             ],
             "extra-code": "",
             "extensions": [],
@@ -2546,9 +2546,6 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
                     "type": "object",
                     "uniqueItems": true,
                     "additionalProperties": {
@@ -2565,6 +2562,9 @@
                                 "type": "string"
                             }
                         }
+                    },
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
                     }
                 },
                 "ui": {

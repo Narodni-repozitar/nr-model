@@ -12,6 +12,6 @@ class DataciteDumper(SearchDumper):
 
     extensions = [
         SystemFieldDumperExt(),
-        MultilingualSearchDumperExt(),
         DataciteEDTFIntervalDumperExt(),
+        MultilingualSearchDumperExt(),
     ]

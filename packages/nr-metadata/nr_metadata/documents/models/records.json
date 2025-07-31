@@ -78,22 +78,6 @@
             "module": "nr_metadata.documents.services.records.schema",
             "extra-code": ""
         },
-        "ui": {
-            "marshmallow": {
-                "imports": [],
-                "class": "nr_metadata.documents.services.records.ui_schema.NRDocumentRecordUISchema",
-                "base-classes": [
-                    "nr_metadata.ui_schema.versions.FillMissingVersionMixin",
-                    "oarepo_runtime.services.schema.ui.InvenioRDMUISchema"
-                ],
-                "generate": true,
-                "module": "nr_metadata.documents.services.records.ui_schema",
-                "extra-code": ""
-            },
-            "module": "nr_metadata.documents.models",
-            "file": "nr_metadata/documents/models/ui.json",
-            "alias": "documents"
-        },
         "record": {
             "imports": [
                 {
@@ -134,6 +118,22 @@
             "class": "nr_metadata.documents.records.api.DocumentsRecord",
             "extra-code": ""
         },
+        "ui": {
+            "marshmallow": {
+                "imports": [],
+                "class": "nr_metadata.documents.services.records.ui_schema.NRDocumentRecordUISchema",
+                "base-classes": [
+                    "nr_metadata.ui_schema.versions.FillMissingVersionMixin",
+                    "oarepo_runtime.services.schema.ui.InvenioRDMUISchema"
+                ],
+                "generate": true,
+                "module": "nr_metadata.documents.services.records.ui_schema",
+                "extra-code": ""
+            },
+            "module": "nr_metadata.documents.models",
+            "file": "nr_metadata/documents/models/ui.json",
+            "alias": "documents"
+        },
         "module": {
             "qualified": "nr_metadata.documents",
             "alias": "documents",
@@ -154,6 +154,16 @@
             "extra-code": "",
             "module": "tests"
         },
+        "sample": {
+            "file": "data/sample_data.yaml"
+        },
+        "ext-resource": {
+            "service-kwargs": {
+                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(service_config, {{invenio_rdm_records.services.pids.PIDManager}})"
+            },
+            "generate": true,
+            "skip": false
+        },
         "permissions": {
             "presets": [
                 "workflow"
@@ -167,17 +177,53 @@
             ],
             "imports": []
         },
-        "sample": {
-            "file": "data/sample_data.yaml"
-        },
-        "ext-resource": {
-            "service-kwargs": {
-                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(service_config, {{invenio_rdm_records.services.pids.PIDManager}})"
-            },
-            "generate": true,
-            "skip": false
-        },
         "model-name": "Documents",
+        "config": {
+            "generate": true,
+            "module": "nr_metadata.documents.config",
+            "extra_code": "",
+            "imports": []
+        },
+        "ext": {
+            "generate": true,
+            "module": "nr_metadata.documents.ext",
+            "class": "nr_metadata.documents.ext.DocumentsExt",
+            "base-classes": [],
+            "extra_code": "",
+            "alias": "nr_metadata.documents",
+            "imports": []
+        },
+        "api-blueprint": {
+            "generate": true,
+            "alias": "documents",
+            "extra_code": "",
+            "module": "nr_metadata.documents.views.records.api",
+            "function": "nr_metadata.documents.views.records.api.create_api_blueprint",
+            "imports": []
+        },
+        "app-blueprint": {
+            "generate": true,
+            "alias": "documents",
+            "extra_code": "",
+            "module": "nr_metadata.documents.views.records.app",
+            "function": "nr_metadata.documents.views.records.app.create_app_blueprint",
+            "imports": []
+        },
+        "facets": {
+            "generate": true,
+            "module": "nr_metadata.documents.services.records.facets",
+            "extra-code": "",
+            "groups": true
+        },
+        "saved-model": {
+            "file": "nr_metadata/documents/models/records.json",
+            "module": "nr_metadata.documents.models",
+            "alias": "documents"
+        },
+        "proxy": {
+            "module": "nr_metadata.documents.proxies",
+            "generate": true
+        },
         "resource": {
             "base-classes": [
                 "oarepo_runtime.resources.resource.BaseRecordResource"
@@ -243,51 +289,21 @@
             "class": "nr_metadata.documents.services.records.schema.GeneratedParentSchema",
             "generate": true
         },
-        "config": {
-            "generate": true,
-            "module": "nr_metadata.documents.config",
-            "extra_code": "",
-            "imports": []
-        },
-        "ext": {
-            "generate": true,
-            "module": "nr_metadata.documents.ext",
-            "class": "nr_metadata.documents.ext.DocumentsExt",
-            "base-classes": [],
-            "extra_code": "",
-            "alias": "nr_metadata.documents",
-            "imports": []
-        },
-        "api-blueprint": {
-            "generate": true,
-            "alias": "documents",
-            "extra_code": "",
-            "module": "nr_metadata.documents.views.records.api",
-            "function": "nr_metadata.documents.views.records.api.create_api_blueprint",
-            "imports": []
-        },
-        "app-blueprint": {
-            "generate": true,
-            "alias": "documents",
-            "extra_code": "",
-            "module": "nr_metadata.documents.views.records.app",
-            "function": "nr_metadata.documents.views.records.app.create_app_blueprint",
-            "imports": []
-        },
-        "facets": {
-            "generate": true,
-            "module": "nr_metadata.documents.services.records.facets",
+        "json-serializer": {
+            "module": "nr_metadata.documents.resources.records.ui",
+            "class": "nr_metadata.documents.resources.records.ui.DocumentsUIJSONSerializer",
+            "base-classes": [
+                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
+            ],
+            "imports": [],
             "extra-code": "",
-            "groups": true
-        },
-        "saved-model": {
-            "file": "nr_metadata/documents/models/records.json",
-            "module": "nr_metadata.documents.models",
-            "alias": "documents"
-        },
-        "proxy": {
-            "module": "nr_metadata.documents.proxies",
-            "generate": true
+            "generate": true,
+            "list_schema_cls": "flask_resources.BaseListSchema",
+            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
+            "schema-context-args": {
+                "\"object_key\"": "\"ui\"",
+                "\"identity\"": "{{ flask.g{g.identity} }}"
+            }
         },
         "service": {
             "imports": [],
@@ -328,21 +344,35 @@
             "module": "nr_metadata.documents.translations",
             "alias": "documents"
         },
-        "json-serializer": {
-            "module": "nr_metadata.documents.resources.records.ui",
-            "class": "nr_metadata.documents.resources.records.ui.DocumentsUIJSONSerializer",
-            "base-classes": [
-                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
-            ],
-            "imports": [],
-            "extra-code": "",
+        "json-schema-settings": {
             "generate": true,
-            "list_schema_cls": "flask_resources.BaseListSchema",
-            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
-            "schema-context-args": {
-                "\"object_key\"": "\"ui\"",
-                "\"identity\"": "{{ flask.g{g.identity} }}"
-            }
+            "alias": "documents",
+            "version": "1.0.0",
+            "module": "nr_metadata.documents.records.jsonschemas",
+            "name": "documents-1.0.0.json",
+            "file": "nr_metadata/documents/records/jsonschemas/documents-1.0.0.json"
+        },
+        "record-list": {
+            "generate": true,
+            "module": "nr_metadata.documents.services.records.results",
+            "class": "nr_metadata.documents.services.records.results.DocumentsRecordList",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordList"
+            ],
+            "components": [],
+            "imports": []
+        },
+        "record-item": {
+            "generate": true,
+            "module": "nr_metadata.documents.services.records.results",
+            "class": "nr_metadata.documents.services.records.results.DocumentsRecordItem",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordItem"
+            ],
+            "components": [],
+            "imports": []
         },
         "record-metadata": {
             "generate": true,
@@ -394,8 +424,8 @@
             "extra-code": "",
             "extensions": [
                 "{{oarepo_runtime.records.systemfields.mapping.SystemFieldDumperExt}}()",
-                "{{nr_metadata.documents.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
-                "{{nr_metadata.documents.records.dumpers.edtf.DocumentsEDTFIntervalDumperExt}}()"
+                "{{nr_metadata.documents.records.dumpers.edtf.DocumentsEDTFIntervalDumperExt}}()",
+                "{{nr_metadata.documents.records.dumpers.multilingual.MultilingualSearchDumperExt}}()"
             ],
             "imports": []
         },
@@ -408,34 +438,15 @@
             ],
             "imports": []
         },
-        "json-schema-settings": {
+        "edtf-interval-dumper": {
             "generate": true,
-            "alias": "documents",
-            "version": "1.0.0",
-            "module": "nr_metadata.documents.records.jsonschemas",
-            "name": "documents-1.0.0.json",
-            "file": "nr_metadata/documents/records/jsonschemas/documents-1.0.0.json"
-        },
-        "record-list": {
-            "generate": true,
-            "module": "nr_metadata.documents.services.records.results",
-            "class": "nr_metadata.documents.services.records.results.DocumentsRecordList",
-            "extra-code": "",
+            "module": "nr_metadata.documents.records.dumpers.edtf",
+            "class": "nr_metadata.documents.records.dumpers.edtf.DocumentsEDTFIntervalDumperExt",
             "base-classes": [
-                "oarepo_runtime.services.results.RecordList"
+                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
             ],
-            "components": [],
-            "imports": []
-        },
-        "record-item": {
-            "generate": true,
-            "module": "nr_metadata.documents.services.records.results",
-            "class": "nr_metadata.documents.services.records.results.DocumentsRecordItem",
             "extra-code": "",
-            "base-classes": [
-                "oarepo_runtime.services.results.RecordItem"
-            ],
-            "components": [],
+            "extensions": [],
             "imports": []
         },
         "draft-parent-record": {
@@ -480,17 +491,6 @@
             "class": "nr_metadata.documents.records.dumpers.multilingual.MultilingualSearchDumperExt",
             "base-classes": [
                 "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
-            ],
-            "extra-code": "",
-            "extensions": [],
-            "imports": []
-        },
-        "edtf-interval-dumper": {
-            "generate": true,
-            "module": "nr_metadata.documents.records.dumpers.edtf",
-            "class": "nr_metadata.documents.records.dumpers.edtf.DocumentsEDTFIntervalDumperExt",
-            "base-classes": [
-                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
             ],
             "extra-code": "",
             "extensions": [],
@@ -864,6 +864,13 @@
                                 "title": {
                                     "type": "i18nStr",
                                     "required": true,
+                                    "marshmallow": {
+                                        "read": false,
+                                        "write": false,
+                                        "class": null,
+                                        "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
+                                        "generate": false
+                                    },
                                     "ui": {
                                         "marshmallow": {
                                             "read": false,
@@ -872,13 +879,6 @@
                                             "field-class": "oarepo_runtime.services.schema.i18n_ui.I18nStrUIField"
                                         },
                                         "detail": "multilingual"
-                                    },
-                                    "marshmallow": {
-                                        "read": false,
-                                        "write": false,
-                                        "class": null,
-                                        "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
-                                        "generate": false
                                     },
                                     "label.cs": "Další název",
                                     "label.en": "Additional Title",
@@ -1893,7 +1893,7 @@
                                         },
                                         "label.cs": "Alternativní název akce",
                                         "label.en": "Event Alternate Name",
-                                        "help.cs": "Pokud má akce další známe názvy, uveďte je zde.",
+                                        "help.cs": "Pokud má akce další známé názvy, uveďte je zde.",
                                         "help.en": "If the event has other known names, list them here."
                                     }
                                 },
@@ -2285,11 +2285,11 @@
                                             "model": {
                                                 "type": "object",
                                                 "json-schema": {
-                                                    "additionalProperties": {
-                                                        "type": "string"
-                                                    },
                                                     "propertyNames": {
                                                         "pattern": "^[a-z]{2}$"
+                                                    },
+                                                    "additionalProperties": {
+                                                        "type": "string"
                                                     }
                                                 },
                                                 "mapping": {
@@ -2374,11 +2374,11 @@
                                         "title": {
                                             "type": "object",
                                             "json-schema": {
-                                                "additionalProperties": {
-                                                    "type": "string"
-                                                },
                                                 "propertyNames": {
                                                     "pattern": "^[a-z]{2}$"
+                                                },
+                                                "additionalProperties": {
+                                                    "type": "string"
                                                 }
                                             },
                                             "mapping": {
@@ -2422,6 +2422,7 @@
                             "properties": {
                                 "geoLocationPlace": {
                                     "type": "keyword",
+                                    "description": "Free description of the location; ie. Atlantic Ocean",
                                     "marshmallow": {
                                         "read": false,
                                         "write": false
@@ -2431,8 +2432,7 @@
                                             "read": false,
                                             "write": false
                                         }
-                                    },
-                                    "description": "Free description of the location; ie. Atlantic Ocean"
+                                    }
                                 },
                                 "geoLocationPoint": {
                                     "type": "object",
@@ -3575,8 +3575,8 @@
                                     },
                                     "label.cs": "Číslo",
                                     "label.en": "Issue",
-                                    "hint.cs": "Uvádějte pouze pokud se jedná o časopis nebo sborník.",
-                                    "hint.en": "Fill in only if related item is journal or conference proceedings."
+                                    "hint.cs": "Pro časopis/sborník.",
+                                    "hint.en": "For journal/proceedings."
                                 },
                                 "itemPIDs": {
                                     "type": "array",
@@ -3666,6 +3666,7 @@
                                 "itemRelationType": {
                                     "type": "vocabulary",
                                     "vocabulary-type": "item-relation-types",
+                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "ui": {
                                         "marshmallow": {
                                             "class": "nr_metadata.common.services.records.ui_schema_datatypes.NRItemRelationTypeVocabularyUISchema",
@@ -3684,7 +3685,6 @@
                                         "unknown": "INCLUDE",
                                         "generate": true
                                     },
-                                    "description": "typ vztahu k původnímu popisovanému dok.",
                                     "label.cs": "Typ vazby",
                                     "label.en": "Relation Type",
                                     "hint.cs": "Vyberte typ vazby mezi popisovaným dokumentem a souvisejícím zdrojem.",
@@ -3966,8 +3966,8 @@
                                     },
                                     "label.cs": "Ročník",
                                     "label.en": "Volume",
-                                    "hint.cs": "Uvádějte pouze pokud se jedná o časopis nebo sborník.",
-                                    "hint.en": "Fill in only if related item is journal or conference proceedings."
+                                    "hint.cs": "Pro časopis/sborník.",
+                                    "hint.en": "For journal/proceedings."
                                 },
                                 "itemYear": {
                                     "type": "integer",
@@ -5087,6 +5087,9 @@
                 "type": "object",
                 "json-schema": {
                     "uniqueItems": true,
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
                     "type": "object",
                     "additionalProperties": {
                         "type": "object",
@@ -5102,9 +5105,6 @@
                                 "type": "string"
                             }
                         }
-                    },
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
                     }
                 },
                 "ui": {
