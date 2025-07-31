@@ -440,15 +440,14 @@ NRRelatedItem:
       type: keyword
       label.cs: Ročník
       label.en: Volume
-      hint.cs: Uvádějte pouze pokud se jedná o časopis nebo sborník.
-      hint.en: Fill in only if related item is journal or conference proceedings.
-
+      hint.cs: Pro časopis/sborník.
+      hint.en: For journal/proceedings.
     itemIssue:
       type: keyword
       label.cs: Číslo
       label.en: Issue
-      hint.cs: Uvádějte pouze pokud se jedná o časopis nebo sborník.
-      hint.en: Fill in only if related item is journal or conference proceedings.
+      hint.cs: Pro časopis/sborník.
+      hint.en: For journal/proceedings.
 
     itemStartPage:
       type: keyword
@@ -712,7 +711,7 @@ NREvent:
       type: fulltext
       label.cs: Alternativní název akce
       label.en: Event Alternate Name
-      help.cs: Pokud má akce další známe názvy, uveďte je zde.
+      help.cs: Pokud má akce další známé názvy, uveďte je zde.
       help.en: If the event has other known names, list them here.
 
     eventDate:
