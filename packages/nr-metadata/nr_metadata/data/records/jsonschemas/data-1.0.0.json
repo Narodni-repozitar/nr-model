@@ -406,11 +406,11 @@
                                         "type": "string"
                                     },
                                     "title": {
-                                        "additionalProperties": {
-                                            "type": "string"
-                                        },
                                         "propertyNames": {
                                             "pattern": "^[a-z]{2}$"
+                                        },
+                                        "additionalProperties": {
+                                            "type": "string"
                                         },
                                         "type": "object"
                                     }

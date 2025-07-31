@@ -10,6 +10,7 @@ import {
   useFormFieldValue,
   useFieldData,
 } from "@js/oarepo_ui";
+import { getIn, useFormikContext } from "formik";
 
 const subtitleTypes = [
   { text: i18next.t("Alternative title"), value: "alternativeTitle" },
@@ -25,6 +26,8 @@ export const AdditionalTitlesField = ({
   addButtonLabel,
 }) => {
   const { getFieldData } = useFieldData();
+
+  const { errors } = useFormikContext();
 
   const { defaultLocale } = useDefaultLocale();
   const initialValueObj = {
@@ -59,6 +62,8 @@ export const AdditionalTitlesField = ({
     >
       {({ arrayHelpers, indexPath }) => {
         const fieldPathPrefix = `${fieldPath}.${indexPath}`;
+        const topLevelError = getIn(errors, `${fieldPathPrefix}.title`, "");
+        const isTopLevelErrorString = typeof topLevelError === "string";
         return (
           <ArrayFieldItem
             indexPath={indexPath}
@@ -69,6 +74,10 @@ export const AdditionalTitlesField = ({
               <I18nTextInputField
                 fieldPath={`${fieldPathPrefix}.title`}
                 lngFieldWidth={6}
+                error={isTopLevelErrorString ? topLevelError : undefined}
+                lngFieldError={
+                  isTopLevelErrorString ? topLevelError : undefined
+                }
               />
             </Form.Field>
             <Form.Field width={4}>

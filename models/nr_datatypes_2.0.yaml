@@ -308,6 +308,8 @@ NRLocation:
       hint.en: Fill in the location related to the object or the event (i.e. city).
     country:
       use: "nr-datatypes#NRCountry"
+      label.cs: "Země"
+      label.en: "Country"
   ui:
     detail: location
     marshmallow:
@@ -724,6 +726,8 @@ NREvent:
     eventLocation:
       use: "nr-datatypes#NRLocation"
       required: true
+      label.cs: Místo konání akce
+      label.en: Event Location
 
 NRLanguage:
   $id: NRLanguage

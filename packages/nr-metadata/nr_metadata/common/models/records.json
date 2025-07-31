@@ -830,6 +830,8 @@
                                 "title": {
                                     "type": "i18nStr",
                                     "required": true,
+                                    "label.cs": "Další název",
+                                    "label.en": "Additional Title",
                                     "marshmallow": {
                                         "class": null,
                                         "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
@@ -1516,8 +1518,8 @@
                                         "class": "nr_metadata.common.services.records.schema_datatypes.NRLocationSchema",
                                         "generate": true
                                     },
-                                    "label.cs": "Umístění",
-                                    "label.en": "Location",
+                                    "label.cs": "Místo konání akce",
+                                    "label.en": "Event Location",
                                     "properties": {
                                         "country": {
                                             "type": "vocabulary",
@@ -4074,11 +4076,7 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "uniqueItems": true,
                     "type": "object",
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -4093,6 +4091,10 @@
                                 "type": "string"
                             }
                         }
+                    },
+                    "uniqueItems": true,
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
                     }
                 },
                 "ui": {

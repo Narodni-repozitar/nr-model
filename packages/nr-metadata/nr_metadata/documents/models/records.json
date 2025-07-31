@@ -880,6 +880,8 @@
                                         "field-class": "oarepo_runtime.services.schema.i18n.I18nStrField",
                                         "generate": false
                                     },
+                                    "label.cs": "Další název",
+                                    "label.en": "Additional Title",
                                     "sample": {
                                         "skip": false
                                     },
@@ -1736,6 +1738,8 @@
                                         "generate": false,
                                         "class": "nr_metadata.common.services.records.schema_datatypes.NRLocationSchema"
                                     },
+                                    "label.cs": "Místo konání akce",
+                                    "label.en": "Event Location",
                                     "properties": {
                                         "country": {
                                             "type": "vocabulary",
@@ -2281,11 +2285,11 @@
                                             "model": {
                                                 "type": "object",
                                                 "json-schema": {
-                                                    "propertyNames": {
-                                                        "pattern": "^[a-z]{2}$"
-                                                    },
                                                     "additionalProperties": {
                                                         "type": "string"
+                                                    },
+                                                    "propertyNames": {
+                                                        "pattern": "^[a-z]{2}$"
                                                     }
                                                 },
                                                 "mapping": {
@@ -2370,11 +2374,11 @@
                                         "title": {
                                             "type": "object",
                                             "json-schema": {
-                                                "propertyNames": {
-                                                    "pattern": "^[a-z]{2}$"
-                                                },
                                                 "additionalProperties": {
                                                     "type": "string"
+                                                },
+                                                "propertyNames": {
+                                                    "pattern": "^[a-z]{2}$"
                                                 }
                                             },
                                             "mapping": {
@@ -5082,9 +5086,6 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
                     "uniqueItems": true,
                     "type": "object",
                     "additionalProperties": {
@@ -5101,6 +5102,9 @@
                                 "type": "string"
                             }
                         }
+                    },
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
                     }
                 },
                 "ui": {
