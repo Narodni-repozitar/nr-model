@@ -8,10 +8,12 @@
 ] %}
 
 {% for title in data %}
-<span title="{{ (subtitle_types|selectattr('value', 'equalto', title.titleType)|first).text|default(title.titleType) }}">
+  {% if title.title and title.title.lang and title.title.value %}
+    <span title="{{ (subtitle_types|selectattr('value', 'equalto', title.titleType)|first).text|default(title.titleType) }}">
         <div class="ui green basic label lang-tag">
         {{ title.title.lang | upper }}
         </div>
         {{ title.title.value|safe }}
     </span>
+  {% endif %}
 {% endfor %}
