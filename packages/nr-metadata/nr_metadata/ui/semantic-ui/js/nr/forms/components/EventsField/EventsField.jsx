@@ -69,7 +69,7 @@ export const EventsField = ({ fieldPath }) => {
               <LocalVocabularySelectField
                 width={6}
                 fieldPath={`${fieldPathPrefix}.eventLocation.country`}
-                optionsListName="countries"
+                vocabularyName="countries"
                 clearable
                 fieldRepresentation="compact"
               />
