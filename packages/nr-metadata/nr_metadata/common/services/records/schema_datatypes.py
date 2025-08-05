@@ -1,12 +1,12 @@
 import marshmallow as ma
 from edtf import Interval as EDTFInterval
-from invenio_rdm_records.services.schemas.metadata import CreatorSchema
 from invenio_vocabularies.services.schema import i18n_strings
 from marshmallow import fields as ma_fields
 from marshmallow.fields import String
 from marshmallow_utils.fields import TrimmedString
 from oarepo_runtime.services.schema.i18n import I18nStrField, MultilingualField
 from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
+from oarepo_runtime.services.schema.rdm import RDMNTKCreatorsSchema
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_identifier,
@@ -52,9 +52,9 @@ class NRRelatedItemSchema(DictOnlySchema):
     class Meta:
         unknown = ma.RAISE
 
-    itemContributors = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
+    itemContributors = ma_fields.List(ma_fields.Nested(lambda: RDMNTKCreatorsSchema()))
 
-    itemCreators = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
+    itemCreators = ma_fields.List(ma_fields.Nested(lambda: RDMNTKCreatorsSchema()))
 
     itemEndPage = ma_fields.String()
 

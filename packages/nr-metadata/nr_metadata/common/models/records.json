@@ -895,7 +895,7 @@
                             },
                             "marshmallow": {
                                 "generate": false,
-                                "class": "invenio_rdm_records.services.schemas.metadata.CreatorSchema"
+                                "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
                             },
                             "properties": {
                                 "affiliations": {
@@ -1185,7 +1185,7 @@
                             },
                             "marshmallow": {
                                 "generate": false,
-                                "class": "invenio_rdm_records.services.schemas.metadata.CreatorSchema"
+                                "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
                             },
                             "properties": {
                                 "affiliations": {
@@ -2478,7 +2478,7 @@
                                         },
                                         "marshmallow": {
                                             "generate": false,
-                                            "class": "invenio_rdm_records.services.schemas.metadata.CreatorSchema"
+                                            "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
                                         },
                                         "properties": {
                                             "affiliations": {
@@ -2761,7 +2761,7 @@
                                         },
                                         "marshmallow": {
                                             "generate": false,
-                                            "class": "invenio_rdm_records.services.schemas.metadata.CreatorSchema"
+                                            "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
                                         },
                                         "properties": {
                                             "affiliations": {
@@ -4076,8 +4076,8 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "uniqueItems": true,
                     "type": "object",
+                    "uniqueItems": true,
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,

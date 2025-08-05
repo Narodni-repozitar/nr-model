@@ -943,7 +943,7 @@
                             },
                             "marshmallow": {
                                 "generate": false,
-                                "class": "invenio_rdm_records.services.schemas.metadata.CreatorSchema"
+                                "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
                             },
                             "properties": {
                                 "affiliations": {
@@ -1301,7 +1301,7 @@
                             },
                             "marshmallow": {
                                 "generate": false,
-                                "class": "invenio_rdm_records.services.schemas.metadata.CreatorSchema"
+                                "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
                             },
                             "properties": {
                                 "affiliations": {
@@ -2285,11 +2285,11 @@
                                             "model": {
                                                 "type": "object",
                                                 "json-schema": {
-                                                    "propertyNames": {
-                                                        "pattern": "^[a-z]{2}$"
-                                                    },
                                                     "additionalProperties": {
                                                         "type": "string"
+                                                    },
+                                                    "propertyNames": {
+                                                        "pattern": "^[a-z]{2}$"
                                                     }
                                                 },
                                                 "mapping": {
@@ -2374,11 +2374,11 @@
                                         "title": {
                                             "type": "object",
                                             "json-schema": {
-                                                "propertyNames": {
-                                                    "pattern": "^[a-z]{2}$"
-                                                },
                                                 "additionalProperties": {
                                                     "type": "string"
+                                                },
+                                                "propertyNames": {
+                                                    "pattern": "^[a-z]{2}$"
                                                 }
                                             },
                                             "mapping": {
@@ -2859,7 +2859,7 @@
                                         },
                                         "marshmallow": {
                                             "generate": false,
-                                            "class": "invenio_rdm_records.services.schemas.metadata.CreatorSchema"
+                                            "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
                                         },
                                         "properties": {
                                             "affiliations": {
@@ -3210,7 +3210,7 @@
                                         },
                                         "marshmallow": {
                                             "generate": false,
-                                            "class": "invenio_rdm_records.services.schemas.metadata.CreatorSchema"
+                                            "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
                                         },
                                         "properties": {
                                             "affiliations": {
@@ -5086,11 +5086,6 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
-                    "uniqueItems": true,
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    },
-                    "type": "object",
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -5105,6 +5100,11 @@
                                 "type": "string"
                             }
                         }
+                    },
+                    "type": "object",
+                    "uniqueItems": true,
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
                     }
                 },
                 "ui": {
