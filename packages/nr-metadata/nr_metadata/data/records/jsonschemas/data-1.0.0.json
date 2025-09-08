@@ -406,11 +406,11 @@
                                         "type": "string"
                                     },
                                     "title": {
-                                        "additionalProperties": {
-                                            "type": "string"
-                                        },
                                         "propertyNames": {
                                             "pattern": "^[a-z]{2}$"
+                                        },
+                                        "additionalProperties": {
+                                            "type": "string"
                                         },
                                         "type": "object"
                                     }
@@ -902,6 +902,10 @@
             }
         },
         "pids": {
+            "type": "object",
+            "propertyNames": {
+                "pattern": "^[a-z_-][a-z0-9_-]*$"
+            },
             "additionalProperties": {
                 "type": "object",
                 "additionalProperties": false,
@@ -916,10 +920,6 @@
                         "type": "string"
                     }
                 }
-            },
-            "type": "object",
-            "propertyNames": {
-                "pattern": "^[a-z_-][a-z0-9_-]*$"
             },
             "uniqueItems": true
         },

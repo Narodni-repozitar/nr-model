@@ -2285,11 +2285,11 @@
                                             "model": {
                                                 "type": "object",
                                                 "json-schema": {
-                                                    "propertyNames": {
-                                                        "pattern": "^[a-z]{2}$"
-                                                    },
                                                     "additionalProperties": {
                                                         "type": "string"
+                                                    },
+                                                    "propertyNames": {
+                                                        "pattern": "^[a-z]{2}$"
                                                     }
                                                 },
                                                 "mapping": {
@@ -2374,11 +2374,11 @@
                                         "title": {
                                             "type": "object",
                                             "json-schema": {
-                                                "propertyNames": {
-                                                    "pattern": "^[a-z]{2}$"
-                                                },
                                                 "additionalProperties": {
                                                     "type": "string"
+                                                },
+                                                "propertyNames": {
+                                                    "pattern": "^[a-z]{2}$"
                                                 }
                                             },
                                             "mapping": {
@@ -5086,6 +5086,7 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
+                    "type": "object",
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
@@ -5104,7 +5105,6 @@
                             }
                         }
                     },
-                    "type": "object",
                     "uniqueItems": true
                 },
                 "ui": {
