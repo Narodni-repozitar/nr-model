@@ -12,7 +12,7 @@ from oarepo_runtime.services.schema.marshmallow import (
     DictOnlySchema,
     RDMBaseRecordSchema,
 )
-from oarepo_runtime.services.schema.rdm import FundingSchema, RDMNTKCreatorsSchema
+from oarepo_runtime.services.schema.rdm import FundingSchema
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_datetime,
@@ -33,6 +33,7 @@ from nr_metadata.common.services.records.schema_datatypes import (
     NRSeriesSchema,
     NRSubjectSchema,
 )
+from nr_metadata.schema.creators import RDMNTKCreatorsSchema
 from nr_metadata.schema.identifiers import (
     NRObjectIdentifierSchema,
     NRSystemIdentifierSchema,

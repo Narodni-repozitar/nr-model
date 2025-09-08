@@ -918,7 +918,7 @@
                             },
                             "marshmallow": {
                                 "generate": false,
-                                "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
+                                "class": "nr_metadata.schema.creators.RDMNTKCreatorsSchema"
                             },
                             "properties": {
                                 "affiliations": {
@@ -1276,7 +1276,7 @@
                             },
                             "marshmallow": {
                                 "generate": false,
-                                "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
+                                "class": "nr_metadata.schema.creators.RDMNTKCreatorsSchema"
                             },
                             "properties": {
                                 "affiliations": {
@@ -3087,7 +3087,7 @@
                                         },
                                         "marshmallow": {
                                             "generate": false,
-                                            "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
+                                            "class": "nr_metadata.schema.creators.RDMNTKCreatorsSchema"
                                         },
                                         "properties": {
                                             "affiliations": {
@@ -3438,7 +3438,7 @@
                                         },
                                         "marshmallow": {
                                             "generate": false,
-                                            "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
+                                            "class": "nr_metadata.schema.creators.RDMNTKCreatorsSchema"
                                         },
                                         "properties": {
                                             "affiliations": {
@@ -5024,7 +5024,6 @@
                 "type": "object",
                 "json-schema": {
                     "type": "object",
-                    "uniqueItems": true,
                     "propertyNames": {
                         "pattern": "^[a-z_-][a-z0-9_-]*$"
                     },
@@ -5042,7 +5041,8 @@
                                 "type": "string"
                             }
                         }
-                    }
+                    },
+                    "uniqueItems": true
                 },
                 "ui": {
                     "marshmallow": {
