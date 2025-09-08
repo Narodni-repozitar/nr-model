@@ -6,12 +6,12 @@ from marshmallow.fields import String
 from marshmallow_utils.fields import TrimmedString
 from oarepo_runtime.services.schema.i18n import I18nStrField, MultilingualField
 from oarepo_runtime.services.schema.marshmallow import DictOnlySchema
-from oarepo_runtime.services.schema.rdm import RDMNTKCreatorsSchema
 from oarepo_runtime.services.schema.validation import (
     CachedMultilayerEDTFValidator,
     validate_identifier,
 )
 
+from nr_metadata.schema.creators import RDMNTKCreatorsSchema
 from nr_metadata.schema.identifiers import NRObjectIdentifierSchema
 
 

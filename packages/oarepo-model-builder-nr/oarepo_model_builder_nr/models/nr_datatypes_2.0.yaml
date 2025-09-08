@@ -244,7 +244,8 @@ NRCreator:
             read: false
             write: false
   marshmallow:
-    class: invenio_rdm_records.services.schemas.metadata.CreatorSchema
+    # TODO: this schema is only for NR Docs, not to be used for other repositories
+    class: nr_metadata.schema.creators.RDMNTKCreatorsSchema
     generate: false
   ui:
     detail: creator

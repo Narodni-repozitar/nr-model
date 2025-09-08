@@ -943,7 +943,7 @@
                             },
                             "marshmallow": {
                                 "generate": false,
-                                "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
+                                "class": "nr_metadata.schema.creators.RDMNTKCreatorsSchema"
                             },
                             "properties": {
                                 "affiliations": {
@@ -1301,7 +1301,7 @@
                             },
                             "marshmallow": {
                                 "generate": false,
-                                "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
+                                "class": "nr_metadata.schema.creators.RDMNTKCreatorsSchema"
                             },
                             "properties": {
                                 "affiliations": {
@@ -2285,11 +2285,11 @@
                                             "model": {
                                                 "type": "object",
                                                 "json-schema": {
-                                                    "additionalProperties": {
-                                                        "type": "string"
-                                                    },
                                                     "propertyNames": {
                                                         "pattern": "^[a-z]{2}$"
+                                                    },
+                                                    "additionalProperties": {
+                                                        "type": "string"
                                                     }
                                                 },
                                                 "mapping": {
@@ -2374,11 +2374,11 @@
                                         "title": {
                                             "type": "object",
                                             "json-schema": {
-                                                "additionalProperties": {
-                                                    "type": "string"
-                                                },
                                                 "propertyNames": {
                                                     "pattern": "^[a-z]{2}$"
+                                                },
+                                                "additionalProperties": {
+                                                    "type": "string"
                                                 }
                                             },
                                             "mapping": {
@@ -2859,7 +2859,7 @@
                                         },
                                         "marshmallow": {
                                             "generate": false,
-                                            "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
+                                            "class": "nr_metadata.schema.creators.RDMNTKCreatorsSchema"
                                         },
                                         "properties": {
                                             "affiliations": {
@@ -3210,7 +3210,7 @@
                                         },
                                         "marshmallow": {
                                             "generate": false,
-                                            "class": "oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema"
+                                            "class": "nr_metadata.schema.creators.RDMNTKCreatorsSchema"
                                         },
                                         "properties": {
                                             "affiliations": {
@@ -5086,6 +5086,9 @@
             "pids": {
                 "type": "object",
                 "json-schema": {
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
                     "additionalProperties": {
                         "type": "object",
                         "additionalProperties": false,
@@ -5102,10 +5105,7 @@
                         }
                     },
                     "type": "object",
-                    "uniqueItems": true,
-                    "propertyNames": {
-                        "pattern": "^[a-z_-][a-z0-9_-]*$"
-                    }
+                    "uniqueItems": true
                 },
                 "ui": {
                     "marshmallow": {

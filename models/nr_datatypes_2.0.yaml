@@ -245,7 +245,7 @@ NRCreator:
             write: false
   marshmallow:
     # TODO: this schema is only for NR Docs, not to be used for other repositories
-    class: oarepo_runtime.services.schema.rdm.RDMNTKCreatorsSchema
+    class: nr_metadata.schema.creators.RDMNTKCreatorsSchema
     generate: false
   ui:
     detail: creator
