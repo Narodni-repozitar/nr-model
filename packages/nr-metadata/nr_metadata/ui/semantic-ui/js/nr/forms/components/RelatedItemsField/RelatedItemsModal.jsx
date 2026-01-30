@@ -17,7 +17,7 @@ import {
   IdentifiersField,
   objectIdentifiersSchema,
   IdentifiersValidationSchema,
-} from "../IdentifiersField";
+} from "@js/oarepo_ui/forms";
 import { LocalVocabularySelectField } from "@js/oarepo_vocabularies";
 import PropTypes from "prop-types";
 import {
@@ -30,8 +30,7 @@ import _isEmpty from "lodash/isEmpty";
 
 const RelatedItemsSchema = Yup.object({
   itemTitle: Yup.string().required(requiredMessage).label(i18next.t("Title")),
-  itemURL: Yup.string()
-  .url(i18next.t("Please provide an URL in valid format")),
+  itemURL: Yup.string().url(i18next.t("Please provide an URL in valid format")),
   itemYear: Yup.number()
     .typeError(i18next.t("Year must be a number."))
     .test("len", i18next.t("Year must be in format YYYY."), (val) => {
@@ -65,7 +64,7 @@ export const RelatedItemsModal = ({
   const [open, setOpen] = React.useState(false);
   const [action, setAction] = React.useState(initialAction);
   const [saveAndContinueLabel, setSaveAndContinueLabel] = React.useState(
-    i18next.t("Save and add another")
+    i18next.t("Save and add another"),
   );
   const { sanitizeInput } = useSanitizeInput();
   const openModal = () => {
@@ -142,7 +141,7 @@ export const RelatedItemsModal = ({
       }) => {
         const handleBlur = handleValidateAndBlur(
           validateField,
-          setFieldTouched
+          setFieldTouched,
         );
 
         const handleAction = (action) => {
