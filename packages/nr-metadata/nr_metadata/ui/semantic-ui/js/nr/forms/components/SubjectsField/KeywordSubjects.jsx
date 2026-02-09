@@ -9,7 +9,7 @@ export const KeywordSubjects = ({ keywordSubjects, handleSubjectRemoval }) => {
       <React.Fragment>
         {keywordSubjects.map(({ subject, id }, index) => (
           <React.Fragment key={id}>
-            {subject.map((s, i) => (
+            {subject?.map((s, i) => (
               <Label className="keyword-subjects label" image key={i}>
                 {s.lang}
                 <Label.Detail className="pr-0">
@@ -25,7 +25,7 @@ export const KeywordSubjects = ({ keywordSubjects, handleSubjectRemoval }) => {
                 </Label.Detail>
               </Label>
             ))}
-            {index + 1 !== keywordSubjects.length && (
+            {index + 1 !== keywordSubjects?.length && (
               <span className="rel-mr-1 rel-ml-1">|</span>
             )}
           </React.Fragment>
