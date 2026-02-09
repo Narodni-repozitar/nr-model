@@ -9,7 +9,7 @@ class NRSubjectListField(ma.fields.List):
         raw = super()._serialize(value, attr, obj, **kwargs)
         ret = []
         for r in raw:
-            for rr in r["subject"]:
+            for rr in r.get("subject", []):
                 ret.append(
                     {
                         **r,
