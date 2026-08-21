@@ -31,7 +31,7 @@ class RDMNTKCreatorsSchema(CreatorSchema):
                         _(
                             "It is necessary to choose organization from the controlled vocabulary. "
                             "To add organization, please go to "
-                            "https://nusl.techlib.cz/cs/migrace-nusl/navrh-novych-hesel/"
+                            "https://web.narodni-repozitar.cz/cs/podpora/navrh-hesla-do-slovniku/"
                         ),
                         field_name="affiliations",
                     )
@@ -52,7 +52,7 @@ class RDMNTKCreatorsSchema(CreatorSchema):
                     _(
                         "It is necessary to choose organization from the controlled vocabulary. "
                         "To add organization, please go to "
-                        "https://nusl.techlib.cz/cs/migrace-nusl/navrh-novych-hesel/"
+                        "https://web.narodni-repozitar.cz/cs/podpora/navrh-hesla-do-slovniku/"
                     ),
                     field_name="person_or_org",
                 )
